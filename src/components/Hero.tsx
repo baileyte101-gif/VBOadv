@@ -100,7 +100,7 @@ export default function Hero() {
         style={{ width: '40%' }}
       >
         <Image
-          src="/images/miami-city.png"
+          src="/images/miami-city.jpg"
           alt="Miami skyline"
           fill
           className="object-cover object-center"
@@ -120,7 +120,7 @@ export default function Hero() {
       {/* Mobile: city image below */}
       <div className="absolute inset-0 lg:hidden -z-10">
         <Image
-          src="/images/miami-city.png"
+          src="/images/miami-city.jpg"
           alt="Miami skyline"
           fill
           className="object-cover object-center"

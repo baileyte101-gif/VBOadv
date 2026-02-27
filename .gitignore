@@ -54,6 +54,12 @@ VBO Secondary*
 ChatGPT Image*
 *.pdf
 
+# Large / redundant image files
+public/images/miami-city.png
+public/images/logo-primary.png
+public/images/logo-primary-new.png
+public/images/logo-secondary.png
+
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
