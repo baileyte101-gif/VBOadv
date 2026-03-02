@@ -39,7 +39,7 @@ export default function CTASection() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-mono text-[#6B6F73] text-[11px] tracking-[0.3em] uppercase mb-14 md:mb-16"
+          className="font-mono text-[#6B6F73] text-[11px] tracking-[0.12em] md:tracking-[0.3em] uppercase mb-14 md:mb-16 px-4"
         >
           Strategy&nbsp;&nbsp;—&nbsp;&nbsp;Integration&nbsp;&nbsp;—&nbsp;&nbsp;Execution
         </motion.p>

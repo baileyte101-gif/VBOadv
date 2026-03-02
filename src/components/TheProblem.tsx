@@ -68,13 +68,13 @@ export default function TheProblem() {
           className="space-y-5"
         >
           <p className="text-[#F2EDE4] font-medium text-base md:text-lg leading-relaxed">
-            Your Marketing Isn&apos;t Aligned.
+            Your Marketing Is Fragmented.
           </p>
           <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">
             Your budget drifts. Your creative and performance efforts disconnect.
             Your team doesn&apos;t move in the same direction, missing strategic
-            purpose or guidance. But the entire time your activity increases.
-            Your efficiency declines.
+            purpose or guidance. You&apos;re not reaching your goals. But the
+            entire time your activity increases, and your efficiency decreases.
           </p>
           <p className="text-[#F2EDE4] font-medium text-base md:text-lg leading-relaxed">
             Most businesses don&apos;t need more marketing.

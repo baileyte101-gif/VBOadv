@@ -42,7 +42,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.65 }}
           className="text-[#6B6F73] text-base md:text-lg mb-10 font-body leading-relaxed max-w-sm"
         >
-          Fully integrated marketing. Defined by direction.
+          Fully integrated marketing. Human, built on experience and efficiency.
         </motion.p>
 
         {/* CTA */}
@@ -79,7 +79,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 1.0 }}
           className="font-mono text-[#6B6F73]/60 text-[10px] tracking-[0.25em] uppercase"
         >
-          Miami&nbsp;/&nbsp;Founder-Led&nbsp;/&nbsp;Studio&nbsp;/&nbsp;Consultant
+          Miami, FL&nbsp;/&nbsp;Founder-Led&nbsp;/&nbsp;Studio&nbsp;/&nbsp;Consultant
         </motion.p>
       </div>
 

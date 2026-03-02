@@ -10,7 +10,7 @@ import CTASection from '@/components/CTASection'
 import Image from 'next/image'
 
 const heroTickerItems = [
-  'DISCIPLINE',
+  'EFFICIENCY',
   'ALIGNMENT',
   'GROWTH',
   'CLARITY',
@@ -20,6 +20,7 @@ const heroTickerItems = [
   'DIRECTION',
   'PRECISION',
   'EXECUTION',
+  'HUMAN',
 ]
 
 export default function Home() {

@@ -4,7 +4,8 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 
-const brandNames = ['McDonalds', 'Formula E', 'Royal Caribbean Cruise Lines', 'Park West Gallery', 'Bilzin Sumberg']
+const largeBrands = ['McDonalds', 'Formula E', 'Royal Caribbean Cruise Lines', 'Park West Gallery', 'Bilzin Sumberg']
+const smallBrands = ['Caricap', 'Plant Athletic', 'Purple Patch Fitness', 'Beckham Financial']
 
 export default function About() {
   const ref = useRef(null)
@@ -61,12 +62,17 @@ export default function About() {
           >
             <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">
               VBO is a founder-led marketing consultancy &amp; studio built on
-              experience and efficiency. We are not a high-volume agency. We are
-              not a trend-driven shop.
+              experience and efficiency. Our clients are our priority, we are
+              not a high-volume agency. We are not a trend-driven shop.
             </p>
             <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">
               We operate with structure, using the best modern tools that drive
               efficient performance for your business.
+            </p>
+
+            {/* Standout quote */}
+            <p className="font-headline font-black text-[#F2EDE4] uppercase leading-tight text-xl md:text-2xl lg:text-3xl pt-2">
+              We are serious about outcomes.<br />Not serious about ego.
             </p>
 
             {/* Divider */}
@@ -76,19 +82,32 @@ export default function About() {
               <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed mb-4">
                 Tim Bailey, founder of VBO, is a passionate marketer with over
                 10+ years helping some of the largest brands in the world
-                achieve their goals. A passionate marketer who specializes in
-                simplifying complex marketing goals into clear, revenue-driving
-                strategies and systems.
+                achieve their goals. He specializes in simplifying complex
+                marketing goals into clear, revenue-driving strategies and
+                systems.
               </p>
 
               <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">
-                Tim has worked with major brands like{' '}
-                {brandNames.map((name, i) => (
+                Tim has had the pleasure of working with large and small
+                businesses during his career. Clients range from large brands
+                like{' '}
+                {largeBrands.map((name, i) => (
                   <span key={name}>
                     <span className="text-[#F2EDE4]">{name}</span>
-                    {i < brandNames.length - 2
+                    {i < largeBrands.length - 2
                       ? ', '
-                      : i === brandNames.length - 2
+                      : i === largeBrands.length - 2
+                      ? ' and '
+                      : ''}
+                  </span>
+                ))}
+                , to small businesses like{' '}
+                {smallBrands.map((name, i) => (
+                  <span key={name}>
+                    <span className="text-[#F2EDE4]">{name}</span>
+                    {i < smallBrands.length - 2
+                      ? ', '
+                      : i === smallBrands.length - 2
                       ? ' and '
                       : ''}
                   </span>

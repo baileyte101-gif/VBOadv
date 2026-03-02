@@ -12,7 +12,7 @@ const industries = [
   'E-Commerce',
   'Personal Brands',
   'Sports & Entertainment',
-  'Technology & SaaS',
+  'Trades & Field Services',
 ]
 
 export default function Industries() {
@@ -77,12 +77,12 @@ export default function Industries() {
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + i * 0.06 }}
-              className="border-r border-b border-[#2A2A2A] p-6 md:p-8 group cursor-default flex flex-col justify-between min-h-[130px] md:min-h-[150px] hover:bg-[#212121] transition-colors duration-300"
+              className="border-r border-b border-[#2A2A2A] p-4 md:p-8 group cursor-default flex flex-col justify-between min-h-[80px] md:min-h-[150px] hover:bg-[#212121] transition-colors duration-300"
             >
               <span className="font-headline font-bold text-[#F2EDE4] uppercase leading-tight tracking-wide text-[clamp(1rem,1.8vw,1.35rem)] group-hover:text-[#B8962E] transition-colors duration-300 block">
                 {industry}
               </span>
-              <span className="font-mono text-[#B8962E]/0 group-hover:text-[#B8962E]/60 text-xs tracking-[0.2em] transition-colors duration-300 mt-4 block">
+              <span className="font-mono text-[#B8962E]/0 group-hover:text-[#B8962E]/60 text-xs tracking-[0.2em] transition-colors duration-300 mt-2 md:mt-4 block">
                 →
               </span>
             </motion.div>
