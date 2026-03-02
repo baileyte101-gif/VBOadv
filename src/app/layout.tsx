@@ -25,7 +25,7 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   title: 'VBO | Marketing Consultant & Studio',
   description:
-    'Fully integrated marketing. Defined by direction. VBO brings structure to growth — aligning brand, budget, channels, and measurement into one disciplined system.',
+    'Fully integrated marketing. Human, built on experience and efficiency. VBO brings structure to growth — aligning brand, budget, channels, and measurement into one creative and disciplined system.',
   keywords: [
     'marketing consultant',
     'marketing strategy',
@@ -34,9 +34,19 @@ export const metadata: Metadata = {
     'performance marketing',
     'VBO',
   ],
+  icons: {
+    icon: [
+      { url: '/favicon-dark.png', media: '(prefers-color-scheme: dark)' },
+      { url: '/favicon-light.png', media: '(prefers-color-scheme: light)' },
+    ],
+    apple: [
+      { url: '/favicon-dark.png', media: '(prefers-color-scheme: dark)' },
+      { url: '/favicon-light.png', media: '(prefers-color-scheme: light)' },
+    ],
+  },
   openGraph: {
     title: 'VBO | Marketing Consultant & Studio',
-    description: 'Fully integrated marketing. Defined by direction.',
+    description: 'Fully integrated marketing. Human, built on experience and efficiency.',
     type: 'website',
   },
 }
