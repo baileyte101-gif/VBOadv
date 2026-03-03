@@ -30,7 +30,7 @@ const steps = [
   },
   {
     number: '03',
-    title: 'Execution',
+    title: 'Our Services',
     body: null, // handled separately
     emphasis: 'We oversee growth with precision and we cut out the noise.',
   },
@@ -73,10 +73,10 @@ export default function HowWeWork() {
           transition={{ duration: 0.55 }}
           className="mb-16 md:mb-20"
         >
-          <p className="section-label">How We Work</p>
+          <p className="section-label">What We Do</p>
           <div className="section-accent" />
           <h2 className="font-headline font-black text-[#F2EDE4] uppercase leading-none text-[clamp(2.5rem,6vw,5rem)] max-w-[600px]">
-            Three phases. One direction.
+            Three Phases. Integrated Services.
           </h2>
         </motion.div>
 
