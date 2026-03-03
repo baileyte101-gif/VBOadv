@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
+import SocialIcons from '@/components/SocialIcons'
 
 const largeBrands = ['McDonalds', 'Formula E', 'Royal Caribbean Cruise Lines', 'Park West Gallery', 'Bilzin Sumberg']
 const smallBrands = ['Caricap', 'Plant Athletic', 'Purple Patch Fitness', 'Beckham Financial']
@@ -74,6 +75,9 @@ export default function About() {
             <p className="font-headline font-black text-[#F2EDE4] uppercase leading-tight text-xl md:text-2xl lg:text-3xl pt-2">
               We are serious about outcomes.<br />Not serious about ego.
             </p>
+
+            {/* Social icons */}
+            <SocialIcons size={18} className="pt-1" />
 
             {/* Divider */}
             <div className="border-t border-[#1C1C1C] pt-8 mt-4">

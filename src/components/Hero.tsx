@@ -42,7 +42,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.65 }}
           className="text-[#6B6F73] text-base md:text-lg mb-10 font-body leading-relaxed max-w-sm"
         >
-          Fully integrated marketing. Human, built on experience and efficiency.
+          Fully integrated marketing. Human, built on experience and modern efficiency.
         </motion.p>
 
         {/* CTA */}

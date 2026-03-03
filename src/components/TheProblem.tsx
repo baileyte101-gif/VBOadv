@@ -79,7 +79,7 @@ export default function TheProblem() {
           <p className="text-[#F2EDE4] font-medium text-base md:text-lg leading-relaxed">
             Most businesses don&apos;t need more marketing.
             <br />
-            They need clarity before execution.
+            You need clarity before execution.
           </p>
         </motion.div>
       </div>

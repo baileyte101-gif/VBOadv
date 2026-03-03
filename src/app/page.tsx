@@ -7,6 +7,7 @@ import HowWeWork from '@/components/HowWeWork'
 import Industries from '@/components/Industries'
 import About from '@/components/About'
 import CTASection from '@/components/CTASection'
+import SocialIcons from '@/components/SocialIcons'
 import Image from 'next/image'
 
 const heroTickerItems = [
@@ -57,12 +58,15 @@ export default function Home() {
             © 2026 VBO Consulting. Miami, FL. All rights reserved.
           </p>
 
-          <a
-            href="mailto:hello@vboadv.com"
-            className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
-          >
-            hello@vboadv.com
-          </a>
+          <div className="flex items-center gap-6">
+            <SocialIcons size={15} />
+            <a
+              href="mailto:hello@vboadv.com"
+              className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
+            >
+              hello@vboadv.com
+            </a>
+          </div>
         </div>
       </footer>
     </main>

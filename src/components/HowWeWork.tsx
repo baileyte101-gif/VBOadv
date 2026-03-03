@@ -18,6 +18,7 @@ const steps = [
   {
     number: '01',
     title: 'Strategy',
+    lead: 'We are your fractional CMO.',
     body: 'We define priorities for your business, clarify positioning, establish channel focus and set measurable benchmarks.',
     emphasis: 'We set full alignment before action.',
   },
@@ -115,9 +116,16 @@ export default function HowWeWork() {
                     — we can execute.
                   </p>
                 ) : (
-                  <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">
-                    {step.body}
-                  </p>
+                  <>
+                    {'lead' in step && step.lead && (
+                      <p className="text-[#B8962E] font-medium text-base md:text-lg leading-relaxed">
+                        {step.lead}
+                      </p>
+                    )}
+                    <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">
+                      {step.body}
+                    </p>
+                  </>
                 )}
                 <p className="text-[#F2EDE4] font-medium text-base md:text-lg leading-relaxed">
                   {step.emphasis}
