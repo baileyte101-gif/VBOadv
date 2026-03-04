@@ -37,12 +37,14 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: [
-      { url: '/favicon-dark.png', media: '(prefers-color-scheme: dark)' },
-      { url: '/favicon-light.png', media: '(prefers-color-scheme: light)' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-dark.png', type: 'image/png', sizes: '256x256', media: '(prefers-color-scheme: dark)' },
+      { url: '/favicon-light.png', type: 'image/png', sizes: '256x256', media: '(prefers-color-scheme: light)' },
     ],
+    shortcut: '/favicon.ico',
     apple: [
-      { url: '/favicon-dark.png', media: '(prefers-color-scheme: dark)' },
-      { url: '/favicon-light.png', media: '(prefers-color-scheme: light)' },
+      { url: '/favicon-dark.png', sizes: '256x256', media: '(prefers-color-scheme: dark)' },
+      { url: '/favicon-light.png', sizes: '256x256', media: '(prefers-color-scheme: light)' },
     ],
   },
   openGraph: {
