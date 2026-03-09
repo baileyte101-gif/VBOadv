@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
-const words = ['Clarity.', 'Strategy.', 'Performance.']
+const words = ['Strategy.', 'Creative.', 'Performance.']
 
 export default function Hero() {
   return (
