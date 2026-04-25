@@ -22,7 +22,7 @@ export default function About() {
         className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[#1C1C1C] text-[160px] md:text-[220px] lg:text-[280px]"
         aria-hidden
       >
-        05
+        06
       </div>
 
       {/* Gold vertical connector line — desktop only */}

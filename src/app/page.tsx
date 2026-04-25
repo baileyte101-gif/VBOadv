@@ -4,6 +4,7 @@ import Ticker from '@/components/Ticker'
 import TheProblem from '@/components/TheProblem'
 import TheApproach from '@/components/TheApproach'
 import HowWeWork from '@/components/HowWeWork'
+import WhoWeWorkWith from '@/components/WhoWeWorkWith'
 import Industries from '@/components/Industries'
 import About from '@/components/About'
 import CTASection from '@/components/CTASection'
@@ -38,6 +39,7 @@ export default function Home() {
       <TheProblem />
       <TheApproach />
       <HowWeWork />
+      <WhoWeWorkWith />
       <Industries />
       <About />
       <CTASection />

@@ -43,7 +43,7 @@ export default function HowWeWork() {
   return (
     <section
       id="how-we-work"
-      className="bg-[#0D0D0D] py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
+      className="bg-[#0D0D0D] pt-24 md:pt-32 lg:pt-40 pb-12 md:pb-16 lg:pb-20 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
     >
       {/* Ghost section number */}
       <div
