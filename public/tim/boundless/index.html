@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tim Bailey — Boundless</title>
+
+<!-- Web App / Home Screen -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Tim — Boundless">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0c0921">
+<link rel="apple-touch-icon" href="/tim/boundless/icon.png">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0c0921; color: #fdfdff; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  }
+  .card { width: 100%; max-width: 420px; position: relative; }
+  .card::before, .card::after, .card-inner::before, .card-inner::after {
+    content: ''; position: absolute; width: 32px; height: 32px;
+    border-color: #5f30d5; border-style: solid; border-width: 0;
+  }
+  .card::before { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+  .card::after { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
+  .card-inner::before { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; }
+  .card-inner::after { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+  .card-inner { padding: 48px 32px; position: relative; }
+
+  .logo { margin-bottom: 36px; }
+  .logo-text {
+    font-family: 'Inter', sans-serif; font-size: 24px; font-weight: 500;
+    letter-spacing: -0.7px; color: #fdfdff;
+  }
+
+  .name {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px; font-weight: 300;
+    letter-spacing: -2px;
+    color: #fdfdff; line-height: 1; margin-bottom: 8px;
+  }
+  .title {
+    font-family: 'Source Code Pro', monospace; font-size: 12px; font-weight: 400;
+    color: #5f30d5; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 36px;
+  }
+  .divider { width: 40px; height: 2px; background: #5f30d5; opacity: 0.4; margin-bottom: 28px; }
+  .contact-row {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
+    text-decoration: none; color: #fdfdff; transition: color 0.2s;
+  }
+  .contact-row:hover { color: #5f30d5; }
+  .contact-row svg { width: 18px; height: 18px; flex-shrink: 0; opacity: 0.6; }
+  .contact-row span { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; }
+  .actions { margin-top: 36px; display: flex; gap: 12px; }
+  .btn {
+    flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 16px; border: none; border-radius: 0px;
+    font-family: 'Source Code Pro', monospace; font-size: 11px; font-weight: 400;
+    letter-spacing: 1px; text-transform: uppercase; cursor: pointer;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-primary { background: #5f30d5; color: #fdfdff; }
+  .btn-primary:hover { background: #7a4de6; }
+  .btn-secondary { background: transparent; color: #fdfdff; border: 1px solid rgba(95,48,213,0.3); }
+  .btn-secondary:hover { border-color: #5f30d5; color: #5f30d5; }
+  .btn svg { width: 16px; height: 16px; }
+  .qr-section { margin-top: 36px; text-align: center; }
+  .qr-label {
+    font-family: 'Source Code Pro', monospace; font-size: 10px; font-weight: 400;
+    letter-spacing: 2px; text-transform: uppercase; color: #fdfdff; opacity: 0.4; margin-bottom: 16px;
+  }
+  .qr-wrap { display: inline-block; padding: 12px; background: #f0f0ff; border-radius: 0px; }
+  .qr-wrap img { display: block; width: 160px; height: 160px; }
+  .footer {
+    margin-top: 32px; text-align: center; font-family: 'Source Code Pro', monospace;
+    font-size: 9px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase;
+    color: #fdfdff; opacity: 0.2;
+  }
+</style>
+</head>
+<body>
+<div class="card"><div class="card-inner">
+
+  <div class="logo">
+    <span class="logo-text">boundless</span>
+  </div>
+
+  <div class="name">Tim Bailey</div>
+  <div class="title">Co-Founder</div>
+
+  <div class="divider"></div>
+
+  <a href="mailto:Tim@boundless.sh" class="contact-row">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+    <span>Tim@boundless.sh</span>
+  </a>
+  <a href="tel:+18646406558" class="contact-row">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    <span>(864) 640-6558</span>
+  </a>
+  <a href="https://boundless.sh" target="_blank" class="contact-row">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+    <span>boundless.sh</span>
+  </a>
+  <a href="https://www.linkedin.com/in/timothybailey1" target="_blank" class="contact-row">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    <span>LinkedIn</span>
+  </a>
+
+  <div class="actions">
+    <a href="#" class="btn btn-primary" onclick="downloadVCard(); return false;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      Save Contact
+    </a>
+    <a href="#" class="btn btn-secondary" onclick="shareCard(); return false;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Share
+    </a>
+  </div>
+
+  <div class="qr-section">
+    <div class="qr-label">Scan to save contact</div>
+    <div class="qr-wrap">
+      <img src="data:image/png;base64,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" alt="QR Code — Save Contact" width="160" height="160">
+    </div>
+  </div>
+
+  <div class="footer">Boundless</div>
+
+</div></div>
+
+<script>
+function downloadVCard() {
+  var vcard = 'BEGIN:VCARD\r\nVERSION:3.0\r\nN:Bailey;Tim;;;\r\nFN:Tim Bailey\r\nORG:Boundless\r\nTITLE:Co-Founder\r\nTEL;TYPE=CELL:+18646406558\r\nEMAIL;TYPE=WORK:Tim@boundless.sh\r\nURL:https://boundless.sh\r\nURL;TYPE=LinkedIn:https://www.linkedin.com/in/timothybailey1\r\nEND:VCARD';
+  var blob = new Blob([vcard], { type: 'text/vcard' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'Tim-Bailey-Boundless.vcf'; a.click();
+  URL.revokeObjectURL(url);
+}
+function shareCard() {
+  if (navigator.share) {
+    navigator.share({ title: 'Tim Bailey — Boundless', text: 'Connect with Tim Bailey, Co-Founder of Boundless', url: 'https://boundless.sh' });
+  } else {
+    navigator.clipboard.writeText('https://boundless.sh').then(function() {
+      var btn = document.querySelector('.btn-secondary');
+      var orig = btn.innerHTML;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+      setTimeout(function() { btn.innerHTML = orig; }, 2000);
+    });
+  }
+}
+</script>
+</body>
+</html>
