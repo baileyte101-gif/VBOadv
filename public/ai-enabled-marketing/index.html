@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miami's AI-Enabled Marketing Agency | VBO Advertising</title>
+  <meta name="description" content="Miami's AI-enabled marketing agency. Senior-level strategic thinking meets modern AI efficiency. The brains without the bloat. VBO is the unfair advantage." />
+  <meta name="keywords" content="ai marketing agency, ai marketing agency miami, ai-enabled marketing agency, marketing efficiency, ai digital marketing agency, marketing agency miami, digital marketing agency miami, ai marketing services, efficient marketing systems, structured marketing, modern marketing agency" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Miami's AI-Enabled Marketing Agency | VBO Advertising" />
+  <meta property="og:description" content="Senior-level strategic thinking meets modern AI efficiency. The brains without the bloat. VBO is the unfair advantage." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vboadv.com/ai-enabled-marketing" />
+  <meta property="og:image" content="https://vboadv.com/images/logo-transparent.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Miami's AI-Enabled Marketing Agency | VBO Advertising" />
+  <meta name="twitter:description" content="Senior-level strategic thinking meets modern AI efficiency. The brains without the bloat. VBO is the unfair advantage." />
+
+  <!-- Geo -->
+  <meta name="geo.region" content="US-FL" />
+  <meta name="geo.placename" content="Miami" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://vboadv.com/ai-enabled-marketing" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon-dark.png" type="image/png" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="/favicon-light.png" type="image/png" media="(prefers-color-scheme: light)" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "VBO Advertising",
+    "description": "Miami's AI-enabled marketing agency. Senior-level strategic thinking meets modern AI efficiency.",
+    "url": "https://vboadv.com",
+    "telephone": "+18646406558",
+    "email": "hello@vboadv.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Miami",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Miami"
+    },
+    "serviceType": ["AI Marketing", "Digital Marketing", "Brand Strategy", "SEO", "Paid Media", "Performance Marketing"]
+  }
+  </script>
+
+  <style>
+    /* ========================================
+       VBO Design System — AI Marketing Page
+       ======================================== */
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --near-black: #0D0D0D;
+      --graphite: #1C1C1C;
+      --cement: #2A2A2A;
+      --steel-grey: #6B6F73;
+      --off-white: #F2EDE4;
+      --matte-gold: #B8962E;
+      --matte-gold-hover: #d4a93a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 64px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--near-black);
+      color: var(--off-white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--near-black); }
+    ::-webkit-scrollbar-thumb { background: var(--matte-gold); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--matte-gold-hover); }
+
+    /* Typography */
+    .font-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.92;
+    }
+
+    .font-mono {
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* Section Label */
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      color: var(--matte-gold);
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-accent {
+      width: 32px;
+      height: 2px;
+      background: var(--matte-gold);
+      margin-bottom: 40px;
+    }
+
+    /* Button */
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--matte-gold);
+      color: var(--off-white);
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 32px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .btn-gold:hover {
+      background: var(--matte-gold);
+      color: var(--near-black);
+    }
+
+    .btn-gold-large {
+      padding: 18px 48px;
+      font-size: 13px;
+    }
+
+    /* ========================================
+       NAVIGATION
+       ======================================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(13, 13, 15, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--graphite);
+      transition: all 0.3s ease;
+    }
+
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: var(--steel-grey);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--off-white);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--matte-gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-cta {
+      font-size: 10px;
+      padding: 10px 20px;
+    }
+
+    /* Mobile menu toggle */
+    .mobile-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      color: var(--steel-grey);
+      cursor: pointer;
+      padding: 8px;
+      transition: color 0.2s;
+    }
+
+    .mobile-toggle:hover {
+      color: var(--off-white);
+    }
+
+    .mobile-menu {
+      display: none;
+      background: var(--near-black);
+      border-top: 1px solid var(--graphite);
+      padding: 20px 24px;
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      color: var(--steel-grey);
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--graphite);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--off-white);
+    }
+
+    @media (min-width: 1024px) {
+      .nav-inner { padding: 0 64px; }
+      .nav-links { display: flex; }
+      .mobile-toggle { display: none; }
+    }
+
+    /* ========================================
+       HERO
+       ======================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 32px 80px;
+      background: var(--near-black);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .hero-label {
+      font-family: 'Space Mono', monospace;
+      color: var(--steel-grey);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--off-white);
+      line-height: 0.92;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      margin-bottom: 24px;
+    }
+
+    .hero-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--matte-gold);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      line-height: 1;
+      margin-bottom: 32px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-body {
+      color: var(--steel-grey);
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 520px;
+    }
+
+    .hero-email {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      color: rgba(107, 111, 115, 0.7);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: color 0.2s;
+    }
+
+    .hero-email:hover {
+      color: var(--matte-gold);
+    }
+
+    /* Gold vertical line on right (desktop) */
+    .hero-line {
+      display: none;
+      position: absolute;
+      right: 38%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--matte-gold);
+      opacity: 0.3;
+    }
+
+    /* Ambient glow */
+    .hero-glow {
+      position: absolute;
+      top: 20%;
+      right: 10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(184, 150, 46, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    @media (min-width: 768px) {
+      .hero { padding: 120px 48px 80px; }
+    }
+
+    @media (min-width: 1024px) {
+      .hero { padding: 120px 80px 80px; }
+      .hero-line { display: block; }
+    }
+
+    /* ========================================
+       SECTIONS — shared
+       ======================================== */
+    .section {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 32px;
+    }
+
+    .section-dark { background: var(--near-black); }
+    .section-mid { background: var(--graphite); }
+
+    .section-inner {
+      max-width: 900px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-inner-wide {
+      max-width: 1200px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Ghost numbers */
+    .ghost-number {
+      position: absolute;
+      right: 16px;
+      top: 0;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--graphite);
+      font-size: 160px;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Gold connector line */
+    .gold-line {
+      display: none;
+      position: absolute;
+      right: 20px;
+      top: 300px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(184,150,46,0.22) 0%, rgba(184,150,46,0.12) 50%, rgba(184,150,46,0) 82%);
+      pointer-events: none;
+    }
+
+    .section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--off-white);
+      line-height: 0.95;
+      font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+      margin-bottom: 48px;
+    }
+
+    .section p {
+      color: var(--steel-grey);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .section p.emphasis {
+      color: var(--off-white);
+      font-weight: 500;
+    }
+
+    .section p + p {
+      margin-top: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .section { padding: 128px 48px; }
+      .ghost-number { font-size: 220px; }
+    }
+
+    @media (min-width: 1024px) {
+      .section { padding: 160px 80px; }
+      .ghost-number { font-size: 280px; }
+      .gold-line { display: block; }
+    }
+
+    /* ========================================
+       GAP — Two Column Comparison
+       ======================================== */
+    .gap-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      margin-top: 48px;
+    }
+
+    .gap-column h3 {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--cement);
+    }
+
+    .gap-column.old h3 { color: var(--steel-grey); }
+    .gap-column.new h3 { color: var(--matte-gold); }
+
+    .gap-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .gap-column ul li {
+      color: var(--steel-grey);
+      font-size: 15px;
+      line-height: 1.6;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(42, 42, 42, 0.5);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .gap-column ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+    }
+
+    .gap-column.old ul li::before { background: var(--steel-grey); opacity: 0.4; }
+    .gap-column.new ul li::before { background: var(--matte-gold); opacity: 0.7; }
+    .gap-column.new ul li { color: var(--off-white); opacity: 0.85; }
+
+    .gap-divider {
+      text-align: center;
+      font-family: 'Space Mono', monospace;
+      color: var(--off-white);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--cement);
+    }
+
+    @media (min-width: 768px) {
+      .gap-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+      }
+    }
+
+    /* ========================================
+       GAP DIAGRAM — Tectonic Plate Layout
+       ======================================== */
+
+    /* The main container: three panels with a visual gap */
+    .gap-diagram {
+      margin-top: 56px;
+      position: relative;
+    }
+
+    /* Mobile: stacked vertically */
+    .gap-diagram-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    /* --- OUTER PLATES (Traditional & AI-First) --- */
+    .gap-plate {
+      background: #141416;
+      border: 1px solid rgba(42, 42, 42, 0.7);
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Fracture lines — subtle cracks on the outer plates */
+    .gap-plate::before {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.12;
+    }
+
+    .gap-plate-left::before {
+      top: 20%;
+      right: -2px;
+      width: 40px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        165deg,
+        transparent,
+        transparent 18px,
+        rgba(107, 111, 115, 0.4) 18px,
+        rgba(107, 111, 115, 0.4) 19px
+      );
+    }
+
+    .gap-plate-right::before {
+      top: 15%;
+      left: -2px;
+      width: 40px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        -165deg,
+        transparent,
+        transparent 22px,
+        rgba(107, 111, 115, 0.4) 22px,
+        rgba(107, 111, 115, 0.4) 23px
+      );
+    }
+
+    .gap-plate-header {
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--cement);
+    }
+
+    .gap-plate-header h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      color: var(--steel-grey);
+    }
+
+    .gap-plate-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+    }
+
+    .gap-plate-list li {
+      font-size: 14px;
+      line-height: 1.65;
+      padding: 5px 0 5px 18px;
+      position: relative;
+    }
+
+    .gap-plate-list li::before {
+      position: absolute;
+      left: 0;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .gap-plate-pros li { color: var(--off-white); opacity: 0.6; }
+    .gap-plate-pros li::before { content: '+'; color: rgba(107, 111, 115, 0.5); }
+
+    .gap-plate-cons li { color: var(--steel-grey); opacity: 0.55; }
+    .gap-plate-cons li::before { content: '—'; color: rgba(107, 111, 115, 0.35); }
+
+    .gap-plate-verdict {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--steel-grey);
+      opacity: 0.7;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(42, 42, 42, 0.6);
+    }
+
+    /* --- VBO CENTER BRIDGE --- */
+    .gap-bridge {
+      position: relative;
+      z-index: 3;
+      padding: 36px 28px;
+      background: linear-gradient(165deg, rgba(184, 150, 46, 0.10) 0%, rgba(184, 150, 46, 0.04) 100%);
+      border: 1px solid rgba(184, 150, 46, 0.40);
+      overflow: hidden;
+    }
+
+    /* Gold glow behind the bridge */
+    .gap-bridge::before {
+      content: '';
+      position: absolute;
+      inset: -40px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(184, 150, 46, 0.14) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Inner gold accent lines — connecting threads */
+    .gap-bridge::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, rgba(184, 150, 46, 0.35), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .gap-bridge > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .gap-bridge-header {
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(184, 150, 46, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .gap-bridge-header h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 26px;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      color: var(--matte-gold);
+    }
+
+    .gap-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--near-black);
+      background: var(--matte-gold);
+      padding: 5px 12px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .gap-bridge-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .gap-bridge-list li {
+      font-size: 15px;
+      line-height: 1.65;
+      padding: 7px 0 7px 20px;
+      position: relative;
+      color: var(--off-white);
+    }
+
+    .gap-bridge-list li::before {
+      content: '+';
+      position: absolute;
+      left: 0;
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--matte-gold);
+      font-weight: 700;
+    }
+
+    .gap-bridge-verdict {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--matte-gold);
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(184, 150, 46, 0.25);
+    }
+
+    /* --- MOBILE: connector bars between sections --- */
+    .gap-connector {
+      height: 24px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gap-connector::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(184, 150, 46, 0.3);
+    }
+
+    .gap-connector-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--matte-gold);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* --- DESKTOP: tectonic split layout --- */
+    @media (min-width: 1024px) {
+      .gap-diagram-layout {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .gap-plate {
+        flex: 1;
+        padding: 40px 32px;
+      }
+
+      .gap-plate-left {
+        transform: rotate(-0.6deg);
+        transform-origin: right center;
+        border-radius: 4px 0 0 4px;
+        margin-right: -1px;
+      }
+
+      .gap-plate-right {
+        transform: rotate(0.6deg);
+        transform-origin: left center;
+        border-radius: 0 4px 4px 0;
+        margin-left: -1px;
+      }
+
+      /* Hide mobile connectors on desktop */
+      .gap-connector { display: none; }
+
+      /* VBO bridge in the center */
+      .gap-bridge {
+        flex: 0 0 320px;
+        padding: 40px 32px;
+        border-radius: 4px;
+        /* Elevate above the plates */
+        box-shadow:
+          0 0 60px rgba(184, 150, 46, 0.12),
+          0 0 120px rgba(184, 150, 46, 0.06),
+          0 8px 32px rgba(0, 0, 0, 0.4);
+        /* Slight scale to feel elevated */
+        transform: scale(1.02);
+        margin: -8px 0;
+        align-self: center;
+      }
+
+      .gap-bridge::after {
+        display: none;
+      }
+
+      /* Gold connecting lines from bridge to plates */
+      .gap-diagram-layout::before,
+      .gap-diagram-layout::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 20px;
+        height: 1px;
+        z-index: 4;
+      }
+
+      .gap-diagram-layout::before {
+        left: calc(50% - 162px - 20px);
+        background: linear-gradient(to right, transparent, rgba(184, 150, 46, 0.5));
+      }
+
+      .gap-diagram-layout::after {
+        right: calc(50% - 162px - 20px);
+        background: linear-gradient(to left, transparent, rgba(184, 150, 46, 0.5));
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .gap-bridge {
+        flex: 0 0 360px;
+      }
+
+      .gap-diagram-layout::before {
+        left: calc(50% - 182px - 20px);
+      }
+
+      .gap-diagram-layout::after {
+        right: calc(50% - 182px - 20px);
+      }
+    }
+
+    /* ========================================
+       ROOT CAUSES — Numbered points
+       ======================================== */
+    .cause-item {
+      padding: 40px 0;
+      border-top: 1px solid var(--graphite);
+    }
+
+    .cause-item:last-of-type {
+      border-bottom: 1px solid var(--graphite);
+    }
+
+    .cause-number {
+      font-family: 'Space Mono', monospace;
+      color: var(--matte-gold);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      margin-bottom: 8px;
+    }
+
+    .cause-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--off-white);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    /* ========================================
+       STRUCTURED APPROACH — Pillars
+       ======================================== */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-top: 48px;
+    }
+
+    .pillar {
+      padding: 40px 0;
+      border-top: 1px solid var(--cement);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .pillar:last-child {
+      border-bottom: 1px solid var(--cement);
+    }
+
+    .pillar-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pillar-number {
+      font-family: 'Space Mono', monospace;
+      color: var(--matte-gold);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+    }
+
+    .pillar-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--off-white);
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      line-height: 1;
+    }
+
+    @media (min-width: 768px) {
+      .pillar {
+        grid-template-columns: 200px 1fr;
+        gap: 48px;
+      }
+    }
+
+    /* ========================================
+       COMPARISON TABLE
+       ======================================== */
+    .comparison-table {
+      width: 100%;
+      margin-top: 48px;
+      border-collapse: collapse;
+    }
+
+    .comparison-table thead th {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 2px solid var(--cement);
+    }
+
+    .comparison-table thead th:first-child {
+      color: var(--steel-grey);
+    }
+
+    .comparison-table thead th:last-child {
+      color: var(--matte-gold);
+    }
+
+    .comparison-table tbody td {
+      padding: 16px 20px;
+      font-size: 15px;
+      line-height: 1.5;
+      border-bottom: 1px solid rgba(42, 42, 42, 0.5);
+      vertical-align: top;
+    }
+
+    .comparison-table tbody td:first-child {
+      color: var(--steel-grey);
+      opacity: 0.7;
+    }
+
+    .comparison-table tbody td:last-child {
+      color: var(--off-white);
+      opacity: 0.9;
+    }
+
+    .comparison-tagline {
+      text-align: center;
+      margin-top: 48px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      color: var(--matte-gold);
+      opacity: 0.8;
+    }
+
+    /* Mobile: stack comparison as cards */
+    @media (max-width: 640px) {
+      .comparison-table,
+      .comparison-table thead,
+      .comparison-table tbody,
+      .comparison-table tr,
+      .comparison-table th,
+      .comparison-table td {
+        display: block;
+      }
+
+      .comparison-table thead {
+        display: none;
+      }
+
+      .comparison-table tbody tr {
+        border-bottom: 1px solid var(--cement);
+        padding: 20px 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .comparison-table tbody td {
+        padding: 4px 0;
+        border-bottom: none;
+      }
+
+      .comparison-table tbody td:first-child {
+        font-size: 13px;
+        text-decoration: line-through;
+        opacity: 0.5;
+      }
+
+      .comparison-table tbody td:last-child {
+        font-size: 15px;
+      }
+    }
+
+    /* ========================================
+       WHY VBO
+       ======================================== */
+    .services-list {
+      font-family: 'Space Mono', monospace;
+      color: var(--steel-grey);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 32px;
+      line-height: 2;
+    }
+
+    /* ========================================
+       CTA SECTION
+       ======================================== */
+    .cta-section {
+      position: relative;
+      background: var(--near-black);
+      padding: 112px 32px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--matte-gold);
+    }
+
+    .cta-section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--off-white);
+      line-height: 0.92;
+      font-size: clamp(3rem, 9vw, 8rem);
+      margin-bottom: 40px;
+    }
+
+    .cta-phase {
+      font-family: 'Space Mono', monospace;
+      color: var(--steel-grey);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 56px;
+    }
+
+    .cta-footer-info {
+      font-family: 'Space Mono', monospace;
+      color: rgba(107, 111, 115, 0.6);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      margin-top: 24px;
+    }
+
+    .cta-footer-info a {
+      color: rgba(107, 111, 115, 0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .cta-footer-info a:hover {
+      color: var(--matte-gold);
+    }
+
+    @media (min-width: 768px) {
+      .cta-section { padding: 160px 48px; }
+    }
+
+    @media (min-width: 1024px) {
+      .cta-section { padding: 192px 80px; }
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .site-footer {
+      background: var(--near-black);
+      border-top: 1px solid var(--graphite);
+      padding: 32px;
+    }
+
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-logo img {
+      height: 32px;
+      width: auto;
+    }
+
+    .footer-copy {
+      font-family: 'Space Mono', monospace;
+      color: var(--steel-grey);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .footer-right a.footer-email {
+      font-family: 'Space Mono', monospace;
+      color: var(--steel-grey);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-right a.footer-email:hover {
+      color: var(--matte-gold);
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .social-icons a {
+      color: rgba(242, 237, 228, 0.5);
+      transition: color 0.2s;
+    }
+
+    .social-icons a:hover {
+      color: var(--matte-gold);
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .site-footer {
+        padding: 32px 48px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .site-footer { padding: 32px 80px; }
+    }
+
+    /* ========================================
+       ANIMATIONS
+       ======================================== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+    }
+
+    /* Stagger children */
+    .stagger > .fade-up:nth-child(1) { transition-delay: 0s; }
+    .stagger > .fade-up:nth-child(2) { transition-delay: 0.08s; }
+    .stagger > .fade-up:nth-child(3) { transition-delay: 0.16s; }
+    .stagger > .fade-up:nth-child(4) { transition-delay: 0.24s; }
+    .stagger > .fade-up:nth-child(5) { transition-delay: 0.32s; }
+    .stagger > .fade-up:nth-child(6) { transition-delay: 0.40s; }
+    .stagger > .fade-up:nth-child(7) { transition-delay: 0.48s; }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="https://vboadv.com" class="nav-logo" aria-label="VBO Home">
+        <img src="/images/logo-transparent.png" alt="VBO Advertising - AI Marketing Agency Miami" width="834" height="222" />
+      </a>
+
+      <div class="nav-links">
+        <a href="#the-problem">The Problem</a>
+        <a href="#the-gap">The Gap</a>
+        <a href="#the-approach">The Approach</a>
+        <a href="#comparison">The Comparison</a>
+        <a href="#why-vbo">Why VBO</a>
+      </div>
+
+      <div class="nav-right">
+        <button class="mobile-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Toggle menu">
+          <svg width="14" height="9" viewBox="0 0 14 9" fill="none">
+            <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <a href="mailto:hello@vboadv.com" class="btn-gold nav-cta">Let's Connect</a>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu">
+      <a href="#the-problem" onclick="document.getElementById('mobileMenu').classList.remove('open')">The Problem</a>
+      <a href="#the-gap" onclick="document.getElementById('mobileMenu').classList.remove('open')">The Gap</a>
+      <a href="#the-approach" onclick="document.getElementById('mobileMenu').classList.remove('open')">The Approach</a>
+      <a href="#comparison" onclick="document.getElementById('mobileMenu').classList.remove('open')">The Comparison</a>
+      <a href="#why-vbo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Why VBO</a>
+    </div>
+  </nav>
+
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-line" aria-hidden="true"></div>
+
+    <div class="hero-content stagger">
+      <p class="hero-label fade-up">Miami's AI-Enabled Marketing Agency</p>
+
+      <h1 class="fade-up">Senior Strategy.<br/>AI-Enabled Execution.<br/>Modern Efficiency.</h1>
+
+      <p class="hero-sub fade-up">Miami's AI-Enabled Marketing Agency.</p>
+
+      <p class="hero-body fade-up">
+        VBO is what modern marketing efficiency looks like &mdash; human, AI-enabled, and led by
+        senior-level strategic thinking. Not a traditional agency weighed down by overhead. Not an
+        AI shop running prompts without a plan. The unfair advantage between both.
+      </p>
+
+      <div class="fade-up">
+        <a href="mailto:hello@vboadv.com" class="btn-gold">
+          See the Advantage
+          <span style="font-size: 16px; line-height: 1;">&rarr;</span>
+        </a>
+      </div>
+
+      <a href="mailto:hello@vboadv.com" class="hero-email fade-up">hello@vboadv.com</a>
+    </div>
+  </section>
+
+
+  <!-- ============ SECTION 1: THE PROBLEM ============ -->
+  <section id="the-problem" class="section section-mid" aria-label="The Problem">
+    <div class="ghost-number" aria-hidden="true">01</div>
+    <div class="gold-line" aria-hidden="true"></div>
+
+    <div class="section-inner">
+      <div class="section-label fade-up">The Problem</div>
+      <div class="section-accent fade-up"></div>
+
+      <h2 class="fade-up">You're Paying for Overhead, Not Outcomes.</h2>
+
+      <p class="fade-up">
+        Traditional agencies aren't broken because they lack strategy. They're broken because their model
+        requires too many people, too many layers, and too much time to deliver it. The structure exists &mdash;
+        it's just expensive and slow by modern standards.
+      </p>
+
+      <div style="margin-top: 48px;">
+        <div class="cause-item fade-up">
+          <div class="cause-number">01</div>
+          <div class="cause-title">You're Paying for Headcount, Not Output</div>
+          <p>
+            Senior strategists, junior coordinators, account managers, project managers, department heads &mdash;
+            every layer adds cost without adding clarity. You're funding an organization chart, not better marketing.
+          </p>
+        </div>
+
+        <div class="cause-item fade-up">
+          <div class="cause-number">02</div>
+          <div class="cause-title">Turnaround Is Measured in Weeks, Not Days</div>
+          <p>
+            Creative reviews, internal routing, revision cycles &mdash; the traditional agency model was built for
+            a world that moved slower. Your business doesn't operate on that timeline anymore.
+          </p>
+        </div>
+
+        <div class="cause-item fade-up">
+          <div class="cause-number">03</div>
+          <div class="cause-title">The Overhead Is the Product</div>
+          <p>
+            Traditional agencies sell time and bodies. The more complex the engagement, the more people they staff.
+            But modern tools &mdash; AI included &mdash; mean a leaner, senior team can deliver the same strategic
+            output faster and at a fraction of the cost.
+          </p>
+        </div>
+      </div>
+
+      <p class="emphasis fade-up" style="margin-top: 48px; font-size: 18px;">
+        The old model isn't wrong. It's just no longer efficient. A modern AI-enabled marketing agency delivers
+        the same senior-level thinking with less cost, less overhead, and faster execution.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============ SECTION 2: THE EFFICIENCY GAP — Three-Way Positioning ============ -->
+  <section id="the-gap" class="section section-dark" aria-label="The Efficiency Gap">
+    <div class="ghost-number" aria-hidden="true">02</div>
+    <div class="gold-line" aria-hidden="true"></div>
+
+    <div class="section-inner-wide">
+      <div class="section-label fade-up">The Efficiency Gap</div>
+      <div class="section-accent fade-up"></div>
+
+      <h2 class="fade-up">Three Models. Only One Is the Unfair Advantage.</h2>
+
+      <p class="fade-up">
+        The marketing landscape has split into three lanes. Two of them have critical weaknesses.
+        One fills the gap between both.
+      </p>
+
+      <!-- Gap Diagram — Tectonic Plate Visual -->
+      <div class="gap-diagram fade-up">
+        <div class="gap-diagram-layout">
+
+          <!-- LEFT PLATE: Traditional Agencies -->
+          <div class="gap-plate gap-plate-left">
+            <div class="gap-plate-header">
+              <h3>Traditional Agencies</h3>
+            </div>
+            <ul class="gap-plate-list gap-plate-pros">
+              <li>Senior talent and real strategic thinking</li>
+              <li>Proven process and institutional knowledge</li>
+            </ul>
+            <ul class="gap-plate-list gap-plate-cons">
+              <li>Bloated operations and heavy overhead</li>
+              <li>Slow turnaround on everything</li>
+              <li>You pay a premium for their inefficiency</li>
+            </ul>
+            <p class="gap-plate-verdict">The trade-off: You get the brains, but you also get the bloat.</p>
+          </div>
+
+          <!-- Mobile connector -->
+          <div class="gap-connector">
+            <div class="gap-connector-dot"></div>
+          </div>
+
+          <!-- CENTER BRIDGE: VBO -->
+          <div class="gap-bridge">
+            <div class="gap-bridge-header">
+              <h3>VBO</h3>
+              <span class="gap-badge">The Unfair Advantage</span>
+            </div>
+            <ul class="gap-bridge-list">
+              <li>Senior-level strategic thinking from day one</li>
+              <li>AI-enabled execution that moves fast and cuts overhead</li>
+              <li>Human judgment driving AI efficiency</li>
+              <li>The brains without the bloat</li>
+              <li>Strategy, creative, and performance &mdash; one team, one system</li>
+            </ul>
+            <p class="gap-bridge-verdict">No trade-off. You get both.</p>
+          </div>
+
+          <!-- Mobile connector -->
+          <div class="gap-connector">
+            <div class="gap-connector-dot"></div>
+          </div>
+
+          <!-- RIGHT PLATE: AI-First Agencies -->
+          <div class="gap-plate gap-plate-right">
+            <div class="gap-plate-header">
+              <h3>AI-First Agencies</h3>
+            </div>
+            <ul class="gap-plate-list gap-plate-pros">
+              <li>Fast execution and lower cost</li>
+              <li>Modern tooling and quick turnaround</li>
+            </ul>
+            <ul class="gap-plate-list gap-plate-cons">
+              <li>No senior strategic thinking</li>
+              <li>Shallow &mdash; just pushing buttons and running prompts</li>
+              <li>Executional, not strategic</li>
+            </ul>
+            <p class="gap-plate-verdict">The trade-off: You get the speed, but you lose the strategy.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="gap-divider fade-up">
+        &ldquo;Senior-level strategic thinking. AI-enabled modern efficiency. That's the unfair advantage.&rdquo;
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ SECTION 3: THE STRUCTURED APPROACH ============ -->
+  <section id="the-approach" class="section section-mid" aria-label="The Structured Approach">
+    <div class="ghost-number" aria-hidden="true">03</div>
+    <div class="gold-line" aria-hidden="true"></div>
+
+    <div class="section-inner-wide">
+      <div class="section-label fade-up">How VBO Works</div>
+      <div class="section-accent fade-up"></div>
+
+      <h2 class="fade-up">AI Marketing Services Built on Structure, Not Hype.</h2>
+
+      <p class="fade-up">
+        VBO is not a traditional agency that bolted AI onto its pitch deck. And we're not an AI tool
+        pretending to be a marketing partner. We're an AI-enabled marketing consultancy built on
+        senior-level strategic thinking &mdash; where human judgment drives modern efficiency.
+      </p>
+
+      <div class="pillars-grid">
+        <div class="pillar fade-up">
+          <div class="pillar-header">
+            <span class="pillar-number">01</span>
+            <span class="pillar-title">Strategy Defines Direction</span>
+          </div>
+          <div>
+            <p>
+              Before anything runs, we define what success looks like. Positioning, audience, channel priorities,
+              and measurable benchmarks are set first. This is the foundation that most agencies skip.
+            </p>
+          </div>
+        </div>
+
+        <div class="pillar fade-up">
+          <div class="pillar-header">
+            <span class="pillar-number">02</span>
+            <span class="pillar-title">Systems Create Efficiency</span>
+          </div>
+          <div>
+            <p>
+              We build efficient marketing systems that align creative, performance, data, and spend into one
+              coordinated operation. Modern tools &mdash; including AI where it creates genuine advantage &mdash;
+              are applied to reduce cost, accelerate execution, and eliminate waste. Not as a headline.
+              As an operating principle.
+            </p>
+          </div>
+        </div>
+
+        <div class="pillar fade-up">
+          <div class="pillar-header">
+            <span class="pillar-number">03</span>
+            <span class="pillar-title">Execution Becomes Precise</span>
+          </div>
+          <div>
+            <p>
+              With strategy set and systems in place, every campaign, asset, and dollar moves with purpose.
+              No reactive spending. No fragmented execution. Just structured, measurable performance.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p class="emphasis fade-up" style="margin-top: 48px; font-size: 18px;">
+        We don't add more marketing. We make your marketing work correctly.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============ SECTION 4: COMPARISON TABLE ============ -->
+  <section id="comparison" class="section section-dark" aria-label="Model Comparison">
+    <div class="ghost-number" aria-hidden="true">04</div>
+    <div class="gold-line" aria-hidden="true"></div>
+
+    <div class="section-inner-wide">
+      <div class="section-label fade-up">The Comparison</div>
+      <div class="section-accent fade-up"></div>
+
+      <h2 class="fade-up">Two Models. One Clear Choice.</h2>
+
+      <table class="comparison-table fade-up" role="table" aria-label="Old model versus VBO structured model comparison">
+        <thead>
+          <tr>
+            <th scope="col">Old Model</th>
+            <th scope="col">VBO's Structured Model</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Multiple disconnected vendors</td>
+            <td>One integrated partner</td>
+          </tr>
+          <tr>
+            <td>Strategy is an afterthought</td>
+            <td>Strategy leads everything</td>
+          </tr>
+          <tr>
+            <td>Slow turnaround, heavy overhead</td>
+            <td>Lean operation, faster cycles</td>
+          </tr>
+          <tr>
+            <td>Budget allocated by channel</td>
+            <td>Budget aligned to outcomes</td>
+          </tr>
+          <tr>
+            <td>AI used as a buzzword</td>
+            <td>AI applied with discipline</td>
+          </tr>
+          <tr>
+            <td>Reports without insights</td>
+            <td>Data tied to decisions</td>
+          </tr>
+          <tr>
+            <td>Activity without direction</td>
+            <td>Execution with precision</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="comparison-tagline fade-up">
+        &ldquo;Technology enhances execution. Experience guides decisions.&rdquo;
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ SECTION 5: WHY VBO ============ -->
+  <section id="why-vbo" class="section section-mid" aria-label="Why VBO">
+    <div class="ghost-number" aria-hidden="true">05</div>
+    <div class="gold-line" aria-hidden="true"></div>
+
+    <div class="section-inner">
+      <div class="section-label fade-up">Why VBO</div>
+      <div class="section-accent fade-up"></div>
+
+      <h2 class="fade-up">A Modern Marketing Agency for Businesses That Value Clarity.</h2>
+
+      <p class="fade-up">
+        VBO sits between consulting and execution. Between strategy and delivery. Between the firms that
+        only advise and the agencies that only produce.
+      </p>
+
+      <p class="fade-up">
+        Founded and led by Tim Bailey &mdash; a strategist with 10+ years leading integrated campaigns for
+        global brands &mdash; VBO brings senior-level thinking to every engagement. No layers. No junior
+        handoffs. No bloated retainers.
+      </p>
+
+      <p class="fade-up">
+        Based in Miami, VBO works with founders and marketing leaders across industries who share one thing
+        in common: they're tired of paying for inefficiency.
+      </p>
+
+      <p class="emphasis fade-up" style="margin-top: 32px; font-size: 18px;">
+        If your current marketing feels slow, expensive, or disconnected &mdash; the problem probably isn't
+        your team or your budget. It's your structure. And that's exactly what we fix.
+      </p>
+
+      <div class="services-list fade-up">
+        Paid Media &middot; SEO &middot; Brand Strategy &middot; Creative &middot; Social Media &middot;
+        CRM &amp; Email &middot; Performance Analytics &middot; Websites
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ CTA SECTION ============ -->
+  <section class="cta-section" aria-label="Call to action">
+    <div class="section-label fade-up" style="margin-bottom: 48px;">Let's Begin</div>
+
+    <h2 class="fade-up">Close the<br/>Efficiency Gap.</h2>
+
+    <p class="cta-phase fade-up">Strategy &nbsp;&mdash;&nbsp; Structure &nbsp;&mdash;&nbsp; Execution</p>
+
+    <div class="fade-up">
+      <a href="mailto:hello@vboadv.com" class="btn-gold btn-gold-large">
+        Modernize Your Marketing
+        <span style="font-size: 16px; line-height: 1;">&rarr;</span>
+      </a>
+    </div>
+
+    <p class="cta-footer-info fade-up">
+      <a href="mailto:hello@vboadv.com">hello@vboadv.com</a> &nbsp;&middot;&nbsp; Miami, FL
+    </p>
+  </section>
+
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="https://vboadv.com" class="footer-logo" aria-label="VBO Home">
+        <img src="/images/logo-transparent.png" alt="VBO Advertising" width="834" height="222" />
+      </a>
+
+      <p class="footer-copy">&copy; 2026 VBO Consulting. Miami, FL. All rights reserved.</p>
+
+      <div class="footer-right">
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/company/vbo-advertising/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/vboadv/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61585825346910" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+        <a href="mailto:hello@vboadv.com" class="footer-email">hello@vboadv.com</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============ ANALYTICS ============ -->
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1232119389031807');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1232119389031807&ev=PageView&noscript=1" alt="" />
+  </noscript>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZB2FMTJWJ8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZB2FMTJWJ8');
+  </script>
+
+  <!-- Scroll Animations -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elements = document.querySelectorAll('.fade-up, .fade-in');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '-40px'
+      });
+
+      elements.forEach(function(el) {
+        observer.observe(el);
+      });
+
+      // Hero elements — animate immediately with stagger
+      var heroItems = document.querySelectorAll('.hero .fade-up');
+      heroItems.forEach(function(el, i) {
+        setTimeout(function() {
+          el.classList.add('visible');
+        }, 150 + (i * 100));
+      });
+    });
+  </script>
+
+</body>
+</html>
