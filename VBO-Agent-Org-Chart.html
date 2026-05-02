@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VBO AI Marketing Team — Agent Architecture</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #0D0D0F; color: #F2EDE4; padding: 40px 32px; }
+
+  .header { text-align: center; margin-bottom: 40px; }
+  .header h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 38px; text-transform: uppercase; letter-spacing: 1.5px; color: #B8962E; }
+  .header p { font-size: 14px; color: #F2EDE4aa; margin-top: 8px; }
+
+  .tier-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: 2px; color: #B8962E; margin-bottom: 14px; border-left: 3px solid #B8962E; padding-left: 12px; }
+
+  .card { background: #1A1A1D; border: 1px solid #2A2A2D; border-radius: 8px; padding: 18px; margin-bottom: 10px; transition: border-color 0.2s; }
+  .card:hover { border-color: #B8962E55; }
+  .card-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; text-transform: uppercase; color: #F2EDE4; }
+  .card-role { font-size: 12px; color: #B8962E; font-weight: 600; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .card-summary { font-size: 13px; color: #F2EDE4cc; margin-top: 10px; line-height: 1.55; }
+  .card-bullets { list-style: none; margin-top: 10px; padding: 0; }
+  .card-bullets li { font-size: 12px; color: #F2EDE4aa; padding: 3px 0 3px 16px; position: relative; line-height: 1.5; }
+  .card-bullets li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; background: #B8962E; border-radius: 50%; }
+
+  .tim-card { background: #B8962E; border-color: #B8962E; }
+  .tim-card .card-name { color: #0D0D0F; }
+  .tim-card .card-role { color: #0D0D0F99; }
+  .tim-card .card-summary { color: #0D0D0Fcc; }
+
+  .mack-card { border: 2px solid #B8962E; }
+
+  .connector { display: flex; justify-content: center; padding: 8px 0; }
+  .connector .line { width: 2px; height: 24px; background: #B8962E44; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+  .section { margin-bottom: 32px; }
+
+  .sys-badge { display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 2px 8px; border-radius: 3px; background: #B8962E22; color: #B8962E; margin-left: 8px; vertical-align: middle; }
+
+  .efficiency-bar { background: #1A1A1D; border: 1px solid #2A2A2D; border-radius: 8px; padding: 20px 24px; margin-top: 28px; }
+  .efficiency-bar h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: 2px; color: #B8962E; margin-bottom: 14px; }
+  .eff-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .eff-item { text-align: center; }
+  .eff-label { font-size: 11px; color: #F2EDE4aa; text-transform: uppercase; letter-spacing: 0.5px; }
+  .eff-value { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 24px; color: #B8962E; margin-top: 4px; }
+  .eff-desc { font-size: 11px; color: #F2EDE488; margin-top: 4px; }
+
+  .flow-bar { margin-top: 24px; background: #1A1A1D; border: 1px solid #2A2A2D; border-radius: 8px; padding: 20px 24px; }
+  .flow-bar h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: 2px; color: #B8962E; margin-bottom: 14px; }
+  .flow-steps { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; color: #F2EDE4cc; }
+  .flow-steps .step-gold { background: #B8962E; color: #0D0D0F; padding: 5px 12px; border-radius: 5px; font-weight: 600; }
+  .flow-steps .step-accent { background: #B8962E33; color: #F2EDE4; padding: 5px 12px; border-radius: 5px; font-weight: 500; }
+  .flow-steps .step-dark { background: #2A2A2D; padding: 5px 12px; border-radius: 5px; }
+  .flow-steps .arrow { color: #B8962E55; font-size: 16px; }
+  .flow-note { font-size: 11px; color: #F2EDE488; margin-top: 12px; }
+
+  @media (max-width: 768px) {
+    body { padding: 24px 16px; }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+    .eff-grid { grid-template-columns: 1fr; gap: 12px; }
+    .header h1 { font-size: 28px; }
+  }
+
+  @media (max-width: 480px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .flow-steps { flex-direction: column; align-items: flex-start; }
+    .flow-steps .arrow { display: none; }
+  }
+
+  @media print {
+    body { background: #0D0D0F; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>VBO AI Marketing Team</h1>
+    <p>Hub-and-Spoke Agent Architecture &mdash; 12 Specialized Agents</p>
+  </div>
+
+  <!-- EXECUTIVE LAYER -->
+  <div class="section">
+    <div class="tier-label">Executive Layer</div>
+    <div class="card tim-card">
+      <div class="card-name">Tim Bailey</div>
+      <div class="card-role">Founder &amp; Operator</div>
+      <div class="card-summary">Directs strategy, approves deliverables, and routes work through the hub. Direct access to Shield (systems) and Burt (QA) for oversight.</div>
+    </div>
+  </div>
+
+  <div class="connector"><div class="line"></div></div>
+
+  <!-- SYSTEM & QA LAYER -->
+  <div class="section">
+    <div class="tier-label">System &amp; QA Layer <span class="sys-badge">Tim-Direct</span></div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-name">Shield</div>
+        <div class="card-role">Systems Architect</div>
+        <div class="card-summary">Maintains agent infrastructure, memory optimization, and operational integrity across the full team.</div>
+        <ul class="card-bullets">
+          <li>Agent definitions &amp; memory management</li>
+          <li>Architecture audits &amp; scaling plans</li>
+          <li>File structure governance</li>
+          <li>Cross-agent coordination protocols</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-name">Burt</div>
+        <div class="card-role">QA Reviewer</div>
+        <div class="card-summary">Final quality gate before any deliverable reaches Tim. Reviews for brand alignment, accuracy, and completeness.</div>
+        <ul class="card-bullets">
+          <li>Pre-delivery quality checks</li>
+          <li>Brand &amp; tone consistency</li>
+          <li>Cross-references client state files</li>
+          <li>Catches errors before Tim sees them</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"><div class="line"></div></div>
+
+  <!-- HUB LAYER -->
+  <div class="section">
+    <div class="tier-label">Operations Hub</div>
+    <div class="card mack-card">
+      <div class="card-name">Mack</div>
+      <div class="card-role">Operations Manager &amp; Router</div>
+      <div class="card-summary">Central hub that receives Tim's requests, breaks them into tasks, routes to the right specialist, and consolidates results. All specialist work flows through Mack.</div>
+      <ul class="card-bullets">
+        <li>Task decomposition &amp; delegation</li>
+        <li>Cross-agent workflow orchestration</li>
+        <li>Client state file maintenance</li>
+        <li>Morning briefs &amp; status rollups</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="connector"><div class="line"></div></div>
+
+  <!-- SPECIALIST LAYER -->
+  <div class="section">
+    <div class="tier-label">Specialist Agents</div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-name">Atlas</div>
+        <div class="card-role">Research &amp; Strategy</div>
+        <ul class="card-bullets">
+          <li>Market &amp; competitor research</li>
+          <li>Strategic recommendations</li>
+          <li>Industry trend analysis</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-name">Bob</div>
+        <div class="card-role">Web Development</div>
+        <ul class="card-bullets">
+          <li>Next.js &amp; Vercel builds</li>
+          <li>Site features &amp; maintenance</li>
+          <li>Technical implementation</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-name">Dash</div>
+        <div class="card-role">Analytics &amp; Reporting</div>
+        <ul class="card-bullets">
+          <li>Campaign performance data</li>
+          <li>KPI dashboards &amp; reports</li>
+          <li>Data-driven recommendations</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-name">Jules</div>
+        <div class="card-role">Creative &amp; Design</div>
+        <ul class="card-bullets">
+          <li>Visual assets &amp; brand design</li>
+          <li>Organized file taxonomy</li>
+          <li>Drafts → finals workflow</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-name">Mary</div>
+        <div class="card-role">Copywriting</div>
+        <ul class="card-bullets">
+          <li>All copy flows through Mary</li>
+          <li>Brand voice &amp; tone</li>
+          <li>Ad copy, social, web content</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-name">Mercury</div>
+        <div class="card-role">Paid Media</div>
+        <ul class="card-bullets">
+          <li>Ad platform management</li>
+          <li>Campaign structure &amp; targeting</li>
+          <li>Budget pacing &amp; optimization</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-name">Noa</div>
+        <div class="card-role">Social Media</div>
+        <ul class="card-bullets">
+          <li>Content calendars &amp; scheduling</li>
+          <li>Platform strategy</li>
+          <li>Community engagement</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-name">Orion</div>
+        <div class="card-role">Business Development &amp; Sales</div>
+        <ul class="card-bullets">
+          <li>Prospect research &amp; outreach</li>
+          <li>Sales pipeline &amp; list building</li>
+          <li>Networking &amp; relationship tracking</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-name">Vega</div>
+        <div class="card-role">SEO Specialist</div>
+        <ul class="card-bullets">
+          <li>Keyword research &amp; strategy</li>
+          <li>Technical SEO audits</li>
+          <li>On-page optimization &amp; content</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- EFFICIENCY BAR -->
+  <div class="efficiency-bar">
+    <h3>Architecture Efficiency</h3>
+    <div class="eff-grid">
+      <div class="eff-item">
+        <div class="eff-label">Routing Model</div>
+        <div class="eff-value">Hub &amp; Spoke</div>
+        <div class="eff-desc">Single point of delegation reduces context duplication</div>
+      </div>
+      <div class="eff-item">
+        <div class="eff-label">File Strategy</div>
+        <div class="eff-value">Edit-in-Place</div>
+        <div class="eff-desc">No version file copies — reduces storage bloat by ~80%</div>
+      </div>
+      <div class="eff-item">
+        <div class="eff-label">Context System</div>
+        <div class="eff-value">Client State</div>
+        <div class="eff-desc">Shared per-client files so agents skip re-reading full history</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="flow-bar">
+    <h3>How a Request Flows</h3>
+    <div class="flow-steps">
+      <span class="step-gold">Tim</span>
+      <span class="arrow">→</span>
+      <span class="step-accent">Mack routes</span>
+      <span class="arrow">→</span>
+      <span class="step-dark">Specialist executes</span>
+      <span class="arrow">→</span>
+      <span class="step-dark">Burt reviews</span>
+      <span class="arrow">→</span>
+      <span class="step-gold">Tim approves</span>
+    </div>
+    <p class="flow-note">Shield operates outside the flow — maintains the system itself. Burt and Shield report directly to Tim.</p>
+  </div>
+
+</body>
+</html>
