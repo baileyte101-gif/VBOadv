@@ -48,14 +48,100 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
+// Per-vertical Service schema. Hardcoded per-slug (only law-firms is indexable
+// today). When another vertical flips indexable, add its entry here.
+const SERVICE_SCHEMAS: Record<string, Record<string, unknown>> = {
+  "law-firms": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Marketing for Law Firms in South Florida",
+    provider: { "@id": "https://www.vboadv.com/#organization" },
+    description:
+      "VBO helps boutique law firms in South Florida turn strong credentials into a predictable source of new clients through marketing strategy, paid media, SEO, brand, and creative.",
+    serviceType: "Legal Marketing",
+    areaServed: [
+      { "@type": "City", name: "Miami" },
+      { "@type": "City", name: "Fort Lauderdale" },
+      { "@type": "City", name: "West Palm Beach" },
+    ],
+  },
+};
+
+const BREADCRUMB_NAMES: Record<string, string> = {
+  "law-firms": "Law Firms",
+  "dental-practices": "Dental Practices",
+  "med-spas": "Med Spas",
+  "financial-advisors": "Financial Advisors",
+  "accounting-firms": "Accounting Firms",
+};
+
 export default function VerticalPage({ params }: Props) {
   const { vertical: slug } = params;
   const vertical = verticals[slug];
 
   if (!vertical) notFound();
 
+  const serviceSchema = SERVICE_SCHEMAS[slug] ?? null;
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.vboadv.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Professional Services",
+        item: "https://www.vboadv.com/professional-services",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: BREADCRUMB_NAMES[slug] ?? slug,
+        item: `https://www.vboadv.com/professional-services/${slug}`,
+      },
+    ],
+  };
+
+  const faqSchema =
+    vertical.faq && vertical.faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: vertical.faq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
+
   return (
     <>
+      {serviceSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        />
+      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <Suspense fallback={null}>
         <GA4PageTracker />
       </Suspense>

@@ -41,7 +41,7 @@ export default function CTASection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="font-mono text-[#6B6F73] text-[11px] tracking-[0.12em] md:tracking-[0.3em] uppercase mb-14 md:mb-16 px-4"
         >
-          Strategy&nbsp;&nbsp;—&nbsp;&nbsp;Integration&nbsp;&nbsp;—&nbsp;&nbsp;Execution
+          Strategy&nbsp;&nbsp;/&nbsp;&nbsp;Integration&nbsp;&nbsp;/&nbsp;&nbsp;Execution
         </motion.p>
 
         {/* CTA button — same outlined gold style as nav + hero */}

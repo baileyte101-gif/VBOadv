@@ -11,6 +11,28 @@ import CTASection from '@/components/CTASection'
 import SocialIcons from '@/components/SocialIcons'
 import Image from 'next/image'
 
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://www.vboadv.com/#website',
+  url: 'https://www.vboadv.com',
+  name: 'VBO Advertising',
+  publisher: { '@id': 'https://www.vboadv.com/#organization' },
+}
+
+const homeBreadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.vboadv.com',
+    },
+  ],
+}
+
 const heroTickerItems = [
   'EFFICIENCY',
   'ALIGNMENT',
@@ -28,6 +50,14 @@ const heroTickerItems = [
 export default function Home() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeBreadcrumbSchema) }}
+      />
       <Nav />
       <Hero />
       <Ticker
@@ -57,7 +87,7 @@ export default function Home() {
           />
 
           <p className="font-mono text-[#6B6F73] text-[10px] tracking-[0.2em] uppercase text-center">
-            © 2026 VBO Consulting. Miami, FL. All rights reserved.
+            © 2026 VBO Advertising. Miami, FL. All rights reserved.
           </p>
 
           <div className="flex items-center gap-6">

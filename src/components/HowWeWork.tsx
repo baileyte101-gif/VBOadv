@@ -110,10 +110,10 @@ export default function HowWeWork() {
                     {services.map((s, j) => (
                       <span key={s}>
                         <span className="text-[#B8962E]">{s}</span>
-                        {j < services.length - 1 ? ', ' : ' '}
+                        {j < services.length - 1 ? ', ' : ', '}
                       </span>
                     ))}
-                    — we can execute.
+                    we can execute.
                   </p>
                 ) : (
                   <>
