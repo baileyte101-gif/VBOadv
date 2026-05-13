@@ -133,7 +133,7 @@ function NavBar() {
             alt="VBO Advertising"
             width={834}
             height={222}
-            className="h-12 w-auto"
+            className="h-8 md:h-12 w-auto max-w-none"
             priority
           />
         </a>
