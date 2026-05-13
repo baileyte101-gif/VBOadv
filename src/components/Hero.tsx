@@ -20,19 +20,33 @@ export default function Hero() {
           Marketing Consultant &amp; Studio
         </motion.p>
 
-        {/* Headline */}
+        {/* Headline — first word is the single H1 for SEO. The other two
+            words share identical visual treatment via the same className but
+            render as <p> so the page has exactly one H1. */}
         <div className="mb-8 md:mb-10">
-          {words.map((word, i) => (
-            <motion.h1
-              key={word}
-              initial={{ opacity: 0, x: -24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.65, delay: 0.28 + i * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-              className="font-headline font-black text-[#F2EDE4] uppercase leading-[0.92] text-[clamp(4rem,9vw,7.5rem)]"
-            >
-              {word}
-            </motion.h1>
-          ))}
+          {words.map((word, i) =>
+            i === 0 ? (
+              <motion.h1
+                key={word}
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.65, delay: 0.28, ease: [0.25, 0.1, 0.25, 1] }}
+                className="font-headline font-black text-[#F2EDE4] uppercase leading-[0.92] text-[clamp(4rem,9vw,7.5rem)]"
+              >
+                {word}
+              </motion.h1>
+            ) : (
+              <motion.p
+                key={word}
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.65, delay: 0.28 + i * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                className="font-headline font-black text-[#F2EDE4] uppercase leading-[0.92] text-[clamp(4rem,9vw,7.5rem)]"
+              >
+                {word}
+              </motion.p>
+            )
+          )}
         </div>
 
         {/* Sub-headline */}
