@@ -26,7 +26,7 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   title: 'VBO | Marketing Consultant & Studio',
   description:
-    'Fully integrated marketing. Human, built on experience and efficiency. VBO brings structure to growth — aligning brand, budget, channels, and measurement into one creative and disciplined system.',
+    'Fully integrated marketing for South Florida businesses. Human, built on experience and modern efficiency. Marketing strategy, paid media, SEO, brand, and creative from VBO Advertising in Miami.',
   keywords: [
     'marketing consultant',
     'marketing strategy',
@@ -49,9 +49,84 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'VBO | Marketing Consultant & Studio',
-    description: 'Fully integrated marketing. Human, built on experience and efficiency.',
+    description:
+      'Fully integrated marketing for South Florida businesses. Human, built on experience and modern efficiency.',
     type: 'website',
   },
+}
+
+// Phase 0 SEO foundation schema. Renders on every page via the root layout.
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': 'https://www.vboadv.com/#organization',
+  name: 'VBO Advertising',
+  url: 'https://www.vboadv.com',
+  logo: 'https://www.vboadv.com/images/logo-transparent.png',
+  description:
+    'Founder-led marketing consultancy and studio in Miami, serving small to mid-size businesses across South Florida.',
+  founder: { '@id': 'https://www.vboadv.com/#tim-bailey' },
+  sameAs: [
+    'https://www.linkedin.com/company/vbo-advertising/',
+    'https://www.instagram.com/vboadv/',
+    'https://www.facebook.com/profile.php?id=61585825346910',
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+1-864-640-6558',
+    email: 'tim@vboadv.com',
+    contactType: 'Customer Service',
+    areaServed: 'US-FL',
+  },
+}
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': 'https://www.vboadv.com/#tim-bailey',
+  name: 'Tim Bailey',
+  jobTitle: 'Founder',
+  worksFor: { '@id': 'https://www.vboadv.com/#organization' },
+  url: 'https://www.vboadv.com/tim',
+  image: 'https://www.vboadv.com/images/headshot.jpg',
+  sameAs: ['https://www.linkedin.com/in/timothybailey1'],
+}
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://www.vboadv.com/#localbusiness',
+  name: 'VBO Advertising',
+  image: 'https://www.vboadv.com/images/logo-transparent.png',
+  url: 'https://www.vboadv.com',
+  telephone: '+1-864-640-6558',
+  priceRange: '$$$',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Miami',
+    addressRegion: 'FL',
+    postalCode: '33145',
+    addressCountry: 'US',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Miami' },
+    { '@type': 'City', name: 'Miami Beach' },
+    { '@type': 'City', name: 'Coral Gables' },
+    { '@type': 'City', name: 'Doral' },
+    { '@type': 'City', name: 'Aventura' },
+    { '@type': 'City', name: 'Fort Lauderdale' },
+    { '@type': 'City', name: 'Hollywood' },
+    { '@type': 'City', name: 'Boca Raton' },
+    { '@type': 'City', name: 'West Palm Beach' },
+  ],
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '17:00',
+    },
+  ],
 }
 
 export default function RootLayout({
@@ -105,6 +180,19 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
+        {/* JSON-LD: Organization, Person, LocalBusiness. Sitewide via root layout. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
         {children}
       </body>
     </html>

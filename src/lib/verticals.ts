@@ -25,6 +25,10 @@ export interface VerticalData {
     alt?: string;
   };
   socialProofAdditional: string[];
+  faq?: {
+    question: string;
+    answer: string;
+  }[];
 }
 
 export const verticals: Record<string, VerticalData> = {
@@ -88,6 +92,43 @@ export const verticals: Record<string, VerticalData> = {
     socialProofAdditional: [
       "We understand the ethics of legal marketing, including Florida Bar advertising rules",
       "Our approach is built for firms that compete on quality, not volume",
+    ],
+    faq: [
+      {
+        question: "Does VBO understand Florida Bar advertising rules?",
+        answer:
+          "Yes. We work specifically with law firms in South Florida and design marketing programs that comply with Florida Bar Rule 4-7 advertising regulations. Our process includes a compliance review on any client-facing content before it ships.",
+      },
+      {
+        question: "What does law firm marketing typically cost with VBO?",
+        answer:
+          "Engagements are structured monthly. Strategy-only engagements start around $5,000 per month. Full integrated marketing engagements for boutique law firms range from $7,500 to $15,000 per month based on scope, channels, and creative production needs. We provide a custom proposal after a free 30-minute consultation.",
+      },
+      {
+        question: "How long until we see results from law firm marketing?",
+        answer:
+          "Paid media drives results within 30 to 60 days. SEO and content programs typically show meaningful organic gains in 3 to 6 months and compound from there. Brand and website work creates immediate trust signals on day one. We set expectations and milestones at the start of every engagement.",
+      },
+      {
+        question: "Do you work with solo attorneys or only firms with multiple attorneys?",
+        answer:
+          "We work with both. Most of our clients are boutique firms with 2 to 15 attorneys, but solo practices with a strong specialty and growth ambition are a great fit. We do not work with firms that compete on volume.",
+      },
+      {
+        question: "Can you help with our Google Business Profile and reviews?",
+        answer:
+          "Yes. Local SEO including Google Business Profile optimization, citation building, and review acquisition strategy is part of our digital presence work for law firms. Local pack visibility drives a significant share of new client inquiries for South Florida law firms.",
+      },
+      {
+        question: "Will I work directly with the founder or a junior account manager?",
+        answer:
+          "You work directly with Tim Bailey, the founder, and senior operators. We do not have a junior account manager layer between you and the strategists. This is the structural reason we deliver faster than traditional agencies.",
+      },
+      {
+        question: "What does the first 30 days look like with VBO?",
+        answer:
+          "Week 1: discovery on your firm, current marketing, competitors, and growth goals. Week 2: market positioning workshop and strategy presentation. Weeks 3 and 4: implementation kickoff including any technical setup, brand refinements, and campaign launches. You see direction and momentum within the first month.",
+      },
     ],
   },
 

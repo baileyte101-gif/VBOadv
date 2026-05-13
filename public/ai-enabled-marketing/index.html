@@ -36,27 +36,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <!-- Schema.org LocalBusiness -->
+  <!-- Schema.org: Service (AI-Enabled Marketing offering) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "VBO Advertising",
-    "description": "Miami's AI-enabled marketing agency. Senior-level strategic thinking meets modern AI efficiency.",
-    "url": "https://vboadv.com",
-    "telephone": "+18646406558",
-    "email": "hello@vboadv.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Miami",
-      "addressRegion": "FL",
-      "addressCountry": "US"
+    "@type": "Service",
+    "name": "AI-Enabled Marketing Services",
+    "provider": {
+      "@type": "Organization",
+      "name": "VBO Advertising",
+      "url": "https://www.vboadv.com"
     },
-    "areaServed": {
-      "@type": "City",
-      "name": "Miami"
-    },
-    "serviceType": ["AI Marketing", "Digital Marketing", "Brand Strategy", "SEO", "Paid Media", "Performance Marketing"]
+    "description": "Senior-level strategic thinking meets modern AI-enabled execution. VBO is an AI-enabled marketing agency for small to mid-size businesses in South Florida, delivering integrated marketing with less overhead, faster turnaround, and better cost than traditional agencies.",
+    "serviceType": "AI-Enabled Marketing",
+    "areaServed": [
+      { "@type": "City", "name": "Miami" },
+      { "@type": "City", "name": "Fort Lauderdale" },
+      { "@type": "City", "name": "West Palm Beach" }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vboadv.com" },
+      { "@type": "ListItem", "position": 2, "name": "AI-Enabled Marketing", "item": "https://www.vboadv.com/ai-enabled-marketing" }
+    ]
   }
   </script>
 
@@ -655,7 +664,7 @@
     .gap-plate-pros li::before { content: '+'; color: rgba(107, 111, 115, 0.5); }
 
     .gap-plate-cons li { color: var(--steel-grey); opacity: 0.55; }
-    .gap-plate-cons li::before { content: '—'; color: rgba(107, 111, 115, 0.35); }
+    .gap-plate-cons li::before { content: '·'; color: rgba(107, 111, 115, 0.35); }
 
     .gap-plate-verdict {
       font-family: 'Space Mono', monospace;
@@ -1659,7 +1668,7 @@
         <img src="/images/logo-transparent.png" alt="VBO Advertising" width="834" height="222" />
       </a>
 
-      <p class="footer-copy">&copy; 2026 VBO Consulting. Miami, FL. All rights reserved.</p>
+      <p class="footer-copy">&copy; 2026 VBO Advertising. Miami, FL. All rights reserved.</p>
 
       <div class="footer-right">
         <div class="social-icons">

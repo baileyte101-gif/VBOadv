@@ -1,0 +1,38 @@
+import type { MetadataRoute } from "next";
+import { verticalSlugs } from "@/lib/verticals";
+
+// Mirror the INDEXABLE_VERTICALS Set in src/app/professional-services/[vertical]/page.tsx.
+// When a vertical flips to indexable there, also add its slug here.
+const INDEXABLE_VERTICALS = new Set(["law-firms"]);
+
+const HOST = "https://www.vboadv.com";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
+  const staticPages: MetadataRoute.Sitemap = [
+    {
+      url: `${HOST}/`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 1.0,
+    },
+    {
+      url: `${HOST}/ai-enabled-marketing`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+  ];
+
+  const verticalPages: MetadataRoute.Sitemap = verticalSlugs
+    .filter((slug) => INDEXABLE_VERTICALS.has(slug))
+    .map((slug) => ({
+      url: `${HOST}/professional-services/${slug}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    }));
+
+  return [...staticPages, ...verticalPages];
+}

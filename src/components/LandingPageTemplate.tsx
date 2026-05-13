@@ -499,6 +499,47 @@ export default function LandingPageTemplate({ vertical }: Props) {
           </motion.div>
         </section>
 
+        {/* ===== FAQ ===== */}
+        {vertical.faq && vertical.faq.length > 0 && (
+          <section className="px-6 py-16 md:py-24 lg:py-[120px]">
+            <motion.div
+              className="max-w-[1200px] mx-auto"
+              variants={STAGGER_PARENT}
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEWPORT_ONCE}
+            >
+              <motion.div variants={FADE_UP} transition={ENTER_TRANSITION}>
+                <SectionLabel>Frequently Asked Questions</SectionLabel>
+              </motion.div>
+              <motion.h2
+                variants={FADE_UP}
+                transition={ENTER_TRANSITION}
+                className="font-headline text-[36px] md:text-[56px] font-black uppercase text-[var(--color-vbo-white)] leading-[1] mb-12"
+              >
+                Common Questions
+              </motion.h2>
+              <motion.div variants={STAGGER_PARENT} className="space-y-8 max-w-3xl">
+                {vertical.faq.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    variants={FADE_UP}
+                    transition={ENTER_TRANSITION}
+                    className="border-l-2 border-[var(--color-vbo-gold)]/30 pl-6"
+                  >
+                    <h3 className="font-headline text-[20px] md:text-[22px] font-bold uppercase text-[var(--color-vbo-gold)] leading-[1.2] mb-3 tracking-wide">
+                      {item.question}
+                    </h3>
+                    <p className="font-body text-[18px] text-[var(--color-vbo-egg)] opacity-80 leading-[28px]">
+                      {item.answer}
+                    </p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </section>
+        )}
+
         {/* ===== ABOUT TIM ===== */}
         <section className="px-6 py-16 md:py-24 lg:py-[120px] bg-[var(--color-vbo-graphite)]">
           <motion.div
