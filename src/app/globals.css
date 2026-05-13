@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-vbo-black: #0D0D0D;
+  --color-vbo-graphite: #1C1C1C;
+  --color-vbo-white: #FFFFFF;
+  --color-vbo-egg: #F2EDE4;
+  --color-vbo-gold: #B8962E;
+  --color-vbo-gold-light: #D4A93A;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
