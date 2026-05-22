@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { type VerticalData, BOOKING_URL, TIM_EMAIL } from "@/lib/verticals";
@@ -28,18 +28,20 @@ const ENTER_TRANSITION = {
 
 const VIEWPORT_ONCE = { once: true, margin: "-80px" };
 
-function CTAButton({
+// Presentational booking link. Server-renderable: the href is supplied by the
+// caller (base URL during SSR/fallback, UTM-decorated href after hydration).
+function BookingAnchor({
+  href,
   vertical,
   label,
-  bookingUrl,
 }: {
+  href: string;
   vertical: string;
   label: string;
-  bookingUrl: string;
 }) {
   return (
     <a
-      href={bookingUrl}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackCTAClick(label, vertical)}
@@ -47,6 +49,46 @@ function CTAButton({
     >
       Book a 30-Minute Call
     </a>
+  );
+}
+
+// useSearchParams is isolated to this leaf (wrapped in <Suspense> by CTAButton)
+// so the surrounding page content renders server-side instead of bailing to a
+// null Suspense fallback.
+function CTAButtonWithUTM({
+  vertical,
+  label,
+}: {
+  vertical: string;
+  label: string;
+}) {
+  const searchParams = useSearchParams();
+  return (
+    <BookingAnchor
+      href={getBookingUrlWithUTM(BOOKING_URL, searchParams)}
+      vertical={vertical}
+      label={label}
+    />
+  );
+}
+
+function CTAButton({
+  vertical,
+  label,
+}: {
+  vertical: string;
+  label: string;
+}) {
+  // SSR/no-JS fallback is a working booking link without UTM; the
+  // UTM-decorated href swaps in on hydration.
+  return (
+    <Suspense
+      fallback={
+        <BookingAnchor href={BOOKING_URL} vertical={vertical} label={label} />
+      }
+    >
+      <CTAButtonWithUTM vertical={vertical} label={label} />
+    </Suspense>
   );
 }
 
@@ -152,13 +194,9 @@ function NavBar() {
   );
 }
 
-function StickyScrollCTA({
-  bookingUrl,
-  vertical,
-}: {
-  bookingUrl: string;
-  vertical: string;
-}) {
+function StickyScrollCTAInner({ vertical }: { vertical: string }) {
+  const searchParams = useSearchParams();
+  const bookingUrl = getBookingUrlWithUTM(BOOKING_URL, searchParams);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -204,14 +242,21 @@ function StickyScrollCTA({
   );
 }
 
-export default function LandingPageTemplate({ vertical }: Props) {
-  const searchParams = useSearchParams();
-  const bookingUrl = getBookingUrlWithUTM(BOOKING_URL, searchParams);
+// The sticky bar starts hidden until the user scrolls past the hero (JS-driven),
+// so a null SSR fallback for the searchParams boundary is invisible anyway.
+function StickyScrollCTA({ vertical }: { vertical: string }) {
+  return (
+    <Suspense fallback={null}>
+      <StickyScrollCTAInner vertical={vertical} />
+    </Suspense>
+  );
+}
 
+export default function LandingPageTemplate({ vertical }: Props) {
   return (
     <>
       <NavBar />
-      <StickyScrollCTA bookingUrl={bookingUrl} vertical={vertical.slug} />
+      <StickyScrollCTA vertical={vertical.slug} />
 
       <main className="min-h-screen font-body text-[18px] leading-[28px] pt-20">
         {/* ===== HERO ===== */}
@@ -252,11 +297,7 @@ export default function LandingPageTemplate({ vertical }: Props) {
               className="flex flex-col sm:flex-row items-start gap-4"
               data-hero-cta
             >
-              <CTAButton
-                vertical={vertical.slug}
-                label="hero-cta"
-                bookingUrl={bookingUrl}
-              />
+              <CTAButton vertical={vertical.slug} label="hero-cta" />
               <a
                 href="#how-we-work"
                 className="inline-block font-mono text-xs uppercase tracking-[0.18em] border border-[var(--color-vbo-egg)] border-opacity-30 text-[var(--color-vbo-egg)] px-8 py-3 hover:border-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-gold)] transition-colors duration-200"
@@ -637,11 +678,7 @@ export default function LandingPageTemplate({ vertical }: Props) {
               transition={ENTER_TRANSITION}
               className="flex flex-col items-center gap-4"
             >
-              <CTAButton
-                vertical={vertical.slug}
-                label="bottom-cta"
-                bookingUrl={bookingUrl}
-              />
+              <CTAButton vertical={vertical.slug} label="bottom-cta" />
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-vbo-egg)] opacity-40 mt-2">
                 Or email Tim directly at{" "}
                 <a

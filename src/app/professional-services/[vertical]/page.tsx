@@ -145,9 +145,7 @@ export default function VerticalPage({ params }: Props) {
       <Suspense fallback={null}>
         <GA4PageTracker />
       </Suspense>
-      <Suspense fallback={null}>
-        <LandingPageTemplate vertical={vertical} />
-      </Suspense>
+      <LandingPageTemplate vertical={vertical} />
     </>
   );
 }
