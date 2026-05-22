@@ -24,17 +24,10 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'VBO | Marketing Consultant & Studio',
+  metadataBase: new URL('https://www.vboadv.com'),
+  title: 'Miami Marketing Agency & Studio | VBO Advertising',
   description:
-    'Fully integrated marketing for South Florida businesses. Human, built on experience and modern efficiency. Marketing strategy, paid media, SEO, brand, and creative from VBO Advertising in Miami.',
-  keywords: [
-    'marketing consultant',
-    'marketing strategy',
-    'brand strategy',
-    'Miami marketing',
-    'performance marketing',
-    'VBO',
-  ],
+    'Miami marketing agency for South Florida businesses. Strategy, paid media, SEO, brand, and creative, built on senior experience and modern efficiency.',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -48,7 +41,7 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: 'VBO | Marketing Consultant & Studio',
+    title: 'Miami Marketing Agency & Studio | VBO Advertising',
     description:
       'Fully integrated marketing for South Florida businesses. Human, built on experience and modern efficiency.',
     type: 'website',
