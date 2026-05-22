@@ -162,8 +162,7 @@ export default function WhoWeWorkWith() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={client.logo}
-                      alt=""
-                      aria-hidden
+                      alt="Peixoto Wear"
                       className="w-auto h-[78px] md:h-[96px]"
                     />
                     <span className="font-headline font-black text-[#F2EDE4] uppercase leading-none text-[14px] md:text-[16px] tracking-[0.32em] md:tracking-[0.36em]">
