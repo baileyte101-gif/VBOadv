@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Post } from '@/types/blog'
-import { formatDate } from '@/lib/blog'
+import { formatDate } from '@/lib/blog-utils'
 
 const GRADIENT_CLASSES = [
   'from-[#1C1C1C] to-[#2a2520]',

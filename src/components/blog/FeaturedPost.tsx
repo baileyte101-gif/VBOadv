@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Post } from '@/types/blog'
-import { formatDate } from '@/lib/blog'
+import { formatDate } from '@/lib/blog-utils'
 
 interface FeaturedPostProps {
   post: Post

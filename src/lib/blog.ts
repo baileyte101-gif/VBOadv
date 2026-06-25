@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import type { Post, PostFrontmatter } from '@/types/blog'
+export { formatDate } from '@/lib/blog-utils'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content', 'blog')
 
@@ -49,11 +50,3 @@ export function getRelatedPosts(currentSlug: string, category: string, limit = 3
     .slice(0, limit)
 }
 
-export function formatDate(dateString: string): string {
-  const date = new Date(dateString + 'T00:00:00')
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
-}
