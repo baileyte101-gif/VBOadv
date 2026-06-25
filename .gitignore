@@ -63,3 +63,16 @@ public/images/logo-secondary.png
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# --- Agent workspace + ops files (NOT website source — keep out of this repo) ---
+VBO - Marketing Team Agents/
+VBO - Marketing Team/
+Orion/
+clients/
+client_secret*.json
+*client_secret*.json
+Boundless-Tim-Bailey-Card.html
+Coerver-Carolinas-Prospect-Research.md
+Sir-Galloway-Monday-Checkin-Email-Draft.md
+Taylor-Bailey-VBO-email-signature.html
+VBO-Directory-Submission-Tracker.csv
