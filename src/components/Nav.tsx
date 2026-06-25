@@ -3,18 +3,26 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const navLinks = [
-  { label: 'The Problem', href: '#the-problem' },
-  { label: 'The Approach', href: '#the-approach' },
-  { label: 'What We Do', href: '#how-we-work' },
-  { label: 'Industries', href: '#industries' },
-  { label: 'About', href: '#about' },
+  { label: 'The Problem', href: '#the-problem', scroll: true },
+  { label: 'The Approach', href: '#the-approach', scroll: true },
+  { label: 'What We Do', href: '#how-we-work', scroll: true },
+  { label: 'Industries', href: '#industries', scroll: true },
+  { label: 'About', href: '#about', scroll: true },
+  { label: 'Insights', href: '/insights', scroll: false },
 ]
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname()
+  // On the home page the section links smooth-scroll. On any other page (e.g.
+  // the Insights blog) there are no sections to scroll to, so they become real
+  // links back to the matching section on the home page.
+  const isHome = pathname === '/'
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -58,16 +66,27 @@ export default function Nav() {
 
           {/* Desktop Nav Links */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="text-[#6B6F73] hover:text-[#F2EDE4] text-xs tracking-[0.1em] uppercase transition-colors duration-200 font-body relative group whitespace-nowrap"
-              >
-                {link.label}
-                <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-[#B8962E] transition-all duration-300 group-hover:w-full" />
-              </button>
-            ))}
+            {navLinks.map((link) =>
+              link.scroll && isHome ? (
+                <button
+                  key={link.href}
+                  onClick={() => handleNavClick(link.href)}
+                  className="text-[#6B6F73] hover:text-[#F2EDE4] text-xs tracking-[0.1em] uppercase transition-colors duration-200 font-body relative group whitespace-nowrap"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-[#B8962E] transition-all duration-300 group-hover:w-full" />
+                </button>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.scroll ? `/${link.href}` : link.href}
+                  className="text-[#6B6F73] hover:text-[#F2EDE4] text-xs tracking-[0.1em] uppercase transition-colors duration-200 font-body relative group whitespace-nowrap"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-[#B8962E] transition-all duration-300 group-hover:w-full" />
+                </Link>
+              )
+            )}
           </div>
 
           {/* Right side: mobile toggle + CTA */}
@@ -119,18 +138,35 @@ export default function Nav() {
             className="lg:hidden bg-[#0D0D0D] border-t border-[#1C1C1C] overflow-hidden"
           >
             <div className="px-6 py-5 flex flex-col gap-1">
-              {navLinks.map((link, i) => (
-                <motion.button
-                  key={link.href}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-left text-[#6B6F73] hover:text-[#F2EDE4] text-sm tracking-[0.12em] uppercase transition-colors duration-200 font-body py-3 border-b border-[#1C1C1C] last:border-0"
-                >
-                  {link.label}
-                </motion.button>
-              ))}
+              {navLinks.map((link, i) =>
+                link.scroll && isHome ? (
+                  <motion.button
+                    key={link.href}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    onClick={() => handleNavClick(link.href)}
+                    className="text-left text-[#6B6F73] hover:text-[#F2EDE4] text-sm tracking-[0.12em] uppercase transition-colors duration-200 font-body py-3 border-b border-[#1C1C1C] last:border-0"
+                  >
+                    {link.label}
+                  </motion.button>
+                ) : (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                  >
+                    <Link
+                      href={link.scroll ? `/${link.href}` : link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block text-left text-[#6B6F73] hover:text-[#F2EDE4] text-sm tracking-[0.12em] uppercase transition-colors duration-200 font-body py-3 border-b border-[#1C1C1C] last:border-0"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                )
+              )}
             </div>
           </motion.div>
         )}

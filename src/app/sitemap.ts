@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { verticalSlugs } from "@/lib/verticals";
+import { getAllPosts } from "@/lib/blog";
 
 // Mirror the INDEXABLE_VERTICALS Set in src/app/professional-services/[vertical]/page.tsx.
 // When a vertical flips to indexable there, also add its slug here.
@@ -23,6 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    {
+      url: `${HOST}/insights`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
   ];
 
   const verticalPages: MetadataRoute.Sitemap = verticalSlugs
@@ -34,5 +41,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }));
 
-  return [...staticPages, ...verticalPages];
+  // Published (non-draft) blog posts. Empty until the first post goes live.
+  const postPages: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
+    url: `${HOST}/insights/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...verticalPages, ...postPages];
 }
