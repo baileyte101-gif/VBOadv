@@ -23,6 +23,12 @@ const clients: Client[] = [
     logo: '/images/clients/peixoto-white.svg',
     variant: 'peixoto-lockup',
   },
+  {
+    name: 'IPPE Soccer Tours',
+    href: 'https://ippesoccertours.com',
+    logo: '/images/clients/ippe-white.png',
+    variant: 'image',
+  },
 ]
 
 export default function WhoWeWorkWith() {
@@ -102,7 +108,7 @@ export default function WhoWeWorkWith() {
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.28 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 max-w-5xl"
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-6xl"
         >
           {clients.map((client) => (
             <a
