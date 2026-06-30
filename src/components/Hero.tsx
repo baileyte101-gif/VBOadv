@@ -54,9 +54,19 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.65 }}
-          className="text-[#6B6F73] text-base md:text-lg mb-10 font-body leading-relaxed max-w-sm"
+          className="text-[#6B6F73] text-base md:text-lg mb-4 font-body leading-relaxed max-w-sm"
         >
           Fully integrated marketing. Human, built on experience and modern efficiency.
+        </motion.p>
+
+        {/* Geo intro — SEO signal: Coconut Grove, Miami + consultancy/studio self-label */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.72 }}
+          className="text-[#6B6F73]/70 text-sm font-body leading-relaxed max-w-sm mb-10"
+        >
+          Based in Coconut Grove, Miami, we&apos;re a founder-led marketing consultancy and studio serving small and mid-size businesses across South Florida.
         </motion.p>
 
         {/* CTA */}
@@ -115,7 +125,7 @@ export default function Hero() {
       >
         <Image
           src="/images/miami-city.jpg"
-          alt="Miami skyline"
+          alt="Miami skyline — VBO Advertising is a marketing consultancy and studio based in Coconut Grove, Miami, Florida"
           fill
           className="object-cover object-center"
           style={{ filter: 'grayscale(15%) brightness(0.85)' }}
@@ -135,7 +145,7 @@ export default function Hero() {
       <div className="absolute inset-0 lg:hidden -z-10">
         <Image
           src="/images/miami-city.jpg"
-          alt="Miami skyline"
+          alt="Miami skyline — VBO Advertising is a marketing consultancy and studio based in Coconut Grove, Miami, Florida"
           fill
           className="object-cover object-center"
           style={{ filter: 'grayscale(30%) brightness(0.35)' }}

@@ -25,9 +25,9 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.vboadv.com'),
-  title: 'Miami Marketing Agency & Studio | VBO Advertising',
+  title: 'Marketing Agency Miami | Strategy. Creative. Performance. | VBO Advertising',
   description:
-    'Miami marketing agency for South Florida businesses. Strategy, paid media, SEO, brand, and creative, built on senior experience and modern efficiency.',
+    'Founder-led marketing consultancy and studio in Miami. Strategy first, disciplined execution across paid, social, SEO, brand, and creative. Let\'s start there.',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: 'Miami Marketing Agency & Studio | VBO Advertising',
+    title: 'Marketing Agency Miami | Strategy. Creative. Performance. | VBO Advertising',
     description:
-      'Fully integrated marketing for South Florida businesses. Human, built on experience and modern efficiency.',
+      'Founder-led marketing consultancy and studio in Miami. Strategy first, disciplined execution across paid, social, SEO, brand, and creative. Let\'s start there.',
     type: 'website',
   },
 }
@@ -96,13 +96,14 @@ const localBusinessSchema = {
   priceRange: '$$$',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Miami',
+    addressLocality: 'Coconut Grove',
     addressRegion: 'FL',
-    postalCode: '33145',
     addressCountry: 'US',
   },
   areaServed: [
+    { '@type': 'City', name: 'Coconut Grove' },
     { '@type': 'City', name: 'Miami' },
+    { '@type': 'City', name: 'South Florida' },
     { '@type': 'City', name: 'Miami Beach' },
     { '@type': 'City', name: 'Coral Gables' },
     { '@type': 'City', name: 'Doral' },

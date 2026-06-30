@@ -90,15 +90,34 @@ export default function Industries() {
         </div>
 
         {/* Closing line */}
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-[#6B6F73] text-base md:text-lg font-body mt-10"
+          className="mt-10 space-y-3"
         >
-          We work best with founders and leaders who value clarity and are
-          looking to simplify chaos.
-        </motion.p>
+          <p className="text-[#6B6F73] text-base md:text-lg font-body">
+            We work best with founders and leaders who value clarity and are
+            looking to simplify chaos. We have deep experience working with{' '}
+            <a
+              href="/professional-services/law-firms"
+              className="text-[#B8962E] hover:text-[#F2EDE4] transition-colors duration-200"
+            >
+              professional services firms in South Florida
+            </a>
+            .
+          </p>
+          <p className="text-[#6B6F73] text-sm font-body">
+            Read our take on strategy, creative, and performance in the{' '}
+            <a
+              href="/insights"
+              className="text-[#B8962E] hover:text-[#F2EDE4] transition-colors duration-200"
+            >
+              VBO Insights blog
+            </a>
+            .
+          </p>
+        </motion.div>
       </div>
 
       {/* Industries ticker — flush to bottom, no extra padding */}

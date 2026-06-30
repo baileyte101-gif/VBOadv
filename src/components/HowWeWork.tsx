@@ -76,7 +76,7 @@ export default function HowWeWork() {
           <p className="section-label">What We Do</p>
           <div className="section-accent" />
           <h2 className="font-headline font-black text-[#F2EDE4] uppercase leading-none text-[clamp(2.5rem,6vw,5rem)] max-w-[600px]">
-            Three Phases. Integrated Services.
+            How marketing actually works in Miami and why most of it doesn&apos;t.
           </h2>
         </motion.div>
 

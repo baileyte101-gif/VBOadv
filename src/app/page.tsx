@@ -16,6 +16,78 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 }
 
+// Phase 1.1 — Service schema: homepage service descriptor for AI-citation lift and Google Rich Results.
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Integrated Marketing Services',
+  description:
+    'VBO Advertising provides integrated marketing services for small and mid-size businesses in Miami and South Florida, including marketing strategy, paid media, social media, SEO, brand strategy, and creative production.',
+  provider: {
+    '@type': 'Organization',
+    name: 'VBO Advertising',
+    url: 'https://www.vboadv.com/',
+  },
+  areaServed: [
+    'Coconut Grove, FL',
+    'Miami, FL',
+    'South Florida',
+    'Miami-Dade County',
+    'Broward County',
+    'Palm Beach County',
+  ],
+  serviceType: [
+    'Marketing Strategy',
+    'Paid Media',
+    'Social Media Marketing',
+    'Search Engine Optimization',
+    'Brand Strategy',
+    'Creative Production',
+    'Marketing Consulting',
+  ],
+  url: 'https://www.vboadv.com/',
+}
+
+// Phase 1.1 — FAQPage schema: Q&As tied to common searches for AI Overview and citation lift.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What does VBO Advertising do?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'VBO Advertising is a founder-led marketing consultancy and studio based in Miami, Florida. We set the marketing strategy first, then run disciplined execution across paid media, social, SEO, brand, and creative, all in one connected system for small and mid-size businesses.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where is VBO Advertising located?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'VBO Advertising is based in Coconut Grove, Miami, Florida. We work with clients across South Florida (Miami-Dade, Broward, and Palm Beach counties) and serve select clients nationally.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What kinds of businesses does VBO Advertising work with?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'VBO works with founder-led and owner-operator businesses, small to mid-size companies that want senior-level marketing strategy and disciplined execution without the overhead of a large agency. We have experience with professional services firms, hospitality brands, and consumer businesses across South Florida.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is integrated marketing?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Integrated marketing means your brand, budget, channels, creative, and measurement all work together as one system, not as five disconnected vendors. VBO builds and runs that system for small and mid-size businesses so every part of your marketing pulls in the same direction.',
+      },
+    },
+  ],
+}
+
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -63,6 +135,14 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeBreadcrumbSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Nav />
       <Hero />
       <Ticker
@@ -98,6 +178,12 @@ export default function Home() {
               className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
             >
               Marketing for Law Firms
+            </a>
+            <a
+              href="/insights"
+              className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
+            >
+              VBO Insights
             </a>
           </nav>
 
