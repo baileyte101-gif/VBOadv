@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Post } from '@/types/blog'
 import { formatDate } from '@/lib/blog-utils'
 
@@ -27,13 +28,23 @@ export default function PostCard({ post, index }: PostCardProps) {
     >
       {/* Card Image */}
       <div className="h-[200px] relative overflow-hidden">
-        <div
-          className={`w-full h-full bg-gradient-to-br ${gradientClass} flex items-center justify-center`}
-        >
-          <span className="font-headline font-black text-[120px] leading-none text-[#B8962E]/[0.07] select-none">
-            {ghostNum}
-          </span>
-        </div>
+        {post.image ? (
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            className="object-cover"
+          />
+        ) : (
+          <div
+            className={`w-full h-full bg-gradient-to-br ${gradientClass} flex items-center justify-center`}
+          >
+            <span className="font-headline font-black text-[120px] leading-none text-[#B8962E]/[0.07] select-none">
+              {ghostNum}
+            </span>
+          </div>
+        )}
         {/* Category Tag */}
         <span className="absolute top-4 left-4 font-mono text-[9px] tracking-[2px] uppercase text-[#0D0D0D] bg-[#B8962E] px-[10px] py-1">
           {post.category}

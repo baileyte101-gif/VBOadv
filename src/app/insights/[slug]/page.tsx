@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import Nav from '@/components/Nav'
 import CTASection from '@/components/CTASection'
 import ReadingProgress from '@/components/blog/ReadingProgress'
@@ -241,9 +242,20 @@ export default function InsightPost({ params }: Props) {
       <div className="bg-[#0D0D0D] px-6 md:px-10 lg:px-24 pb-0 mt-12">
         <div className="max-w-[1400px] mx-auto">
           <div className="h-[280px] md:h-[360px] bg-gradient-to-br from-[#1C1C1C] via-[#24282C] to-[#1a1a18] flex items-center justify-center overflow-hidden relative">
-            <span className="font-headline font-black text-[240px] leading-none text-[#B8962E]/[0.05] select-none">
-              01
-            </span>
+            {post.image ? (
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                priority
+                sizes="(min-width: 1400px) 1400px, 100vw"
+                className="object-cover"
+              />
+            ) : (
+              <span className="font-headline font-black text-[240px] leading-none text-[#B8962E]/[0.05] select-none">
+                01
+              </span>
+            )}
             <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#B8962E]/20" />
           </div>
         </div>

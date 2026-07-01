@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Post } from '@/types/blog'
 import { formatDate } from '@/lib/blog-utils'
 
@@ -11,11 +12,21 @@ export default function FeaturedPost({ post }: FeaturedPostProps) {
     <div className="border border-[#B8962E]/18 overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-0">
       {/* Image Side */}
       <div className="h-[320px] lg:h-[420px] relative overflow-hidden bg-[#1C1C1C]">
-        <div className="w-full h-full bg-gradient-to-br from-[#1C1C1C] via-[#24282C] to-[#1a1a18] flex items-center justify-center">
-          <span className="font-headline font-black text-[200px] leading-none text-[#B8962E]/[0.08] select-none">
-            01
-          </span>
-        </div>
+        {post.image ? (
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-[#1C1C1C] via-[#24282C] to-[#1a1a18] flex items-center justify-center">
+            <span className="font-headline font-black text-[200px] leading-none text-[#B8962E]/[0.08] select-none">
+              01
+            </span>
+          </div>
+        )}
         {/* Category tag */}
         <span className="absolute top-6 left-6 font-mono text-[10px] tracking-[2px] uppercase text-[#0D0D0D] bg-[#B8962E] px-3.5 py-1.5">
           {post.category}
