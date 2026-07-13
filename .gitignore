@@ -41,8 +41,9 @@ Thumbs.db
 *.swp
 *.swo
 
-# Claude Code local config
-.claude/
+# Claude Code local config (but track the agent team definitions)
+.claude/*
+!.claude/agents/
 
 # Design assets / working files (not needed for deployment)
 Inspiration/
