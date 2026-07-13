@@ -96,9 +96,38 @@ voice fidelity; Jules owns visual brand.
   change log entry (Dash consumes these for reporting), and hand off with a
   structured file, not chat memory.
 
+## Local vs. web (Claude Code) — where knowledge lives
+Two environments run the same team; the difference is what each can see.
+- **Local** = Tim's machine. Persists. Sees the whole disk, including the
+  gitignored local agent workspace (client-state, brand-voice source, etc.).
+- **Web** = a fresh cloud container each session. Sees **only what's in git**,
+  plus what authorized connectors feed it. Never sees the local disk.
+
+**Three homes for knowledge — put each thing in the right one:**
+
+| Knowledge | Home | Local | Web |
+|---|---|---|---|
+| Agent definitions, review protocol, brand voice, playbooks | **Git** (`.claude/agents/`, this file) | ✅ | ✅ |
+| Live client-state, PII, budgets, contracts | **Local workspace** (gitignored) | ✅ | ❌ |
+| Deep client knowledge (shared, non-secret) | **Connectors** (Notion, Google Drive, ClickUp…) | ✅ | ✅ |
+| API keys / tokens | **Env vars** — never git | — | — |
+
+Rule of thumb: **git = who the agents are + shared rules; connectors = what
+they know about clients; local workspace = sensitive files kept home.** To give
+a web session deep client context without committing anything sensitive, route
+it through a connector and authorize that connector in claude.ai settings.
+
 ## Do not commit
 
 This repo is **public**. Never commit secrets (API keys, tokens,
 credentials), client-state files, client data, budgets, or contact lists.
 Those live in the local agent workspace or environment settings. Agent
 definitions and site source only.
+
+## Setup log
+- **2026-07-13** — Bridged the local agent team to git and mapped the
+  local-vs-web working model (above). Un-ignored `.claude/agents/` (local
+  config, client-state, and secrets stay ignored); added
+  `.claude/agents/README.md` + `_TEMPLATE.md`; created this `CLAUDE.md`. The 12
+  agent definitions were then uploaded to `.claude/agents/`. Remaining: merge
+  this branch to `main` so every future local + web session auto-loads the team.
