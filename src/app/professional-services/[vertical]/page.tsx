@@ -58,8 +58,13 @@ const SERVICE_SCHEMAS: Record<string, Record<string, unknown>> = {
     provider: { "@id": "https://www.vboadv.com/#organization" },
     description:
       "VBO helps boutique law firms in South Florida turn strong credentials into a predictable source of new clients through marketing strategy, paid media, SEO, brand, and creative.",
-    serviceType: "Legal Marketing",
+    serviceType: [
+      "Legal Marketing",
+      "Law Firm Marketing",
+      "Legal Marketing Agency Services",
+    ],
     areaServed: [
+      { "@type": "City", name: "Coconut Grove" },
       { "@type": "City", name: "Miami" },
       { "@type": "City", name: "Fort Lauderdale" },
       { "@type": "City", name: "West Palm Beach" },

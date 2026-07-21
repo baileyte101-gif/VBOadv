@@ -36,18 +36,21 @@ export interface VerticalData {
     home?: { before: string; linkText: string; after: string };
     insights?: { before: string; linkText: string; after: string };
   };
+  // Founder headshot alt override (SEO). Template falls back to the generic
+  // "Tim Bailey, Founder of VBO Advertising" when absent.
+  founderAlt?: string;
 }
 
 export const verticals: Record<string, VerticalData> = {
   "law-firms": {
     slug: "law-firms",
-    ogTitle: "Marketing for Law Firms in South Florida | VBO Advertising",
+    ogTitle: "Marketing for Law Firms in Miami | VBO Advertising",
     ogDescription:
-      "VBO helps boutique law firms turn strong credentials into consistent client growth. Book a free 30-minute call.",
+      "VBO helps boutique law firms in Miami turn strong credentials into consistent client growth. Book a free 30-minute call.",
     hero: {
-      headline: "Your Firm's Reputation Deserves Marketing That Keeps Up",
+      headline: "Marketing for Law Firms in Miami",
       subheadline:
-        "VBO helps boutique law firms in South Florida turn strong credentials into a predictable source of new clients.",
+        "Your firm's reputation deserves marketing that keeps up. Based in Coconut Grove, VBO helps boutique law firms in Miami turn strong credentials into a predictable source of new clients.",
       body: "Most law firms rely on referrals and reputation. That works until it plateaus. VBO builds the marketing infrastructure that makes sure the right clients find you before they find your competitor down the street.",
     },
     image1: {
@@ -97,7 +100,7 @@ export const verticals: Record<string, VerticalData> = {
       alt: "Downtown Miami office tower facade at twilight, brushed bronze louvers and a gold reflection against a dusk navy sky",
     },
     socialProofAdditional: [
-      "We understand the ethics of legal marketing, including Florida Bar advertising rules",
+      "We understand the ethics of legal marketing, including Florida Bar Rule 4-7 advertising requirements, and we build every campaign to stay inside them",
       "Our approach is built for firms that compete on quality, not volume",
     ],
     faq: [
@@ -116,7 +119,36 @@ export const verticals: Record<string, VerticalData> = {
         answer:
           "Yes. Local SEO including Google Business Profile optimization, citation building, and review acquisition strategy is part of our digital presence work for law firms. Local pack visibility drives a significant share of new client inquiries for South Florida law firms.",
       },
+      {
+        question: "How much does law firm marketing cost?",
+        answer:
+          "Cost depends on the mix your firm needs. Strategy, digital presence, and paid media are priced differently, and a solo practice needs a different system than a 15-attorney firm. We do not publish blanket packages because a generic number would not be honest. Book a 30-minute call and we will give you a real range for your firm, not a teaser rate.",
+      },
+      {
+        question: "How long before we see results?",
+        answer:
+          "Paid media can start generating qualified consultations within the first few weeks. Search visibility and reputation-driven growth take longer, usually 3 to 6 months to compound. We tell you this up front so the timeline never surprises you.",
+      },
+      {
+        question: "Are you only based in Miami, or do you work with firms elsewhere?",
+        answer:
+          "We're based in Coconut Grove, and most of our law firm clients are right here in Miami. We also work with boutique firms across South Florida, including Fort Lauderdale and West Palm Beach, and take on select firms outside the region when the fit is right.",
+      },
     ],
+    crossLinks: {
+      home: {
+        before: "This is how ",
+        linkText: "VBO Advertising",
+        after: " builds marketing systems for every client, not just law firms.",
+      },
+      insights: {
+        before: "Read more about how we think about marketing strategy on the ",
+        linkText: "VBO Insights blog",
+        after: ".",
+      },
+    },
+    founderAlt:
+      "Tim Bailey, founder of VBO Advertising, a Coconut Grove, Miami marketing consultancy working with boutique law firms",
   },
 
   "dental-practices": {

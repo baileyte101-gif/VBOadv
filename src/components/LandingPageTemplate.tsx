@@ -634,7 +634,7 @@ export default function LandingPageTemplate({ vertical }: Props) {
                 <div className="relative w-full aspect-[3/4] overflow-hidden">
                   <Image
                     src="/images/headshot.jpg"
-                    alt="Tim Bailey, Founder of VBO Advertising"
+                    alt={vertical.founderAlt ?? "Tim Bailey, Founder of VBO Advertising"}
                     fill
                     className="object-cover object-top"
                     sizes="(max-width: 768px) 80vw, 280px"
