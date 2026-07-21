@@ -4,7 +4,7 @@ import { getAllPosts } from "@/lib/blog";
 
 // Mirror the INDEXABLE_VERTICALS Set in src/app/professional-services/[vertical]/page.tsx.
 // When a vertical flips to indexable there, also add its slug here.
-const INDEXABLE_VERTICALS = new Set(["law-firms"]);
+const INDEXABLE_VERTICALS = new Set(["law-firms", "med-spas"]);
 
 const HOST = "https://www.vboadv.com";
 

@@ -180,6 +180,12 @@ export default function Home() {
               Marketing for Law Firms
             </a>
             <a
+              href="/professional-services/med-spas"
+              className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
+            >
+              Marketing for Med Spas
+            </a>
+            <a
               href="/insights"
               className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
             >

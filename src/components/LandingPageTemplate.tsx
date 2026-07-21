@@ -581,6 +581,31 @@ export default function LandingPageTemplate({ vertical }: Props) {
           </section>
         )}
 
+        {/* ===== CROSS-LINK: HOMEPAGE ===== */}
+        {vertical.crossLinks?.home && (
+          <section className="px-6 pb-16 md:pb-24">
+            <motion.div
+              className="max-w-[1200px] mx-auto"
+              variants={FADE_UP}
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEWPORT_ONCE}
+              transition={ENTER_TRANSITION}
+            >
+              <p className="font-body text-[18px] text-[var(--color-vbo-egg)] opacity-80 leading-[28px] max-w-3xl">
+                {vertical.crossLinks.home.before}
+                <a
+                  href="/"
+                  className="text-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-gold-light)] underline underline-offset-4 decoration-[var(--color-vbo-gold)]/40 transition-colors"
+                >
+                  {vertical.crossLinks.home.linkText}
+                </a>
+                {vertical.crossLinks.home.after}
+              </p>
+            </motion.div>
+          </section>
+        )}
+
         {/* ===== ABOUT TIM ===== */}
         <section className="px-6 py-16 md:py-24 lg:py-[120px] bg-[var(--color-vbo-graphite)]">
           <motion.div
@@ -688,6 +713,18 @@ export default function LandingPageTemplate({ vertical }: Props) {
                   {TIM_EMAIL}
                 </a>
               </p>
+              {vertical.crossLinks?.insights && (
+                <p className="font-body text-[16px] text-[var(--color-vbo-egg)] opacity-60 leading-[26px] mt-4">
+                  {vertical.crossLinks.insights.before}
+                  <a
+                    href="/insights"
+                    className="text-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-gold-light)] underline underline-offset-4 decoration-[var(--color-vbo-gold)]/40 transition-colors"
+                  >
+                    {vertical.crossLinks.insights.linkText}
+                  </a>
+                  {vertical.crossLinks.insights.after}
+                </p>
+              )}
             </motion.div>
           </motion.div>
         </section>

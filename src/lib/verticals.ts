@@ -29,6 +29,13 @@ export interface VerticalData {
     question: string;
     answer: string;
   }[];
+  // Body-level internal links (SEO). Rendered only when present: `home` as a
+  // short section between FAQ and the founder block, `insights` inside the
+  // bottom CTA. Hrefs are fixed in the template ("/" and "/insights").
+  crossLinks?: {
+    home?: { before: string; linkText: string; after: string };
+    insights?: { before: string; linkText: string; after: string };
+  };
 }
 
 export const verticals: Record<string, VerticalData> = {
@@ -175,21 +182,21 @@ export const verticals: Record<string, VerticalData> = {
 
   "med-spas": {
     slug: "med-spas",
-    ogTitle:
-      "Marketing for Med Spas + Aesthetic Clinics in South Florida | VBO Advertising",
+    ogTitle: "Medical Spa Marketing in Miami | VBO Advertising",
     ogDescription:
-      "VBO helps med spas and aesthetic clinics build brands that attract high-value clients. Book a free call.",
+      "VBO helps med spas and aesthetic clinics in Miami build brands that attract high-value clients. Book a free 30-minute call.",
     hero: {
-      headline:
-        "Your Clients Are Searching for You. Make Sure They Find You First.",
+      headline: "Medical Spa Marketing in Miami",
       subheadline:
-        "VBO helps med spas and aesthetic clinics in South Florida build brands that attract premium clients and fill treatment schedules.",
+        "Your clients are searching for you. Make sure they find you first. Based in Coconut Grove, VBO helps med spas and aesthetic clinics in Miami build brands that attract premium clients and fill treatment schedules.",
       body: "The med-aesthetic market in South Florida is crowded. The clinics that win are not always the best at what they do. They are the ones with the clearest brand, the strongest online presence, and a marketing system that works while they are treating patients.",
     },
     image1: {
       direction:
         "Luxurious, modern aesthetic clinic interior. Clean lines, soft lighting, premium materials. Or a beauty/wellness-adjacent lifestyle shot. No before/after shots, no needles or syringes.",
       mood: "Luxurious, aspirational, serene.",
+      src: "/images/med-spas/Image 1/med-spas-hero-band.png",
+      alt: "Modern med spa treatment room in Miami with soft ambient lighting and premium finishes",
     },
     painPoints: [
       "Your Instagram looks great but it is not translating into booked consultations",
@@ -220,7 +227,7 @@ export const verticals: Record<string, VerticalData> = {
         {
           title: "Brand + Creative",
           description:
-            "Visual identity, photography direction, and content that positions your clinic as the premium choice. Because in aesthetics, your brand IS the product.",
+            "Visual identity, photography direction, and content that positions your clinic as the premium choice. Because in aesthetics, your brand is the product.",
         },
       ],
     },
@@ -228,11 +235,63 @@ export const verticals: Record<string, VerticalData> = {
       direction:
         "A detail shot: luxury product arrangement, modern interior design element, or a South Florida lifestyle scene (palm trees, clean architecture, ocean tones).",
       mood: "Premium, aspirational, South Florida luxury.",
+      src: "/images/med-spas/Image 2/med-spas-secondary-band.png",
+      alt: "Curated arrangement of premium skincare products on a marble surface with warm Miami light",
     },
     socialProofAdditional: [
       "We understand the aesthetics market: visual branding, consultation-driven funnels, and high-intent local search",
-      "Built for clinics that want premium clients, not coupon hunters",
+      "We understand the advertising rules for aesthetic treatments, including FTC guidance on before-and-after claims",
+      "Built for clinics that want premium clients, not discount shoppers",
     ],
+    faq: [
+      {
+        question: "How much does med spa marketing cost?",
+        answer:
+          "Cost depends on what your spa actually needs. A single-location practice building its first real digital presence needs a different plan than a multi-location group scaling paid media across markets. We do not publish a flat package because a generic number would not be honest. Book a 30-minute call and we will give you a real range for your business, not a teaser rate.",
+      },
+      {
+        question: "How long before we see results?",
+        answer:
+          "Paid media can start bringing in qualified consultation requests within the first few weeks. Search visibility and brand-driven bookings take longer, usually 3 to 6 months to compound. We tell you this up front so the timeline never surprises you.",
+      },
+      {
+        question:
+          "Do you work with single-location med spas or only multi-location groups?",
+        answer:
+          "We work with both. Most of our med spa and aesthetic clinic clients run one or two locations and want to compete with the bigger groups without losing what makes them premium. We also take on multi-location practices ready to scale the same disciplined marketing across every location.",
+      },
+      {
+        question: "Can you help with our Google Business Profile and reviews?",
+        answer:
+          "Yes. Local SEO, including Google Business Profile optimization, citation consistency, and review strategy, is part of our digital presence work for med spas. Most consultation requests start with a local search, so this is one of the hardest-working pieces of the system.",
+      },
+      {
+        question:
+          "Do you understand the advertising rules around aesthetic treatments?",
+        answer:
+          "Yes. Med spa and aesthetic marketing carries real constraints: FTC guidance on before-and-after claims and endorsements, and platform ad policies around injectables and body procedures. We build every campaign to stay inside those lines from the start, not clean it up after a rejected ad.",
+      },
+      {
+        question:
+          "Are you only based in Miami, or do you work with med spas elsewhere?",
+        answer:
+          "We're based in Coconut Grove, and most of our med spa and aesthetic clinic clients are right here in Miami, in neighborhoods like Coral Gables and Brickell. We also work with practices across South Florida, including Fort Lauderdale and West Palm Beach, and take on select clients outside the region when the fit is right.",
+      },
+    ],
+    crossLinks: {
+      home: {
+        before: "This is how ",
+        linkText: "VBO Advertising",
+        after:
+          " builds marketing systems for every client, not just med spas and aesthetic clinics.",
+      },
+      insights: {
+        before:
+          "Read more about how we think about marketing strategy on the ",
+        linkText: "VBO Insights blog",
+        after: ".",
+      },
+    },
   },
 
   "financial-advisors": {

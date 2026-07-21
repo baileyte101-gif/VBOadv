@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 // Verticals approved for organic indexing. Anything not listed here stays
 // noindexed (the page is still reachable, just won't be crawled). When a new
 // vertical goes live, add its slug here.
-const INDEXABLE_VERTICALS = new Set(["law-firms"]);
+const INDEXABLE_VERTICALS = new Set(["law-firms", "med-spas"]);
 
 const PRODUCTION_HOST = "https://www.vboadv.com";
 
@@ -60,6 +60,26 @@ const SERVICE_SCHEMAS: Record<string, Record<string, unknown>> = {
       "VBO helps boutique law firms in South Florida turn strong credentials into a predictable source of new clients through marketing strategy, paid media, SEO, brand, and creative.",
     serviceType: "Legal Marketing",
     areaServed: [
+      { "@type": "City", name: "Miami" },
+      { "@type": "City", name: "Fort Lauderdale" },
+      { "@type": "City", name: "West Palm Beach" },
+    ],
+  },
+  "med-spas": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Medical Spa Marketing in Miami",
+    provider: { "@id": "https://www.vboadv.com/#organization" },
+    description:
+      "VBO helps med spas and aesthetic clinics in Miami build brands that attract high-value clients through marketing strategy, paid media, SEO, brand, and creative.",
+    serviceType: [
+      "Medical Spa Marketing",
+      "Med Spa Marketing Agency",
+      "Medical Spa Digital Marketing Agency",
+      "Aesthetic Clinic Marketing",
+    ],
+    areaServed: [
+      { "@type": "City", name: "Coconut Grove" },
       { "@type": "City", name: "Miami" },
       { "@type": "City", name: "Fort Lauderdale" },
       { "@type": "City", name: "West Palm Beach" },
