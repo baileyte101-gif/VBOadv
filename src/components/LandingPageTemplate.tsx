@@ -540,6 +540,34 @@ export default function LandingPageTemplate({ vertical }: Props) {
           </motion.div>
         </section>
 
+        {/* ===== AI MARKETING (optional SEO content section) ===== */}
+        {vertical.aiMarketing && (
+          <section className="px-6 py-16 md:py-24 lg:py-[120px]">
+            <motion.div
+              className="max-w-[1200px] mx-auto"
+              variants={STAGGER_PARENT}
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEWPORT_ONCE}
+            >
+              <motion.h2
+                variants={FADE_UP}
+                transition={ENTER_TRANSITION}
+                className="font-headline text-[36px] md:text-[56px] font-black uppercase text-[var(--color-vbo-white)] leading-[1] mb-8"
+              >
+                {vertical.aiMarketing.heading}
+              </motion.h2>
+              <motion.p
+                variants={FADE_UP}
+                transition={ENTER_TRANSITION}
+                className="font-body text-[18px] text-[var(--color-vbo-egg)] opacity-80 leading-[28px] max-w-3xl"
+              >
+                {vertical.aiMarketing.body}
+              </motion.p>
+            </motion.div>
+          </section>
+        )}
+
         {/* ===== FAQ ===== */}
         {vertical.faq && vertical.faq.length > 0 && (
           <section className="px-6 py-16 md:py-24 lg:py-[120px]">

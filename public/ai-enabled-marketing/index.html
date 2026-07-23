@@ -48,9 +48,22 @@
       "url": "https://www.vboadv.com"
     },
     "description": "Senior-level strategic thinking meets modern AI-enabled execution. VBO is an AI-enabled marketing agency for small to mid-size businesses in South Florida, delivering integrated marketing with less overhead, faster turnaround, and better cost than traditional agencies.",
-    "serviceType": "AI-Enabled Marketing",
+    "serviceType": [
+      "AI-Enabled Marketing",
+      "AI Marketing Consulting",
+      "Marketing Automation",
+      "AI Adoption Consulting"
+    ],
     "areaServed": [
+      { "@type": "City", "name": "Coconut Grove" },
       { "@type": "City", "name": "Miami" },
+      { "@type": "City", "name": "Miami Beach" },
+      { "@type": "City", "name": "Coral Gables" },
+      { "@type": "City", "name": "Brickell" },
+      { "@type": "City", "name": "Wynwood" },
+      { "@type": "City", "name": "Doral" },
+      { "@type": "City", "name": "Aventura" },
+      { "@type": "City", "name": "Hialeah" },
       { "@type": "City", "name": "Fort Lauderdale" },
       { "@type": "City", "name": "West Palm Beach" }
     ]
@@ -65,6 +78,46 @@
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.vboadv.com" },
       { "@type": "ListItem", "position": 2, "name": "AI-Enabled Marketing", "item": "https://www.vboadv.com/ai-enabled-marketing" }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org: FAQPage (text matches the visible FAQ block character-for-character) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an AI-enabled marketing agency?",
+        "acceptedAnswer": { "@type": "Answer", "text": "An agency that uses AI inside its own operation to do the work faster and more consistently, while the strategy and the judgment stay human. Most shops fall on one side or the other. A traditional agency bills you for every hour the work takes by hand. An AI-first shop hands you output nobody senior has read. We sit in between. You get the speed without losing the senior judgment." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from marketing automation?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Marketing automation runs rules you set once, like an email that fires when someone fills out a form. What we build is closer to a team that reasons through the work. It handles research, drafting, analysis, and quality checks, and a senior strategist reviews the output before it reaches you. Automation follows the instructions you set. Ours makes the judgment call, then a person checks it." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does \"agent architecture\" actually mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It means we build specialized AI systems for individual marketing jobs, then connect them so they hand work to each other. One handles research, another drafts, another checks the numbers. Building it this way keeps the work consistent as the volume grows, and lets us trace any piece of output back to the step that produced it. It is the reason we can run senior-level work without a senior-level headcount." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you help our team adopt AI, or do you just use it on our behalf?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Both, depending on what you need. Most clients hire us to run their marketing and the AI stays on our side. Some want their own team using it well, so we map their workflows, build what they need, and train the people who will run it. We can do either, or start with the first and move to the second." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does using AI mean the work is lower quality?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It means the opposite when it is built correctly. Every piece of work has a senior strategist between the system and you. What AI removes is the slow middle, the research passes, the first drafts, the reformatting, the version chasing. What it does not touch is the thinking or the final call. If anything, you get more senior attention than a traditional agency gives you, because none of it is spent on production." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where are you based, and who do you work with?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We are based in Coconut Grove and work with businesses across Miami, including Brickell, Wynwood, Coral Gables, Miami Beach, Doral, Aventura and Little Havana. We also work with clients across South Florida and take on select clients nationally when the fit is right." }
+      }
     ]
   }
   </script>
@@ -328,7 +381,9 @@
       margin-bottom: 40px;
     }
 
-    .hero h1 {
+    /* Hero display line (was .hero h1 before the Phase 1 H1/sub tag swap; kept
+       byte-identical so the big display text renders unchanged as a <p>). */
+    .hero-display {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 900;
       text-transform: uppercase;
@@ -479,9 +534,68 @@
       margin-top: 20px;
     }
 
+    /* Inline body links (internal cross-links) */
+    .section p a {
+      color: var(--matte-gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(184, 150, 46, 0.4);
+      transition: color 0.2s;
+    }
+
+    .section p a:hover {
+      color: var(--matte-gold-hover);
+    }
+
+    /* Cross-link paragraphs at the end of a section */
+    .section-links {
+      margin-top: 40px;
+    }
+
+    /* New Phase 1 body copy uses the lighter text token (matches the Law Firms
+       FAQ/cross-link render and clears WCAG AA on the dark sections). Links keep
+       their gold color via the .section p a rule above. */
+    .section p.cross-links {
+      color: var(--off-white);
+    }
+
     @media (min-width: 768px) {
       .section { padding: 128px 48px; }
       .ghost-number { font-size: 220px; }
+    }
+
+    /* ========================================
+       FAQ
+       ======================================== */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      max-width: 760px;
+      margin-top: 8px;
+    }
+
+    .faq-item {
+      border-left: 2px solid rgba(184, 150, 46, 0.3);
+      padding-left: 24px;
+    }
+
+    .faq-question {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--matte-gold);
+      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    /* Answer copy uses the lighter text token (matches the Law Firms FAQ render
+       and clears WCAG AA on the near-black FAQ section). */
+    .faq-item p {
+      color: var(--off-white);
+      opacity: 0.85;
     }
 
     @media (min-width: 1024px) {
@@ -1309,9 +1423,9 @@
     <div class="hero-content stagger">
       <p class="hero-label fade-up">Miami's AI-Enabled Marketing Agency</p>
 
-      <h1 class="fade-up">Senior Strategy.<br/>AI-Enabled Execution.<br/>Modern Efficiency.</h1>
+      <p class="hero-display fade-up">Senior Strategy.<br/>AI-Enabled Execution.<br/>Modern Efficiency.</p>
 
-      <p class="hero-sub fade-up">Miami's AI-Enabled Marketing Agency.</p>
+      <h1 class="hero-sub fade-up">Miami's AI-Enabled Marketing Agency.</h1>
 
       <p class="hero-body fade-up">
         VBO is what modern marketing efficiency looks like &mdash; human, AI-enabled, and led by
@@ -1635,6 +1749,62 @@
       <div class="services-list fade-up">
         Paid Media &middot; SEO &middot; Brand Strategy &middot; Creative &middot; Social Media &middot;
         CRM &amp; Email &middot; Performance Analytics &middot; Websites
+      </div>
+
+      <p class="fade-up section-links cross-links">
+        This is how <a href="/">VBO Advertising</a> builds marketing systems for every client, whatever the industry.
+      </p>
+
+      <p class="fade-up cross-links">
+        We work with <a href="/professional-services/law-firms">law firms</a> and
+        <a href="/professional-services/med-spas">med spas</a> on the same model, and we write about how we
+        approach the work on the <a href="/insights">VBO Insights blog</a>.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============ SECTION 6: FAQ ============ -->
+  <section id="faq" class="section section-dark" aria-label="Frequently Asked Questions">
+    <div class="ghost-number" aria-hidden="true">06</div>
+    <div class="gold-line" aria-hidden="true"></div>
+
+    <div class="section-inner">
+      <div class="section-label fade-up">FAQ</div>
+      <div class="section-accent fade-up"></div>
+
+      <h2 class="fade-up">Common Questions</h2>
+
+      <div class="faq-list">
+        <div class="faq-item fade-up">
+          <h3 class="faq-question">What is an AI-enabled marketing agency?</h3>
+          <p>An agency that uses AI inside its own operation to do the work faster and more consistently, while the strategy and the judgment stay human. Most shops fall on one side or the other. A traditional agency bills you for every hour the work takes by hand. An AI-first shop hands you output nobody senior has read. We sit in between. You get the speed without losing the senior judgment.</p>
+        </div>
+
+        <div class="faq-item fade-up">
+          <h3 class="faq-question">How is this different from marketing automation?</h3>
+          <p>Marketing automation runs rules you set once, like an email that fires when someone fills out a form. What we build is closer to a team that reasons through the work. It handles research, drafting, analysis, and quality checks, and a senior strategist reviews the output before it reaches you. Automation follows the instructions you set. Ours makes the judgment call, then a person checks it.</p>
+        </div>
+
+        <div class="faq-item fade-up">
+          <h3 class="faq-question">What does "agent architecture" actually mean?</h3>
+          <p>It means we build specialized AI systems for individual marketing jobs, then connect them so they hand work to each other. One handles research, another drafts, another checks the numbers. Building it this way keeps the work consistent as the volume grows, and lets us trace any piece of output back to the step that produced it. It is the reason we can run senior-level work without a senior-level headcount.</p>
+        </div>
+
+        <div class="faq-item fade-up">
+          <h3 class="faq-question">Do you help our team adopt AI, or do you just use it on our behalf?</h3>
+          <p>Both, depending on what you need. Most clients hire us to run their marketing and the AI stays on our side. Some want their own team using it well, so we map their workflows, build what they need, and train the people who will run it. We can do either, or start with the first and move to the second.</p>
+        </div>
+
+        <div class="faq-item fade-up">
+          <h3 class="faq-question">Does using AI mean the work is lower quality?</h3>
+          <p>It means the opposite when it is built correctly. Every piece of work has a senior strategist between the system and you. What AI removes is the slow middle, the research passes, the first drafts, the reformatting, the version chasing. What it does not touch is the thinking or the final call. If anything, you get more senior attention than a traditional agency gives you, because none of it is spent on production.</p>
+        </div>
+
+        <div class="faq-item fade-up">
+          <h3 class="faq-question">Where are you based, and who do you work with?</h3>
+          <p>We are based in Coconut Grove and work with businesses across Miami, including Brickell, Wynwood, Coral Gables, Miami Beach, Doral, Aventura and Little Havana. We also work with clients across South Florida and take on select clients nationally when the fit is right.</p>
+        </div>
       </div>
     </div>
   </section>

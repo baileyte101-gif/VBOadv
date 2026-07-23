@@ -25,6 +25,13 @@ export interface VerticalData {
     alt?: string;
   };
   socialProofAdditional: string[];
+  // Optional SEO content section (H2 + body) rendered between the Social Proof
+  // and FAQ sections. Used by law-firms to target "ai marketing for law firms"
+  // (Phase 1, Vega 2026-07-22). Omit for verticals that do not need it.
+  aiMarketing?: {
+    heading: string;
+    body: string;
+  };
   faq?: {
     question: string;
     answer: string;
@@ -103,6 +110,10 @@ export const verticals: Record<string, VerticalData> = {
       "We understand the ethics of legal marketing, including Florida Bar Rule 4-7 advertising requirements, and we build every campaign to stay inside them",
       "Our approach is built for firms that compete on quality, not volume",
     ],
+    aiMarketing: {
+      heading: "AI Marketing for Law Firms",
+      body: "Legal marketing has a volume problem. Intake, content, review responses, and campaign reporting all have to happen constantly, and most firms either let them slip or pay associate rates for work that should never touch an associate. We use AI on our side of the work to carry that load, with a senior strategist reviewing everything before it goes out. Your firm gets the output of a much larger team without the overhead of one, and nothing reaches the public that a person has not read.",
+    },
     faq: [
       {
         question: "Does VBO understand Florida Bar advertising rules?",
@@ -133,6 +144,11 @@ export const verticals: Record<string, VerticalData> = {
         question: "Are you only based in Miami, or do you work with firms elsewhere?",
         answer:
           "We're based in Coconut Grove, and most of our law firm clients are right here in Miami. We also work with boutique firms across South Florida, including Fort Lauderdale and West Palm Beach, and take on select firms outside the region when the fit is right.",
+      },
+      {
+        question: "Do you use AI for law firm marketing?",
+        answer:
+          "Yes, on our side of the work. We use it for research, drafting, analysis and reporting, and a senior strategist reviews every piece before it reaches you or the public. It never publishes on its own. That matters more in legal than in most industries, because Florida Bar Rule 4-7 advertising requirements apply to everything your firm puts out, and compliance is not something we hand to a machine.",
       },
     ],
     crossLinks: {
