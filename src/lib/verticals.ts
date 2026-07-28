@@ -38,10 +38,16 @@ export interface VerticalData {
   }[];
   // Body-level internal links (SEO). Rendered only when present: `home` as a
   // short section between FAQ and the founder block, `insights` inside the
-  // bottom CTA. Hrefs are fixed in the template ("/" and "/insights").
+  // bottom CTA. `home` href is fixed ("/"). `insights` supports either the
+  // legacy single-link shape (href fixed to "/insights", used by law-firms
+  // and med-spas) or a `segments` array for sentences that need more than
+  // one embedded link (added 2026-07-28 for dental-practices, whose approved
+  // copy links to med-spas and law-firms in addition to /insights).
   crossLinks?: {
     home?: { before: string; linkText: string; after: string };
-    insights?: { before: string; linkText: string; after: string };
+    insights?:
+      | { before: string; linkText: string; after: string }
+      | { segments: (string | { text: string; href: string })[] };
     // Renders between the homepage cross-link and the founder block.
     // href is hardcoded to "/fractional-cmo" in LandingPageTemplate.
     service?: { before: string; linkText: string; after: string };
@@ -178,21 +184,21 @@ export const verticals: Record<string, VerticalData> = {
 
   "dental-practices": {
     slug: "dental-practices",
-    ogTitle:
-      "Marketing for Dental Practices in South Florida | VBO Advertising",
+    ogTitle: "Dental Practice Marketing in Miami | VBO Advertising",
     ogDescription:
-      "VBO helps independent dental practices attract more of the right patients through smarter marketing. Book a free call.",
+      "Dental practice marketing in Miami. VBO helps independent practices attract better patients and fill schedules. Based in Coconut Grove. Book a free call.",
     hero: {
-      headline:
-        "Your Practice Deserves Marketing as Good as the Care You Provide",
+      headline: "Dental Practice Marketing in Miami",
       subheadline:
-        "VBO helps independent dental practices in South Florida attract better patients, fill schedules, and build a brand that reflects the quality of their work.",
+        "Your practice deserves marketing as good as the care you provide. Based in Coconut Grove, VBO helps independent dental practices in Miami attract better patients, keep the schedule full, and build a brand that matches the work.",
       body: "Most dental practices either overspend on marketing that does not convert or rely entirely on insurance directories and word of mouth. VBO builds the system in between: clear positioning, strong digital presence, and campaigns that bring the right patients through the door.",
     },
     image1: {
       direction:
         "Modern, clean dental office interior. Bright, well-designed clinical space. Or an abstract/architectural shot of a modern medical building exterior. No close-ups of teeth.",
       mood: "Clean, modern, clinical but warm.",
+      src: "/images/dental-practices/Image 1/dental-practices-hero-band.png",
+      alt: "Modern dental practice treatment room in South Florida with light oak cabinetry and warm golden-hour light through sheer curtains",
     },
     painPoints: [
       "Your website looks fine but patients are booking with the practice down the street instead",
@@ -230,11 +236,64 @@ export const verticals: Record<string, VerticalData> = {
       direction:
         "Detail shot of a modern waiting room, a clean reception desk, or a South Florida street/building scene. Not clinical equipment.",
       mood: "Welcoming, elevated, professional.",
+      src: "/images/dental-practices/Image 2/dental-practices-secondary-band.png",
+      alt: "Warm, minimalist dental practice reception and waiting area with light oak furniture, brushed brass accents, and an olive tree in natural light",
     },
     socialProofAdditional: [
       "We understand patient acquisition economics and lifetime value by procedure type",
       "Built for practices that compete on quality and patient experience, not lowest price",
     ],
+    faq: [
+      {
+        question: "How much does dental practice marketing cost?",
+        answer:
+          "It depends on what your practice actually needs. A single-location practice building its first real digital presence needs a different system than a three-location group competing on implants, and pricing them the same would not be honest. That is why we do not publish packages. Book a 30-minute call and we will give you a real range for your practice.",
+      },
+      {
+        question: "How long before we see new patients?",
+        answer:
+          "Paid campaigns can start bringing in booked appointments within the first few weeks. Search visibility and reputation-driven growth take longer, usually 3 to 6 months to compound. We tell you which one is doing the work at any given point so the timeline never surprises you.",
+      },
+      {
+        question: "How is this different from a dental-only marketing agency?",
+        answer:
+          "Dental-only shops run the same playbook across hundreds of practices, which is efficient for them and generic for you. We work across professional services, so what we bring is a marketing system built around your positioning, not a template with your logo dropped in. If your goal is to look like every other practice in the area, we are the wrong call. If it is to be the practice people ask for by name, that is where we start.",
+      },
+      {
+        question: "Can you help us attract more cosmetic and implant cases?",
+        answer:
+          "That is usually the whole point. Most practices have plenty of insurance-driven volume and an inconsistent flow of high-value cases. Fixing that is a positioning and targeting problem before it is a budget problem, so we start by getting clear on what your practice wants to be known for, then build the campaigns and the digital presence to match.",
+      },
+      {
+        question: "Do you handle dental SEO?",
+        answer:
+          "Yes, and it is usually where the compounding happens. That means ranking for the procedures and neighborhoods that actually matter to your practice, fixing the technical issues that keep your site from showing up, and making sure your Google Business Profile is doing its job. More and more, it also decides whether your practice shows up when someone asks an AI assistant for a recommendation.",
+      },
+      {
+        question:
+          "Where are you based, and do you work with practices outside Miami?",
+        answer:
+          "We are based in Coconut Grove and most of our clients are here in Miami, including Brickell, Coral Gables, Miami Beach, Doral and Aventura. We also work with practices across South Florida and take on select clients outside the region when the fit is right.",
+      },
+    ],
+    crossLinks: {
+      home: {
+        before: "This is how ",
+        linkText: "VBO Advertising",
+        after: " builds marketing systems for every client, not just dental practices.",
+      },
+      insights: {
+        segments: [
+          "We work with ",
+          { text: "med spas", href: "/professional-services/med-spas" },
+          " and ",
+          { text: "law firms", href: "/professional-services/law-firms" },
+          " on the same model, and we write about how we approach the work on the ",
+          { text: "VBO Insights blog", href: "/insights" },
+          ".",
+        ],
+      },
+    },
   },
 
   "med-spas": {
@@ -374,6 +433,8 @@ export const verticals: Record<string, VerticalData> = {
       direction:
         "Sophisticated, professional. Modern office with a view, financial district architecture, a well-designed workspace. No stock photos of charts and graphs, no handshakes.",
       mood: "Trustworthy, sophisticated, established.",
+      src: "/images/financial-advisors/Image 1/financial-advisors-hero-band.png",
+      alt: "Sophisticated financial advisory office in a South Florida high-rise with walnut paneling, brass fixtures, and a golden-hour view of the Miami skyline",
     },
     painPoints: [
       "Your practice runs on referrals, which is great until the pipeline goes quiet for a quarter",
@@ -411,6 +472,8 @@ export const verticals: Record<string, VerticalData> = {
       direction:
         "South Florida cityscape (Brickell skyline, waterfront view), a modern office detail, or an abstract shot suggesting growth and stability. Not Wall Street cliche.",
       mood: "Calm confidence, stability, premium.",
+      src: "/images/financial-advisors/Image 2/financial-advisors-secondary-band.png",
+      alt: "Brickell Miami skyline and waterfront at golden hour, palm trees silhouetted against warm sunset light over Biscayne Bay",
     },
     socialProofAdditional: [
       "We understand the compliance considerations of marketing financial services",
@@ -435,6 +498,8 @@ export const verticals: Record<string, VerticalData> = {
       direction:
         "Modern professional environment. Clean workspace, architectural detail, or a polished South Florida office building exterior. Not a calculator and spreadsheet.",
       mood: "Precise, modern, trustworthy.",
+      src: "/images/accounting-firms/Image 1/accounting-firms-hero-band.png",
+      alt: "Modern South Florida office building facade at golden hour with brushed brass mullions, glass curtain wall, and silhouetted palm fronds",
     },
     painPoints: [
       "Tax season fills your calendar, but the rest of the year is unpredictable",
@@ -472,6 +537,8 @@ export const verticals: Record<string, VerticalData> = {
       direction:
         "Detail shot: organized modern workspace, a South Florida street scene or building facade, or a clean abstract composition suggesting structure and order.",
       mood: "Organized, elevated, professional.",
+      src: "/images/accounting-firms/Image 2/accounting-firms-secondary-band.png",
+      alt: "Organized modern office workspace with light oak shelving, tidy binders, and warm natural window light",
     },
     socialProofAdditional: [
       "We understand the seasonality of accounting and how to market around it",

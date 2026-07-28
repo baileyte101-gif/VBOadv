@@ -86,6 +86,29 @@ const SERVICE_SCHEMAS: Record<string, Record<string, unknown>> = {
       { "@type": "City", name: "West Palm Beach" },
     ],
   },
+  "dental-practices": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Dental Practice Marketing in Miami",
+    provider: { "@id": "https://www.vboadv.com/#organization" },
+    description:
+      "VBO helps independent dental practices in Miami attract better patients and fill schedules through marketing strategy, paid media, SEO, brand, and creative.",
+    serviceType: [
+      "Dental Practice Marketing",
+      "Marketing for Dentists",
+      "Dental SEO",
+      "Dental Patient Acquisition",
+    ],
+    areaServed: [
+      { "@type": "City", name: "Coconut Grove" },
+      { "@type": "City", name: "Miami" },
+      { "@type": "City", name: "Miami Beach" },
+      { "@type": "City", name: "Coral Gables" },
+      { "@type": "City", name: "Doral" },
+      { "@type": "City", name: "Aventura" },
+      { "@type": "City", name: "Fort Lauderdale" },
+    ],
+  },
 };
 
 const BREADCRUMB_NAMES: Record<string, string> = {

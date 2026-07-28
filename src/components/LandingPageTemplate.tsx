@@ -761,14 +761,32 @@ export default function LandingPageTemplate({ vertical }: Props) {
               </p>
               {vertical.crossLinks?.insights && (
                 <p className="font-body text-[16px] text-[var(--color-vbo-egg)] opacity-60 leading-[26px] mt-4">
-                  {vertical.crossLinks.insights.before}
-                  <a
-                    href="/insights"
-                    className="text-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-gold-light)] underline underline-offset-4 decoration-[var(--color-vbo-gold)]/40 transition-colors"
-                  >
-                    {vertical.crossLinks.insights.linkText}
-                  </a>
-                  {vertical.crossLinks.insights.after}
+                  {"segments" in vertical.crossLinks.insights ? (
+                    vertical.crossLinks.insights.segments.map((seg, i) =>
+                      typeof seg === "string" ? (
+                        <span key={i}>{seg}</span>
+                      ) : (
+                        <a
+                          key={i}
+                          href={seg.href}
+                          className="text-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-gold-light)] underline underline-offset-4 decoration-[var(--color-vbo-gold)]/40 transition-colors"
+                        >
+                          {seg.text}
+                        </a>
+                      )
+                    )
+                  ) : (
+                    <>
+                      {vertical.crossLinks.insights.before}
+                      <a
+                        href="/insights"
+                        className="text-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-gold-light)] underline underline-offset-4 decoration-[var(--color-vbo-gold)]/40 transition-colors"
+                      >
+                        {vertical.crossLinks.insights.linkText}
+                      </a>
+                      {vertical.crossLinks.insights.after}
+                    </>
+                  )}
                 </p>
               )}
             </motion.div>
