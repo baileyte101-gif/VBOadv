@@ -60,6 +60,7 @@
   }
   .contact-row:hover { color: #B8962E; }
   .contact-row svg { width: 18px; height: 18px; flex-shrink: 0; opacity: 0.6; }
+  .contact-row .timverse-mark { opacity: 1; }
   .contact-row span { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; }
   .actions { margin-top: 36px; display: flex; gap: 12px; }
   .btn {
@@ -112,6 +113,10 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
     <span>vboadv.com</span>
   </a>
+  <a href="https://thetimverse.com" target="_blank" rel="noopener" class="contact-row">
+    <svg class="timverse-mark" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="4" height="18" rx="2" fill="#F59E0B"/><rect x="10" y="3" width="4" height="18" rx="2" fill="#F97316"/><rect x="16" y="3" width="4" height="18" rx="2" fill="#8B5CF6"/></svg>
+    <span>thetimverse.com</span>
+  </a>
   <a href="https://www.linkedin.com/in/timothybailey1" target="_blank" class="contact-row">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
     <span>LinkedIn</span>
@@ -141,7 +146,7 @@
 
 <script>
 function downloadVCard() {
-  var vcard = 'BEGIN:VCARD\r\nVERSION:3.0\r\nN:Bailey;Tim;;;\r\nFN:Tim Bailey\r\nORG:VBO Advertising\r\nTITLE:Founder\r\nTEL;TYPE=CELL:+18646406558\r\nEMAIL;TYPE=WORK:Tim@vboadv.com\r\nURL:https://vboadv.com\r\nURL;TYPE=LinkedIn:https://www.linkedin.com/in/timothybailey1\r\nEND:VCARD';
+  var vcard = 'BEGIN:VCARD\r\nVERSION:3.0\r\nN:Bailey;Tim;;;\r\nFN:Tim Bailey\r\nORG:VBO Advertising\r\nTITLE:Founder\r\nTEL;TYPE=CELL:+18646406558\r\nEMAIL;TYPE=WORK:Tim@vboadv.com\r\nURL:https://vboadv.com\r\nURL;TYPE=Personal:https://thetimverse.com\r\nURL;TYPE=LinkedIn:https://www.linkedin.com/in/timothybailey1\r\nEND:VCARD';
   var blob = new Blob([vcard], { type: 'text/vcard' });
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
