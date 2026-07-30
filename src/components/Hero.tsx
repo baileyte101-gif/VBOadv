@@ -125,7 +125,7 @@ export default function Hero() {
       >
         <Image
           src="/images/miami-city.jpg"
-          alt="Miami skyline — VBO Advertising is a marketing consultancy and studio based in Coconut Grove, Miami, Florida"
+          alt="Miami skyline. VBO Advertising is a marketing consultancy and studio based in Coconut Grove, Miami, Florida"
           fill
           className="object-cover object-center"
           style={{ filter: 'grayscale(15%) brightness(0.85)' }}
@@ -145,7 +145,7 @@ export default function Hero() {
       <div className="absolute inset-0 lg:hidden -z-10">
         <Image
           src="/images/miami-city.jpg"
-          alt="Miami skyline — VBO Advertising is a marketing consultancy and studio based in Coconut Grove, Miami, Florida"
+          alt="Miami skyline. VBO Advertising is a marketing consultancy and studio based in Coconut Grove, Miami, Florida"
           fill
           className="object-cover object-center"
           style={{ filter: 'grayscale(30%) brightness(0.35)' }}

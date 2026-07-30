@@ -8,7 +8,7 @@ export default function BlogCTA() {
         Ready to Build Something Real?
       </h3>
       <p className="font-body text-[#6B6F73] text-base leading-7 max-w-[460px] mx-auto mb-8">
-        VBO is a founder-led marketing consultancy. Strategy, creative, and performance — working as one system.
+        VBO is a founder-led marketing consultancy. Strategy, creative, and performance, working as one system.
       </p>
       <a
         href="mailto:hello@vboadv.com"

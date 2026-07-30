@@ -7,11 +7,11 @@ import { getAllPosts, getFeaturedPost } from '@/lib/blog'
 import InsightsIndex from '@/components/blog/InsightsIndex'
 
 export const metadata: Metadata = {
-  title: 'Insights — VBO | Marketing Strategy & Perspective',
+  title: 'Insights | VBO | Marketing Strategy & Perspective',
   description:
     'Straight talk on strategy, creative, and performance marketing from the VBO team. No fluff. No filler.',
   openGraph: {
-    title: 'VBO Insights — Strategy, Creative, Performance',
+    title: 'VBO Insights | Strategy, Creative, Performance',
     description:
       'Straight talk on marketing strategy and execution from VBO, a founder-led consultancy based in Miami.',
     type: 'website',

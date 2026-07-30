@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {}
 
   return {
-    title: `${post.title} — VBO Insights`,
+    title: `${post.title} | VBO Insights`,
     description: post.excerpt,
     openGraph: {
       title: post.title,
