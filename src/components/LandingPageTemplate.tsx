@@ -634,6 +634,24 @@ export default function LandingPageTemplate({ vertical }: Props) {
           </section>
         )}
 
+        {/* ===== CROSS-LINK: FRACTIONAL CMO HUB ===== */}
+        {vertical.crossLinks?.service && (
+          <section className="px-6 pb-16 md:pb-24">
+            <div className="max-w-[1200px] mx-auto">
+              <p className="font-body text-[18px] text-[var(--color-vbo-egg)] opacity-80 leading-[28px] max-w-3xl">
+                {vertical.crossLinks.service.before}
+                <a
+                  href="/fractional-cmo"
+                  className="text-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-gold-light)] underline underline-offset-4 decoration-[var(--color-vbo-gold)]/40 transition-colors"
+                >
+                  {vertical.crossLinks.service.linkText}
+                </a>
+                {vertical.crossLinks.service.after}
+              </p>
+            </div>
+          </section>
+        )}
+
         {/* ===== ABOUT TIM ===== */}
         <section className="px-6 py-16 md:py-24 lg:py-[120px] bg-[var(--color-vbo-graphite)]">
           <motion.div

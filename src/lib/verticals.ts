@@ -42,6 +42,9 @@ export interface VerticalData {
   crossLinks?: {
     home?: { before: string; linkText: string; after: string };
     insights?: { before: string; linkText: string; after: string };
+    // Renders between the homepage cross-link and the founder block.
+    // href is hardcoded to "/fractional-cmo" in LandingPageTemplate.
+    service?: { before: string; linkText: string; after: string };
   };
   // Founder headshot alt override (SEO). Template falls back to the generic
   // "Tim Bailey, Founder of VBO Advertising" when absent.
@@ -161,6 +164,12 @@ export const verticals: Record<string, VerticalData> = {
         before: "Read more about how we think about marketing strategy on the ",
         linkText: "VBO Insights blog",
         after: ".",
+      },
+      service: {
+        before:
+          "If what your firm needs is one senior person owning marketing rather than another vendor to manage, that's the job ",
+        linkText: "a fractional CMO",
+        after: " does.",
       },
     },
     founderAlt:
@@ -337,6 +346,12 @@ export const verticals: Record<string, VerticalData> = {
         before:
           "Read more about how we think about marketing strategy on the ",
         linkText: "VBO Insights blog",
+        after: ".",
+      },
+      service: {
+        before:
+          "When a practice grows past the point where the owner can run marketing on the side, the seat that fills the gap is ",
+        linkText: "a fractional CMO",
         after: ".",
       },
     },

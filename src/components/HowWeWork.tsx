@@ -19,6 +19,8 @@ const steps = [
     number: '01',
     title: 'Strategy',
     lead: 'We are your fractional CMO.',
+    leadHref: '/fractional-cmo',
+    leadLinkText: 'fractional CMO',
     body: 'We define priorities for your business, clarify positioning, establish channel focus and set measurable benchmarks.',
     emphasis: 'We set full alignment before action.',
   },
@@ -35,6 +37,28 @@ const steps = [
     emphasis: 'We oversee growth with precision and we cut out the noise.',
   },
 ]
+
+// Renders step.lead as plain text, or with leadLinkText wrapped in a link to
+// leadHref when both are present. The sentence itself never changes.
+function renderLead(step: (typeof steps)[number]) {
+  if (!('lead' in step) || !step.lead) return null
+  if ('leadHref' in step && step.leadHref && 'leadLinkText' in step && step.leadLinkText) {
+    const [before, after] = step.lead.split(step.leadLinkText)
+    return (
+      <>
+        {before}
+        <a
+          href={step.leadHref}
+          className="underline underline-offset-4 decoration-current/40 hover:text-[#F2EDE4] transition-colors"
+        >
+          {step.leadLinkText}
+        </a>
+        {after}
+      </>
+    )
+  }
+  return step.lead
+}
 
 export default function HowWeWork() {
   const ref = useRef(null)
@@ -119,7 +143,7 @@ export default function HowWeWork() {
                   <>
                     {'lead' in step && step.lead && (
                       <p className="text-[#B8962E] font-medium text-base md:text-lg leading-relaxed">
-                        {step.lead}
+                        {renderLead(step)}
                       </p>
                     )}
                     <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">

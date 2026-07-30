@@ -174,6 +174,12 @@ export default function Home() {
               AI-Enabled Marketing
             </a>
             <a
+              href="/fractional-cmo"
+              className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
+            >
+              Fractional CMO
+            </a>
+            <a
               href="/professional-services/law-firms"
               className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
             >
