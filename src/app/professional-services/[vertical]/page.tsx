@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { verticals, verticalSlugs } from "@/lib/verticals";
+import { INDEXABLE_VERTICALS } from "@/lib/indexable";
 import LandingPageTemplate from "@/components/LandingPageTemplate";
 import { GA4PageTracker } from "@/components/GA4Tracker";
 
@@ -12,11 +13,6 @@ type Props = {
 export async function generateStaticParams() {
   return verticalSlugs.map((vertical) => ({ vertical }));
 }
-
-// Verticals approved for organic indexing. Anything not listed here stays
-// noindexed (the page is still reachable, just won't be crawled). When a new
-// vertical goes live, add its slug here.
-const INDEXABLE_VERTICALS = new Set(["law-firms", "med-spas"]);
 
 const PRODUCTION_HOST = "https://www.vboadv.com";
 

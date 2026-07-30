@@ -1,10 +1,7 @@
 import type { MetadataRoute } from "next";
 import { verticalSlugs } from "@/lib/verticals";
+import { INDEXABLE_VERTICALS, INDEXABLE_PAGES } from "@/lib/indexable";
 import { getAllPosts } from "@/lib/blog";
-
-// Mirror the INDEXABLE_VERTICALS Set in src/app/professional-services/[vertical]/page.tsx.
-// When a vertical flips to indexable there, also add its slug here.
-const INDEXABLE_VERTICALS = new Set(["law-firms", "med-spas"]);
 
 const HOST = "https://www.vboadv.com";
 
@@ -30,6 +27,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    // Gated on the same flag as the page's own robots meta, so the sitemap and
+    // the robots directive can never disagree.
+    ...(INDEXABLE_PAGES.has("fractional-cmo")
+      ? [
+          {
+            url: `${HOST}/fractional-cmo`,
+            lastModified: now,
+            changeFrequency: "monthly" as const,
+            priority: 0.9,
+          },
+        ]
+      : []),
   ];
 
   const verticalPages: MetadataRoute.Sitemap = verticalSlugs
