@@ -93,7 +93,6 @@ const localBusinessSchema = {
   image: 'https://www.vboadv.com/images/logo-transparent.png',
   url: 'https://www.vboadv.com',
   telephone: '+1-864-640-6558',
-  priceRange: '$$$',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Coconut Grove',
