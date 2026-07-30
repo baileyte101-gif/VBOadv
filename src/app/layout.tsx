@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Barlow_Condensed, Inter, Space_Mono } from 'next/font/google'
 import Script from 'next/script'
+import { OG_CARDS, ogImages, twitterImages } from '@/lib/og'
 import './globals.css'
 
 const barlow = Barlow_Condensed({
@@ -45,6 +46,20 @@ export const metadata: Metadata = {
     description:
       'Founder-led marketing consultancy and studio in Miami. Strategy first, disciplined execution across paid, social, SEO, brand, and creative. Let\'s start there.',
     type: 'website',
+    siteName: 'VBO Advertising',
+    url: 'https://www.vboadv.com',
+    // Sitewide default card. Any route that does not declare its own
+    // openGraph inherits this, so a new page ships with a valid preview
+    // without anyone remembering to wire one. Routes that DO declare an
+    // openGraph object replace this wholesale and set their own images.
+    images: ogImages(OG_CARDS.home),
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Marketing Agency Miami | Strategy. Creative. Performance. | VBO Advertising',
+    description:
+      'Founder-led marketing consultancy and studio in Miami. Strategy first, disciplined execution across paid, social, SEO, brand, and creative. Let\'s start there.',
+    images: twitterImages(OG_CARDS.home),
   },
 }
 

@@ -9,6 +9,12 @@ import AuthorBio from '@/components/blog/AuthorBio'
 import RelatedPosts from '@/components/blog/RelatedPosts'
 import { getAllPosts, getPostBySlug, getRelatedPosts, formatDate } from '@/lib/blog'
 import { AUTHORS } from '@/types/blog'
+import {
+  OG_CARDS,
+  OG_CARDS_BY_POST_SLUG,
+  ogImages,
+  twitterImages,
+} from '@/lib/og'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
 interface Props {
@@ -23,6 +29,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(params.slug)
   if (!post) return {}
 
+  // Purpose-built card if the post has one, otherwise the Insights section
+  // card. Never the post hero: heroes are 2560x1429 and carry no wordmark.
+  const card = OG_CARDS_BY_POST_SLUG[post.slug] ?? OG_CARDS.insights
+
   return {
     title: `${post.title} | VBO Insights`,
     description: post.excerpt,
@@ -30,14 +40,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.excerpt,
       type: 'article',
+      siteName: 'VBO Advertising',
       publishedTime: post.date,
       authors: [post.author],
       url: `https://www.vboadv.com/insights/${post.slug}`,
+      images: ogImages(card),
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
+      images: twitterImages(card),
     },
     alternates: {
       canonical: `https://www.vboadv.com/insights/${post.slug}`,

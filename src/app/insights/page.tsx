@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Nav from '@/components/Nav'
 import CTASection from '@/components/CTASection'
 import { getAllPosts, getFeaturedPost } from '@/lib/blog'
+import { OG_CARDS, ogImages, twitterImages } from '@/lib/og'
 import InsightsIndex from '@/components/blog/InsightsIndex'
 
 export const metadata: Metadata = {
@@ -15,7 +16,16 @@ export const metadata: Metadata = {
     description:
       'Straight talk on marketing strategy and execution from VBO, a founder-led consultancy based in Miami.',
     type: 'website',
+    siteName: 'VBO Advertising',
     url: 'https://www.vboadv.com/insights',
+    images: ogImages(OG_CARDS.insights),
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VBO Insights | Strategy, Creative, Performance',
+    description:
+      'Straight talk on marketing strategy and execution from VBO, a founder-led consultancy based in Miami.',
+    images: twitterImages(OG_CARDS.insights),
   },
   alternates: {
     canonical: 'https://www.vboadv.com/insights',

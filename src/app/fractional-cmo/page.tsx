@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { INDEXABLE_PAGES } from "@/lib/indexable";
+import { OG_CARDS, ogImages, twitterImages } from "@/lib/og";
 
 const PRODUCTION_HOST = "https://www.vboadv.com";
 const SLUG = "fractional-cmo";
@@ -26,6 +27,15 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "VBO Advertising",
     url: CANONICAL,
+    // Declaring openGraph here replaces the root layout's object entirely,
+    // so the card has to be repeated. Same for twitter below.
+    images: ogImages(OG_CARDS.fractionalCmo),
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: META_DESCRIPTION,
+    images: twitterImages(OG_CARDS.fractionalCmo),
   },
 };
 

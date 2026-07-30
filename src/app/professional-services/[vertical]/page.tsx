@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { verticals, verticalSlugs } from "@/lib/verticals";
 import { INDEXABLE_VERTICALS } from "@/lib/indexable";
+import { OG_CARDS, OG_CARDS_BY_VERTICAL, ogImages, twitterImages } from "@/lib/og";
 import LandingPageTemplate from "@/components/LandingPageTemplate";
 import { GA4PageTracker } from "@/components/GA4Tracker";
 
@@ -24,6 +25,9 @@ export function generateMetadata({ params }: Props): Metadata {
 
   const isIndexable = INDEXABLE_VERTICALS.has(slug);
   const canonicalUrl = `${PRODUCTION_HOST}/professional-services/${slug}`;
+  // Only the live verticals have their own card. The drafted ones fall back to
+  // the home card so they can never emit a 404 image if they get switched on.
+  const ogCard = OG_CARDS_BY_VERTICAL[slug] ?? OG_CARDS.home;
 
   return {
     title: vertical.ogTitle,
@@ -40,6 +44,13 @@ export function generateMetadata({ params }: Props): Metadata {
       type: "website",
       siteName: "VBO Advertising",
       url: canonicalUrl,
+      images: ogImages(ogCard),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: vertical.ogTitle,
+      description: vertical.ogDescription,
+      images: twitterImages(ogCard),
     },
   };
 }
