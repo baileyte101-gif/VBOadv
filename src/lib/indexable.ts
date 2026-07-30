@@ -7,5 +7,5 @@
 
 export const INDEXABLE_VERTICALS = new Set<string>(["law-firms", "med-spas"]);
 
-// Top-level static pages. Add "fractional-cmo" on the flip, not before.
-export const INDEXABLE_PAGES = new Set<string>([]);
+// Top-level static pages.
+export const INDEXABLE_PAGES = new Set<string>(["fractional-cmo"]);
