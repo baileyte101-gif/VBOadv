@@ -418,15 +418,13 @@ export const verticals: Record<string, VerticalData> = {
 
   "financial-advisors": {
     slug: "financial-advisors",
-    ogTitle:
-      "Marketing for Financial Advisors in South Florida | VBO Advertising",
+    ogTitle: "Financial Advisor Marketing in Miami | VBO Advertising",
     ogDescription:
-      "VBO helps independent financial advisors and RIAs attract ideal clients through clear positioning and smart digital strategy. Book a free call.",
+      "Financial advisor marketing in Miami. VBO helps independent advisors and RIAs attract better clients. Based in Coconut Grove. Book a free call.",
     hero: {
-      headline:
-        "Your Expertise Builds Wealth. Your Marketing Should Build Your Practice.",
+      headline: "Financial Advisor Marketing in Miami",
       subheadline:
-        "VBO helps independent financial advisors and RIAs in South Florida attract the right clients through clear positioning and a digital presence that reflects the quality of your advice.",
+        "Referrals built your practice. They shouldn't be the only thing growing it. Based in Coconut Grove, VBO helps independent financial advisors and RIAs in Miami attract the right clients and build a digital presence that matches the advice you give.",
       body: "Most financial advisors are excellent at what they do and invisible online. Referrals carry the practice, but they are unpredictable. VBO builds the marketing system that makes sure qualified prospects find you, trust you, and book the first meeting.",
     },
     image1: {
@@ -479,6 +477,64 @@ export const verticals: Record<string, VerticalData> = {
       "We understand the compliance considerations of marketing financial services",
       "Built for advisors who compete on trust and expertise, not lowest fees",
     ],
+    faq: [
+      {
+        question: "Does VBO understand SEC and FINRA marketing rules?",
+        answer:
+          "Yes. Financial advisor marketing has real rules around it, including the SEC Marketing Rule under Rule 206(4)-1 and, for broker-dealers, FINRA Rule 2210. We build every campaign with those rules in view, and every piece of client-facing copy goes through our review before it reaches your compliance team, so nothing lands on their desk cold. What we don't do is replace that team. We run the marketing, and final sign-off on anything client-facing stays with your firm's own compliance process, every time.",
+      },
+      {
+        question: "How much does financial advisor marketing cost?",
+        answer:
+          "It depends on what your practice actually needs. A solo advisor building a first real digital presence needs a different system than a multi-advisor RIA competing for high-net-worth clients, and pricing them the same wouldn't be honest. That's why we don't publish packages. Book a 30-minute call and we'll give you a real range for your practice.",
+      },
+      {
+        question: "How long before we see new clients?",
+        answer:
+          "Paid campaigns can start bringing in qualified inquiries within the first few weeks. Search visibility and reputation-driven growth take longer, usually 3 to 6 months to compound. We tell you which one is doing the work at any given point so the timeline never surprises you.",
+      },
+      {
+        question:
+          "How is this different from a financial advisor marketing agency that only works with advisors?",
+        answer:
+          "Specialist shops run the same playbook across hundreds of advisors, which is efficient for them and generic for you. We work across professional services, so what we bring is a marketing system built around your positioning, not a template with your logo dropped in. If your goal is to look like every other advisor in your market, we are the wrong call. If it's to be the one people name when a friend asks who they should talk to, that's where we start.",
+      },
+      {
+        question:
+          "Can you help us attract higher-net-worth clients, not just more assets?",
+        answer:
+          "That's usually the real goal. Most practices have a steady base of smaller accounts and an inconsistent flow of the clients they actually want. Fixing that is a positioning and targeting problem before it's a budget problem, so we start by getting clear on who you want to be known for serving, then build the campaigns and the digital presence to match.",
+      },
+      {
+        question: "Do you handle SEO for financial advisors?",
+        answer:
+          "Yes, and it's usually where the compounding happens. That means ranking for the terms and neighborhoods that actually matter to your practice, fixing the technical issues that keep your site from showing up, and making sure your Google Business Profile is doing its job. More and more, it also decides whether you come up when someone asks an AI assistant for a recommendation.",
+      },
+      {
+        question:
+          "Where are you based, and do you work with advisors outside Miami?",
+        answer:
+          "We're based in Coconut Grove and most of our clients are here in Miami, including Brickell, Coral Gables, Miami Beach, Doral and Aventura. We also work with advisors across South Florida and take on select clients outside the region when the fit is right.",
+      },
+    ],
+    crossLinks: {
+      home: {
+        before: "This is how ",
+        linkText: "VBO Advertising",
+        after: " builds marketing systems for every client, not just financial advisors.",
+      },
+      insights: {
+        segments: [
+          "We work with ",
+          { text: "med spas", href: "/professional-services/med-spas" },
+          " and ",
+          { text: "law firms", href: "/professional-services/law-firms" },
+          " on the same model, and we write about how we approach the work on the ",
+          { text: "VBO Insights blog", href: "/insights" },
+          ".",
+        ],
+      },
+    },
   },
 
   "accounting-firms": {

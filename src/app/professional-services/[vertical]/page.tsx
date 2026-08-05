@@ -109,6 +109,29 @@ const SERVICE_SCHEMAS: Record<string, Record<string, unknown>> = {
       { "@type": "City", name: "Fort Lauderdale" },
     ],
   },
+  "financial-advisors": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Financial Advisor Marketing in Miami",
+    provider: { "@id": "https://www.vboadv.com/#organization" },
+    description:
+      "VBO helps independent financial advisors and RIAs in Miami attract better clients through marketing strategy, paid media, SEO, brand, and creative.",
+    serviceType: [
+      "Financial Advisor Marketing",
+      "Marketing for Financial Advisors",
+      "RIA Marketing",
+      "Financial Advisor SEO",
+    ],
+    areaServed: [
+      { "@type": "City", name: "Coconut Grove" },
+      { "@type": "City", name: "Miami" },
+      { "@type": "City", name: "Miami Beach" },
+      { "@type": "City", name: "Coral Gables" },
+      { "@type": "City", name: "Doral" },
+      { "@type": "City", name: "Aventura" },
+      { "@type": "City", name: "Fort Lauderdale" },
+    ],
+  },
 };
 
 const BREADCRUMB_NAMES: Record<string, string> = {
