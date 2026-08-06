@@ -9,6 +9,7 @@ export const INDEXABLE_VERTICALS = new Set<string>([
   "law-firms",
   "med-spas",
   "dental-practices",
+  "financial-advisors",
 ]);
 
 // Top-level static pages.
