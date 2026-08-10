@@ -10,6 +10,21 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/tim/", "/api/", "/_next/"],
       },
+      // Googlebot gets its own group so it does NOT fall through to "*" above,
+      // which blocks /_next/ (every Next.js optimized image). A crawler obeys
+      // only its most specific matching group, so this restates the disallows
+      // we still want (Tim's /tim/ business card stays hidden) and opens
+      // /_next/ so site images can reach Google Images. Fixed 2026-08-09.
+      {
+        userAgent: "Googlebot",
+        allow: "/",
+        disallow: ["/tim/", "/api/"],
+      },
+      {
+        userAgent: "Googlebot-Image",
+        allow: "/",
+        disallow: ["/tim/", "/api/"],
+      },
       // Allow-list: engines whose citations help VBO.
       { userAgent: "GPTBot", allow: "/" },
       { userAgent: "ChatGPT-User", allow: "/" },
