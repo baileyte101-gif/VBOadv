@@ -10,11 +10,14 @@ export default function TheApproach() {
   return (
     <section
       id="the-approach"
-      className="bg-[#1C1C1C] py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
+      /* Ground 02: gold linework, feathering into the marble below it.
+         Job: give the thesis statement real surface weight. */
+      className="ground-gold seam-both quiet-panel py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
     >
       {/* Ghost section number */}
       <div
-        className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[#222222] text-[160px] md:text-[220px] lg:text-[280px]"
+        className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[160px] md:text-[220px] lg:text-[280px]"
+        style={{ color: 'rgb(111 87 40 / 0.16)' }}
         aria-hidden
       >
         02

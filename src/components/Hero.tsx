@@ -1,15 +1,51 @@
 'use client'
 
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import ParticleField from '@/components/ParticleField'
 
 const words = ['Strategy.', 'Creative.', 'Performance.']
 
 export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null)
+  const [marble, setMarble] = useState(false)
+
   return (
-    <section className="relative flex bg-[#0D0D0D] pt-16 min-h-screen">
+    <section
+      ref={heroRef}
+      className={`relative flex bg-[#0D0D0D] pt-16 min-h-screen overflow-hidden ${
+        marble ? 'marble-on' : ''
+      }`}
+    >
+      {/* Marble ground, revealed by the toggle. Starts hidden. */}
+      <div className="hero-bg-layer ground-smoke" aria-hidden />
+
+      {/* The VBO wordmark as a large particle field behind the hero copy.
+          Decorative: aria-hidden, never a heading, no crawlable "VBO" text. */}
+      <ParticleField
+        variant="wordmark"
+        eventTargetRef={heroRef}
+        className="hero-wordmark-wrap"
+        fallbackClassName="hero-wordmark-fallback"
+        boost={marble}
+        fallback={
+          <Image
+            src="/images/logo-transparent.png"
+            alt=""
+            width={834}
+            height={222}
+            aria-hidden
+          />
+        }
+      />
+
       {/* Left panel — text content */}
-      <div className="flex-1 flex flex-col justify-center px-8 md:px-12 lg:px-20 xl:px-24 py-20 min-w-0">
+      <div className="flex-1 flex flex-col justify-center px-8 md:px-12 lg:px-20 xl:px-24 py-20 min-w-0 relative z-[3]">
+        {/* Legibility scrim: thins the particles where the headline sits.
+            If the particles fight the type, reduce the particles, never the type. */}
+        <div className="hero-scrim" aria-hidden />
+
         {/* Label */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -96,6 +132,27 @@ export default function Hero() {
           hello@vboadv.com
         </motion.a>
 
+        {/* Ground toggle — black on the left, marble on the right. Real button,
+            so keyboard reach, focus ring and aria-pressed come for free. */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.94 }}
+          className="mb-5"
+        >
+          <button
+            type="button"
+            onClick={() => setMarble((v) => !v)}
+            aria-pressed={marble}
+            aria-label="Switch the hero background between black and marble"
+            className="hero-bg-toggle"
+          >
+            <span className="pill" aria-hidden />
+            <span className="opt opt-black">Black</span>
+            <span className="opt opt-marble">Marble</span>
+          </button>
+        </motion.div>
+
         {/* Mono tagline */}
         <motion.p
           initial={{ opacity: 0 }}
@@ -112,25 +169,28 @@ export default function Hero() {
         initial={{ scaleY: 0, opacity: 0 }}
         animate={{ scaleY: 1, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-        className="hidden lg:block w-[1px] bg-[#B8962E] self-stretch flex-shrink-0 origin-top"
+        className="hidden lg:block w-[1px] bg-[#B8962E] self-stretch flex-shrink-0 origin-top relative z-[2]"
       />
 
-      {/* Right panel — city image — desktop only */}
+      {/* Right panel — city image, regraded to the house grade — desktop only.
+          Below lg the wordmark field is the hero's ground, so no photo competes
+          with it, matching the approved mockup. */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="hidden lg:block relative flex-shrink-0"
+        className="hidden lg:block relative flex-shrink-0 z-[2]"
         style={{ width: '40%' }}
       >
         <Image
-          src="/images/miami-city.jpg"
+          src="/images/miami-city-graded.jpg"
           alt="Miami skyline. VBO Advertising is a marketing consultancy and studio based in Coconut Grove, Miami, Florida"
           fill
           className="object-cover object-center"
-          style={{ filter: 'grayscale(15%) brightness(0.85)' }}
           priority
-          sizes="40vw"
+          /* The 1px slot below lg keeps the preload from pulling a full-size
+             image on phones, where this panel is not rendered at all. */
+          sizes="(max-width: 1023px) 1px, 40vw"
         />
         {/* Vignette — soft dark bleed on all edges, heavier on left to blend into divider */}
         <div
@@ -140,19 +200,6 @@ export default function Hero() {
           }}
         />
       </motion.div>
-
-      {/* Mobile: city image below */}
-      <div className="absolute inset-0 lg:hidden -z-10">
-        <Image
-          src="/images/miami-city.jpg"
-          alt="Miami skyline. VBO Advertising is a marketing consultancy and studio based in Coconut Grove, Miami, Florida"
-          fill
-          className="object-cover object-center"
-          style={{ filter: 'grayscale(30%) brightness(0.35)' }}
-          priority
-          sizes="100vw"
-        />
-      </div>
     </section>
   )
 }

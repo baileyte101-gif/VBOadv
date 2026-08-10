@@ -9,6 +9,22 @@
   --color-vbo-egg: #F2EDE4;
   --color-vbo-gold: #B8962E;
   --color-vbo-gold-light: #D4A93A;
+
+  /* ── Depth foundation (redesign 2026-08-10) ──────────────────────────────
+     Five-level dark surface ladder, deepest to closest, tinted toward Harbour
+     navy. s1 IS the brand black and does not move. Gold stays the only accent;
+     it gets three brightness levels used as a depth cue, not as decoration. */
+  --s0: #070A0F;
+  --s1: #0D0D0D;
+  --s2: #131A24;
+  --s3: #1A2331;
+  --s4: #222D3D;
+  --harbour: #16202E;
+  --marble: #45443C;
+  --stone: #E7E1D6;
+  --gold-dim: #6F5728;
+  --gold-hot: #E7CE86;
+  --raise-hairline: inset 0 1px 0 rgb(255 255 255 / 0.035);
 }
 
 html {
@@ -85,4 +101,241 @@ body {
   box-shadow:
     0 8px 40px rgba(184, 150, 46, 0.18),
     inset 0 0 0 1px rgba(184, 150, 46, 0.25);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION GROUND SYSTEM — homepage redesign, 2026-08-10
+   Ported verbatim from Jules's approved mockup:
+   Jules/designs/vbo/website/homepage-redesign-2026-08-08/section-system-concept.html
+   Five grounds, no two adjacent sections share one. Seams are layered onto the
+   section's own background-image only, never onto the section element, so text
+   and controls never fade with the ground.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* lafc-01: nested elongated hexagonal chevrons in vertical columns, alternating
+     orientation. Real SVG path geometry, outline only, hairline weight. */
+  --ground-gold-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='209' height='137'%3E%3Cg fill='none' stroke='%23B8962E' stroke-width='1.1' opacity='0.32'%3E%3Cpath d='M 52.2 0.0 L 100.8 43.2 L 100.8 93.6 L 52.2 136.8 L 3.6 93.6 L 3.6 43.2 Z'/%3E%3Cpath d='M 52.2 13.7 L 91.1 48.2 L 91.1 88.6 L 52.2 123.1 L 13.3 88.6 L 13.3 48.2 Z'/%3E%3Cpath d='M 52.2 27.4 L 81.4 53.3 L 81.4 83.5 L 52.2 109.4 L 23.0 83.5 L 23.0 53.3 Z'/%3E%3Cpath d='M 52.2 41.0 L 71.6 58.3 L 71.6 78.5 L 52.2 95.8 L 32.8 78.5 L 32.8 58.3 Z'/%3E%3Cpath d='M 52.2 54.7 L 61.9 63.4 L 61.9 73.4 L 52.2 82.1 L 42.5 73.4 L 42.5 63.4 Z'/%3E%3Cpath d='M 156.6 -68.4 L 205.2 -25.2 L 205.2 25.2 L 156.6 68.4 L 108.0 25.2 L 108.0 -25.2 Z'/%3E%3Cpath d='M 156.6 -54.7 L 195.5 -20.2 L 195.5 20.2 L 156.6 54.7 L 117.7 20.2 L 117.7 -20.2 Z'/%3E%3Cpath d='M 156.6 -41.0 L 185.8 -15.1 L 185.8 15.1 L 156.6 41.0 L 127.4 15.1 L 127.4 -15.1 Z'/%3E%3Cpath d='M 156.6 -27.4 L 176.0 -10.1 L 176.0 10.1 L 156.6 27.4 L 137.2 10.1 L 137.2 -10.1 Z'/%3E%3Cpath d='M 156.6 -13.7 L 166.3 -5.0 L 166.3 5.0 L 156.6 13.7 L 146.9 5.0 L 146.9 -5.0 Z'/%3E%3Cpath d='M 156.6 68.4 L 205.2 111.6 L 205.2 162.0 L 156.6 205.2 L 108.0 162.0 L 108.0 111.6 Z'/%3E%3Cpath d='M 156.6 82.1 L 195.5 116.6 L 195.5 157.0 L 156.6 191.5 L 117.7 157.0 L 117.7 116.6 Z'/%3E%3Cpath d='M 156.6 95.8 L 185.8 121.7 L 185.8 151.9 L 156.6 177.8 L 127.4 151.9 L 127.4 121.7 Z'/%3E%3Cpath d='M 156.6 109.4 L 176.0 126.7 L 176.0 146.9 L 156.6 164.2 L 137.2 146.9 L 137.2 126.7 Z'/%3E%3Cpath d='M 156.6 123.1 L 166.3 131.8 L 166.3 141.8 L 156.6 150.5 L 146.9 141.8 L 146.9 131.8 Z'/%3E%3C/g%3E%3C/svg%3E");
+  /* lafc-02: a genuine graphite base, clearly lighter than page black, with
+     irregular near-black organic marbling over it. feTurbulence alpha-masked,
+     not radial gradients on black. */
+  --ground-smoke-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='560'%3E%3Cfilter id='m' x='-20%25' y='-20%25' width='140%25' height='140%25' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.013' numOctaves='5' seed='24' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1.4 1.4 1.4 0 -1.42'/%3E%3C/filter%3E%3Crect width='1400' height='560' fill='%23050504' filter='url(%23m)'/%3E%3C/svg%3E");
+}
+
+/* ── The five grounds ───────────────────────────────────────────────────── */
+.ground-plain { background: var(--color-vbo-black); }
+
+/* The hero's own ground is plain black too, so section 01 landing directly on it
+   with no step was the specific flatness Tim kept naming. One stepped seam. */
+.ground-plain.step-up { background: var(--s2); }
+
+.ground-gold {
+  background-color: var(--color-vbo-black);
+  background-image: var(--ground-gold-pattern);
+  background-repeat: repeat;
+}
+
+.ground-smoke {
+  background-color: var(--marble);
+  background-image: var(--ground-smoke-pattern);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.ground-harbour { background: var(--harbour); }
+
+/* ── Section seams: interpenetration over ~260px, not a hard line ────────── */
+/* Approach (gold) fades into Proof (marble) below it, and steps down from the
+   plain black above it. */
+.ground-gold.seam-both {
+  background-image:
+    linear-gradient(180deg, rgba(13, 13, 13, 0.5) 0, rgba(13, 13, 13, 0) 150px),
+    linear-gradient(180deg, rgba(69, 68, 60, 0) 0, rgba(69, 68, 60, 0) calc(100% - 300px), rgba(69, 68, 60, 0.55) calc(100% - 90px), rgba(69, 68, 60, 0.88) 100%),
+    var(--ground-gold-pattern);
+  background-repeat: no-repeat, no-repeat, repeat;
+}
+
+/* Proof (marble) receives the gold fade from above. */
+.ground-smoke.seam-in {
+  background-image:
+    linear-gradient(180deg, rgba(69, 68, 60, 0.7) 0, rgba(69, 68, 60, 0.18) 160px, rgba(69, 68, 60, 0) 300px),
+    var(--ground-smoke-pattern);
+  background-repeat: no-repeat, no-repeat;
+  background-size: auto, cover;
+}
+
+/* Industries (gold) fades into About (marble). No top fade: Life sits above it
+   and that edge was never flagged. */
+.ground-gold.seam-out {
+  background-image:
+    linear-gradient(180deg, rgba(69, 68, 60, 0) 0, rgba(69, 68, 60, 0) calc(100% - 300px), rgba(69, 68, 60, 0.55) calc(100% - 90px), rgba(69, 68, 60, 0.88) 100%),
+    var(--ground-gold-pattern);
+  background-repeat: no-repeat, repeat;
+}
+
+/* About (marble) receives the gold fade from Industries above and fades out to
+   the skyline below. */
+.ground-smoke.seam-in-out {
+  background-image:
+    linear-gradient(180deg, rgba(69, 68, 60, 0.7) 0, rgba(69, 68, 60, 0.18) 160px, rgba(69, 68, 60, 0) 300px),
+    linear-gradient(180deg, rgba(13, 13, 13, 0) 0, rgba(13, 13, 13, 0) calc(100% - 180px), rgba(13, 13, 13, 0.6) 100%),
+    var(--ground-smoke-pattern);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: auto, auto, cover;
+}
+
+/* Quiet zone: darkens the ground where body copy sits on a patterned surface,
+   so the pattern never has to be thinned and the type never has to be. */
+.quiet-panel { position: relative; }
+.quiet-panel::before {
+  content: "";
+  position: absolute;
+  inset: -40px -60px;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 80% at 0% 50%, rgba(13, 13, 13, 0.72) 0%, rgba(13, 13, 13, 0) 72%);
+  z-index: 0;
+}
+
+/* ── Retro band vocabulary: solid band + one thinner accent stripe, outlined
+      display letterforms. Used by the divider and by the Life section. ───── */
+.retro-strip { height: 5px; background: var(--color-vbo-gold); position: relative; z-index: 2; }
+.retro-divider-strip { height: 4px; background: var(--color-vbo-gold); }
+
+.retro-outline {
+  font-family: var(--font-barlow), sans-serif;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-vbo-egg);
+  paint-order: stroke fill;
+}
+.retro-outline-lg { -webkit-text-stroke-width: 1.3px; }
+
+/* ── Hero: wordmark particle layer, marble ground toggle ─────────────────── */
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+  pointer-events: none;
+}
+.hero-bg-layer::after { content: ""; position: absolute; inset: 0; background: rgba(6, 6, 5, 0.4); }
+.marble-on .hero-bg-layer { opacity: 1; }
+
+.hero-wordmark-wrap { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.hero-wordmark-wrap canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+}
+/* Only ever shown if getImageData throws or particles fail to build, so it is a
+   real logo placement and gets the canonical asset, not typed letters. */
+.hero-wordmark-fallback {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.hero-wordmark-fallback img { width: 72%; max-width: 960px; opacity: 0.1; display: block; }
+
+/* Legibility scrim: darkens the wordmark specifically where the headline sits,
+   so the particles never have to fight the type. Never touches font-size. */
+.hero-scrim {
+  position: absolute;
+  /* Behind the text nodes inside .hero-text's own stacking context, which as a
+     whole still paints above the wordmark layer. */
+  z-index: -1;
+  pointer-events: none;
+  inset: -80px -60px -60px -140px;
+  background: radial-gradient(ellipse 80% 85% at 38% 48%, rgba(13, 13, 13, 0.62) 0%, rgba(13, 13, 13, 0.24) 55%, rgba(13, 13, 13, 0) 85%);
+}
+
+.hero-bg-toggle {
+  position: relative;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid rgba(184, 150, 46, 0.55);
+  border-radius: 16px;
+  background: rgba(13, 13, 13, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  cursor: pointer;
+  padding: 3px;
+}
+.hero-bg-toggle:hover { border-color: var(--color-vbo-gold); }
+.hero-bg-toggle:focus-visible { outline: 2px solid var(--gold-hot); outline-offset: 3px; }
+.hero-bg-toggle .opt {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 7px 13px;
+  color: #9fa3a7;
+  transition: color 0.25s ease;
+}
+.hero-bg-toggle .pill {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  bottom: 3px;
+  width: calc(50% - 3px);
+  border-radius: 13px;
+  background: var(--color-vbo-gold);
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+.marble-on .hero-bg-toggle .pill { transform: translateX(100%); }
+.hero-bg-toggle[aria-pressed="false"] .opt-black { color: #f2ede4; font-weight: 600; }
+.hero-bg-toggle[aria-pressed="true"] .opt-marble { color: #241a06; font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-layer,
+  .hero-bg-toggle .pill { transition: none; }
+}
+
+/* ── Closing block: one continuous skyline ground behind CTA + footer ────── */
+.closing-block { position: relative; overflow: hidden; background: var(--color-vbo-black); }
+.skyline-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.skyline-wrap canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+/* Fade to black at the tops of the buildings. buildSkyline caps its own drawn
+   height so the towers stay anchored to the bottom as the block grows. */
+.skyline-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(13, 13, 13, 0.08) 0%, rgba(13, 13, 13, 0.3) 30%, rgba(13, 13, 13, 0.86) 55%, rgba(13, 13, 13, 1) 78%, rgba(13, 13, 13, 1) 100%);
+}
+.skyline-fallback {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0.25;
+}
+/* The footer sits directly over the skyline's densest window texture. Same rule
+   as the hero: thin the particles' visible contrast here, never the type. */
+.footer-scrim {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(13, 13, 13, 0.55) 0%, rgba(13, 13, 13, 0.88) 100%);
 }

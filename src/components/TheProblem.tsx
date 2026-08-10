@@ -17,11 +17,15 @@ export default function TheProblem() {
   return (
     <section
       id="the-problem"
-      className="bg-[#0D0D0D] py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
+      /* Ground 01: plain black, stepped to --s2. The hero's own ground is plain
+         black too, so landing here with no step was the one flat seam on the
+         page. Job: land the pain with nothing competing for attention. */
+      className="ground-plain step-up py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
     >
       {/* Ghost section number */}
       <div
-        className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[#1C1C1C] text-[160px] md:text-[220px] lg:text-[280px]"
+        className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[160px] md:text-[220px] lg:text-[280px]"
+        style={{ color: 'rgb(111 87 40 / 0.12)' }}
         aria-hidden
       >
         01

@@ -67,14 +67,19 @@ export default function HowWeWork() {
   return (
     <section
       id="how-we-work"
-      className="bg-[#0D0D0D] pt-24 md:pt-32 lg:pt-40 pb-12 md:pb-16 lg:pb-20 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
+      /* Ground 04: Harbour navy. This was the flattest run on the page (the
+         divider above and Life's band below are both black-family), and a real
+         colour shift breaks it without inventing a sixth ground. Moved down from
+         position 5, so it now carries full bottom padding. */
+      className="ground-harbour py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
     >
       {/* Ghost section number */}
       <div
-        className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[#1C1C1C] text-[160px] md:text-[220px] lg:text-[280px]"
+        className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[160px] md:text-[220px] lg:text-[280px]"
+        style={{ color: 'rgb(111 87 40 / 0.12)' }}
         aria-hidden
       >
-        03
+        04
       </div>
 
       {/* Gold vertical connector line — desktop only */}
@@ -112,7 +117,9 @@ export default function HowWeWork() {
               initial={{ opacity: 0, y: 28 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 + i * 0.12 }}
-              className="border-t border-[#1C1C1C] py-12 md:py-14 grid grid-cols-1 md:grid-cols-[160px_1fr] gap-6 md:gap-12 lg:gap-16"
+              /* Hairline reads as a hairline on the navy ground, where the old
+                 #1C1C1C rule would have disappeared into it. */
+              className="border-t border-white/[0.08] py-12 md:py-14 grid grid-cols-1 md:grid-cols-[160px_1fr] gap-6 md:gap-12 lg:gap-16"
             >
               {/* Number + Title */}
               <div>
@@ -157,7 +164,7 @@ export default function HowWeWork() {
               </div>
             </motion.div>
           ))}
-          <div className="border-t border-[#1C1C1C]" />
+          <div className="border-t border-white/[0.08]" />
         </div>
       </div>
     </section>

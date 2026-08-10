@@ -44,7 +44,10 @@ export default function WhoWeWorkWith() {
   return (
     <section
       id="who-we-work-with"
-      className="bg-[#0D0D0D] pt-12 md:pt-16 lg:pt-20 pb-16 md:pb-20 lg:pb-24 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
+      /* Ground 03: smoke / marble, receiving the gold fade from the section
+         above. Job: back the claim with real names before the process detail.
+         Moved up from position 6, so it now carries full top padding. */
+      className="ground-smoke seam-in quiet-panel py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
     >
       {/* Ambient gold backdrop glow — gives the glass blur something to refract */}
       <div
@@ -58,10 +61,11 @@ export default function WhoWeWorkWith() {
 
       {/* Ghost section number */}
       <div
-        className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[#1C1C1C] text-[160px] md:text-[220px] lg:text-[280px]"
+        className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[160px] md:text-[220px] lg:text-[280px]"
+        style={{ color: 'rgb(111 87 40 / 0.12)' }}
         aria-hidden
       >
-        04
+        03
       </div>
 
       {/* Gold vertical connector line — desktop only */}
@@ -85,7 +89,7 @@ export default function WhoWeWorkWith() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
         >
-          <p className="section-label">Who We Work With</p>
+          <p className="section-label">Proof</p>
           <div className="section-accent" />
         </motion.div>
 

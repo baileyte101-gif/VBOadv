@@ -15,11 +15,15 @@ export default function About() {
   return (
     <section
       id="about"
-      className="bg-[#0D0D0D] py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
+      /* Ground 06: smoke / marble. Receives the gold fade from Industries above
+         (the stat band that used to buffer that edge is gone) and fades out to
+         the skyline below. Job: the human close before the ask. */
+      className="ground-smoke seam-in-out quiet-panel py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
     >
       {/* Ghost section number */}
       <div
-        className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[#1C1C1C] text-[160px] md:text-[220px] lg:text-[280px]"
+        className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[160px] md:text-[220px] lg:text-[280px]"
+        style={{ color: 'rgb(111 87 40 / 0.12)' }}
         aria-hidden
       >
         06
@@ -80,7 +84,7 @@ export default function About() {
             <SocialIcons size={18} className="pt-1" />
 
             {/* Divider */}
-            <div className="border-t border-[#1C1C1C] pt-8 mt-4">
+            <div className="border-t border-white/[0.09] pt-8 mt-4">
               <p className="section-label mb-6">The Founder</p>
 
               <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed mb-4">

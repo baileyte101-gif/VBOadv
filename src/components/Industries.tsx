@@ -22,11 +22,16 @@ export default function Industries() {
   return (
     <section
       id="industries"
-      className="bg-[#1C1C1C] pt-24 md:pt-32 lg:pt-40 pb-0 relative overflow-hidden"
+      /* Ground 05: gold linework, feathering into About's marble below. The
+         stone stat band that used to buffer that edge is gone, so this edge now
+         gets the same seam the Approach/Proof edge already had.
+         Job: breadth reads as confidence once depth has already landed. */
+      className="ground-gold seam-out quiet-panel pt-24 md:pt-32 lg:pt-40 pb-0 relative overflow-hidden"
     >
       {/* Ghost section number */}
       <div
-        className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[#222222] text-[160px] md:text-[220px] lg:text-[280px]"
+        className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[160px] md:text-[220px] lg:text-[280px]"
+        style={{ color: 'rgb(111 87 40 / 0.16)' }}
         aria-hidden
       >
         05
@@ -70,14 +75,17 @@ export default function Industries() {
         </motion.p>
 
         {/* 4×4 Industry grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-[#2A2A2A]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-white/[0.09]">
           {industries.map((industry, i) => (
             <motion.div
               key={industry}
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + i * 0.06 }}
-              className="border-r border-b border-[#2A2A2A] p-4 md:p-8 group cursor-default flex flex-col justify-between min-h-[80px] md:min-h-[150px] hover:bg-[#212121] transition-colors duration-300"
+              /* Raised but translucent, so the gold linework ground still reads
+                 through the cells rather than being covered over. */
+              className="border-r border-b border-white/[0.09] p-4 md:p-8 group cursor-default flex flex-col justify-between min-h-[80px] md:min-h-[150px] bg-[rgb(20_20_24_/_0.4)] hover:bg-[rgb(20_20_24_/_0.62)] transition-colors duration-300"
+              style={{ boxShadow: 'inset 0 1px 0 rgb(255 255 255 / 0.035)' }}
             >
               <span className="font-headline font-bold text-[#F2EDE4] uppercase leading-tight tracking-wide text-[clamp(1rem,1.8vw,1.35rem)] group-hover:text-[#B8962E] transition-colors duration-300 block">
                 {industry}
@@ -121,13 +129,17 @@ export default function Industries() {
       </div>
 
       {/* Industries ticker — flush to bottom, no extra padding */}
-      <Ticker
-        items={industries}
-        textColorClass="text-[#F2EDE4]/30"
-        bgClass="bg-[#1C1C1C]"
-        speed={35}
-        separator="/"
-      />
+      {/* Transparent so the gold linework ground carries straight through it.
+          Positioned above the quiet-panel scrim, same as the content above. */}
+      <div className="relative z-10">
+        <Ticker
+          items={industries}
+          textColorClass="text-[#F2EDE4]/30"
+          bgClass="bg-transparent"
+          speed={35}
+          separator="/"
+        />
+      </div>
     </section>
   )
 }

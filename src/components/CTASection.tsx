@@ -8,7 +8,9 @@ export default function CTASection() {
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section className="bg-[#0D0D0D] relative overflow-hidden py-28 md:py-40 lg:py-48 px-8 md:px-12">
+    /* Transparent: this section now sits on the closing block's skyline ground,
+       which spans the CTA and the footer as one continuous background. */
+    <section className="relative z-[1] overflow-hidden py-28 md:py-40 lg:py-48 px-8 md:px-12">
       {/* Top gold accent line */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-[#B8962E]" />
 
