@@ -42,11 +42,18 @@ const GOLD_HOT = '#E7CE86'
 const HERO_PHOTO_BREAKPOINT = 1024
 /**
  * How far below centre the wordmark sits once it is confined to the copy column,
- * as a fraction of the hero's height. Enough to clear most of the display
- * headline and sit behind the body copy. Below the breakpoint there is no photo
- * and no crowding, so the mark stays centred.
+ * as a fraction of the hero's height. Below the breakpoint there is no photo and
+ * no crowding, so the mark stays centred.
+ *
+ * These two values are Tim's option C, chosen 2026-08-10 from three tested
+ * against the earlier build where the body copy sat on the mark's dense middle.
+ * The mark moves up and grows just enough to tuck under the display headline,
+ * which leaves the two paragraphs on a quiet ground. Moving either one much
+ * further reopens the problem, so change them together and look at the result.
  */
-const WORDMARK_Y_BIAS = 0.15
+const WORDMARK_Y_BIAS = 0.07
+/** Multiplier on the wordmark's fit budget. See WORDMARK_Y_BIAS. */
+const WORDMARK_SIZE_SCALE = 1.12
 
 type Particle = {
   bx: number
@@ -301,10 +308,6 @@ type Props = {
   fallback?: React.ReactNode
   /** Brightens the field slightly while the hero's marble ground is showing. */
   boost?: boolean
-  /** Overrides the wordmark's default drop below centre on desktop. */
-  yBias?: number
-  /** Overrides the wordmark's default size. 1 = default. */
-  sizeScale?: number
 }
 
 export default function ParticleField({
@@ -314,8 +317,6 @@ export default function ParticleField({
   fallbackClassName,
   fallback,
   boost = false,
-  yBias = WORDMARK_Y_BIAS,
-  sizeScale = 1,
 }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -377,9 +378,11 @@ export default function ParticleField({
       const octx = off.getContext('2d')
       if (!octx) return
       // Read on every build so a resize across the breakpoint re-centres correctly.
-      const effectiveBias =
-        variant === 'wordmark' && window.innerWidth >= HERO_PHOTO_BREAKPOINT ? yBias : 0
-      cfg.build(octx, W, H, { fontFamily, yBias: effectiveBias, sizeScale })
+      const isWordmark = variant === 'wordmark'
+      const yBias =
+        isWordmark && window.innerWidth >= HERO_PHOTO_BREAKPOINT ? WORDMARK_Y_BIAS : 0
+      const sizeScale = isWordmark ? WORDMARK_SIZE_SCALE : 1
+      cfg.build(octx, W, H, { fontFamily, yBias, sizeScale })
       let img: Uint8ClampedArray
       try {
         img = octx.getImageData(0, 0, W, H).data
@@ -580,7 +583,7 @@ export default function ParticleField({
         eventTarget.removeEventListener('touchend', onPointerOut)
       }
     }
-  }, [variant, eventTargetRef, yBias, sizeScale])
+  }, [variant, eventTargetRef])
 
   return (
     <div ref={wrapRef} className={className} aria-hidden="true">

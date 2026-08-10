@@ -1,78 +1,15 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import ParticleField from '@/components/ParticleField'
 
 const words = ['Strategy.', 'Creative.', 'Performance.']
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   TEMPORARY, REVIEW ONLY — remove once Tim picks a hero variant.
-
-   The body copy sits over the wordmark field and Tim flagged it as hard to read.
-   These are the three ways out, switchable with ?hero=a|b|c on the preview so
-   they can be compared on one link. No param renders the current build.
-
-   Once a variant is chosen: keep that variant's values as the only values, drop
-   this block, drop the useSearchParam hook below, and drop the yBias/sizeScale
-   props from the ParticleField call.
-   ───────────────────────────────────────────────────────────────────────────── */
-type HeroVariant = 'current' | 'a' | 'b' | 'c'
-
-const VARIANTS: Record<
-  HeroVariant,
-  { yBias: number; sizeScale: number; sub: string; geo: string; strongScrim: boolean }
-> = {
-  // What is on the preview now. Included so the comparison has a baseline.
-  current: {
-    yBias: 0.15,
-    sizeScale: 1,
-    sub: 'text-[#6B6F73] text-base md:text-lg',
-    geo: 'text-[#6B6F73]/70 text-sm',
-    strongScrim: false,
-  },
-  // A — lift the copy. Mark stays exactly where it is; the copy goes near-white,
-  // larger and heavier, and the scrim under it deepens.
-  a: {
-    yBias: 0.15,
-    sizeScale: 1,
-    sub: 'text-[#F2EDE4] text-lg md:text-xl font-medium',
-    geo: 'text-[#F2EDE4]/75 text-base',
-    strongScrim: true,
-  },
-  // B — move the mark back up and make it bigger, so it lives behind the display
-  // headline where big type masks it, and clears the body copy almost entirely.
-  b: {
-    yBias: 0.02,
-    sizeScale: 1.25,
-    sub: 'text-[#6B6F73] text-base md:text-lg',
-    geo: 'text-[#6B6F73]/70 text-sm',
-    strongScrim: false,
-  },
-  // C — half of each. Mark up a little and a little bigger, copy lifted a little.
-  c: {
-    yBias: 0.07,
-    sizeScale: 1.12,
-    sub: 'text-[#F2EDE4]/90 text-base md:text-lg font-medium',
-    geo: 'text-[#9fa3a7] text-sm',
-    strongScrim: true,
-  },
-}
-
-function useHeroVariant(): HeroVariant {
-  const [v, setV] = useState<HeroVariant>('current')
-  useEffect(() => {
-    const q = new URLSearchParams(window.location.search).get('hero')
-    if (q === 'a' || q === 'b' || q === 'c') setV(q)
-  }, [])
-  return v
-}
-
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null)
   const [marble, setMarble] = useState(false)
-  const variant = VARIANTS[useHeroVariant()]
 
   return (
     <section
@@ -92,8 +29,6 @@ export default function Hero() {
         className="hero-wordmark-wrap"
         fallbackClassName="hero-wordmark-fallback"
         boost={marble}
-        yBias={variant.yBias}
-        sizeScale={variant.sizeScale}
         fallback={
           <Image
             src="/images/logo-transparent.png"
@@ -109,10 +44,7 @@ export default function Hero() {
       <div className="flex-1 flex flex-col justify-center px-8 md:px-12 lg:px-20 xl:px-24 py-20 min-w-0 relative z-[3]">
         {/* Legibility scrim: thins the particles where the copy sits.
             If the particles fight the type, reduce the particles, never the type. */}
-        <div
-          className={`hero-scrim${variant.strongScrim ? ' hero-scrim-strong' : ''}`}
-          aria-hidden
-        />
+        <div className="hero-scrim hero-scrim-strong" aria-hidden />
 
         {/* Label */}
         <motion.p
@@ -158,7 +90,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.65 }}
-          className={`${variant.sub} mb-4 font-body leading-relaxed max-w-sm`}
+          className="text-[#F2EDE4]/90 font-medium text-base md:text-lg mb-4 font-body leading-relaxed max-w-sm"
         >
           Fully integrated marketing. Human, built on experience and modern efficiency.
         </motion.p>
@@ -168,7 +100,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.72 }}
-          className={`${variant.geo} font-body leading-relaxed max-w-sm mb-10`}
+          className="text-[#9fa3a7] text-sm font-body leading-relaxed max-w-sm mb-10"
         >
           Based in Coconut Grove, Miami, we&apos;re a founder-led marketing consultancy and studio serving small and mid-size businesses across South Florida.
         </motion.p>
