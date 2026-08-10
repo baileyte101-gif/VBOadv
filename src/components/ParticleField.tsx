@@ -35,6 +35,19 @@ const GOLD = '#B8962E'
 /** The hero wordmark is the one hot-gold object in its viewport. One per screen. */
 const GOLD_HOT = '#E7CE86'
 
+/**
+ * Where the hero photo takes over and the wordmark stops. Must stay in step with
+ * the `@media (min-width: 1024px)` rule on `.hero-wordmark-wrap` in globals.css.
+ */
+const HERO_PHOTO_BREAKPOINT = 1024
+/**
+ * How far below centre the wordmark sits once it is confined to the copy column,
+ * as a fraction of the hero's height. Enough to clear most of the display
+ * headline and sit behind the body copy. Below the breakpoint there is no photo
+ * and no crowding, so the mark stays centred.
+ */
+const WORDMARK_Y_BIAS = 0.15
+
 type Particle = {
   bx: number
   by: number
@@ -47,8 +60,14 @@ type Particle = {
   phase: number
 }
 
+type BuildOpts = {
+  fontFamily: string
+  /** Fraction of the canvas height to push the wordmark below centre. */
+  yBias: number
+}
+
 type Preset = {
-  build: (ctx: CanvasRenderingContext2D, W: number, H: number, fontFamily: string) => void
+  build: (ctx: CanvasRenderingContext2D, W: number, H: number, opts: BuildOpts) => void
   color: string
   density: number
   dimChance: number
@@ -69,19 +88,26 @@ type Preset = {
  * the nav and for this field's fallback, which are real logo placements; the
  * particle field is the named exception.
  *
- * Fit checks BOTH width and height: the box is the whole hero now (tall relative
- * to its width), so an unchecked height can run the glyphs off the top and bottom.
+ * Fit checks BOTH width and height, since the box is taller relative to its width
+ * than the original band and an unchecked height runs the glyphs off the top and
+ * bottom.
+ *
+ * yBias drops the mark below centre. On desktop it clears most of the display
+ * headline and sits behind the smaller body copy, where the dots read as dots
+ * instead of disappearing under 100px letterforms.
  */
 function buildWordmark(
   ctx: CanvasRenderingContext2D,
   W: number,
   H: number,
-  fontFamily: string
+  { fontFamily, yBias }: BuildOpts
 ) {
   ctx.fillStyle = '#fff'
   const text = 'VBO'
   const targetW = W * 0.82
-  const targetH = H * 0.6
+  // The usable height shrinks by the bias, so the mark can move down without
+  // ever running off the bottom of the canvas.
+  const targetH = H * (0.6 - Math.abs(yBias))
   let size = Math.min(targetH, targetW * 0.5)
   ctx.font = `900 ${size}px ${fontFamily}`
   while (size > 10 && (ctx.measureText(text).width > targetW || size > targetH)) {
@@ -90,7 +116,7 @@ function buildWordmark(
   }
   ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'
-  ctx.fillText(text, W / 2, H / 2 + size * 0.03)
+  ctx.fillText(text, W / 2, H / 2 + size * 0.03 + H * yBias)
 }
 
 function mulberry32(seed: number) {
@@ -340,7 +366,12 @@ export default function ParticleField({
       off.height = H
       const octx = off.getContext('2d')
       if (!octx) return
-      cfg.build(octx, W, H, fontFamily)
+      // Read on every build so a resize across the breakpoint re-centres correctly.
+      const yBias =
+        variant === 'wordmark' && window.innerWidth >= HERO_PHOTO_BREAKPOINT
+          ? WORDMARK_Y_BIAS
+          : 0
+      cfg.build(octx, W, H, { fontFamily, yBias })
       let img: Uint8ClampedArray
       try {
         img = octx.getImageData(0, 0, W, H).data

@@ -223,6 +223,13 @@ body {
 .marble-on .hero-bg-layer { opacity: 1; }
 
 .hero-wordmark-wrap { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+/* From lg up the hero photo occupies the right 40% plus a 1px divider. Stop the
+   wordmark at that edge so it lives entirely behind the copy column instead of
+   running under the photograph. Below lg there is no photo, so the field keeps
+   the full hero. */
+@media (min-width: 1024px) {
+  .hero-wordmark-wrap { right: calc(40% + 1px); }
+}
 .hero-wordmark-wrap canvas {
   position: absolute;
   inset: 0;
