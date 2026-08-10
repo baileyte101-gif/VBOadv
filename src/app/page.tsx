@@ -159,6 +159,9 @@ export default function Home() {
           holds position. Section ids are unchanged so the nav's scroll links
           keep working. */}
       <TheProblem />
+      {/* Gold bar marking the step out of the plain ground and into the gold
+          linework. Same device as the divider further down the page. */}
+      <div className="retro-divider-strip" aria-hidden />
       <TheApproach />
       <WhoWeWorkWith />
       <RetroDivider />

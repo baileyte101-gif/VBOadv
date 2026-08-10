@@ -261,6 +261,12 @@ body {
   inset: -80px -60px -60px -140px;
   background: radial-gradient(ellipse 80% 85% at 38% 48%, rgba(13, 13, 13, 0.62) 0%, rgba(13, 13, 13, 0.24) 55%, rgba(13, 13, 13, 0) 85%);
 }
+/* Deeper scrim, biased down to where the body copy sits rather than the headline. */
+.hero-scrim-strong {
+  background:
+    radial-gradient(ellipse 80% 85% at 38% 48%, rgba(13, 13, 13, 0.62) 0%, rgba(13, 13, 13, 0.24) 55%, rgba(13, 13, 13, 0) 85%),
+    radial-gradient(ellipse 62% 42% at 34% 74%, rgba(13, 13, 13, 0.82) 0%, rgba(13, 13, 13, 0.45) 50%, rgba(13, 13, 13, 0) 80%);
+}
 
 .hero-bg-toggle {
   position: relative;
