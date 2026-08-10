@@ -378,10 +378,13 @@ export default function ParticleField({
       const octx = off.getContext('2d')
       if (!octx) return
       // Read on every build so a resize across the breakpoint re-centres correctly.
-      const isWordmark = variant === 'wordmark'
-      const yBias =
-        isWordmark && window.innerWidth >= HERO_PHOTO_BREAKPOINT ? WORDMARK_Y_BIAS : 0
-      const sizeScale = isWordmark ? WORDMARK_SIZE_SCALE : 1
+      // Both wordmark adjustments are desktop-only: below the breakpoint there is
+      // no photo and no crowding, so the mark keeps the size and centring that
+      // was already signed off, and the mobile particle count does not move.
+      const isDesktopWordmark =
+        variant === 'wordmark' && window.innerWidth >= HERO_PHOTO_BREAKPOINT
+      const yBias = isDesktopWordmark ? WORDMARK_Y_BIAS : 0
+      const sizeScale = isDesktopWordmark ? WORDMARK_SIZE_SCALE : 1
       cfg.build(octx, W, H, { fontFamily, yBias, sizeScale })
       let img: Uint8ClampedArray
       try {
