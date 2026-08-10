@@ -26,11 +26,11 @@ const serviceSchema = {
   name: 'Integrated Marketing Services',
   description:
     'VBO Advertising provides integrated marketing services for small and mid-size businesses in Miami and South Florida, including marketing strategy, paid media, social media, SEO, brand strategy, and creative production.',
-  provider: {
-    '@type': 'Organization',
-    name: 'VBO Advertising',
-    url: 'https://www.vboadv.com/',
-  },
+  // Reference the root Organization by @id rather than inlining a duplicate.
+  // Inlining published a second, unlinked company record; Google's Rich Results
+  // Test reported "Organization: 2 valid items". Matches the WebSite block below
+  // and the pattern already enforced on the vertical pages. Vega 2026-08-10.
+  provider: { '@id': 'https://www.vboadv.com/#organization' },
   areaServed: [
     'Coconut Grove, FL',
     'Miami, FL',

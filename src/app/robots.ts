@@ -5,10 +5,14 @@ import type { MetadataRoute } from "next";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
+      // /_next/ holds optimised images and JS/CSS bundles, nothing private.
+      // Blocking it by default cost us image indexing on every engine except
+      // Google (which got its own group in bbd7f97). Opened to all crawlers
+      // 2026-08-10 per Vega validation. /tim/ and /api/ stay closed.
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/tim/", "/api/", "/_next/"],
+        disallow: ["/tim/", "/api/"],
       },
       // Googlebot gets its own group so it does NOT fall through to "*" above,
       // which blocks /_next/ (every Next.js optimized image). A crawler obeys
