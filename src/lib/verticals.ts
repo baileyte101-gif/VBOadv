@@ -481,7 +481,7 @@ export const verticals: Record<string, VerticalData> = {
       {
         question: "Does VBO understand SEC and FINRA marketing rules?",
         answer:
-          "Yes. Financial advisor marketing has real rules around it, including the SEC Marketing Rule under Rule 206(4)-1 and, for broker-dealers, FINRA Rule 2210. We build every campaign with those rules in view, and every piece of client-facing copy goes through our review before it reaches your compliance team, so nothing lands on their desk cold. What we don't do is replace that team. We run the marketing, and final sign-off on anything client-facing stays with your firm's own compliance process, every time.",
+          "Yes. Financial advisor marketing has real rules around it, including the SEC Marketing Rule under Rule 206(4)-1 and, for broker-dealers, FINRA Rule 2210. We build every campaign with those rules in view. What we don't do is replace your compliance team. We run the marketing, and final sign-off on anything client-facing stays with your firm's own compliance process, every time.",
       },
       {
         question: "How much does financial advisor marketing cost?",
