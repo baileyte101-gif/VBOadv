@@ -2,13 +2,24 @@
 
 > Founder-led marketing consultancy and studio in Miami, serving small to mid-size businesses across South Florida.
 
-VBO Advertising is a Miami-based marketing consultancy and studio founded by Tim Bailey. We sit between strategic consulting and full-service agency, delivering senior-level thinking and hands-on execution without the layers or overhead. Services include marketing strategy, paid media, SEO, social media, brand strategy, website design, performance analytics, and creative production.
+VBO Advertising is a Miami-based marketing consultancy and studio founded by Tim Bailey. We sit between strategic consulting and full-service agency, delivering senior-level thinking and hands-on execution without the layers or overhead. Services include marketing strategy, paid media, SEO, social media, brand strategy, website design, performance analytics, creative production, and helping clients get found in both traditional search and AI answer engines like ChatGPT, Perplexity, and Google AI Overviews.
 
 ## Core pages
 
 - [Homepage](https://www.vboadv.com/): Brand positioning, philosophy, services overview
-- [Marketing for Law Firms in South Florida](https://www.vboadv.com/professional-services/law-firms): Vertical landing page for law firm marketing
+- [Marketing for Law Firms in Miami](https://www.vboadv.com/professional-services/law-firms): Vertical landing page for law firm marketing
+- [Dental Practice Marketing in Miami](https://www.vboadv.com/professional-services/dental-practices): Vertical landing page for dental practice marketing
+- [Medical Spa Marketing in Miami](https://www.vboadv.com/professional-services/med-spas): Vertical landing page for med spa and aesthetic clinic marketing
+- [Financial Advisor Marketing in Miami](https://www.vboadv.com/professional-services/financial-advisors): Vertical landing page for financial advisor and RIA marketing
+- [Fractional CMO Services](https://www.vboadv.com/fractional-cmo): What a fractional CMO does, what it costs, and when a business needs one
 - [AI-Enabled Marketing Agency](https://www.vboadv.com/ai-enabled-marketing): VBO's modern operational approach, comparing traditional vs AI-enabled vs AI-first agency models
+- [Insights](https://www.vboadv.com/insights): VBO's blog on marketing strategy, creative, and performance
+
+## Recent articles
+
+- [How to Use AI in Your Marketing](https://www.vboadv.com/insights/how-to-use-ai-in-your-marketing): Where AI helps in marketing, and where a person still has to decide
+- [What a Marketing Agency Actually Does](https://www.vboadv.com/insights/what-a-marketing-agency-actually-does): Paid media, social, SEO, brand, and creative, and how the pieces work together
+- [Your Marketing Feels Busy](https://www.vboadv.com/insights/your-marketing-feels-busy): What integrated marketing actually means, and how to fix a disconnected setup
 
 ## Service areas
 

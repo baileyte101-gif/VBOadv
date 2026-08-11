@@ -58,12 +58,15 @@ export default function Hero() {
 
         {/* Headline — first word is the single H1 for SEO. The other two
             words share identical visual treatment via the same className but
-            render as <p> so the page has exactly one H1. */}
+            render as <p> so the page has exactly one H1. The aria-label gives
+            the H1 its full accessible name (all three words) without touching
+            the per-word stagger animation. */}
         <div className="mb-8 md:mb-10">
           {words.map((word, i) =>
             i === 0 ? (
               <motion.h1
                 key={word}
+                aria-label="Strategy. Creative. Performance."
                 initial={{ opacity: 0, x: -24 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.65, delay: 0.28, ease: [0.25, 0.1, 0.25, 1] }}

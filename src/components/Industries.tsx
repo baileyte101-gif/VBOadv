@@ -65,11 +65,23 @@ export default function Industries() {
           <div className="section-accent" />
         </motion.div>
 
+        {/* Section headline — Tim-approved 2026-08-11 (Mary option 3).
+            Scaled below the About/HowWeWork h2 clamp since Industries is a
+            denser grid section; structure and slot per Vega's Wave 1 ticket. */}
+        <motion.h2
+          initial={{ opacity: 0, y: 28 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="font-headline font-black text-[#F2EDE4] uppercase leading-none text-[clamp(2rem,4.5vw,3.5rem)] max-w-[860px] mb-8"
+        >
+          Different industries. The same way of working.
+        </motion.h2>
+
         {/* Intro */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
           className="text-[#6B6F73] text-base md:text-lg font-body mb-12"
         >
           Based in Miami. Partnering with ambitious operators across:

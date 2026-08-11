@@ -43,6 +43,8 @@ const serviceSchema = {
     'Paid Media',
     'Social Media Marketing',
     'Search Engine Optimization',
+    'AI Search Optimization',
+    'LLM Search Optimization',
     'Brand Strategy',
     'Creative Production',
     'Marketing Consulting',
