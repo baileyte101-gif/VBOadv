@@ -1,10 +1,9 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
 import Ticker from '@/components/Ticker'
-import TheProblem from '@/components/TheProblem'
+import WhatWeRun from '@/components/WhatWeRun'
 import TheApproach from '@/components/TheApproach'
 import HowWeWork from '@/components/HowWeWork'
-import WhoWeWorkWith from '@/components/WhoWeWorkWith'
 import Industries from '@/components/Industries'
 import About from '@/components/About'
 import CTASection from '@/components/CTASection'
@@ -154,16 +153,23 @@ export default function Home() {
         bgClass="bg-[#0D0D0D]"
         speed={30}
       />
-      {/* Section order, redesign 2026-08-10: Proof moves up from 6 to 5, How We
-          Work moves down from 5 to 6, and Life is new at 7. Everything else
-          holds position. Section ids are unchanged so the nav's scroll links
-          keep working. */}
-      <TheProblem />
+      {/* Section order, redesign 2026-08-11: section 01 rebuilt as "What We
+          Run" (was the problem statement). WhoWeWorkWith came out entirely
+          on Tim's call, 2026-08-11 — its two jobs (client logos, "the brands
+          we build with" title/subhead) both moved up into section 01's
+          marble strip, so the standalone section no longer had a job of its
+          own. The page runs one section shorter as a result. RetroDivider,
+          which used to mark the beat between WhoWeWorkWith and How We Work,
+          now sits directly after The Approach; its "Behind the work." beat
+          still reads correctly there; it was never written to depend on
+          WhoWeWorkWith specifically; see Bob's change log for the full
+          reasoning. Ghost numbers below were renumbered to close the gap
+          (04 to 03, 05 to 04, 06 to 05); section 01 stays 01. */}
+      <WhatWeRun />
       {/* Gold bar marking the step out of the plain ground and into the gold
           linework. Same device as the divider further down the page. */}
       <div className="retro-divider-strip" aria-hidden />
       <TheApproach />
-      <WhoWeWorkWith />
       <RetroDivider />
       <HowWeWork />
       <Life />

@@ -73,13 +73,14 @@ export default function HowWeWork() {
          position 5, so it now carries full bottom padding. */
       className="ground-harbour py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
     >
-      {/* Ghost section number */}
+      {/* Ghost section number. Was 04; renumbered to 03, 2026-08-11, when
+          WhoWeWorkWith (03) came out of the page. */}
       <div
         className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[160px] md:text-[220px] lg:text-[280px]"
         style={{ color: 'rgb(111 87 40 / 0.12)' }}
         aria-hidden
       >
-        04
+        03
       </div>
 
       {/* Gold vertical connector line — desktop only */}

@@ -10,9 +10,15 @@ export default function TheApproach() {
   return (
     <section
       id="the-approach"
-      /* Ground 02: gold linework, feathering into the marble below it.
-         Job: give the thesis statement real surface weight. */
-      className="ground-gold seam-both quiet-panel py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
+      /* Ground 02: gold linework, feathering in from the plain ground above.
+         Job: give the thesis statement real surface weight.
+         2026-08-11: was seam-both, fading gold into WhoWeWorkWith's marble
+         below it. WhoWeWorkWith came out (its job moved into section 01's
+         marble strip), and a flat black RetroDivider now follows directly,
+         so the bottom fade toward marble-tint would have pointed at nothing.
+         Switched to seam-in (top fade only, added to globals.css) rather
+         than leaving seam-both's now-orphaned bottom gradient in place. */
+      className="ground-gold seam-in quiet-panel py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
     >
       {/* Ghost section number */}
       <div

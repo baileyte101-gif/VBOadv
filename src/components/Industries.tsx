@@ -28,13 +28,14 @@ export default function Industries() {
          Job: breadth reads as confidence once depth has already landed. */
       className="ground-gold seam-out quiet-panel pt-24 md:pt-32 lg:pt-40 pb-0 relative overflow-hidden"
     >
-      {/* Ghost section number */}
+      {/* Ghost section number. Was 05; renumbered to 04, 2026-08-11, when
+          WhoWeWorkWith (03) came out of the page. */}
       <div
         className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[160px] md:text-[220px] lg:text-[280px]"
         style={{ color: 'rgb(111 87 40 / 0.16)' }}
         aria-hidden
       >
-        05
+        04
       </div>
 
       {/* Gold vertical connector line — desktop only */}
