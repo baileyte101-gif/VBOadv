@@ -104,7 +104,7 @@ export default function WhatWeRun() {
         01
       </div>
 
-      {/* Gold vertical connector line — desktop only, spans behind all three
+      {/* Gold vertical connector line, desktop only, spans behind all three
           bands, same as Jules's approved build and the site's own single
           instance of this device elsewhere on the page. */}
       <div
@@ -118,7 +118,7 @@ export default function WhatWeRun() {
         aria-hidden
       />
 
-      {/* ── Band 1: blue top — label, headline, four-line grid ────────────── */}
+      {/* Band 1: blue top, label, headline, four-line grid */}
       <div className="ground-plain step-up pt-24 md:pt-32 lg:pt-40 px-8 md:px-12 lg:px-20 xl:px-24 pb-16 md:pb-[72px] lg:pb-20">
         <div className="max-w-[1120px] relative z-10" ref={topRef}>
           <motion.div {...fadeProps(16, 0.55)} animate={topInView ? { opacity: 1, y: 0 } : {}}>
@@ -161,12 +161,12 @@ export default function WhatWeRun() {
           (see the divider between this section and The Approach below). */}
       <div className="retro-divider-strip" aria-hidden />
 
-      {/* ── Band 2: marble strip — title, subhead, four client tiles ──────── */}
+      {/* Band 2: marble strip, title, subhead, four client tiles */}
       <div
         className="relative py-10 md:py-12 lg:py-[52px] px-8 md:px-12 lg:px-20 xl:px-24"
         style={{
           // Deliberately not the shared `.ground-smoke` class, which
-          // defaults to `background-size: cover` — the exact setting that
+          // defaults to `background-size: cover`, the exact setting that
           // blows this same pattern into soft blotches on a TALL section.
           // A short, wide strip like this one sits close to the pattern's
           // own native proportions, so cover reads as tight grain here, not
@@ -221,11 +221,11 @@ export default function WhatWeRun() {
       </div>
 
       {/* Gold bar, marble's exit edge. Two transitions inside this section,
-          two bars — see rationale.md for why one bar on only one edge would
+          two bars. See rationale.md for why one bar on only one edge would
           have read as unfinished rather than restrained. */}
       <div className="retro-divider-strip" aria-hidden />
 
-      {/* ── Band 3: blue bottom — the closing claim ────────────────────────── */}
+      {/* Band 3: blue bottom, the closing claim */}
       <div className="ground-plain step-up pt-16 md:pt-[72px] lg:pt-20 px-8 md:px-12 lg:px-20 xl:px-24 pb-24 md:pb-28 lg:pb-32">
         <div className="max-w-[1120px] relative z-10" ref={bottomRef}>
           <motion.p

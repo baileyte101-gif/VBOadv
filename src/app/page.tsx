@@ -155,7 +155,7 @@ export default function Home() {
       />
       {/* Section order, redesign 2026-08-11: section 01 rebuilt as "What We
           Run" (was the problem statement). WhoWeWorkWith came out entirely
-          on Tim's call, 2026-08-11 — its two jobs (client logos, "the brands
+          on Tim's call, 2026-08-11. Its two jobs (client logos, "the brands
           we build with" title/subhead) both moved up into section 01's
           marble strip, so the standalone section no longer had a job of its
           own. The page runs one section shorter as a result. RetroDivider,

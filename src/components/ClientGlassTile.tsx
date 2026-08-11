@@ -1,7 +1,7 @@
 import type { Client } from '@/lib/clients'
 
 /**
- * ClientGlassTile — the frosted-glass client logo card.
+ * ClientGlassTile: the frosted-glass client logo card.
  *
  * Extracted 2026-08-11 while building the section 01 marble strip, which
  * needed a smaller copy of the same tile WhoWeWorkWith.tsx (since removed)

@@ -156,7 +156,7 @@ body {
 }
 
 /* Added 2026-08-11: The Approach fades in from the plain ground above it
-   (What We Run's blue-black step-up) but no longer needs a bottom fade —
+   (What We Run's blue-black step-up) but no longer needs a bottom fade.
    WhoWeWorkWith (marble) came out, and a flat black RetroDivider follows
    directly, so seam-both's bottom marble-tint gradient stopped pointing at
    anything. Same top gradient as seam-both, no bottom gradient. */
