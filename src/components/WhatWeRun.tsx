@@ -55,13 +55,18 @@ function IconReport() {
   )
 }
 
-// Copy locked 2026-08-11 ("REVISION 2026-08-11: THE SHIPPING SET" +
-// addenda in clients/vbo/2026-08-10-homepage-section-01-copy-options.md).
-// Strings copied from Jules's approved build, not retyped from the doc.
+// Copy revised 2026-08-11 after Tim's review of the first preview ("It looks
+// great," three line edits). Lines 1-3 replaced; line 4 unchanged. Tim's
+// wording verbatim except three mechanical corrections Mack made and
+// disclosed: "Google" capitalised, "or remind others" for subject-verb
+// agreement with "to reach," and closing periods added to lines 1 and 2 so
+// all four lines end consistently. Character counts verified by codepoint
+// on this end too: 87, 76, 93, 57. Zero em dashes, en dashes, or curly
+// quotes in any of the four, verified the same way.
 const supportingLines: { icon: JSX.Element; text: string }[] = [
-  { icon: <IconReach />, text: "Paid ads on Google and Meta, in front of people who don't know you yet." },
-  { icon: <IconSearch />, text: 'Search work, so you get found without paying for every click.' },
-  { icon: <IconSite />, text: 'A website people land on, with brand and creative to match.' },
+  { icon: <IconReach />, text: 'Paid ads on Google and Meta, to reach new customers or remind others to purchase again.' },
+  { icon: <IconSearch />, text: 'Search Engine & LLM Search, so you get found without paying for every click.' },
+  { icon: <IconSite />, text: 'A modern website people will remember when they land on it, with brand and creative to match.' },
   { icon: <IconReport />, text: 'Reporting that tells you what each of those actually did.' },
 ]
 
@@ -147,7 +152,25 @@ export default function WhatWeRun() {
                 >
                   {line.icon}
                 </span>
-                <p className="font-body text-[#F2EDE4] font-medium text-[18px] lg:text-[19px] leading-[1.5] w-[288px] lg:w-[466px]">
+                {/* Desktop text measure widened 466px to 500px, 2026-08-11,
+                    for the revised copy. Jules tuned 466px to force all four
+                    OLD lines (57 to 71 chars) to wrap to exactly two lines
+                    each. The new lines run 57 to 93 chars, a much wider
+                    spread, and 466px is not enough room for the two long
+                    ones (87, 93 chars) without a third line. 500px is close
+                    to the maximum this cell can hold without widening the
+                    grid or shrinking the icon (column is 548px; icon 28px
+                    plus a 16px gap leaves 504px). Flagged plainly in the
+                    session return: this very likely still gets line 4 (57
+                    chars, unchanged, the shortest) down to a single line
+                    while the other three wrap to two, since a column wide
+                    enough for the 93-character line is also wide enough for
+                    a 57-character line to fit without wrapping at all. That
+                    could not be confirmed against an actual render this
+                    session. Mobile stays at 288px: mobile is a single-column
+                    stack, not a 2-up grid, so there is no cross-cell
+                    matching problem to solve there regardless of wrap count. */}
+                <p className="font-body text-[#F2EDE4] font-medium text-[18px] lg:text-[19px] leading-[1.5] w-[288px] lg:w-[500px]">
                   {line.text}
                 </p>
               </div>
