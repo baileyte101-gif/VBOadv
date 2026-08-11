@@ -60,6 +60,20 @@ public/images/logo-primary.png
 public/images/logo-primary-new.png
 public/images/logo-secondary.png
 
+# Raw blog hero masters. Blog heroes get iterated as large PNGs (v1, v2, v5...
+# routinely 15 to 25MB each) and the chosen one is then exported as a web-sized
+# JPG. Only that JPG belongs in the repo. Git keeps every blob forever, so a
+# stray 20MB master is permanent weight on every clone and every build; a later
+# delete does not undo it.
+# Added 2026-08-11 after 54MB of such drafts turned up loose in this folder.
+#
+# Deliberately scoped to public/images/blog/ only. A blanket
+# public/images/**/*.png was drafted first and rejected: 16 PNGs are tracked
+# elsewhere under public/images (client logos, and the hero/secondary band
+# images for every vertical page), so a blanket rule would silently ignore the
+# images of the next vertical page someone builds and ship it broken.
+public/images/blog/*.png
+
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
