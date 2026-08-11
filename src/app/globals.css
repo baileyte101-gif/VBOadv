@@ -189,14 +189,38 @@ body {
 }
 
 /* About (marble) receives the gold fade from Industries above and fades out to
-   the skyline below. */
+   the skyline below.
+
+   2026-08-11: the pattern layer is pinned to a fixed tile and repeated instead
+   of using `cover`. Tim flagged that this section read as flat grey gunmetal on
+   a phone while reading as marble on desktop, and `cover` was the whole cause.
+
+   `cover` scales the 1400x560 pattern by whatever it takes to cover the box, so
+   the grain scale is a side effect of the section's aspect ratio rather than a
+   design decision. Measured against live production: desktop at 1440 gives a
+   1437x1425 box, scale 2.54x, and you see 40% of the pattern's width. Mobile at
+   375 gives a 375x2049 box (the same content stacked, so much taller and much
+   narrower), scale 3.66x, and you see 7% of the pattern's width. A 7% slice of a
+   3.66x-magnified fractal noise field has almost no visible variation left in
+   it, so it collapses to the flat --marble base colour. That is the gunmetal.
+
+   Fix: 3500x1400 is 2.5x native, within 2% of what desktop already renders, so
+   the desktop look Tim approved is preserved rather than re-tuned. Repeating it
+   means the grain scale is now the same at every viewport instead of being a
+   function of section height. The pattern SVG is authored with
+   stitchTiles='stitch' precisely so it tiles without visible seams.
+
+   Scoped deliberately to this compound selector, NOT to base `.ground-smoke`:
+   Hero.tsx uses `.ground-smoke` for its marble ground toggle and the hero is
+   out of scope. Anything else adopting this ground later should get the same
+   treatment consciously rather than inheriting it. */
 .ground-smoke.seam-in-out {
   background-image:
     linear-gradient(180deg, rgba(69, 68, 60, 0.7) 0, rgba(69, 68, 60, 0.18) 160px, rgba(69, 68, 60, 0) 300px),
     linear-gradient(180deg, rgba(13, 13, 13, 0) 0, rgba(13, 13, 13, 0) calc(100% - 180px), rgba(13, 13, 13, 0.6) 100%),
     var(--ground-smoke-pattern);
-  background-repeat: no-repeat, no-repeat, no-repeat;
-  background-size: auto, auto, cover;
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-size: auto, auto, 3500px 1400px;
 }
 
 /* Quiet zone: darkens the ground where body copy sits on a patterned surface,
