@@ -8,6 +8,9 @@ export interface PostFrontmatter {
   author: string
   featured?: boolean
   image?: string
+  // Alt text for the hero image. Falls back to the title when absent, which
+  // duplicates the H1 sitting directly above it. Set this on new posts.
+  imageAlt?: string
   draft?: boolean
 }
 

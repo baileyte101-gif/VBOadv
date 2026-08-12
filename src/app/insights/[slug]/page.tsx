@@ -23,6 +23,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(params.slug)
   if (!post) return {}
 
+  // Absolute URL. Relative paths make the large-image card render blank on the
+  // platforms that do not resolve against the page URL.
+  const ogImage = post.image ? `https://www.vboadv.com${post.image}` : undefined
+
   return {
     title: `${post.title} | VBO Insights`,
     description: post.excerpt,
@@ -33,11 +37,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.date,
       authors: [post.author],
       url: `https://www.vboadv.com/insights/${post.slug}`,
+      ...(ogImage && {
+        images: [{ url: ogImage, alt: post.imageAlt ?? post.title }],
+      }),
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
+      ...(ogImage && { images: [ogImage] }),
     },
     alternates: {
       canonical: `https://www.vboadv.com/insights/${post.slug}`,
@@ -53,9 +61,13 @@ function ArticleSchema({ post }: { post: NonNullable<ReturnType<typeof getPostBy
     description: post.excerpt,
     datePublished: post.date,
     dateModified: post.date,
+    image: post.image ? [`https://www.vboadv.com${post.image}`] : undefined,
+    // @id ties this back to the Person node the root layout already emits, so
+    // the author resolves to one entity instead of a fresh anonymous Person.
     author: {
       '@type': 'Person',
       name: post.author,
+      '@id': 'https://www.vboadv.com/#tim-bailey',
     },
     publisher: {
       '@type': 'Organization',
@@ -71,6 +83,44 @@ function ArticleSchema({ post }: { post: NonNullable<ReturnType<typeof getPostBy
       '@id': `https://www.vboadv.com/insights/${post.slug}`,
     },
     url: `https://www.vboadv.com/insights/${post.slug}`,
+  }
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
+// THREE levels: Home, Insights, then the post. This does not contradict the
+// two-level shape on /fractional-cmo and the verticals: those dropped a middle
+// item because /professional-services now 308s to the homepage, so position 2
+// resolved to the same URL as position 1. /insights is a real, distinct,
+// indexable page, so the middle item here is legitimate.
+function BreadcrumbSchema({ post }: { post: NonNullable<ReturnType<typeof getPostBySlug>> }) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://www.vboadv.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Insights',
+        item: 'https://www.vboadv.com/insights',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: `https://www.vboadv.com/insights/${post.slug}`,
+      },
+    ],
   }
   return (
     <script
@@ -103,10 +153,12 @@ const mdxComponents = {
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
     <ul {...props} className="mb-6 space-y-2 pl-0 list-none" />
   ),
+  // The bullet marker is the gold slash already used as the breadcrumb divider
+  // on this page. It replaces an em dash, which no VBO surface may render.
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
     <li
       {...props}
-      className="font-body text-[17px] leading-[28px] text-[#C8C4BB] pl-6 relative before:content-['—'] before:absolute before:left-0 before:text-[#B8962E] before:font-mono"
+      className="font-body text-[17px] leading-[28px] text-[#C8C4BB] pl-6 relative before:content-['/'] before:absolute before:left-0 before:text-[#B8962E] before:font-mono"
     />
   ),
   strong: (props: React.HTMLAttributes<HTMLElement>) => (
@@ -145,6 +197,7 @@ export default function InsightPost({ params }: Props) {
   return (
     <>
       <ArticleSchema post={post} />
+      <BreadcrumbSchema post={post} />
       <ReadingProgress />
       <Nav />
 
@@ -245,7 +298,7 @@ export default function InsightPost({ params }: Props) {
             {post.image ? (
               <Image
                 src={post.image}
-                alt={post.title}
+                alt={post.imageAlt ?? post.title}
                 fill
                 priority
                 sizes="(min-width: 1400px) 1400px, 100vw"
