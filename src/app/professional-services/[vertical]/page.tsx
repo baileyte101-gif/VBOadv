@@ -150,6 +150,10 @@ export default function VerticalPage({ params }: Props) {
 
   const serviceSchema = SERVICE_SCHEMAS[slug] ?? null;
 
+  // TWO levels: Home, then the vertical page. There is no Professional
+  // Services hub page. /professional-services now 308s to the homepage, so a
+  // middle item pointing at it would resolve to the same URL as position 1.
+  // Matches the pattern already used in src/app/fractional-cmo/page.tsx.
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -163,12 +167,6 @@ export default function VerticalPage({ params }: Props) {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Professional Services",
-        item: "https://www.vboadv.com/professional-services",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
         name: BREADCRUMB_NAMES[slug] ?? slug,
         item: `https://www.vboadv.com/professional-services/${slug}`,
       },
