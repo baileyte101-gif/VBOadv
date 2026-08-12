@@ -145,9 +145,9 @@ const faqSchema = {
   })),
 };
 
-// TWO levels. Do NOT reproduce the vertical route's three-level pattern: its
-// position 2 points at https://www.vboadv.com/professional-services, a verified
-// 404. Vega R4 fixes that separately on the live pages.
+// TWO levels. The vertical route now matches this shape (2026-08-12): its old
+// three-level pattern pointed position 2 at /professional-services, which used
+// to 404 and now 308s to the homepage, so the middle item was dropped there too.
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
