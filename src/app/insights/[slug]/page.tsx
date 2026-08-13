@@ -130,7 +130,7 @@ function BreadcrumbSchema({ post }: { post: NonNullable<ReturnType<typeof getPos
   )
 }
 
-// MDX component overrides — styled to match VBO design system
+// MDX component overrides, styled to match VBO design system
 const mdxComponents = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
