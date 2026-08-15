@@ -41,6 +41,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
       : []),
   ];
 
+  // The fifteen pages added 2026-08-15. Hubs carry a higher priority than the
+  // pages beneath them because they are the entry points the internal linking
+  // is built around. /contact is a conversion page, not a search target, so it
+  // sits low rather than being left out: it still needs to be crawlable.
+  const buildPages: MetadataRoute.Sitemap = [
+    { path: "/services", priority: 0.9 },
+    { path: "/industries", priority: 0.9 },
+    { path: "/web-development", priority: 0.9 },
+    { path: "/marketing-consultant", priority: 0.9 },
+    { path: "/ecommerce-marketing", priority: 0.9 },
+    { path: "/ai-seo-agency", priority: 0.9 },
+    { path: "/paid-media", priority: 0.9 },
+    { path: "/industries/fashion-apparel", priority: 0.8 },
+    { path: "/industries/jewelry-luxury-retail", priority: 0.8 },
+    { path: "/industries/food-beverage", priority: 0.8 },
+    { path: "/industries/sports-travel", priority: 0.8 },
+    { path: "/industries/local-service-businesses", priority: 0.8 },
+    { path: "/industries/nonprofit-education", priority: 0.8 },
+    { path: "/about", priority: 0.7 },
+    { path: "/contact", priority: 0.5 },
+  ].map(({ path, priority }) => ({
+    url: `${HOST}${path}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority,
+  }));
+
   const verticalPages: MetadataRoute.Sitemap = verticalSlugs
     .filter((slug) => INDEXABLE_VERTICALS.has(slug))
     .map((slug) => ({
@@ -58,5 +85,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...verticalPages, ...postPages];
+  return [...staticPages, ...buildPages, ...verticalPages, ...postPages];
 }

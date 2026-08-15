@@ -7,18 +7,17 @@ import HowWeWork from '@/components/HowWeWork'
 import Industries from '@/components/Industries'
 import About from '@/components/About'
 import CTASection from '@/components/CTASection'
+import SiteFooter from '@/components/SiteFooter'
 import ClosingBlock from '@/components/ClosingBlock'
 import Life from '@/components/Life'
 import RetroDivider from '@/components/RetroDivider'
-import SocialIcons from '@/components/SocialIcons'
-import Image from 'next/image'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
 }
 
-// Phase 1.1 — Service schema: homepage service descriptor for AI-citation lift and Google Rich Results.
+// Phase 1.1. Service schema: homepage service descriptor for AI-citation lift and Google Rich Results.
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -52,7 +51,7 @@ const serviceSchema = {
   url: 'https://www.vboadv.com/',
 }
 
-// Phase 1.1 — FAQPage schema: Q&As tied to common searches for AI Overview and citation lift.
+// Phase 1.1. FAQPage schema: Q&As tied to common searches for AI Overview and citation lift.
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -182,74 +181,7 @@ export default function Home() {
       <ClosingBlock>
         <CTASection />
 
-        {/* Footer */}
-        <footer className="relative z-[1] border-t border-[#B8962E]/20 py-8 px-8 md:px-12 lg:px-20">
-          {/* Thins the skyline's densest window texture under the footer copy */}
-          <div className="footer-scrim" aria-hidden />
-          <div className="max-w-[1400px] mx-auto flex flex-col gap-6">
-            {/* Money-page nav — server-rendered internal links for money-page discovery */}
-            <nav
-              aria-label="Footer"
-              className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2"
-            >
-              <a
-                href="/ai-enabled-marketing"
-                className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
-              >
-                AI-Enabled Marketing
-              </a>
-              <a
-                href="/fractional-cmo"
-                className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
-              >
-                Fractional CMO
-              </a>
-              <a
-                href="/professional-services/law-firms"
-                className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
-              >
-                Marketing for Law Firms
-              </a>
-              <a
-                href="/professional-services/med-spas"
-                className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
-              >
-                Marketing for Med Spas
-              </a>
-              <a
-                href="/insights"
-                className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
-              >
-                VBO Insights
-              </a>
-            </nav>
-
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              {/* Logo */}
-              <Image
-                src="/images/logo-transparent.png"
-                alt="VBO"
-                width={834}
-                height={222}
-                className="h-8 w-auto"
-              />
-
-              <p className="font-mono text-[#6B6F73] text-[10px] tracking-[0.2em] uppercase text-center">
-                © 2026 VBO Advertising. Miami, FL. All rights reserved.
-              </p>
-
-              <div className="flex items-center gap-6">
-                <SocialIcons size={15} />
-                <a
-                  href="mailto:hello@vboadv.com"
-                  className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
-                >
-                  hello@vboadv.com
-                </a>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
       </ClosingBlock>
     </main>
   )

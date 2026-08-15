@@ -38,7 +38,7 @@ export default function Industries() {
         04
       </div>
 
-      {/* Gold vertical connector line — desktop only */}
+      {/* Gold vertical connector line. desktop only */}
       <div
         className="hidden lg:block absolute right-5 pointer-events-none"
         style={{
@@ -57,20 +57,20 @@ export default function Industries() {
       >
         {/* Label */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 16 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.55 }}
         >
           <p className="section-label">Industries</p>
           <div className="section-accent" />
         </motion.div>
 
-        {/* Section headline — Tim-approved 2026-08-11 (Mary option 3).
+        {/* Section headline. Tim-approved 2026-08-11 (Mary option 3).
             Scaled below the About/HowWeWork h2 clamp since Industries is a
             denser grid section; structure and slot per Vega's Wave 1 ticket. */}
         <motion.h2
-          initial={{ opacity: 0, y: 28 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 28 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
           className="font-headline font-black text-[#F2EDE4] uppercase leading-none text-[clamp(2rem,4.5vw,3.5rem)] max-w-[860px] mb-8"
         >
@@ -79,8 +79,8 @@ export default function Industries() {
 
         {/* Intro */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 20 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
           className="text-[#6B6F73] text-base md:text-lg font-body mb-12"
         >
@@ -92,8 +92,8 @@ export default function Industries() {
           {industries.map((industry, i) => (
             <motion.div
               key={industry}
-              initial={{ opacity: 0, y: 16 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              initial={{ y: 16 }}
+              animate={isInView ? { y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + i * 0.06 }}
               /* Raised but translucent, so the gold linework ground still reads
                  through the cells rather than being covered over. */
@@ -112,8 +112,8 @@ export default function Industries() {
 
         {/* Closing line */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
+          initial={{ y: 8 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-10 space-y-3"
         >
@@ -141,7 +141,7 @@ export default function Industries() {
         </motion.div>
       </div>
 
-      {/* Industries ticker — flush to bottom, no extra padding */}
+      {/* Industries ticker. flush to bottom, no extra padding */}
       {/* Transparent so the gold linework ground carries straight through it.
           Positioned above the quiet-panel scrim, same as the content above. */}
       <div className="relative z-10">

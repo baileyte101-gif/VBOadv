@@ -7,13 +7,34 @@ VBO Advertising is a Miami-based marketing consultancy and studio founded by Tim
 ## Core pages
 
 - [Homepage](https://www.vboadv.com/): Brand positioning, philosophy, services overview
+- [Services](https://www.vboadv.com/services): All seven services in one place, with the named client behind each
+- [Industries](https://www.vboadv.com/industries): The twelve industries VBO works in, and which have a client today
+- [About](https://www.vboadv.com/about): Why VBO exists, who Tim Bailey is, and what founder-led means for a client
+- [Contact](https://www.vboadv.com/contact): How to reach VBO, and what happens after you do
+- [Insights](https://www.vboadv.com/insights): VBO's blog on marketing strategy, creative, and performance
+
+## Services
+
+- [Web Development](https://www.vboadv.com/web-development): Custom builds, redesigns and Shopify stores, structured for search and measured from launch
+- [Marketing Consultant](https://www.vboadv.com/marketing-consultant): Scoped consulting for owners who want a straight answer rather than a retainer
+- [Fractional CMO Services](https://www.vboadv.com/fractional-cmo): What a fractional CMO does, what it costs, and when a business needs one
+- [Ecommerce and Shopify Marketing](https://www.vboadv.com/ecommerce-marketing): Paid media and search run together for Shopify brands
+- [AI SEO and Visibility](https://www.vboadv.com/ai-seo-agency): Getting a site read and quoted by AI assistants, not just ranked by search engines
+- [AI-Enabled Marketing Agency](https://www.vboadv.com/ai-enabled-marketing): VBO's modern operational approach, comparing traditional vs AI-enabled vs AI-first agency models
+- [Paid Media](https://www.vboadv.com/paid-media): Meta, Google Search, Google Shopping and Performance Max, run by the people doing the work
+
+## Industries
+
+- [Fashion and Apparel](https://www.vboadv.com/industries/fashion-apparel): Marketing across an apparel season, from the run-up to a drop through the long tail
+- [Jewelry and Luxury Retail](https://www.vboadv.com/industries/jewelry-luxury-retail): Marketing a considered, high-value purchase with a long buying cycle
+- [Food and Beverage](https://www.vboadv.com/industries/food-beverage): Marketing food and CPG brands, including what shipping and shelf life change
+- [Sports and Travel](https://www.vboadv.com/industries/sports-travel): Marketing youth sports programs and travel operators, where trust comes before price
+- [Local Service Businesses](https://www.vboadv.com/industries/local-service-businesses): Marketing for businesses that sell within a few miles
+- [Nonprofit and Education](https://www.vboadv.com/industries/nonprofit-education): Marketing to families and funders at once, on a real budget
 - [Marketing for Law Firms in Miami](https://www.vboadv.com/professional-services/law-firms): Vertical landing page for law firm marketing
 - [Dental Practice Marketing in Miami](https://www.vboadv.com/professional-services/dental-practices): Vertical landing page for dental practice marketing
 - [Medical Spa Marketing in Miami](https://www.vboadv.com/professional-services/med-spas): Vertical landing page for med spa and aesthetic clinic marketing
 - [Financial Advisor Marketing in Miami](https://www.vboadv.com/professional-services/financial-advisors): Vertical landing page for financial advisor and RIA marketing
-- [Fractional CMO Services](https://www.vboadv.com/fractional-cmo): What a fractional CMO does, what it costs, and when a business needs one
-- [AI-Enabled Marketing Agency](https://www.vboadv.com/ai-enabled-marketing): VBO's modern operational approach, comparing traditional vs AI-enabled vs AI-first agency models
-- [Insights](https://www.vboadv.com/insights): VBO's blog on marketing strategy, creative, and performance
 
 ## Recent articles
 

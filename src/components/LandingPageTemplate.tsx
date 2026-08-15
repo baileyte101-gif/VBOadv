@@ -11,9 +11,13 @@ interface Props {
   vertical: VerticalData;
 }
 
+// Transform only, never opacity. An `opacity: 0` hidden state serialises into
+// the server HTML as style="opacity:0", leaving the element unpainted until
+// framer-motion hydrates. That is the fault that put the homepage hero's LCP at
+// 5.6s; the same pattern is not left in place here.
 const FADE_UP = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { y: 24 },
+  visible: { y: 0 },
 };
 
 const STAGGER_PARENT = {

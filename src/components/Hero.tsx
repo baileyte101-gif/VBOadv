@@ -50,7 +50,7 @@ export default function Hero() {
         }
       />
 
-      {/* Left panel — text content */}
+      {/* Left panel. text content */}
       <div className="flex-1 flex flex-col justify-center px-8 md:px-12 lg:px-20 xl:px-24 py-20 min-w-0 relative z-[3]">
         {/* Legibility scrim: thins the particles where the copy sits.
             If the particles fight the type, reduce the particles, never the type. */}
@@ -64,7 +64,7 @@ export default function Hero() {
           Marketing Consultant &amp; Studio
         </p>
 
-        {/* Headline — first word is the single H1 for SEO. The other two
+        {/* Headline. first word is the single H1 for SEO. The other two
             words share identical visual treatment via the same className but
             render as <p> so the page has exactly one H1. The aria-label gives
             the H1 its full accessible name (all three words) without touching
@@ -100,7 +100,7 @@ export default function Hero() {
           Fully integrated marketing. Human, built on experience and modern efficiency.
         </p>
 
-        {/* Geo intro — SEO signal: Coconut Grove, Miami + consultancy/studio self-label */}
+        {/* Geo intro. SEO signal: Coconut Grove, Miami + consultancy/studio self-label */}
         <p
           style={enter(0.72, 0.6)}
           className="hero-in hero-in-lift text-[#9fa3a7] text-sm font-body leading-relaxed max-w-sm mb-10"
@@ -128,7 +128,7 @@ export default function Hero() {
           hello@vboadv.com
         </a>
 
-        {/* Ground toggle — black on the left, marble on the right. Real button,
+        {/* Ground toggle. black on the left, marble on the right. Real button,
             so keyboard reach, focus ring and aria-pressed come for free. */}
         <div style={enter(0.94, 0.5)} className="hero-in hero-in-lift mb-5">
           <button
@@ -153,13 +153,13 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* Gold vertical divider — desktop only */}
+      {/* Gold vertical divider. desktop only */}
       <div
         style={enter(0.4, 0.8)}
         className="hero-in hero-in-rule hidden lg:block w-[1px] bg-[#B8962E] self-stretch flex-shrink-0 origin-top relative z-[2]"
       />
 
-      {/* Right panel — city image, regraded to the house grade — desktop only.
+      {/* Right panel. city image, regraded to the house grade. desktop only.
           Below lg the wordmark field is the hero's ground, so no photo competes
           with it, matching the approved mockup. */}
       <div
@@ -176,7 +176,7 @@ export default function Hero() {
              image on phones, where this panel is not rendered at all. */
           sizes="(max-width: 1023px) 1px, 40vw"
         />
-        {/* Vignette — soft dark bleed on all edges, heavier on left to blend into divider */}
+        {/* Vignette. soft dark bleed on all edges, heavier on left to blend into divider */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{

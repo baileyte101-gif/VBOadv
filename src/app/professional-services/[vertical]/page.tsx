@@ -150,10 +150,16 @@ export default function VerticalPage({ params }: Props) {
 
   const serviceSchema = SERVICE_SCHEMAS[slug] ?? null;
 
-  // TWO levels: Home, then the vertical page. There is no Professional
-  // Services hub page. /professional-services now 308s to the homepage, so a
-  // middle item pointing at it would resolve to the same URL as position 1.
-  // Matches the pattern already used in src/app/fractional-cmo/page.tsx.
+  // THREE levels as of 2026-08-15: Home, Industries, then the vertical page.
+  // This was two levels because no hub existed and position 2 would have
+  // resolved to the homepage. /industries is now a real page returning 200, so
+  // it is a legitimate parent.
+  //
+  // Note the parent is /industries while this page lives under
+  // /professional-services/. That is deliberate, not an oversight: these four
+  // pages are indexed and carrying impressions, so their URLs do not move.
+  // Hierarchy on this site comes from internal links and BreadcrumbList rather
+  // than from URL nesting, which is exactly what this expresses.
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -167,6 +173,12 @@ export default function VerticalPage({ params }: Props) {
       {
         "@type": "ListItem",
         position: 2,
+        name: "Industries",
+        item: "https://www.vboadv.com/industries",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
         name: BREADCRUMB_NAMES[slug] ?? slug,
         item: `https://www.vboadv.com/professional-services/${slug}`,
       },

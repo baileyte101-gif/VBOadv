@@ -80,11 +80,16 @@ export default function WhatWeRun() {
   const bottomRef = useRef(null)
   const bottomInView = useInView(bottomRef, { once: true, margin: '-80px' })
 
-  // Respect prefers-reduced-motion: no vertical travel, a near-instant fade
-  // instead of the normal rise, still gated on scroll-into-view so content
-  // doesn't pop in above the fold on load.
+  // Transform only, never opacity: the content is painted at full opacity on
+  // first render and the rise enhances it, the same treatment applied to the
+  // hero. A hide-then-fade start ships style="opacity:0" in the server HTML and
+  // leaves the element unpainted until framer-motion hydrates, which is how the
+  // hero came to have a 5.6s LCP.
+  //
+  // prefers-reduced-motion still removes the vertical travel, and the rise is
+  // still gated on scroll-into-view so nothing pops in above the fold.
   const fadeProps = (distance: number, duration: number, delay = 0) => ({
-    initial: { opacity: 0, y: shouldReduceMotion ? 0 : distance },
+    initial: { y: shouldReduceMotion ? 0 : distance },
     transition: {
       duration: shouldReduceMotion ? 0.2 : duration,
       delay: shouldReduceMotion ? 0 : delay,

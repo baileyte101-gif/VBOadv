@@ -18,8 +18,8 @@ export default function CTASection() {
 
         {/* Label */}
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 16 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.55 }}
           className="section-label mb-10 md:mb-12"
         >
@@ -28,8 +28,8 @@ export default function CTASection() {
 
         {/* Massive headline */}
         <motion.h2
-          initial={{ opacity: 0, y: 28 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 28 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
           className="font-headline font-black text-[#F2EDE4] uppercase leading-none text-[clamp(3.5rem,10.5vw,9.5rem)] mb-10 md:mb-12"
         >
@@ -38,18 +38,18 @@ export default function CTASection() {
 
         {/* Phase line */}
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
+          initial={{ y: 8 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="font-mono text-[#6B6F73] text-[11px] tracking-[0.12em] md:tracking-[0.3em] uppercase mb-14 md:mb-16 px-4"
         >
           Strategy&nbsp;&nbsp;/&nbsp;&nbsp;Integration&nbsp;&nbsp;/&nbsp;&nbsp;Execution
         </motion.p>
 
-        {/* CTA button — same outlined gold style as nav + hero */}
+        {/* CTA button. same outlined gold style as nav + hero */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 12 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <a

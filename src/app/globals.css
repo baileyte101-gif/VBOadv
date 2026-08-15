@@ -83,7 +83,7 @@ body {
   @apply w-8 h-[2px] bg-[#B8962E] mb-10;
 }
 
-/* Who We Work With — glass card shimmer sweep on hover */
+/* Who We Work With. glass card shimmer sweep on hover */
 .client-glass .client-shimmer {
   transform: translateX(0) skewX(-12deg);
   transition: transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -104,7 +104,7 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   SECTION GROUND SYSTEM — homepage redesign, 2026-08-10
+   SECTION GROUND SYSTEM. homepage redesign, 2026-08-10
    Ported verbatim from Jules's approved mockup:
    Jules/designs/vbo/website/homepage-redesign-2026-08-08/section-system-concept.html
    Five grounds, no two adjacent sections share one. Seams are layered onto the
@@ -427,6 +427,231 @@ body {
    is dropped. */
 @media (prefers-reduced-motion: reduce) {
   .hero-in { animation: none; }
+}
+
+/* ── Content pages (the 2026-08 fifteen) ─────────────────────────────────────
+   Long-form reading surfaces. They reuse the existing ground system rather than
+   introducing a second one: plain black is the resting state, the gold chevron
+   ground carries occasional weight sections, and gold appears only as hairline,
+   rule and trim. No third colour enters the interface.
+
+   The marble ground is deliberately not used behind body copy here. It is a
+   mid-tone surface built for the homepage's short proof strip, and 1,500 words
+   of #F2EDE4 on it would fail the legibility rule in the design direction. Same
+   reason the pattern sections get a quiet-panel: thin the ground, never the
+   type. */
+
+/* The quiet-panel's softening gradient deliberately bleeds 60px past its box.
+   That is fine on a wide viewport and is decorative in every case, but on a
+   narrow phone it pushes past the section and gives the whole document a
+   horizontal scrollbar. Decoration must never move the page sideways, so the
+   section clips it. `clip` rather than `hidden`: hidden would turn the section
+   into a scroll container and break position: sticky inside it. */
+.content-section {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+.prose-body {
+  color: rgb(242 237 228 / 0.82);
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 68ch;
+  margin-bottom: 1.35rem;
+}
+@media (min-width: 768px) {
+  .prose-body { font-size: 1.0625rem; }
+}
+.prose-body:last-child { margin-bottom: 0; }
+
+/* Inline links: gold, underlined on an offset so descenders stay readable.
+   Underlined rather than colour-only, so the link is not signalled by hue
+   alone (WCAG 1.4.1). */
+.link-gold {
+  color: var(--color-vbo-gold);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.link-gold:hover { color: var(--gold-hot); }
+
+/* Ordered steps: the number is the structure, so it is rendered rather than
+   decorated. Used by /contact's "What Happens Next". */
+.prose-steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+.prose-steps > li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 1.5rem;
+  color: rgb(242 237 228 / 0.82);
+  line-height: 1.75;
+  max-width: 68ch;
+}
+.prose-steps > li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--color-vbo-gold);
+}
+
+/* Bullets: a gold hairline dash rather than a disc, so the list reads as part
+   of the same trim vocabulary as the section rules. */
+.prose-bullets { list-style: none; padding: 0; margin: 0 0 1.35rem; }
+.prose-bullets > li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.85rem;
+  color: rgb(242 237 228 / 0.82);
+  line-height: 1.75;
+  max-width: 68ch;
+}
+.prose-bullets > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  width: 0.6rem;
+  height: 1px;
+  background: var(--color-vbo-gold);
+}
+
+/* Section heading rule: a hairline that starts at the heading and stops, so it
+   marks where a section begins instead of drawing a full-width divider the page
+   does not need. */
+.section-hairline {
+  width: 2.5rem;
+  height: 1px;
+  background: var(--color-vbo-gold);
+  margin-bottom: 1.75rem;
+}
+
+/* FAQ: a real definition list. The question is the term, the answer the
+   definition, which is what a screen reader and an answer engine both want. */
+.faq-list { border-top: 1px solid rgb(184 150 46 / 0.22); }
+.faq-item { border-bottom: 1px solid rgb(184 150 46 / 0.22); padding: 1.75rem 0; }
+.faq-q {
+  color: var(--color-vbo-egg);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+.faq-a { color: rgb(242 237 228 / 0.78); line-height: 1.75; max-width: 68ch; margin: 0; }
+
+/* Closing panel: gold trim on one edge, not a filled block. */
+.close-panel {
+  border-left: 2px solid var(--color-vbo-gold);
+  padding: 1.75rem 0 1.75rem 1.75rem;
+}
+
+/* ── Contact form ────────────────────────────────────────────────────────────
+   Four fields, real labels, visible focus, and errors that name the fix.
+   The focus ring is explicit because the browser default is a thin dark
+   outline that all but disappears on #0D0D0D. */
+
+.focus-ring:focus-visible,
+.form-input:focus-visible,
+.btn-gold:focus-visible,
+.link-gold:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold-hot);
+  outline-offset: 3px;
+}
+
+.form-row { margin-bottom: 1.75rem; }
+
+.form-label {
+  display: block;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-vbo-egg);
+  margin-bottom: 0.6rem;
+}
+
+.form-input {
+  width: 100%;
+  background: var(--s2);
+  border: 1px solid rgb(184 150 46 / 0.3);
+  color: var(--color-vbo-egg);
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  transition: border-color 0.2s ease;
+}
+.form-input:hover { border-color: rgb(184 150 46 / 0.55); }
+.form-input:focus { border-color: var(--color-vbo-gold); }
+.form-input-invalid { border-color: #E7CE86; }
+
+/* Errors are gold rather than red. Red is a third colour and the interface does
+   not take one; weight, an icon-free label and placement carry the meaning. */
+.form-error {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--gold-hot);
+}
+.form-error::before { content: "! "; font-weight: 700; }
+
+.form-error-summary {
+  border-left: 2px solid var(--gold-hot);
+  padding: 0.85rem 0 0.85rem 1rem;
+  margin-bottom: 1.75rem;
+  color: var(--gold-hot);
+  font-size: 0.9375rem;
+  max-width: 68ch;
+}
+
+.form-microcopy {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  color: rgb(242 237 228 / 0.55);
+}
+
+/* Honeypot. Off-screen rather than display:none, because some bots skip
+   display:none fields and a real user never reaches it (tabIndex -1). */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ── Below-fold section entrance ─────────────────────────────────────────────
+   Same rule as the hero fix: content is painted at full opacity on first
+   render and the entrance is transform-only, so nothing waits on hydration and
+   no element can become an unpainted LCP candidate. Applied to the shared
+   homepage section components as well, which previously used the framer-motion
+   hide-then-fade pattern across 32 elements.
+
+   `animation-timeline: view()` drives this from scroll position where the
+   browser supports it, with no JS at all. Browsers without it simply get the
+   content in place, which is the correct fallback and the same end state. */
+@keyframes reveal-up { from { transform: translateY(14px); } to { transform: none; } }
+
+.reveal {
+  animation: reveal-up 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  animation-delay: var(--reveal-delay, 0s);
+}
+
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+    animation-delay: 0s;
+    animation-fill-mode: both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; }
 }
 
 /* The footer sits directly over the skyline's densest window texture. Same rule

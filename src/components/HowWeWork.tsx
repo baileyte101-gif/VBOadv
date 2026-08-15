@@ -83,7 +83,7 @@ export default function HowWeWork() {
         03
       </div>
 
-      {/* Gold vertical connector line — desktop only */}
+      {/* Gold vertical connector line. desktop only */}
       <div
         className="hidden lg:block absolute right-5 pointer-events-none"
         style={{
@@ -98,8 +98,8 @@ export default function HowWeWork() {
       <div className="relative z-10" ref={ref}>
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 16 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.55 }}
           className="mb-16 md:mb-20"
         >
@@ -115,8 +115,8 @@ export default function HowWeWork() {
           {steps.map((step, i) => (
             <motion.div
               key={step.number}
-              initial={{ opacity: 0, y: 28 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              initial={{ y: 28 }}
+              animate={isInView ? { y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 + i * 0.12 }}
               /* Hairline reads as a hairline on the navy ground, where the old
                  #1C1C1C rule would have disappeared into it. */

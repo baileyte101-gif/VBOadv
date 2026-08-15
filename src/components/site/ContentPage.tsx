@@ -1,0 +1,235 @@
+import type { ReactNode } from 'react'
+import Link from 'next/link'
+import Nav from '@/components/Nav'
+import ClosingBlock from '@/components/ClosingBlock'
+import CTASection from '@/components/CTASection'
+import SiteFooter from '@/components/SiteFooter'
+import { Inline, Paragraphs } from '@/components/site/RichText'
+import { pageSchemas } from '@/lib/page-schema'
+import type { PageContent, Block } from '@/content/types'
+
+/**
+ * The shared shell for the fifteen content pages.
+ *
+ * Design system, per clients/vbo/design/vbo-design-direction-v1.md:
+ *   Black #0D0D0D and gold #B8962E only. Gold appears as hairline, rule and
+ *   trim, never as a large fill. No third colour in the interface. Grounds
+ *   alternate so no two adjacent sections share one, using the existing ground
+ *   classes rather than a second system invented for these pages.
+ *
+ * Performance: every string is server rendered at full opacity. The entrance is
+ * transform-only CSS, the same treatment applied to the hero, so no element on
+ * these pages can become an unpainted LCP candidate.
+ */
+
+function BlockRenderer({ block }: { block: Block }) {
+  if (block.kind === 'ordered') {
+    return (
+      <ol className="prose-steps">
+        {block.items.map((item, i) => (
+          <li key={i}>
+            <Inline text={item} />
+          </li>
+        ))}
+      </ol>
+    )
+  }
+
+  if (block.kind === 'unordered') {
+    return (
+      <ul className="prose-bullets">
+        {block.items.map((item, i) => (
+          <li key={i}>
+            <Inline text={item} />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  if (block.kind === 'lines') {
+    return (
+      <p className="prose-body">
+        {block.items.map((item, i) => (
+          <span key={i} className="block">
+            <Inline text={item} />
+          </span>
+        ))}
+      </p>
+    )
+  }
+
+  return <Paragraphs items={block.items} />
+}
+
+/**
+ * Ground rotation. Plain black is the resting state; the gold chevron ground
+ * takes every third section so the treated ones stay special. Sections on the
+ * patterned ground get a quiet-panel so the pattern is thinned behind copy
+ * rather than the type being thinned.
+ */
+function groundFor(index: number) {
+  return index % 3 === 2 ? 'ground-gold' : 'ground-plain'
+}
+
+/**
+ * Visible breadcrumb trail, shown only where there is a real parent to climb
+ * to. It mirrors the BreadcrumbList schema, so the structured data describes
+ * something a reader can actually see and click.
+ */
+function Breadcrumbs({ page }: { page: PageContent }) {
+  if (page.breadcrumb.length < 3) return null
+  const trail = page.breadcrumb.slice(0, -1)
+  const current = page.breadcrumb[page.breadcrumb.length - 1]
+  return (
+    <nav aria-label="Breadcrumb" className="mb-8">
+      <ol className="flex flex-wrap items-center gap-2 font-mono text-[10px] tracking-[0.2em] uppercase text-[#6B6F73]">
+        {trail.map((crumb) => (
+          <li key={crumb.item} className="flex items-center gap-2">
+            <Link
+              href={crumb.item.replace('https://www.vboadv.com', '') || '/'}
+              className="hover:text-[#F2EDE4] transition-colors duration-200"
+            >
+              {crumb.name}
+            </Link>
+            <span aria-hidden className="text-[#B8962E]">
+              /
+            </span>
+          </li>
+        ))}
+        <li aria-current="page" className="text-[#F2EDE4]/70">
+          {current.name}
+        </li>
+      </ol>
+    </nav>
+  )
+}
+
+export default function ContentPage({
+  page,
+  sectionSlots,
+}: {
+  page: PageContent
+  /**
+   * Extra content rendered inside a named section, after its copy. Keyed by
+   * the section's exact heading. /contact uses it to put the real form under
+   * Mary's "The Form" heading rather than appending it after the whole page,
+   * which is where a generic children slot would have put it.
+   */
+  sectionSlots?: Record<string, ReactNode>
+}) {
+  const schemas = pageSchemas(page)
+
+  return (
+    <>
+      {schemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+
+      <Nav />
+
+      <main id="main" className="pt-16">
+        {/* Page hero. Plain ground, gold hairline, copy painted on first render. */}
+        <header className="content-section ground-plain border-b border-[#1C1C1C]">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-20 md:py-28">
+            <div className="max-w-4xl">
+              <Breadcrumbs page={page} />
+              <p className="section-label reveal">{page.eyebrow}</p>
+              <h1
+                className="reveal font-headline font-black text-[#F2EDE4] uppercase leading-[0.95] text-[clamp(2.5rem,6vw,4.75rem)] mb-8"
+                style={{ '--reveal-delay': '0.06s' } as React.CSSProperties}
+              >
+                {page.h1}
+              </h1>
+              <div className="section-accent" />
+              <div
+                className="reveal"
+                style={{ '--reveal-delay': '0.12s' } as React.CSSProperties}
+              >
+                <Paragraphs items={page.intro} className="text-[1.0625rem] md:text-lg" />
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Body sections */}
+        {page.sections.map((section, i) => {
+          const ground = groundFor(i)
+          const patterned = ground === 'ground-gold'
+          return (
+            <section
+              key={section.heading}
+              className={`content-section ${ground} border-b border-[#1C1C1C]`}
+            >
+              <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
+                <div className={`max-w-4xl reveal ${patterned ? 'quiet-panel' : ''}`}>
+                  <div className="relative z-[1]">
+                    <h2 className="font-headline font-bold text-[#F2EDE4] uppercase text-[clamp(1.5rem,3vw,2.25rem)] leading-tight mb-5">
+                      {section.heading}
+                    </h2>
+                    <div className="section-hairline" />
+                    {section.blocks.map((block, j) => (
+                      <BlockRenderer key={j} block={block} />
+                    ))}
+                    {sectionSlots?.[section.heading]}
+                  </div>
+                </div>
+              </div>
+            </section>
+          )
+        })}
+
+        {/* FAQ. Same strings as the FAQPage schema, by construction. */}
+        {page.faq.length > 0 && (
+          <section className="content-section ground-plain border-b border-[#1C1C1C]">
+            <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
+              <div className="max-w-4xl reveal">
+                <h2 className="font-headline font-bold text-[#F2EDE4] uppercase text-[clamp(1.5rem,3vw,2.25rem)] leading-tight mb-5">
+                  {page.faqHeading}
+                </h2>
+                <div className="section-hairline" />
+                <dl className="faq-list mt-10">
+                  {page.faq.map((entry) => (
+                    <div key={entry.question} className="faq-item">
+                      <dt className="faq-q">{entry.question}</dt>
+                      <dd className="faq-a">
+                        <Inline text={entry.answer} />
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Close */}
+        {page.close && (
+          <section className="content-section ground-plain">
+            <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
+              <div className="max-w-4xl reveal">
+                <h2 className="font-headline font-bold text-[#F2EDE4] uppercase text-[clamp(1.5rem,3vw,2.25rem)] leading-tight mb-8">
+                  {page.close.heading}
+                </h2>
+                <div className="close-panel">
+                  {page.close.blocks.map((block, j) => (
+                    <BlockRenderer key={j} block={block} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+      </main>
+
+      <ClosingBlock>
+        <CTASection />
+        <SiteFooter />
+      </ClosingBlock>
+    </>
+  )
+}

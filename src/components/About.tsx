@@ -30,7 +30,7 @@ export default function About() {
         05
       </div>
 
-      {/* Gold vertical connector line — desktop only */}
+      {/* Gold vertical connector line. desktop only */}
       <div
         className="hidden lg:block absolute right-5 pointer-events-none"
         style={{
@@ -45,8 +45,8 @@ export default function About() {
       <div className="relative z-10" ref={ref}>
         {/* Label + Headline */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 16 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.55 }}
           className="mb-16 md:mb-20"
         >
@@ -61,8 +61,8 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 xl:gap-24 items-start">
           {/* Text */}
           <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            initial={{ y: 28 }}
+            animate={isInView ? { y: 0 } : {}}
             transition={{ duration: 0.65, delay: 0.1 }}
             className="space-y-5"
           >
@@ -129,8 +129,8 @@ export default function About() {
 
           {/* Headshot */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ x: 24 }}
+            animate={isInView ? { x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="flex flex-col items-start"
           >
