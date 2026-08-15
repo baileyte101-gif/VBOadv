@@ -1,11 +1,21 @@
 'use client'
 
-import { useRef, useState } from 'react'
-import { motion } from 'framer-motion'
+import { useRef, useState, type CSSProperties } from 'react'
 import Image from 'next/image'
 import ParticleField from '@/components/ParticleField'
 
 const words = ['Strategy.', 'Creative.', 'Performance.']
+
+/* Entrance timing, one call per element, matching the framer-motion delays and
+   durations this replaced. See the "Hero entrance" block in globals.css for why
+   the copy animates on transform only and never on opacity. */
+const enter = (delay: number, duration: number) =>
+  ({
+    // Rounded because the per-word stagger is computed, and 0.48000000000000004s
+    // should not end up in the server HTML.
+    '--hero-in-delay': `${Math.round(delay * 100) / 100}s`,
+    '--hero-in-dur': `${duration}s`,
+  }) as CSSProperties
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null)
@@ -47,14 +57,12 @@ export default function Hero() {
         <div className="hero-scrim hero-scrim-strong" aria-hidden />
 
         {/* Label */}
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="font-mono text-[#6B6F73] text-[11px] tracking-[0.3em] uppercase mb-8 md:mb-10"
+        <p
+          style={enter(0.15, 0.6)}
+          className="hero-in hero-in-up font-mono text-[#6B6F73] text-[11px] tracking-[0.3em] uppercase mb-8 md:mb-10"
         >
           Marketing Consultant &amp; Studio
-        </motion.p>
+        </p>
 
         {/* Headline — first word is the single H1 for SEO. The other two
             words share identical visual treatment via the same className but
@@ -64,57 +72,44 @@ export default function Hero() {
         <div className="mb-8 md:mb-10">
           {words.map((word, i) =>
             i === 0 ? (
-              <motion.h1
+              <h1
                 key={word}
                 aria-label="Strategy. Creative. Performance."
-                initial={{ opacity: 0, x: -24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.65, delay: 0.28, ease: [0.25, 0.1, 0.25, 1] }}
-                className="font-headline font-black text-[#F2EDE4] uppercase leading-[0.92] text-[clamp(4rem,9vw,7.5rem)]"
+                style={enter(0.28, 0.65)}
+                className="hero-in hero-in-left font-headline font-black text-[#F2EDE4] uppercase leading-[0.92] text-[clamp(4rem,9vw,7.5rem)]"
               >
                 {word}
-              </motion.h1>
+              </h1>
             ) : (
-              <motion.p
+              <p
                 key={word}
-                initial={{ opacity: 0, x: -24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.65, delay: 0.28 + i * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                className="font-headline font-black text-[#F2EDE4] uppercase leading-[0.92] text-[clamp(4rem,9vw,7.5rem)]"
+                style={enter(0.28 + i * 0.1, 0.65)}
+                className="hero-in hero-in-left font-headline font-black text-[#F2EDE4] uppercase leading-[0.92] text-[clamp(4rem,9vw,7.5rem)]"
               >
                 {word}
-              </motion.p>
+              </p>
             )
           )}
         </div>
 
         {/* Sub-headline */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.65 }}
-          className="text-[#F2EDE4]/90 font-medium text-base md:text-lg mb-4 font-body leading-relaxed max-w-sm"
+        <p
+          style={enter(0.65, 0.6)}
+          className="hero-in hero-in-lift text-[#F2EDE4]/90 font-medium text-base md:text-lg mb-4 font-body leading-relaxed max-w-sm"
         >
           Fully integrated marketing. Human, built on experience and modern efficiency.
-        </motion.p>
+        </p>
 
         {/* Geo intro — SEO signal: Coconut Grove, Miami + consultancy/studio self-label */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.72 }}
-          className="text-[#9fa3a7] text-sm font-body leading-relaxed max-w-sm mb-10"
+        <p
+          style={enter(0.72, 0.6)}
+          className="hero-in hero-in-lift text-[#9fa3a7] text-sm font-body leading-relaxed max-w-sm mb-10"
         >
           Based in Coconut Grove, Miami, we&apos;re a founder-led marketing consultancy and studio serving small and mid-size businesses across South Florida.
-        </motion.p>
+        </p>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="mb-6"
-        >
+        <div style={enter(0.8, 0.5)} className="hero-in hero-in-lift mb-6">
           <a
             href="mailto:hello@vboadv.com"
             className="btn-gold inline-flex items-center gap-3"
@@ -122,27 +117,20 @@ export default function Hero() {
             Let&apos;s Connect
             <span className="text-base leading-none">→</span>
           </a>
-        </motion.div>
+        </div>
 
         {/* Email */}
-        <motion.a
+        <a
           href="mailto:hello@vboadv.com"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.88 }}
-          className="font-mono text-[#6B6F73]/70 text-[10px] tracking-[0.2em] hover:text-[#B8962E] transition-colors duration-200 mb-5 block"
+          style={enter(0.88, 0.5)}
+          className="hero-in hero-in-lift font-mono text-[#6B6F73]/70 text-[10px] tracking-[0.2em] hover:text-[#B8962E] transition-colors duration-200 mb-5 block"
         >
           hello@vboadv.com
-        </motion.a>
+        </a>
 
         {/* Ground toggle — black on the left, marble on the right. Real button,
             so keyboard reach, focus ring and aria-pressed come for free. */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.94 }}
-          className="mb-5"
-        >
+        <div style={enter(0.94, 0.5)} className="hero-in hero-in-lift mb-5">
           <button
             type="button"
             onClick={() => setMarble((v) => !v)}
@@ -154,36 +142,29 @@ export default function Hero() {
             <span className="opt opt-black">Black</span>
             <span className="opt opt-marble">Marble</span>
           </button>
-        </motion.div>
+        </div>
 
         {/* Mono tagline */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.0 }}
-          className="font-mono text-[#6B6F73]/60 text-[10px] tracking-[0.25em] uppercase"
+        <p
+          style={enter(1.0, 0.5)}
+          className="hero-in hero-in-lift font-mono text-[#6B6F73]/60 text-[10px] tracking-[0.25em] uppercase"
         >
           Miami, FL&nbsp;/&nbsp;Founder-Led&nbsp;/&nbsp;Studio&nbsp;/&nbsp;Consultant
-        </motion.p>
+        </p>
       </div>
 
       {/* Gold vertical divider — desktop only */}
-      <motion.div
-        initial={{ scaleY: 0, opacity: 0 }}
-        animate={{ scaleY: 1, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-        className="hidden lg:block w-[1px] bg-[#B8962E] self-stretch flex-shrink-0 origin-top relative z-[2]"
+      <div
+        style={enter(0.4, 0.8)}
+        className="hero-in hero-in-rule hidden lg:block w-[1px] bg-[#B8962E] self-stretch flex-shrink-0 origin-top relative z-[2]"
       />
 
       {/* Right panel — city image, regraded to the house grade — desktop only.
           Below lg the wordmark field is the hero's ground, so no photo competes
           with it, matching the approved mockup. */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.5 }}
-        className="hidden lg:block relative flex-shrink-0 z-[2]"
-        style={{ width: '40%' }}
+      <div
+        style={{ width: '40%', ...enter(0.5, 1) }}
+        className="hero-in hero-in-fade hidden lg:block relative flex-shrink-0 z-[2]"
       >
         <Image
           src="/images/miami-city-graded.jpg"
@@ -202,7 +183,7 @@ export default function Hero() {
             boxShadow: 'inset 60px 0 80px -10px #0D0D0D, inset -40px 0 60px -10px #0D0D0D, inset 0 60px 80px -10px #0D0D0D, inset 0 -60px 80px -10px #0D0D0D',
           }}
         />
-      </motion.div>
+      </div>
     </section>
   )
 }

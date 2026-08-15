@@ -381,6 +381,54 @@ body {
   pointer-events: none;
   opacity: 0.25;
 }
+/* ── Hero entrance ───────────────────────────────────────────────────────────
+   The hero copy paints on first render; the entrance enhances it rather than
+   revealing it.
+
+   These were framer-motion `initial={{ opacity: 0 }}` fades. framer serialises
+   `initial` into the server HTML as style="opacity:0", so every line of hero
+   copy stayed unpainted until framer-motion hydrated. That put the LCP element
+   (the hero paragraph) at 5.6s real / 8.0s simulated against a 2.5s ceiling,
+   measured 2026-08-10.
+
+   Two rules keep it fixed:
+     1. Copy animates on transform only, never opacity, so it is painted and
+        legible from the first frame and can register as LCP immediately.
+     2. The animation is CSS, so it starts at first paint instead of waiting on
+        hydration. Delays, durations and easing match the framer-motion values
+        they replace, one for one.
+
+   The two decorative elements (gold rule, city photo) keep their opacity fade.
+   Neither carries copy, and holding the photo back keeps it from taking the
+   LCP slot off a 776K image. Transform-only means no layout shift, so this
+   costs nothing in CLS. */
+@keyframes hero-in-up   { from { transform: translateY(16px); } to { transform: none; } }
+@keyframes hero-in-left { from { transform: translateX(-24px); } to { transform: none; } }
+@keyframes hero-in-lift { from { transform: translateY(8px); }  to { transform: none; } }
+@keyframes hero-in-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hero-in-rule { from { opacity: 0; transform: scaleY(0); } to { opacity: 1; transform: none; } }
+
+/* Per-element delay and duration arrive as custom properties from Hero.tsx,
+   so the timing stays readable next to the markup it belongs to. */
+.hero-in {
+  animation-duration: var(--hero-in-dur, 0.6s);
+  animation-delay: var(--hero-in-delay, 0s);
+  animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  animation-fill-mode: both;
+}
+.hero-in-up   { animation-name: hero-in-up; }
+.hero-in-left { animation-name: hero-in-left; }
+.hero-in-lift { animation-name: hero-in-lift; }
+.hero-in-fade { animation-name: hero-in-fade; }
+.hero-in-rule { animation-name: hero-in-rule; }
+
+/* Reduced motion: every element lands in its final position with no travel.
+   The copy is already at full opacity, so nothing vanishes when the animation
+   is dropped. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-in { animation: none; }
+}
+
 /* The footer sits directly over the skyline's densest window texture. Same rule
    as the hero: thin the particles' visible contrast here, never the type. */
 .footer-scrim {

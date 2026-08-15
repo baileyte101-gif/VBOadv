@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Barlow_Condensed, Inter, Space_Mono } from 'next/font/google'
 import Script from 'next/script'
+import MotionProvider from '@/components/MotionProvider'
 import './globals.css'
 
 const barlow = Barlow_Condensed({
@@ -189,7 +190,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   )
