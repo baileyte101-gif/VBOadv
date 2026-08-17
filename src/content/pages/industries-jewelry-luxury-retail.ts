@@ -123,7 +123,7 @@ export const jewelryPage: PageContent = {
     }
   ],
   "close": {
-    "heading": "Close",
+    "heading": "The Final Word",
     "blocks": [
       {
         "kind": "prose",

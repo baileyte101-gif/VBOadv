@@ -162,7 +162,7 @@ export const marketingConsultantPage: PageContent = {
     }
   ],
   "close": {
-    "heading": "Close",
+    "heading": "The Final Word",
     "blocks": [
       {
         "kind": "prose",

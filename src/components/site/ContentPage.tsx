@@ -1,10 +1,12 @@
-import type { ReactNode } from 'react'
+import { Fragment, type ReactNode } from 'react'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import ClosingBlock from '@/components/ClosingBlock'
 import CTASection from '@/components/CTASection'
 import SiteFooter from '@/components/SiteFooter'
 import { Inline, Paragraphs } from '@/components/site/RichText'
+import ImageBand from '@/components/site/ImageBand'
+import { PAGE_IMAGES } from '@/content/page-images'
 import { pageSchemas } from '@/lib/page-schema'
 import type { PageContent, Block } from '@/content/types'
 
@@ -63,13 +65,28 @@ function BlockRenderer({ block }: { block: Block }) {
 }
 
 /**
- * Ground rotation. Plain black is the resting state; the gold chevron ground
- * takes every third section so the treated ones stay special. Sections on the
- * patterned ground get a quiet-panel so the pattern is thinned behind copy
- * rather than the type being thinned.
+ * Ground rotation, widened 2026-08-17 on Tim's note that the new pages were not
+ * carrying enough of the new design.
+ *
+ * All four approved grounds now appear: plain black, gold chevron linework,
+ * Harbour blue and the granite/marble texture. Plain stays the resting state so
+ * the treated ones keep their value, and no two adjacent sections share a
+ * ground, which is the rule in the design direction.
+ *
+ * On marble: #F2EDE4 on the marble base measures 7.7:1, comfortably past AA and
+ * past AAA, and the texture's mottling is darker than the base rather than
+ * lighter, so it only ever increases contrast. It gets a quiet-panel like the
+ * patterned grounds do, on the same principle: thin the ground, never the type.
  */
+const GROUNDS = ['ground-plain', 'ground-gold', 'ground-harbour', 'ground-smoke'] as const
+
 function groundFor(index: number) {
-  return index % 3 === 2 ? 'ground-gold' : 'ground-plain'
+  return GROUNDS[index % GROUNDS.length]
+}
+
+/** The grounds that need a quiet zone behind copy. */
+function needsQuietPanel(ground: string) {
+  return ground === 'ground-gold' || ground === 'ground-smoke'
 }
 
 /**
@@ -119,6 +136,7 @@ export default function ContentPage({
   sectionSlots?: Record<string, ReactNode>
 }) {
   const schemas = pageSchemas(page)
+  const image = PAGE_IMAGES[page.path]
 
   return (
     <>
@@ -156,32 +174,39 @@ export default function ContentPage({
           </div>
         </header>
 
-        {/* Body sections */}
+        {/* Body sections, with the image band dropped in after its section */}
         {page.sections.map((section, i) => {
           const ground = groundFor(i)
-          const patterned = ground === 'ground-gold'
+          const quiet = needsQuietPanel(ground)
           return (
-            <section
-              key={section.heading}
-              className={`content-section ${ground} border-b border-[#1C1C1C]`}
-            >
-              <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
-                <div className={`max-w-4xl reveal ${patterned ? 'quiet-panel' : ''}`}>
-                  <div className="relative z-[1]">
-                    <h2 className="font-headline font-bold text-[#F2EDE4] uppercase text-[clamp(1.5rem,3vw,2.25rem)] leading-tight mb-5">
-                      {section.heading}
-                    </h2>
-                    <div className="section-hairline" />
-                    {section.blocks.map((block, j) => (
-                      <BlockRenderer key={j} block={block} />
-                    ))}
-                    {sectionSlots?.[section.heading]}
+            <Fragment key={section.heading}>
+              <section
+                className={`content-section ${ground} border-b border-[#1C1C1C]`}
+              >
+                <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
+                  <div className={`max-w-4xl reveal ${quiet ? 'quiet-panel' : ''}`}>
+                    <div className="relative z-[1]">
+                      <h2 className="font-headline font-bold text-[#F2EDE4] uppercase text-[clamp(1.5rem,3vw,2.25rem)] leading-tight mb-5">
+                        {section.heading}
+                      </h2>
+                      <div className="section-hairline" />
+                      {section.blocks.map((block, j) => (
+                        <BlockRenderer key={j} block={block} />
+                      ))}
+                      {sectionSlots?.[section.heading]}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
+              </section>
+              {image && image.after === i && <ImageBand image={image} />}
+            </Fragment>
           )
         })}
+
+        {/* The retro gold bar: the jersey chest-band vocabulary as a beat before
+            the questions. Bar only, no display text, because inventing a line of
+            copy per page is not mine to do. */}
+        <div className="retro-divider-strip" aria-hidden />
 
         {/* FAQ. Same strings as the FAQPage schema, by construction. */}
         {page.faq.length > 0 && (

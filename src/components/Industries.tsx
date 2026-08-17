@@ -3,16 +3,31 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Ticker from './Ticker'
+import SectionTile from './SectionTile'
 
+/**
+ * The ticker's contents, corrected 2026-08-17.
+ *
+ * These were eight invented category names that matched nothing on the site.
+ * That mismatch is the disconnect Tim flagged: the homepage was advertising
+ * industries VBO had no page for, while the six it does have pages for went
+ * unnamed. This is now the real list, in the order the industries hub uses,
+ * so the two cannot drift apart again.
+ *
+ * The ticker itself is untouched. It is on the sacred list in the design
+ * direction; only what it says has changed.
+ */
 const industries = [
-  'Real Estate',
-  'Hospitality & Luxury',
-  'Health & Wellness',
-  'Financial & Legal',
-  'E-Commerce',
-  'Personal Brands',
-  'Sports & Entertainment',
-  'Trades & Field Services',
+  'Fashion & Apparel',
+  'Jewelry & Luxury Retail',
+  'Food & Beverage',
+  'Sports & Travel',
+  'Local Service Businesses',
+  'Nonprofit & Education',
+  'Law Firms',
+  'Med Spas',
+  'Dental Practices',
+  'Financial Advisors',
 ]
 
 export default function Industries() {
@@ -87,28 +102,30 @@ export default function Industries() {
           Based in Miami. Partnering with ambitious operators across:
         </motion.p>
 
-        {/* 4×4 Industry grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-white/[0.09]">
-          {industries.map((industry, i) => (
-            <motion.div
-              key={industry}
-              initial={{ y: 16 }}
-              animate={isInView ? { y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + i * 0.06 }}
-              /* Raised but translucent, so the gold linework ground still reads
-                 through the cells rather than being covered over. */
-              className="border-r border-b border-white/[0.09] p-4 md:p-8 group cursor-default flex flex-col justify-between min-h-[80px] md:min-h-[150px] bg-[rgb(20_20_24_/_0.4)] hover:bg-[rgb(20_20_24_/_0.62)] transition-colors duration-300"
-              style={{ boxShadow: 'inset 0 1px 0 rgb(255 255 255 / 0.035)' }}
-            >
-              <span className="font-headline font-bold text-[#F2EDE4] uppercase leading-tight tracking-wide text-[clamp(1rem,1.8vw,1.35rem)] group-hover:text-[#B8962E] transition-colors duration-300 block">
-                {industry}
-              </span>
-              <span className="font-mono text-[#B8962E]/0 group-hover:text-[#B8962E]/60 text-xs tracking-[0.2em] transition-colors duration-300 mt-2 md:mt-4 block">
-                →
-              </span>
-            </motion.div>
-          ))}
-        </div>
+        {/* Two routing tiles. Tim, 2026-08-17: the homepage list had drifted
+            from the industries the site actually has pages for, so the section
+            now routes to the two hubs instead of duplicating their lists. The
+            hubs carry the real, current lists, which is the only place they can
+            stay correct. Tile styling is the client tile's, on Tim's direction. */}
+        <motion.div
+          initial={{ y: 20 }}
+          animate={isInView ? { y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8"
+        >
+          <SectionTile
+            href="/services"
+            label="Services"
+            summary="Web development, consulting, fractional CMO, ecommerce, AI SEO, paid media."
+            mark="chevron"
+          />
+          <SectionTile
+            href="/industries"
+            label="Industries"
+            summary="Twelve industries, with the named client behind each one."
+            mark="hoop"
+          />
+        </motion.div>
 
         {/* Closing line */}
         <motion.div

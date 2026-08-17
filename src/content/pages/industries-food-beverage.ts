@@ -124,7 +124,7 @@ export const foodBeveragePage: PageContent = {
     }
   ],
   "close": {
-    "heading": "Close",
+    "heading": "The Final Word",
     "blocks": [
       {
         "kind": "prose",

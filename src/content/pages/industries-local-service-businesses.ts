@@ -129,7 +129,7 @@ export const localServicePage: PageContent = {
     }
   ],
   "close": {
-    "heading": "Close",
+    "heading": "The Final Word",
     "blocks": [
       {
         "kind": "prose",

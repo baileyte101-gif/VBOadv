@@ -131,7 +131,7 @@ export const aboutPage: PageContent = {
     }
   ],
   "close": {
-    "heading": "Close",
+    "heading": "The Final Word",
     "blocks": [
       {
         "kind": "prose",

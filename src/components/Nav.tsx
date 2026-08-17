@@ -62,37 +62,36 @@ function DesktopMenu({
         if (!wrapRef.current?.contains(e.relatedTarget as Node)) onClose()
       }}
     >
-      <div className="flex items-center gap-1.5">
-        <Link href={href} className={linkClass}>
-          {label}
-          <Underline />
-        </Link>
-        <button
-          type="button"
-          aria-expanded={open}
-          aria-controls={`${id}-menu`}
-          aria-label={`${label} menu`}
-          onClick={() => (open ? onClose() : onOpen())}
-          className="text-[#6B6F73] hover:text-[#F2EDE4] transition-colors duration-200 p-1"
+      {/* Clicking the label opens the menu rather than navigating. The hub page
+          is still reachable: it is the first item inside, labelled "All ...".
+          That way one click always reveals the section instead of committing
+          the visitor to a page before they have seen what is under it. */}
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls={`${id}-menu`}
+        onClick={() => (open ? onClose() : onOpen())}
+        className={`${linkClass} flex items-center gap-1.5`}
+      >
+        {label}
+        <svg
+          width="9"
+          height="6"
+          viewBox="0 0 14 9"
+          fill="none"
+          aria-hidden
+          className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
         >
-          <svg
-            width="9"
-            height="6"
-            viewBox="0 0 14 9"
-            fill="none"
-            aria-hidden
-            className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
-          >
-            <path
-              d="M1 1L7 7L13 1"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-      </div>
+          <path
+            d="M1 1L7 7L13 1"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        <Underline />
+      </button>
 
       <div
         id={`${id}-menu`}
@@ -154,11 +153,19 @@ export default function Nav() {
     setMobileOpen(false)
   }, [pathname])
 
-  const mobileGroups: { heading: string; href: string; items: NavItem[] }[] = [
-    { heading: 'Services', href: '/services', items: SERVICES },
+  const mobileGroups: { key: MenuKey; heading: string; href: string; hubLabel: string; items: NavItem[] }[] = [
     {
+      key: 'services',
+      heading: 'Services',
+      href: '/services',
+      hubLabel: 'All Services',
+      items: SERVICES,
+    },
+    {
+      key: 'industries',
       heading: 'Industries',
       href: '/industries',
+      hubLabel: 'All Industries',
       items: [...INDUSTRIES_NEW, ...INDUSTRIES_EXISTING],
     },
   ]
@@ -194,7 +201,9 @@ export default function Nav() {
               id="services"
               label="Services"
               href="/services"
-              groups={[{ items: SERVICES }]}
+              groups={[
+                { items: [{ href: '/services', label: 'All Services' }, ...SERVICES] },
+              ]}
               open={openMenu === 'services'}
               onOpen={() => setOpenMenu('services')}
               onClose={() => setOpenMenu(null)}
@@ -204,7 +213,7 @@ export default function Nav() {
               label="Industries"
               href="/industries"
               groups={[
-                { items: INDUSTRIES_NEW },
+                { items: [{ href: '/industries', label: 'All Industries' }, ...INDUSTRIES_NEW] },
                 { heading: 'Professional Services', items: INDUSTRIES_EXISTING },
               ]}
               open={openMenu === 'industries'}
@@ -271,25 +280,55 @@ export default function Nav() {
             className="lg:hidden bg-[#0D0D0D] border-t border-[#1C1C1C] overflow-hidden max-h-[75vh] overflow-y-auto"
           >
             <div className="px-6 py-5 flex flex-col">
-              {mobileGroups.map((group) => (
-                <div key={group.href} className="mb-4">
-                  <Link
-                    href={group.href}
-                    className="block font-mono text-[#B8962E] text-[10px] tracking-[0.25em] uppercase py-2"
-                  >
-                    {group.heading}
-                  </Link>
-                  {group.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="block text-[#6B6F73] hover:text-[#F2EDE4] text-sm tracking-[0.1em] uppercase transition-colors duration-200 font-body py-2.5 pl-4 border-l border-[#1C1C1C]"
+              {/* Same rule as desktop: tapping the section opens it rather than
+                  navigating. The hub is the first item inside. */}
+              {mobileGroups.map((group) => {
+                const expanded = openMenu === group.key
+                return (
+                  <div key={group.href} className="border-b border-[#1C1C1C]">
+                    <button
+                      type="button"
+                      aria-expanded={expanded}
+                      aria-controls={`m-${group.key}`}
+                      onClick={() => setOpenMenu(expanded ? null : group.key)}
+                      className="w-full flex items-center justify-between text-left text-[#F2EDE4] text-sm tracking-[0.12em] uppercase font-body py-3.5"
                     >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              ))}
+                      {group.heading}
+                      <svg
+                        width="12"
+                        height="8"
+                        viewBox="0 0 14 9"
+                        fill="none"
+                        aria-hidden
+                        className={`text-[#B8962E] transition-transform duration-200 ${
+                          expanded ? 'rotate-180' : ''
+                        }`}
+                      >
+                        <path
+                          d="M1 1L7 7L13 1"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                    <div id={`m-${group.key}`} hidden={!expanded} className="pb-2">
+                      {[{ href: group.href, label: group.hubLabel }, ...group.items].map(
+                        (item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="block text-[#6B6F73] hover:text-[#F2EDE4] text-sm tracking-[0.1em] uppercase transition-colors duration-200 font-body py-2.5 pl-4 border-l border-[#B8962E]/25 ml-1"
+                          >
+                            {item.label}
+                          </Link>
+                        )
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
 
               {[
                 { href: '/insights', label: 'Insights' },
