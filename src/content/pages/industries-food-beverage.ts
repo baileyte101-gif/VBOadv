@@ -83,7 +83,7 @@ export const foodBeveragePage: PageContent = {
         {
           "kind": "prose",
           "items": [
-            "**The Fudge Pie Co.** A ten-page website, designed, written and built by VBO around Chef Stacey and what she makes. Finished, approved, and launching shortly.",
+            "[The Fudge Pie Co.](https://www.thefudgepie.com) A ten-page website, designed, written and built by VBO around Chef Stacey and what she makes. Finished, approved, and launching shortly.",
             "We wrote the copy as well as building it, which for a food brand is the part that matters most. The words are where the maker actually comes through, and handing a template to a founder who's already working sixty hours a week is how food brand sites sit half-finished for a year. How we run a build is on [web development](/web-development), and [who does the work](/about) is worth knowing before you hand over your only real asset."
           ]
         }

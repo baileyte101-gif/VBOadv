@@ -78,12 +78,12 @@ export const aboutPage: PageContent = {
         {
           "kind": "prose",
           "items": [
-            "**Peixoto Wear.** Swimwear. Paid media across Meta, Google Shopping and Performance Max, plus search.",
-            "**Hayley Style.** Miami fine jewelry. Paid media, signed in August 2026.",
-            "**The Fudge Pie Co.** Food. A ten-page website designed, written and built by VBO around the chef who makes the product. Launching shortly.",
-            "**IPPE Soccer Tours.** Youth soccer travel. Website designed, built and launched by VBO, with analytics and conversion tracking installed.",
-            "**Sir Galloway.** Dry cleaning and garment care. A full website rebuild replacing an aging WordPress site. Launching shortly.",
-            "**CARE Elementary.** A non-profit school in Overtown, Miami. Research and advisory work.",
+            "[Peixoto Wear](https://peixotowear.com). Swimwear. Paid media across Meta, Google Shopping and Performance Max, plus search.",
+            "[Hayley Style](https://hayleystyle.com). Miami fine jewelry. Paid media, signed in August 2026.",
+            "[The Fudge Pie Co.](https://www.thefudgepie.com) Food. A ten-page website designed, written and built by VBO around the chef who makes the product. Launching shortly.",
+            "[IPPE Soccer Tours](https://ippesoccertours.com). Youth soccer travel. Website designed, built and launched by VBO, with analytics and conversion tracking installed.",
+            "[Sir Galloway](https://sirgalloway.com). Dry cleaning and garment care. A full website rebuild replacing an aging WordPress site. Launching shortly.",
+            "[CARE Elementary](https://careelementary.org). A non-profit school in Overtown, Miami. Research and advisory work.",
             "**Caricap.** Business plan, written and designed. Completed."
           ]
         }

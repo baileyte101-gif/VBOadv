@@ -82,7 +82,7 @@ export const nonprofitPage: PageContent = {
         {
           "kind": "prose",
           "items": [
-            "**CARE Elementary.** A non-profit school in Overtown, Miami. We've done research and advisory work with them, looking at how the school presents itself and where the distance sits between the work they actually do and what somebody encountering them online would understand about it.",
+            "[CARE Elementary](https://careelementary.org). A non-profit school in Overtown, Miami. We've done research and advisory work with them, looking at how the school presents itself and where the distance sits between the work they actually do and what somebody encountering them online would understand about it.",
             "It's a light engagement rather than a full campaign, and it's worth saying so. We're naming it here because it's real, not because it's a case study.",
             "If you want to know who does that work, [it's a small team and Tim leads it](/about), which for a non-profit matters, because you won't be handed to somebody junior learning on your budget."
           ]

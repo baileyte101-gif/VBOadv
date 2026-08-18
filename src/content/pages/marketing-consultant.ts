@@ -113,7 +113,7 @@ export const marketingConsultantPage: PageContent = {
         {
           "kind": "prose",
           "items": [
-            "**Sir Galloway.** Dry cleaning and garment care in Miami. Alongside rebuilding their website, we've worked with them on the wider marketing question: what a local service business with a real reputation should actually be doing to stay visible and keep people coming back. The site launches shortly. The category is covered on the [local service businesses](/industries/local-service-businesses) page.",
+            "[Sir Galloway](https://sirgalloway.com). Dry cleaning and garment care in Miami. Alongside rebuilding their website, we've worked with them on the wider marketing question: what a local service business with a real reputation should actually be doing to stay visible and keep people coming back. The site launches shortly. The category is covered on the [local service businesses](/industries/local-service-businesses) page.",
             "**Caricap.** We wrote and designed their business plan. A business plan is a different document from a marketing plan and it's the right one when somebody needs to see the whole business on paper before they'll back it. Completed and closed."
           ]
         }

@@ -79,7 +79,7 @@ export const sportsTravelPage: PageContent = {
         {
           "kind": "prose",
           "items": [
-            "**IPPE Soccer Tours.** Youth soccer travel. We designed and built their website, it's live, and we installed the analytics and conversion tracking behind it. Every program has its own page with real detail on it, and inquiries are measured rather than guessed at.",
+            "[IPPE Soccer Tours](https://ippesoccertours.com). Youth soccer travel. We designed and built their website, it's live, and we installed the analytics and conversion tracking behind it. Every program has its own page with real detail on it, and inquiries are measured rather than guessed at.",
             "This is the build we can point at publicly, which is why it appears across this site more than once. How a build runs is on [web development](/web-development), the advertising side is on [paid media](/paid-media), and [who does the work](/about) is a page worth reading if you're about to trust someone with the front door of your program."
           ]
         }

@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Nav from "@/components/Nav";
 import { type VerticalData, BOOKING_URL, TIM_EMAIL } from "@/lib/verticals";
 import { trackCTAClick, getBookingUrlWithUTM } from "./GA4Tracker";
 
@@ -165,39 +166,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function NavBar() {
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0D0D0D]">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 grid grid-cols-3 items-center h-16">
-        <a
-          href="/"
-          className="flex items-center justify-self-start"
-          aria-label="VBO Advertising home"
-        >
-          <Image
-            src="/images/logo-transparent.png"
-            alt="VBO Advertising"
-            width={834}
-            height={222}
-            className="h-8 md:h-12 w-auto max-w-none"
-            priority
-          />
-        </a>
-
-        <a
-          href="/"
-          className="justify-self-center font-mono text-sm md:text-base text-[#F2EDE4] tracking-[0.2em] uppercase transition-colors duration-200 relative group whitespace-nowrap hover:text-[#B8962E]"
-        >
-          Home
-          <span className="absolute -bottom-1 left-0 right-0 h-[1px] bg-[#B8962E]/40 group-hover:bg-[#B8962E] transition-colors duration-300" />
-        </a>
-
-        <div className="justify-self-end" aria-hidden="true" />
-      </div>
-    </nav>
-  );
-}
-
 function StickyScrollCTAInner({ vertical }: { vertical: string }) {
   const searchParams = useSearchParams();
   const bookingUrl = getBookingUrlWithUTM(BOOKING_URL, searchParams);
@@ -259,7 +227,7 @@ function StickyScrollCTA({ vertical }: { vertical: string }) {
 export default function LandingPageTemplate({ vertical }: Props) {
   return (
     <>
-      <NavBar />
+      <Nav />
       <StickyScrollCTA vertical={vertical.slug} />
 
       <main className="min-h-screen font-body text-[18px] leading-[28px] pt-20">
@@ -592,21 +560,28 @@ export default function LandingPageTemplate({ vertical }: Props) {
               >
                 Common Questions
               </motion.h2>
-              <motion.div variants={STAGGER_PARENT} className="space-y-8 max-w-3xl">
+              {/* Accordion (Tim, 2026-08-18): native <details>/<summary>, so
+                  the answer stays in the DOM whether collapsed or open and
+                  cannot drift from the FAQPage schema above, which is built
+                  from this same vertical.faq array. */}
+              <motion.div variants={STAGGER_PARENT} className="faq-accordion-list max-w-3xl">
                 {vertical.faq.map((item, i) => (
-                  <motion.div
+                  <motion.details
                     key={i}
                     variants={FADE_UP}
                     transition={ENTER_TRANSITION}
-                    className="border-l-2 border-[var(--color-vbo-gold)]/30 pl-6"
+                    className="faq-accordion-item"
                   >
-                    <h3 className="font-headline text-[20px] md:text-[22px] font-bold uppercase text-[var(--color-vbo-gold)] leading-[1.2] mb-3 tracking-wide">
-                      {item.question}
-                    </h3>
-                    <p className="font-body text-[18px] text-[var(--color-vbo-egg)] opacity-80 leading-[28px]">
+                    <summary className="faq-accordion-q">
+                      <span className="font-headline text-[18px] md:text-[20px] font-bold uppercase text-[var(--color-vbo-gold)] leading-[1.3] tracking-wide">
+                        {item.question}
+                      </span>
+                      <span className="faq-accordion-icon" aria-hidden="true" />
+                    </summary>
+                    <p className="faq-accordion-a font-body text-[18px] text-[var(--color-vbo-egg)] opacity-80 leading-[28px] max-w-none">
                       {item.answer}
                     </p>
-                  </motion.div>
+                  </motion.details>
                 ))}
               </motion.div>
             </motion.div>

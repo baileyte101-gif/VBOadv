@@ -35,7 +35,7 @@ export const SERVICES: NavItem[] = [
 /** The six new industry pages, built in this release. */
 export const INDUSTRIES_NEW: NavItem[] = [
   { href: '/industries/fashion-apparel', label: 'Fashion & Apparel' },
-  { href: '/industries/jewelry-luxury-retail', label: 'Jewelry & Luxury Retail' },
+  { href: '/industries/jewelry-luxury-retail', label: 'Jewelry & Luxury' },
   { href: '/industries/food-beverage', label: 'Food & Beverage' },
   { href: '/industries/sports-travel', label: 'Sports & Travel' },
   { href: '/industries/local-service-businesses', label: 'Local Service Businesses' },

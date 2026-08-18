@@ -84,9 +84,9 @@ export const ecommercePage: PageContent = {
         {
           "kind": "prose",
           "items": [
-            "**Peixoto Wear.** Swimwear. We run their paid media across Meta, Google Shopping and Performance Max, and we run their search work. Their store was already built when we came in and we didn't build it, which is worth stating because plenty of firms wouldn't. The seasonal side of apparel is covered on the [fashion and apparel](/industries/fashion-apparel) page.",
-            "**Hayley Style.** Miami fine jewelry, paid media, signed in August 2026. A new relationship, and the buying cycle for fine jewelry is long enough that we'd rather describe the work than dress up early numbers. The reason it's a different discipline is on the [jewelry and luxury retail](/industries/jewelry-luxury-retail) page.",
-            "**The Fudge Pie Co.** Food. We designed, wrote and built their ten-page site, which launches shortly. Getting the store right before spending on ads is the whole argument of the [food and beverage](/industries/food-beverage) page.",
+            "[Peixoto Wear](https://peixotowear.com). Swimwear. We run their paid media across Meta, Google Shopping and Performance Max, and we run their search work. Their store was already built when we came in and we didn't build it, which is worth stating because plenty of firms wouldn't. The seasonal side of apparel is covered on the [fashion and apparel](/industries/fashion-apparel) page.",
+            "[Hayley Style](https://hayleystyle.com). Miami fine jewelry, paid media, signed in August 2026. A new relationship, and the buying cycle for fine jewelry is long enough that we'd rather describe the work than dress up early numbers. The reason it's a different discipline is on the [jewelry and luxury retail](/industries/jewelry-luxury-retail) page.",
+            "[The Fudge Pie Co.](https://www.thefudgepie.com) Food. We designed, wrote and built their ten-page site, which launches shortly. Getting the store right before spending on ads is the whole argument of the [food and beverage](/industries/food-beverage) page.",
             "Three brands, three very different problems, and the same senior people on all of them. That's [how VBO is built](/about)."
           ]
         }

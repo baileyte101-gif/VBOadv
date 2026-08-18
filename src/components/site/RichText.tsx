@@ -40,7 +40,18 @@ export function Inline({ text }: { text: string }) {
               {label}
             </Link>
           ) : (
-            <a key={i} href={href} className="link-gold">
+            // External. target="_blank" + rel="noopener" as of 2026-08-18
+            // (Tim's review round, D2: client names link to their own site,
+            // new tab, noopener). Applies to every external markdown link in
+            // body copy, not only client names, since that is the correct
+            // behavior for any link that sends a reader off the site.
+            <a
+              key={i}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-gold"
+            >
               {label}
             </a>
           )

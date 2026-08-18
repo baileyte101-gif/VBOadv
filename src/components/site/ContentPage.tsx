@@ -230,7 +230,11 @@ export default function ContentPage({
             nothing at all"). */}
         {page.path !== '/contact' && <div className="retro-divider-strip" aria-hidden />}
 
-        {/* FAQ. Same strings as the FAQPage schema, by construction. */}
+        {/* FAQ. Same strings as the FAQPage schema, by construction. Rendered
+            as accordions (Tim, 2026-08-18): native <details>/<summary>, so the
+            answer text is always present in the DOM (collapsed just means not
+            displayed, never absent), which is what keeps this block from ever
+            drifting from the FAQPage schema below. */}
         {page.faq.length > 0 && (
           <section className="content-section ground-plain border-b border-[#1C1C1C]">
             <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
@@ -239,16 +243,19 @@ export default function ContentPage({
                   {page.faqHeading}
                 </h2>
                 <div className="section-hairline" />
-                <dl className="faq-list mt-10">
+                <div className="faq-accordion-list mt-10">
                   {page.faq.map((entry) => (
-                    <div key={entry.question} className="faq-item">
-                      <dt className="faq-q">{entry.question}</dt>
-                      <dd className="faq-a">
+                    <details key={entry.question} className="faq-accordion-item">
+                      <summary className="faq-accordion-q">
+                        <span>{entry.question}</span>
+                        <span className="faq-accordion-icon" aria-hidden="true" />
+                      </summary>
+                      <p className="faq-accordion-a">
                         <Inline text={entry.answer} />
-                      </dd>
-                    </div>
+                      </p>
+                    </details>
                   ))}
-                </dl>
+                </div>
               </div>
             </div>
           </section>

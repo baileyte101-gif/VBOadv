@@ -104,9 +104,9 @@ export const webDevelopmentPage: PageContent = {
         {
           "kind": "prose",
           "items": [
-            "**IPPE Soccer Tours.** Youth soccer travel. Website designed and built by VBO, live, with analytics and conversion tracking installed. Every program has its own findable page with real detail on it, which is what a parent needs before they'll book anything.",
-            "**The Fudge Pie Co.** A ten-page site, designed, written and built by VBO around Chef Stacey and what she makes. Finished and approved, launching shortly. More on that one on the [food and beverage](/industries/food-beverage) page.",
-            "**Sir Galloway.** Dry cleaning and garment care. A full rebuild replacing an aging WordPress site. Finished, launching shortly."
+            "[IPPE Soccer Tours](https://ippesoccertours.com). Youth soccer travel. Website designed and built by VBO, live, with analytics and conversion tracking installed. Every program has its own findable page with real detail on it, which is what a parent needs before they'll book anything.",
+            "[The Fudge Pie Co.](https://www.thefudgepie.com) A ten-page site, designed, written and built by VBO around Chef Stacey and what she makes. Finished and approved, launching shortly. More on that one on the [food and beverage](/industries/food-beverage) page.",
+            "[Sir Galloway](https://sirgalloway.com). Dry cleaning and garment care. A full rebuild replacing an aging WordPress site. Finished, launching shortly."
           ]
         }
       ]

@@ -84,9 +84,9 @@ export const paidMediaPage: PageContent = {
         {
           "kind": "prose",
           "items": [
-            "**Peixoto Wear.** Swimwear. Meta, Google Shopping and Performance Max, alongside their search work. An apparel brand runs on a seasonal curve, and the spend has to move with it rather than sit flat across the year. More on that in [fashion and apparel](/industries/fashion-apparel).",
-            "**Hayley Style.** Miami fine jewelry, paid media, signed in August 2026. A new relationship. Fine jewelry has a long consideration period, so the interesting problem is staying present for weeks without becoming annoying. That's covered on [jewelry and luxury retail](/industries/jewelry-luxury-retail).",
-            "**IPPE Soccer Tours.** Youth soccer travel. We built their website, installed the analytics and conversion tracking behind it, and run paid media for them. Because the tracking went in with the build, inquiries and trip views are measured rather than estimated, which is the difference between managing spend and guessing at it. More on [sports and travel](/industries/sports-travel)."
+            "[Peixoto Wear](https://peixotowear.com). Swimwear. Meta, Google Shopping and Performance Max, alongside their search work. An apparel brand runs on a seasonal curve, and the spend has to move with it rather than sit flat across the year. More on that in [fashion and apparel](/industries/fashion-apparel).",
+            "[Hayley Style](https://hayleystyle.com). Miami fine jewelry, paid media, signed in August 2026. A new relationship. Fine jewelry has a long consideration period, so the interesting problem is staying present for weeks without becoming annoying. That's covered on [jewelry and luxury retail](/industries/jewelry-luxury-retail).",
+            "[IPPE Soccer Tours](https://ippesoccertours.com). Youth soccer travel. We built their website, installed the analytics and conversion tracking behind it, and run paid media for them. Because the tracking went in with the build, inquiries and trip views are measured rather than estimated, which is the difference between managing spend and guessing at it. More on [sports and travel](/industries/sports-travel)."
           ]
         }
       ]

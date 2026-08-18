@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Nav from "@/components/Nav";
 import { INDEXABLE_PAGES } from "@/lib/indexable";
 
 const PRODUCTION_HOST = "https://www.vboadv.com";
@@ -172,36 +173,6 @@ const breadcrumbSchema = {
 // Classes match src/components/LandingPageTemplate.tsx exactly.
 // ---------------------------------------------------------------------------
 
-function NavBar() {
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0D0D0D]">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 grid grid-cols-3 items-center h-16">
-        <a
-          href="/"
-          className="flex items-center justify-self-start"
-          aria-label="VBO Advertising home"
-        >
-          <Image
-            src="/images/logo-transparent.png"
-            alt="VBO Advertising"
-            width={834}
-            height={222}
-            className="h-8 md:h-12 w-auto max-w-none"
-            priority
-          />
-        </a>
-        <a
-          href="/"
-          className="justify-self-center font-mono text-sm md:text-base text-[#F2EDE4] tracking-[0.2em] uppercase transition-colors duration-200 relative group whitespace-nowrap hover:text-[#B8962E]"
-        >
-          Home
-        </a>
-        <div className="justify-self-end" aria-hidden="true" />
-      </div>
-    </nav>
-  );
-}
-
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <span className="font-mono text-[12px] uppercase tracking-[3.6px] text-[var(--color-vbo-gold)] block mb-6">
@@ -226,10 +197,20 @@ function Body({ children }: { children: React.ReactNode }) {
   );
 }
 
-function InlineLink({ href, children }: { href: string; children: React.ReactNode }) {
+function InlineLink({
+  href,
+  children,
+  external,
+}: {
+  href: string;
+  children: React.ReactNode;
+  /** True client-website links (2026-08-18, D2): new tab, noopener. */
+  external?: boolean;
+}) {
   return (
     <a
       href={href}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="text-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-gold-light)] underline underline-offset-4 decoration-[var(--color-vbo-gold)]/40 transition-colors"
     >
       {children}
@@ -340,7 +321,7 @@ export default function FractionalCmoPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <NavBar />
+      <Nav />
 
       <main className="min-h-screen font-body text-[18px] leading-[28px] pt-20">
         {/* ===== HERO ===== MV-F02 Option A, 33 words. Sentence 3 is the spine. */}
@@ -565,7 +546,8 @@ export default function FractionalCmoPage() {
             , where the offer moves with the season.
           </Body>
           <Body>
-            With IPPE Soccer Tours we rebuilt the brand and the website: new logo, new
+            With <InlineLink href="https://ippesoccertours.com" external>IPPE Soccer Tours</InlineLink> we
+            rebuilt the brand and the website: new logo, new
             colors, new fonts, new site. Brand and site in the same hands is the range
             this seat has to cover, and it&apos;s the part people mean when they ask
             who&apos;s actually doing the work.
@@ -589,19 +571,24 @@ export default function FractionalCmoPage() {
         </Section>
 
         {/* ===== 11 ===== FAQ. Visible strings and FAQPage strings are the same
-            objects, so parity cannot drift. */}
+            objects, so parity cannot drift. Accordion (Tim, 2026-08-18): native
+            <details>/<summary>, answer stays in the DOM whether collapsed or
+            open. FaqAnswer keeps the O5 in-answer link to the marketing-agency
+            post intact; only the wrapper changed. */}
         <Section id="faq" heading="Common Questions" label="Frequently Asked Questions">
-          <div className="space-y-8 max-w-3xl">
+          <div className="faq-accordion-list max-w-3xl">
             {FAQ.map((item) => (
-              <div
-                key={item.question}
-                className="border-l-2 border-[var(--color-vbo-gold)]/30 pl-6"
-              >
-                <h3 className="font-headline text-[20px] md:text-[22px] font-bold uppercase text-[var(--color-vbo-gold)] leading-[1.2] mb-3 tracking-wide">
-                  {item.question}
-                </h3>
-                <FaqAnswer item={item} />
-              </div>
+              <details key={item.question} className="faq-accordion-item">
+                <summary className="faq-accordion-q">
+                  <span className="font-headline text-[18px] md:text-[20px] font-bold uppercase text-[var(--color-vbo-gold)] leading-[1.3] tracking-wide">
+                    {item.question}
+                  </span>
+                  <span className="faq-accordion-icon" aria-hidden="true" />
+                </summary>
+                <div className="faq-accordion-a max-w-none">
+                  <FaqAnswer item={item} />
+                </div>
+              </details>
             ))}
           </div>
         </Section>

@@ -82,7 +82,7 @@ export const jewelryPage: PageContent = {
         {
           "kind": "prose",
           "items": [
-            "**Hayley Style.** A Miami fine jewelry brand. We run their paid media. They signed in August 2026, so this is a new relationship, and we'd rather tell you that than imply a longer history than we have.",
+            "[Hayley Style](https://hayleystyle.com). A Miami fine jewelry brand. We run their paid media. They signed in August 2026, so this is a new relationship, and we'd rather tell you that than imply a longer history than we have.",
             "What the work involves is what's described above: reaching the right people at a cost that makes sense for a purchase this considered, staying present through the middle weeks without wearing out a welcome, and setting up measurement that reflects a six-week decision instead of pretending it happened in an afternoon. The mechanics of the paid side are on [paid media](/paid-media), and the store side is on [ecommerce and Shopify marketing](/ecommerce-marketing)."
           ]
         }
@@ -118,7 +118,7 @@ export const jewelryPage: PageContent = {
       "item": "https://www.vboadv.com/industries"
     },
     {
-      "name": "Jewelry & Luxury Retail",
+      "name": "Jewelry & Luxury",
       "item": "https://www.vboadv.com/industries/jewelry-luxury-retail"
     }
   ],

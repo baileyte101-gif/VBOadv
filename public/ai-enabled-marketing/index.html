@@ -366,7 +366,11 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 720px;
+      /* 720px -> 880px, 2026-08-18: the gold vertical bar that used to reserve
+         space on the right for an image that never shipped is gone (Tim's
+         review round, C4), so the text now runs wider instead of stopping
+         short of empty space. */
+      max-width: 880px;
     }
 
     .hero-label {
@@ -424,18 +428,6 @@
       color: var(--matte-gold);
     }
 
-    /* Gold vertical line on right (desktop) */
-    .hero-line {
-      display: none;
-      position: absolute;
-      right: 38%;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: var(--matte-gold);
-      opacity: 0.3;
-    }
-
     /* Ambient glow */
     .hero-glow {
       position: absolute;
@@ -453,7 +445,6 @@
 
     @media (min-width: 1024px) {
       .hero { padding: 120px 80px 80px; }
-      .hero-line { display: block; }
     }
 
     /* ========================================
@@ -572,9 +563,29 @@
       margin-top: 8px;
     }
 
+    /* .faq-item is a <details> element as of 2026-08-18 (Tim's review round):
+       collapsed by default, plus sign affordance, tap to open. The answer
+       text stays in the DOM whether open or closed, so it can never drift
+       from the FAQPage schema in <head>, which is built from the same text. */
     .faq-item {
       border-left: 2px solid rgba(184, 150, 46, 0.3);
       padding-left: 24px;
+    }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 44px;
+    }
+
+    .faq-item summary::-webkit-details-marker,
+    .faq-item summary::marker {
+      display: none;
+      content: "";
     }
 
     .faq-question {
@@ -585,14 +596,40 @@
       font-size: clamp(1.15rem, 2.2vw, 1.45rem);
       line-height: 1.2;
       letter-spacing: 0.02em;
-      margin-bottom: 12px;
+      margin-bottom: 0;
     }
+
+    .faq-icon {
+      position: relative;
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+    }
+
+    .faq-icon::before,
+    .faq-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--matte-gold);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .faq-icon::before { top: 50%; left: 0; width: 100%; height: 1px; transform: translateY(-50%); }
+    .faq-icon::after { left: 50%; top: 0; width: 1px; height: 100%; transform: translateX(-50%); }
+
+    .faq-item[open] .faq-icon::after { transform: translateX(-50%) rotate(90deg); opacity: 0; }
 
     /* Answer copy uses the lighter text token (matches the Law Firms FAQ render
        and clears WCAG AA on the near-black FAQ section). */
     .faq-item p {
       color: var(--off-white);
       opacity: 0.85;
+      margin-top: 12px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .faq-icon::before,
+      .faq-icon::after { transition: none; }
     }
 
     @media (min-width: 1024px) {
@@ -1377,7 +1414,13 @@
 </head>
 <body>
 
-  <!-- ============ NAVIGATION ============ -->
+  <!-- ============ NAVIGATION ============
+       Rebuilt 2026-08-18 (Tim's review round) to carry the site's current
+       navigation. This page is a static file in public/, not a Next route, so
+       it cannot import src/components/Nav.tsx directly; these are the same
+       five destinations and the same "Let's Connect" CTA, hand-built to match.
+       See clients/vbo/2026-08-18-TIM-review-round-big-build.md, C3, for why
+       this was patched rather than ported this round. -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="/" class="nav-logo" aria-label="VBO Home">
@@ -1385,29 +1428,29 @@
       </a>
 
       <div class="nav-links">
-        <a href="#the-problem">The Problem</a>
-        <a href="#the-gap">The Gap</a>
-        <a href="#the-approach">The Approach</a>
-        <a href="#comparison">The Comparison</a>
-        <a href="#why-vbo">Why VBO</a>
+        <a href="/services">Services</a>
+        <a href="/industries">Industries</a>
+        <a href="/insights">Insights</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
       </div>
 
       <div class="nav-right">
-        <button class="mobile-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Toggle menu">
+        <button class="mobile-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open'); document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : ''" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
           <svg width="14" height="9" viewBox="0 0 14 9" fill="none">
             <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-        <a href="mailto:hello@vboadv.com" class="btn-gold nav-cta">Let's Connect</a>
+        <a href="/contact" class="btn-gold nav-cta">Let's Connect</a>
       </div>
     </div>
 
     <div id="mobileMenu" class="mobile-menu">
-      <a href="#the-problem" onclick="document.getElementById('mobileMenu').classList.remove('open')">The Problem</a>
-      <a href="#the-gap" onclick="document.getElementById('mobileMenu').classList.remove('open')">The Gap</a>
-      <a href="#the-approach" onclick="document.getElementById('mobileMenu').classList.remove('open')">The Approach</a>
-      <a href="#comparison" onclick="document.getElementById('mobileMenu').classList.remove('open')">The Comparison</a>
-      <a href="#why-vbo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Why VBO</a>
+      <a href="/services" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''">Services</a>
+      <a href="/industries" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''">Industries</a>
+      <a href="/insights" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''">Insights</a>
+      <a href="/about" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''">About</a>
+      <a href="/contact" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''">Contact</a>
     </div>
   </nav>
 
@@ -1415,7 +1458,6 @@
   <!-- ============ HERO ============ -->
   <section class="hero" aria-label="Hero">
     <div class="hero-glow" aria-hidden="true"></div>
-    <div class="hero-line" aria-hidden="true"></div>
 
     <div class="hero-content stagger">
       <p class="hero-label fade-up">Miami's AI-Enabled Marketing Agency</p>
@@ -1773,35 +1815,53 @@
       <h2 class="fade-up">Common Questions</h2>
 
       <div class="faq-list">
-        <div class="faq-item fade-up">
-          <h3 class="faq-question">What is an AI-enabled marketing agency?</h3>
+        <details class="faq-item fade-up">
+          <summary>
+            <h3 class="faq-question">What is an AI-enabled marketing agency?</h3>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
           <p>An agency that uses AI inside its own operation to do the work faster and more consistently, while the strategy and the judgment stay human. Most shops fall on one side or the other. A traditional agency bills you for every hour the work takes by hand. An AI-first shop hands you output nobody senior has read. We sit in between. You get the speed without losing the senior judgment.</p>
-        </div>
+        </details>
 
-        <div class="faq-item fade-up">
-          <h3 class="faq-question">How is this different from marketing automation?</h3>
+        <details class="faq-item fade-up">
+          <summary>
+            <h3 class="faq-question">How is this different from marketing automation?</h3>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
           <p>Marketing automation runs rules you set once, like an email that fires when someone fills out a form. What we build is closer to a team that reasons through the work. It handles research, drafting, analysis, and quality checks, and a senior strategist reviews the output before it reaches you. Automation follows the instructions you set. Ours makes the judgment call, then a person checks it.</p>
-        </div>
+        </details>
 
-        <div class="faq-item fade-up">
-          <h3 class="faq-question">What does "agent architecture" actually mean?</h3>
+        <details class="faq-item fade-up">
+          <summary>
+            <h3 class="faq-question">What does "agent architecture" actually mean?</h3>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
           <p>It means we build our own specialized AI systems for individual marketing jobs, then connect them so they hand work to each other. One handles research, another drafts, another checks the numbers. Building it this way keeps the work consistent as the volume grows, and lets us trace any piece of output back to the step that produced it. It is the reason we can run senior-level work without a senior-level headcount.</p>
-        </div>
+        </details>
 
-        <div class="faq-item fade-up">
-          <h3 class="faq-question">Do you help our team adopt AI, or do you just use it on our behalf?</h3>
+        <details class="faq-item fade-up">
+          <summary>
+            <h3 class="faq-question">Do you help our team adopt AI, or do you just use it on our behalf?</h3>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
           <p>We use it on your behalf. That's the whole offer. You hire us to run your marketing, and the AI stays on our side of the work. There's nothing for your team to learn, install, or manage. A senior person reads everything before it goes out, so what you're buying is the marketing itself, not a system you have to run.</p>
-        </div>
+        </details>
 
-        <div class="faq-item fade-up">
-          <h3 class="faq-question">Does using AI mean the work is lower quality?</h3>
+        <details class="faq-item fade-up">
+          <summary>
+            <h3 class="faq-question">Does using AI mean the work is lower quality?</h3>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
           <p>It means the opposite when it is built correctly. Every piece of work has a senior strategist between the system and you. What AI removes is the slow middle, the research passes, the first drafts, the reformatting, the version chasing. What it does not touch is the thinking or the final call. If anything, you get more senior attention than a traditional agency gives you, because none of it is spent on production.</p>
-        </div>
+        </details>
 
-        <div class="faq-item fade-up">
-          <h3 class="faq-question">Where are you based, and who do you work with?</h3>
+        <details class="faq-item fade-up">
+          <summary>
+            <h3 class="faq-question">Where are you based, and who do you work with?</h3>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
           <p>We are based in Coconut Grove and work with businesses across Miami, including Brickell, Wynwood, Coral Gables, Miami Beach, Doral, Aventura and Little Havana. We also work with clients across South Florida and take on select clients nationally when the fit is right.</p>
-        </div>
+        </details>
       </div>
     </div>
   </section>

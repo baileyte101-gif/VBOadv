@@ -68,7 +68,7 @@ export const fashionApparelPage: PageContent = {
         {
           "kind": "prose",
           "items": [
-            "**Peixoto Wear.** Swimwear, which is about as seasonal as apparel gets. We run their paid media across Meta, Google Shopping and Performance Max, and we run their search work.",
+            "[Peixoto Wear](https://peixotowear.com). Swimwear, which is about as seasonal as apparel gets. We run their paid media across Meta, Google Shopping and Performance Max, and we run their search work.",
             "Running both is what makes the calendar manageable. The paid side moves with the season, hard in the weeks that matter and quiet in the ones that don't. The search side works on the demand that never goes away, which is what keeps the quiet months from being empty. Two firms doing those separately would optimize against each other. The paid side in detail is on [paid media](/paid-media)."
           ]
         }

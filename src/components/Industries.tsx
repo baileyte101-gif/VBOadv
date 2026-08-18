@@ -19,7 +19,7 @@ import SectionTile from './SectionTile'
  */
 const industries = [
   'Fashion & Apparel',
-  'Jewelry & Luxury Retail',
+  'Jewelry & Luxury',
   'Food & Beverage',
   'Sports & Travel',
   'Local Service Businesses',
@@ -76,31 +76,23 @@ export default function Industries() {
           animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.55 }}
         >
-          <p className="section-label">Industries</p>
+          {/* Label. Tim, 2026-08-18: "Industries and Services", not "Industries"
+              alone, now that the two routing tiles below cover both. */}
+          <p className="section-label">Industries and Services</p>
           <div className="section-accent" />
         </motion.div>
 
-        {/* Section headline. Tim-approved 2026-08-11 (Mary option 3).
-            Scaled below the About/HowWeWork h2 clamp since Industries is a
-            denser grid section; structure and slot per Vega's Wave 1 ticket. */}
+        {/* Section headline. Tim-confirmed 2026-08-18, verbatim: "different
+            industries, same services, same way of thinking." Supersedes the
+            2026-08-11 Mary option 3 line below, which this replaces. */}
         <motion.h2
           initial={{ y: 28 }}
           animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
           className="font-headline font-black text-[#F2EDE4] uppercase leading-none text-[clamp(2rem,4.5vw,3.5rem)] max-w-[860px] mb-8"
         >
-          Different industries. The same way of working.
+          Different Industries, Same Services, Same Way of Thinking.
         </motion.h2>
-
-        {/* Intro */}
-        <motion.p
-          initial={{ y: 20 }}
-          animate={isInView ? { y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-[#8A8E92] text-base md:text-lg font-body mb-12"
-        >
-          Based in Miami. Partnering with ambitious operators across:
-        </motion.p>
 
         {/* Two routing tiles. Tim, 2026-08-17: the homepage list had drifted
             from the industries the site actually has pages for, so the section
@@ -116,35 +108,27 @@ export default function Industries() {
           <SectionTile
             href="/services"
             label="Services"
-            summary="Web development, consulting, fractional CMO, ecommerce, AI SEO, paid media."
+            summary="Web development, consulting, fractional CMO, ecommerce, AI SEO, paid media, and more."
             mark="services"
           />
           <SectionTile
             href="/industries"
             label="Industries"
-            summary="Twelve industries, with the named client behind each one."
+            summary="Twelve industries."
             mark="industries"
           />
         </motion.div>
 
-        {/* Closing line */}
+        {/* Closing line. Tim's 2026-08-18 review round: the "Based in Miami"
+            intro line and the founders/leaders paragraph (with the law-firms
+            link inside it) are both cut. The Insights paragraph is the only
+            survivor, kept as is on his explicit instruction. */}
         <motion.div
           initial={{ y: 8 }}
           animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-10 space-y-3"
         >
-          <p className="text-[#8A8E92] text-base md:text-lg font-body">
-            We work best with founders and leaders who value clarity and are
-            looking to simplify chaos. We have deep experience working with{' '}
-            <a
-              href="/professional-services/law-firms"
-              className="text-[#B8962E] hover:text-[#F2EDE4] transition-colors duration-200"
-            >
-              professional services firms in South Florida
-            </a>
-            .
-          </p>
           <p className="text-[#8A8E92] text-sm font-body">
             Read our take on strategy, creative, and performance in the{' '}
             <a
