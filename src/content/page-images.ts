@@ -79,9 +79,9 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
   },
   '/paid-media': {
     src: '/images/pages/paid-media-band.jpg',
-    alt: 'A coffee shop storefront in Wynwood, Miami, a painted panther and the Panther Coffee wordmark on the wall, a neon coffee sign lit in the window, people seated inside',
+    alt: 'A large blank billboard mounted above a storefront on a tree-lined Miami street, one person standing on the sidewalk below looking up at it, tablet tucked under one arm',
     brief:
-      'Downtown at dusk, lit signage, traffic moving. Attention being bought and sold in a real place. Long exposure on the traffic is welcome. Monochrome, but this is a natural candidate for the one-in-four selective colour pop if a single sign carries it.',
+      'A blank billboard mounted above a storefront on a tree-lined Miami street, one person on the sidewalk below looking up at the empty space, a tablet tucked under one arm. Reads as media being weighed before it is bought, not signage already sold. The street stays alive around them: parked cars, bikes, pedestrians further down the block. Monochrome throughout, no colour pop on this one.',
     after: 2,
     aspect: 'wide',
   },
@@ -121,7 +121,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
     src: '/images/pages/sports-travel-band.jpg',
     alt: 'A modern soccer stadium under an overcast sky, a passenger plane climbing overhead, rows of rooftops in the foreground',
     brief:
-      'A group with bags at a departure point, early light. Anticipation before a trip. ★ Not sports photography: no pitches, no stadiums, no athletes in action. Section 6.2 is explicit about this. Travel is the subject, sport is only the reason.',
+      'A modern soccer stadium under an overcast sky, a passenger plane climbing overhead, rows of rooftops in the foreground. The plane mid climb carries the anticipation, the stadium grounds it in why the trip happens. ★ This is a deliberate exception to the section 6.2 no-stadiums rule: Tim asked for the stadium directly and approved this image. Monochrome, no colour pop.',
     after: 1,
     aspect: 'wide',
   },
