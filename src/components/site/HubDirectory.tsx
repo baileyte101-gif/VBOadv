@@ -53,14 +53,14 @@ export default function HubDirectory({
               >
                 <Link
                   href={item.href}
-                  className="group inline-flex items-start gap-2 py-1 font-headline font-bold text-[#F2EDE4] uppercase text-[1.05rem] leading-tight"
+                  className="group inline-flex min-h-[44px] items-center gap-2 font-headline font-bold text-[#F2EDE4] uppercase text-[1.05rem] leading-tight"
                 >
                   <span className="group-hover:text-[#B8962E] transition-colors duration-300">
                     {item.label}
                   </span>
                   <span
                     aria-hidden
-                    className="font-mono text-[#B8962E]/50 group-hover:text-[#B8962E] group-hover:translate-x-0.5 transition-all duration-300 shrink-0 mt-0.5"
+                    className="font-mono text-[#B8962E]/50 group-hover:text-[#B8962E] group-hover:translate-x-0.5 transition-all duration-300 shrink-0"
                   >
                     &rarr;
                   </span>
