@@ -79,9 +79,9 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
   },
   '/paid-media': {
     src: '/images/pages/paid-media-band.jpg',
-    alt: 'A large blank billboard mounted above a storefront on a tree-lined Miami street, one person standing on the sidewalk below looking up at it, tablet tucked under one arm',
+    alt: 'A man seen from behind and the side at a small cafe table on a quiet Coconut Grove sidewalk, checking his phone with a coffee cup beside him, mature trees and a modern storefront softly out of focus behind him',
     brief:
-      'A blank billboard mounted above a storefront on a tree-lined Miami street, one person on the sidewalk below looking up at the empty space, a tablet tucked under one arm. Reads as media being weighed before it is bought, not signage already sold. The street stays alive around them: parked cars, bikes, pedestrians further down the block. Monochrome throughout, no colour pop on this one.',
+      'One man alone at a small cafe table on a quiet Coconut Grove sidewalk, seen from behind and the side, checking his phone with a coffee cup on the table beside him. Mature shade trees and a calm modern storefront sit softly out of focus behind him, no one else in frame. Deliberately plain: one clear subject, one clear action, nothing to decode. Monochrome throughout, no colour pop on this one.',
     after: 2,
     aspect: 'wide',
   },
