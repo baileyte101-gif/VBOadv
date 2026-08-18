@@ -39,7 +39,7 @@ export type PageImage = {
 export const PAGE_IMAGES: Record<string, PageImage> = {
   '/services': {
     src: '/images/pages/services-band.jpg',
-    alt: 'A working street in Brickell, Miami, mid morning, with people moving between offices and cafes',
+    alt: 'An elevated view down a palm-lined Brickell avenue in Miami, glass towers on both sides, two people crossing together at a marked crosswalk',
     brief:
       'Brickell at street level, mid morning. Density and movement, people mid stride between buildings. Reads as a working city rather than a skyline postcard. No single hero subject: this is the hub, so it should feel like the whole operating environment.',
     after: 1,
@@ -63,7 +63,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
   },
   '/ecommerce-marketing': {
     src: '/images/pages/ecommerce-marketing-band.jpg',
-    alt: 'Packed parcels stacked on a counter in a small Miami studio, ready to ship',
+    alt: 'Unbranded cardboard boxes taped shut and stacked on a wooden packing bench, a tape gun and a crumpled ball of packing paper beside them, shelving behind',
     brief:
       'Packed parcels on a counter in a small studio or back room, ready to go out. Tape, labels, a stack rather than a warehouse. Ecommerce as a real physical operation a founder is still close to. One selective colour pop is allowed here if a brand tape or label carries it naturally.',
     after: 2,
@@ -79,7 +79,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
   },
   '/paid-media': {
     src: '/images/pages/paid-media-band.jpg',
-    alt: 'Downtown Miami at dusk with lit signage and moving traffic',
+    alt: 'A coffee shop storefront in Wynwood, Miami, a painted panther and the Panther Coffee wordmark on the wall, a neon coffee sign lit in the window, people seated inside',
     brief:
       'Downtown at dusk, lit signage, traffic moving. Attention being bought and sold in a real place. Long exposure on the traffic is welcome. Monochrome, but this is a natural candidate for the one-in-four selective colour pop if a single sign carries it.',
     after: 2,
@@ -119,7 +119,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
   },
   '/industries/sports-travel': {
     src: '/images/pages/sports-travel-band.jpg',
-    alt: 'A group waiting with luggage at a modern Miami departure terminal, early morning',
+    alt: 'A modern soccer stadium under an overcast sky, a passenger plane climbing overhead, rows of rooftops in the foreground',
     brief:
       'A group with bags at a departure point, early light. Anticipation before a trip. ★ Not sports photography: no pitches, no stadiums, no athletes in action. Section 6.2 is explicit about this. Travel is the subject, sport is only the reason.',
     after: 1,
@@ -127,7 +127,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
   },
   '/industries/local-service-businesses': {
     src: '/images/pages/local-service-businesses-band.jpg',
-    alt: 'A shopfront on a Coconut Grove street, open for business, someone visible inside',
+    alt: "Three Sir Galloway Cleaners delivery vans parked outside the company's Miami facility",
     brief:
       'A shopfront on a real street, open, someone visible inside. Coconut Grove or Little Havana for character. A business that sells within a few miles, shot as part of its street rather than isolated.',
     after: 1,
@@ -143,7 +143,7 @@ export const PAGE_IMAGES: Record<string, PageImage> = {
   },
   '/about': {
     src: '/images/pages/about-band.jpg',
-    alt: 'Tim Bailey outside a cafe in Coconut Grove, Miami, laughing mid conversation',
+    alt: 'Tim Bailey seen from behind, walking down a tree-lined Coconut Grove street and checking his phone, approaching a storefront with an awning',
     brief:
       'Tim, outdoors in Coconut Grove. ★ Real photograph of Tim, not generated. Section 6.1.1 wardrobe applies: good plain t-shirt, tailored joggers or similar, quality minimal sneakers, nothing branded. At ease, half smile, looking like the work is handled. This is the E-E-A-T page, so the face has to be genuinely his.',
     after: 1,
