@@ -19,7 +19,7 @@ export default function FilterBar({ active, onSelect }: FilterBarProps) {
               className={`font-mono text-[11px] tracking-[2px] uppercase px-7 py-5 border-b-2 whitespace-nowrap transition-all duration-200 ${
                 active === cat
                   ? 'text-[#F2EDE4] border-[#B8962E]'
-                  : 'text-[#6B6F73] border-transparent hover:text-[#F2EDE4]'
+                  : 'text-[#8A8E92] border-transparent hover:text-[#F2EDE4]'
               }`}
             >
               {cat}

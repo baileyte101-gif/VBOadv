@@ -231,7 +231,7 @@ export default function WhatWeRun() {
               The Brands We Build With
             </p>
             <div className="w-8 h-[2px] bg-[#B8962E] mb-3 lg:mb-4" aria-hidden />
-            <p className="font-body text-[#6B6F73] text-sm lg:text-base leading-relaxed max-w-xl mb-6 lg:mb-8">
+            <p className="font-body text-[#8A8E92] text-sm lg:text-base leading-relaxed max-w-xl mb-6 lg:mb-8">
               Our growing roster of brands we&apos;re partnered with
             </p>
           </motion.div>

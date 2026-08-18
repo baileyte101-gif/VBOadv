@@ -206,14 +206,14 @@ export default function InsightPost({ params }: Props) {
         <div className="max-w-[1400px] mx-auto flex items-center gap-3">
           <Link
             href="/"
-            className="font-mono text-[10px] tracking-[1.8px] uppercase text-[#6B6F73] hover:text-[#B8962E] transition-colors"
+            className="font-mono text-[10px] tracking-[1.8px] uppercase text-[#8A8E92] hover:text-[#B8962E] transition-colors"
           >
             VBO
           </Link>
           <span className="text-[#B8962E] font-mono text-[10px]">/</span>
           <Link
             href="/insights"
-            className="font-mono text-[10px] tracking-[1.8px] uppercase text-[#6B6F73] hover:text-[#B8962E] transition-colors"
+            className="font-mono text-[10px] tracking-[1.8px] uppercase text-[#8A8E92] hover:text-[#B8962E] transition-colors"
           >
             Insights
           </Link>
@@ -233,11 +233,11 @@ export default function InsightPost({ params }: Props) {
               <span className="font-mono text-[10px] tracking-[2px] uppercase text-[#0D0D0D] bg-[#B8962E] px-3.5 py-1.5">
                 {post.category}
               </span>
-              <span className="font-mono text-[10px] tracking-[1.5px] uppercase text-[#6B6F73]">
+              <span className="font-mono text-[10px] tracking-[1.5px] uppercase text-[#8A8E92]">
                 {formatDate(post.date)}
               </span>
               <span className="w-[3px] h-[3px] rounded-full bg-[#6B6F73] inline-block" />
-              <span className="font-mono text-[10px] tracking-[1.5px] uppercase text-[#6B6F73]">
+              <span className="font-mono text-[10px] tracking-[1.5px] uppercase text-[#8A8E92]">
                 {post.readTime} read
               </span>
             </div>
@@ -246,7 +246,7 @@ export default function InsightPost({ params }: Props) {
               {post.title}
             </h1>
 
-            <p className="font-body text-[18px] leading-[28px] text-[#6B6F73] max-w-[520px]">
+            <p className="font-body text-[18px] leading-[28px] text-[#8A8E92] max-w-[520px]">
               {post.excerpt}
             </p>
           </div>
@@ -257,12 +257,12 @@ export default function InsightPost({ params }: Props) {
               <span className="font-mono text-[9px] tracking-[2.5px] uppercase text-[#B8962E] block mb-5">
                 In This Article
               </span>
-              <p className="font-body text-sm leading-[22px] text-[#6B6F73] mb-6">
+              <p className="font-body text-sm leading-[22px] text-[#8A8E92] mb-6">
                 {post.excerpt}
               </p>
               <div className="border-t border-[#B8962E]/12 pt-5 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#6B6F73]">
+                  <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#8A8E92]">
                     Author
                   </span>
                   <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#F2EDE4]">
@@ -270,7 +270,7 @@ export default function InsightPost({ params }: Props) {
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#6B6F73]">
+                  <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#8A8E92]">
                     Read time
                   </span>
                   <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#F2EDE4]">
@@ -278,7 +278,7 @@ export default function InsightPost({ params }: Props) {
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#6B6F73]">
+                  <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#8A8E92]">
                     Category
                   </span>
                   <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#B8962E]">
@@ -326,7 +326,7 @@ export default function InsightPost({ params }: Props) {
           <div className="mt-12 pt-8 border-t border-[#1C1C1C]">
             <Link
               href="/insights"
-              className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[2px] uppercase text-[#6B6F73] hover:text-[#B8962E] transition-colors"
+              className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[2px] uppercase text-[#8A8E92] hover:text-[#B8962E] transition-colors"
             >
               <span>&larr;</span> Back to Insights
             </Link>

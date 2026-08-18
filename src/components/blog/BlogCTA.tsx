@@ -7,7 +7,7 @@ export default function BlogCTA() {
       <h3 className="font-headline font-black text-[36px] md:text-[44px] leading-none uppercase text-[#F2EDE4] mb-4">
         Ready to Build Something Real?
       </h3>
-      <p className="font-body text-[#6B6F73] text-base leading-7 max-w-[460px] mx-auto mb-8">
+      <p className="font-body text-[#8A8E92] text-base leading-7 max-w-[460px] mx-auto mb-8">
         VBO is a founder-led marketing consultancy. Strategy, creative, and performance, working as one system.
       </p>
       <a

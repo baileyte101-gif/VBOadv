@@ -21,10 +21,10 @@ export default function AuthorBio({ author }: AuthorBioProps) {
           <p className="font-headline font-black text-xl uppercase text-[#F2EDE4] mb-2">
             {author.name}
           </p>
-          <p className="font-mono text-[10px] tracking-[1.5px] uppercase text-[#6B6F73] mb-3">
+          <p className="font-mono text-[10px] tracking-[1.5px] uppercase text-[#8A8E92] mb-3">
             {author.title}
           </p>
-          <p className="font-body text-sm leading-[22px] text-[#6B6F73]">
+          <p className="font-body text-sm leading-[22px] text-[#8A8E92]">
             {author.bio}
           </p>
         </div>

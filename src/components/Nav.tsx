@@ -25,7 +25,7 @@ import { SERVICES, INDUSTRIES_NEW, INDUSTRIES_EXISTING, type NavItem } from '@/l
 type MenuKey = 'services' | 'industries'
 
 const linkClass =
-  'text-[#6B6F73] hover:text-[#F2EDE4] text-xs tracking-[0.1em] uppercase transition-colors duration-200 font-body relative group whitespace-nowrap'
+  'text-[#8A8E92] hover:text-[#F2EDE4] text-xs tracking-[0.1em] uppercase transition-colors duration-200 font-body relative group whitespace-nowrap'
 
 function Underline() {
   return (
@@ -110,7 +110,7 @@ function DesktopMenu({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block px-5 py-2 text-[#6B6F73] hover:text-[#F2EDE4] hover:bg-[#1C1C1C] text-xs tracking-[0.08em] uppercase transition-colors duration-150 font-body"
+                  className="block px-5 py-2 text-[#8A8E92] hover:text-[#F2EDE4] hover:bg-[#1C1C1C] text-xs tracking-[0.08em] uppercase transition-colors duration-150 font-body"
                 >
                   {item.label}
                 </Link>
@@ -152,6 +152,18 @@ export default function Nav() {
     setOpenMenu(null)
     setMobileOpen(false)
   }, [pathname])
+
+  // Lock body scroll behind the open mobile menu. Without this, document.body
+  // keeps overflow: visible while the panel is open, so a phone scroll swipe
+  // moves the article underneath it (Jules's 2026-08-17 QA, section 4 item C).
+  useEffect(() => {
+    if (!mobileOpen) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previous
+    }
+  }, [mobileOpen])
 
   const mobileGroups: { key: MenuKey; heading: string; href: string; hubLabel: string; items: NavItem[] }[] = [
     {
@@ -236,9 +248,10 @@ export default function Nav() {
 
           <div className="flex items-center gap-3">
             <button
-              className="lg:hidden flex items-center justify-center text-[#6B6F73] hover:text-[#F2EDE4] transition-colors duration-200 p-2 -mr-1"
+              className="lg:hidden flex items-center justify-center text-[#8A8E92] hover:text-[#F2EDE4] transition-colors duration-200 min-w-[44px] min-h-[44px] -mr-2"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-expanded={mobileOpen}
+              aria-controls="mobile-nav-panel"
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             >
               <svg
@@ -273,6 +286,7 @@ export default function Nav() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-nav-panel"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -319,7 +333,7 @@ export default function Nav() {
                           <Link
                             key={item.href}
                             href={item.href}
-                            className="block text-[#6B6F73] hover:text-[#F2EDE4] text-sm tracking-[0.1em] uppercase transition-colors duration-200 font-body py-2.5 pl-4 border-l border-[#B8962E]/25 ml-1"
+                            className="block text-[#8A8E92] hover:text-[#F2EDE4] text-sm tracking-[0.1em] uppercase transition-colors duration-200 font-body py-2.5 pl-4 border-l border-[#B8962E]/25 ml-1"
                           >
                             {item.label}
                           </Link>
@@ -330,6 +344,10 @@ export default function Nav() {
                 )
               })}
 
+              {/* Same colour as the Services/Industries buttons above, not the
+                  muted secondary tone: all five are peers in this menu, and
+                  the two-tier colour made the bottom three read as disabled
+                  (Jules's 2026-08-17 QA, section 4 item B). */}
               {[
                 { href: '/insights', label: 'Insights' },
                 { href: '/about', label: 'About' },
@@ -338,7 +356,7 @@ export default function Nav() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-left text-[#6B6F73] hover:text-[#F2EDE4] text-sm tracking-[0.12em] uppercase transition-colors duration-200 font-body py-3 border-b border-[#1C1C1C] last:border-0"
+                  className="text-left text-[#F2EDE4] hover:text-[#F2EDE4]/80 text-sm tracking-[0.12em] uppercase transition-colors duration-200 font-body py-3 border-b border-[#1C1C1C] last:border-0"
                 >
                   {link.label}
                 </Link>

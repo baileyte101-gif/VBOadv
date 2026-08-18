@@ -69,12 +69,12 @@ export default function TheApproach() {
           transition={{ duration: 0.65, delay: 0.2 }}
           className="space-y-5"
         >
-          <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">
+          <p className="text-[#8A8E92] text-base md:text-lg font-body leading-relaxed">
             We align brand, budget, channels, and measurement into one creative
             and disciplined system. No scattered tactics. No reactive spending.
             No fragmented execution.
           </p>
-          <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">
+          <p className="text-[#8A8E92] text-base md:text-lg font-body leading-relaxed">
             Direction is defined first. Execution follows.
           </p>
           <p className="text-[#F2EDE4] font-medium text-base md:text-lg leading-relaxed">

@@ -150,7 +150,7 @@ export default function Home() {
       <Hero />
       <Ticker
         items={heroTickerItems}
-        textColorClass="text-[#6B6F73]"
+        textColorClass="text-[#8A8E92]"
         bgClass="bg-[#0D0D0D]"
         speed={30}
       />

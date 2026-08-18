@@ -40,11 +40,11 @@ export default function FeaturedPost({ post }: FeaturedPostProps) {
             {post.category}
           </span>
           <span className="w-[3px] h-[3px] rounded-full bg-[#6B6F73] inline-block" />
-          <span className="font-mono text-[10px] tracking-[1.5px] uppercase text-[#6B6F73]">
+          <span className="font-mono text-[10px] tracking-[1.5px] uppercase text-[#8A8E92]">
             {formatDate(post.date)}
           </span>
           <span className="w-[3px] h-[3px] rounded-full bg-[#6B6F73] inline-block" />
-          <span className="font-mono text-[10px] tracking-[1.5px] uppercase text-[#6B6F73]">
+          <span className="font-mono text-[10px] tracking-[1.5px] uppercase text-[#8A8E92]">
             {post.readTime} read
           </span>
         </div>
@@ -53,7 +53,7 @@ export default function FeaturedPost({ post }: FeaturedPostProps) {
           {post.title}
         </h2>
 
-        <p className="font-body text-[17px] leading-[26px] text-[#6B6F73] mb-8 max-w-[480px]">
+        <p className="font-body text-[17px] leading-[26px] text-[#8A8E92] mb-8 max-w-[480px]">
           {post.excerpt}
         </p>
 

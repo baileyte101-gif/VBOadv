@@ -27,7 +27,7 @@ export default function InsightsIndex({ posts, featured }: InsightsIndexProps) {
           <h2 className="font-headline font-black text-[40px] md:text-[56px] leading-[0.95] uppercase text-[#F2EDE4] mb-6">
             Our First Insight Is Coming Soon.
           </h2>
-          <p className="font-body text-[17px] leading-[27px] text-[#6B6F73] max-w-[460px] mx-auto">
+          <p className="font-body text-[17px] leading-[27px] text-[#8A8E92] max-w-[460px] mx-auto">
             We&apos;re putting the finishing touches on the first pieces. Check back shortly.
           </p>
         </div>
@@ -72,7 +72,7 @@ export default function InsightsIndex({ posts, featured }: InsightsIndexProps) {
               <h2 className="font-headline font-black text-[36px] uppercase text-[#F2EDE4]">
                 {activeCategory === 'All' ? 'All Posts' : activeCategory}
               </h2>
-              <span className="font-mono text-[10px] tracking-[1.5px] uppercase text-[#6B6F73]">
+              <span className="font-mono text-[10px] tracking-[1.5px] uppercase text-[#8A8E92]">
                 {filteredGrid.length} {filteredGrid.length === 1 ? 'Article' : 'Articles'}
               </span>
             </div>
@@ -88,7 +88,7 @@ export default function InsightsIndex({ posts, featured }: InsightsIndexProps) {
       {/* Empty state */}
       {filteredGrid.length === 0 && !filteredFeatured && (
         <section className="bg-[#1C1C1C] py-32 px-6 text-center">
-          <p className="font-mono text-[11px] tracking-[2px] uppercase text-[#6B6F73]">
+          <p className="font-mono text-[11px] tracking-[2px] uppercase text-[#8A8E92]">
             No posts in this category yet.
           </p>
         </section>

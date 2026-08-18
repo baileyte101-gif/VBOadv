@@ -65,23 +65,31 @@ function BlockRenderer({ block }: { block: Block }) {
 }
 
 /**
- * Ground rotation, widened 2026-08-17 on Tim's note that the new pages were not
- * carrying enough of the new design.
+ * Ground rotation, revised 2026-08-18 per Jules's design QA return
+ * (clients/vbo/2026-08-17-JULES-to-BOB-design-round-return.md, section 2).
  *
- * All four approved grounds now appear: plain black, gold chevron linework,
- * Harbour blue and the granite/marble texture. Plain stays the resting state so
- * the treated ones keep their value, and no two adjacent sections share a
- * ground, which is the rule in the design direction.
+ * The prior `GROUNDS[i % 4]` put plain at exactly 25% and the treated grounds
+ * at 75%, inverting the rule that plain is the resting state. It also meant
+ * the two three-section hub pages (/services, /industries) never reached
+ * index 3, so ground-smoke (marble) never rendered on either.
  *
- * On marble: #F2EDE4 on the marble base measures 7.7:1, comfortably past AA and
- * past AAA, and the texture's mottling is darker than the base rather than
- * lighter, so it only ever increases contrast. It gets a quiet-panel like the
- * patterned grounds do, on the same principle: thin the ground, never the type.
+ * Fix: plain sits at every even index (50% of the time, never adjacent to
+ * itself since the odd indices always separate it), and the odd indices cycle
+ * through the three treated grounds in order. Even/odd alternation makes
+ * "no two adjacent sections share a ground" true by construction, for any
+ * section count, with no period/wraparound edge case to get wrong.
+ *
+ * On marble: #F2EDE4 on the marble base measures 7.7:1 (Jules re-measured at
+ * 8.4:1), comfortably past AA and AAA, and the texture's mottling is darker
+ * than the base rather than lighter, so it only ever increases contrast. It
+ * gets a quiet-panel like the patterned grounds do, on the same principle:
+ * thin the ground, never the type.
  */
-const GROUNDS = ['ground-plain', 'ground-gold', 'ground-harbour', 'ground-smoke'] as const
+const TREATED_GROUNDS = ['ground-gold', 'ground-smoke', 'ground-harbour'] as const
 
 function groundFor(index: number) {
-  return GROUNDS[index % GROUNDS.length]
+  if (index % 2 === 0) return 'ground-plain'
+  return TREATED_GROUNDS[Math.floor(index / 2) % TREATED_GROUNDS.length]
 }
 
 /** The grounds that need a quiet zone behind copy. */
@@ -100,7 +108,7 @@ function Breadcrumbs({ page }: { page: PageContent }) {
   const current = page.breadcrumb[page.breadcrumb.length - 1]
   return (
     <nav aria-label="Breadcrumb" className="mb-8">
-      <ol className="flex flex-wrap items-center gap-2 font-mono text-[10px] tracking-[0.2em] uppercase text-[#6B6F73]">
+      <ol className="flex flex-wrap items-center gap-2 font-mono text-[10px] tracking-[0.2em] uppercase text-[#8A8E92]">
         {trail.map((crumb) => (
           <li key={crumb.item} className="flex items-center gap-2">
             <Link
@@ -174,39 +182,53 @@ export default function ContentPage({
           </div>
         </header>
 
-        {/* Body sections, with the image band dropped in after its section */}
-        {page.sections.map((section, i) => {
-          const ground = groundFor(i)
-          const quiet = needsQuietPanel(ground)
-          return (
-            <Fragment key={section.heading}>
-              <section
-                className={`content-section ${ground} border-b border-[#1C1C1C]`}
-              >
-                <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
-                  <div className={`max-w-4xl reveal ${quiet ? 'quiet-panel' : ''}`}>
-                    <div className="relative z-[1]">
-                      <h2 className="font-headline font-bold text-[#F2EDE4] uppercase text-[clamp(1.5rem,3vw,2.25rem)] leading-tight mb-5">
-                        {section.heading}
-                      </h2>
-                      <div className="section-hairline" />
-                      {section.blocks.map((block, j) => (
-                        <BlockRenderer key={j} block={block} />
-                      ))}
-                      {sectionSlots?.[section.heading]}
+        {/* Body sections, with the image band dropped in after its section.
+            groundIndex is a single running counter across sections AND bands,
+            so a band takes its own place in the ground rotation instead of
+            sitting on a hardcoded ground the rotation can't see (Jules's
+            2026-08-17 QA, section 2 item d). That also fixes /contact's
+            three-plain-in-a-row opening, since the band there now lands on a
+            treated ground instead of silently repeating plain. */}
+        {(() => {
+          let groundIndex = 0
+          return page.sections.map((section, i) => {
+            const ground = groundFor(groundIndex++)
+            const quiet = needsQuietPanel(ground)
+            const showBand = image && image.after === i
+            const bandGround = showBand ? groundFor(groundIndex++) : undefined
+            return (
+              <Fragment key={section.heading}>
+                <section
+                  className={`content-section ${ground} border-b border-[#1C1C1C]`}
+                >
+                  <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
+                    <div className={`max-w-4xl reveal ${quiet ? 'quiet-panel' : ''}`}>
+                      <div className="relative z-[1]">
+                        <h2 className="font-headline font-bold text-[#F2EDE4] uppercase text-[clamp(1.5rem,3vw,2.25rem)] leading-tight mb-5">
+                          {section.heading}
+                        </h2>
+                        <div className="section-hairline" />
+                        {section.blocks.map((block, j) => (
+                          <BlockRenderer key={j} block={block} />
+                        ))}
+                        {sectionSlots?.[section.heading]}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </section>
-              {image && image.after === i && <ImageBand image={image} />}
-            </Fragment>
-          )
-        })}
+                </section>
+                {showBand && image && <ImageBand image={image} ground={bandGround!} />}
+              </Fragment>
+            )
+          })
+        })()}
 
         {/* The retro gold bar: the jersey chest-band vocabulary as a beat before
             the questions. Bar only, no display text, because inventing a line of
-            copy per page is not mine to do. */}
-        <div className="retro-divider-strip" aria-hidden />
+            copy per page is not mine to do. Off /contact: that page has no FAQ
+            and no close section, so the bar was the last child of <main> with
+            nothing after it (Jules's QA, section 2, "on /contact it does
+            nothing at all"). */}
+        {page.path !== '/contact' && <div className="retro-divider-strip" aria-hidden />}
 
         {/* FAQ. Same strings as the FAQPage schema, by construction. */}
         {page.faq.length > 0 && (
@@ -232,9 +254,12 @@ export default function ContentPage({
           </section>
         )}
 
-        {/* Close */}
+        {/* Close. Harbour, not plain: Common Questions above it is already
+            plain, and plain-then-plain was the longest unbroken stretch of
+            black on every page, at the very bottom (Jules's QA, section 2
+            item c, "every page ends on two plains"). */}
         {page.close && (
-          <section className="content-section ground-plain">
+          <section className="content-section ground-harbour">
             <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
               <div className="max-w-4xl reveal">
                 <h2 className="font-headline font-bold text-[#F2EDE4] uppercase text-[clamp(1.5rem,3vw,2.25rem)] leading-tight mb-8">

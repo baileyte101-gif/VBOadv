@@ -65,7 +65,7 @@ export default function InsightsPage() {
           <h1 className="font-headline font-black text-[72px] md:text-[96px] leading-[0.92] uppercase text-[#F2EDE4] mb-7 max-w-[700px]">
             Real Industry Talk
           </h1>
-          <p className="font-body text-[18px] leading-[28px] text-[#6B6F73] max-w-[560px]">
+          <p className="font-body text-[18px] leading-[28px] text-[#8A8E92] max-w-[560px]">
             Straight talk on strategy, creative, DA, marketing operations, performance, tech, and anything that touches the marketing space. From the VBO team.
           </p>
         </div>

@@ -135,7 +135,7 @@ export default function HowWeWork() {
               {/* Body text */}
               <div className="space-y-4">
                 {step.number === '03' ? (
-                  <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">
+                  <p className="text-[#8A8E92] text-base md:text-lg font-body leading-relaxed">
                     We launch campaigns with structure and strategy. Performance
                     is tracked with real data and is optimized intentionally.
                     Whether you need{' '}
@@ -154,7 +154,7 @@ export default function HowWeWork() {
                         {renderLead(step)}
                       </p>
                     )}
-                    <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">
+                    <p className="text-[#8A8E92] text-base md:text-lg font-body leading-relaxed">
                       {step.body}
                     </p>
                   </>

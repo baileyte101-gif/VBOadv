@@ -9,40 +9,49 @@ import Link from 'next/link'
  * and a label rather than a logo, and they are internal links rather than
  * outbound ones.
  *
- * ★ On the marks. They are drawn from the jersey vocabulary the site already
- * uses (clients/vbo/design/vbo-design-direction-v1.md section 5.3), not from an
- * icon set. Services takes the nested chevron, which is the same geometry as
- * the gold linework ground. Industries takes the stacked hoop, the horizontal
- * band device. Two reasons that matters: a generic thin-line icon is named on
- * the never list as an AI tell, and a mark that is already the brand's own
- * geometry does a job rather than decorating a heading.
+ * ★ On the marks, replaced 2026-08-18 per Jules's design QA return (section 3).
+ * Bob's first-pass chevron dissolved into the ground (same nested-hexagon
+ * figure as --ground-gold-pattern, at close to the same scale, removing
+ * figure-ground separation), and the stacked hoop read as a hamburger (three
+ * stacked bars in a clickable box is an established "open the navigation"
+ * signifier, the opposite of what a homepage routing tile should say).
  *
- * These are Bob's first pass for Jules to take or replace. The brief is in
- * clients/vbo/2026-08-17-BOB-to-JULES-design-round.md.
+ * Jules's replacements, same 5.3 vocabulary, structurally opposed so they read
+ * as a pair without repeating one idea: Services is linear and directional
+ * (a list, right edge forming a chevron; hover advances the rules forward,
+ * staggered). Industries is planar and selective (seven unequal panels, one
+ * filled; hover travels the fill one panel width along the middle row). Both
+ * still carry their meaning with motion off, since the meaning is in the form.
+ * Working reference: Jules/designs/vbo/website/tile-marks-2026-08-17/tile-marks.html
  */
 
-function ChevronMark() {
+function ServicesMark() {
   return (
-    <svg viewBox="0 0 120 120" className="w-full h-full" fill="none" aria-hidden>
-      <g stroke="currentColor" strokeWidth="1.6" opacity="0.9">
-        <path d="M60 8 L104 34 L104 86 L60 112 L16 86 L16 34 Z" />
-        <path d="M60 26 L88 42 L88 78 L60 94 L32 78 L32 42 Z" />
-        <path d="M60 44 L72 51 L72 69 L60 76 L48 69 L48 51 Z" />
+    <svg className="mark-services w-full h-full" viewBox="0 0 120 120" fill="none" aria-hidden>
+      <g stroke="currentColor" strokeWidth="4.2" strokeLinecap="square">
+        <path className="r r1" d="M12 24 H70" />
+        <path className="r r2" d="M12 42 H88" />
+        <path className="r r3" d="M12 60 H104" strokeWidth="6" />
+        <path className="r r4" d="M12 78 H88" />
+        <path className="r r5" d="M12 96 H70" />
       </g>
     </svg>
   )
 }
 
-function HoopMark() {
+function IndustriesMark() {
   return (
-    <svg viewBox="0 0 120 120" className="w-full h-full" fill="none" aria-hidden>
-      <g stroke="currentColor" strokeWidth="1.6" opacity="0.9">
-        <rect x="10" y="22" width="100" height="14" />
-        <rect x="10" y="53" width="100" height="14" />
-        <rect x="10" y="84" width="100" height="14" />
-        <path d="M10 44 H110" strokeWidth="1" opacity="0.55" />
-        <path d="M10 75 H110" strokeWidth="1" opacity="0.55" />
+    <svg className="mark-industries w-full h-full" viewBox="0 0 120 120" fill="none" aria-hidden>
+      <g stroke="currentColor" strokeWidth="2.6">
+        <rect x="12" y="14" width="46" height="28" />
+        <rect x="64" y="14" width="44" height="28" />
+        <rect x="12" y="46" width="28" height="28" />
+        <rect x="46" y="46" width="28" height="28" />
+        <rect x="80" y="46" width="28" height="28" />
+        <rect x="12" y="78" width="44" height="28" />
+        <rect x="62" y="78" width="46" height="28" />
       </g>
+      <rect className="fill" x="46" y="46" width="28" height="28" fill="currentColor" />
     </svg>
   )
 }
@@ -53,7 +62,7 @@ export type SectionTileProps = {
   label: string
   /** One line naming what is behind the tile. */
   summary: string
-  mark: 'chevron' | 'hoop'
+  mark: 'services' | 'industries'
 }
 
 export default function SectionTile({ href, label, summary, mark }: SectionTileProps) {
@@ -87,14 +96,14 @@ export default function SectionTile({ href, label, summary, mark }: SectionTileP
 
       <div className="relative flex flex-col items-center gap-5">
         <div className="w-20 h-20 md:w-24 md:h-24 text-[#B8962E]/70 group-hover:text-[#B8962E] transition-colors duration-500">
-          {mark === 'chevron' ? <ChevronMark /> : <HoopMark />}
+          {mark === 'services' ? <ServicesMark /> : <IndustriesMark />}
         </div>
 
         <span className="font-headline font-black text-[#F2EDE4] uppercase leading-none text-[clamp(1.5rem,3vw,2.25rem)] tracking-wide">
           {label}
         </span>
 
-        <span className="font-body text-[#6B6F73] group-hover:text-[#F2EDE4]/70 transition-colors duration-500 text-sm leading-relaxed max-w-[34ch]">
+        <span className="font-body text-[#8A8E92] group-hover:text-[#F2EDE4]/70 transition-colors duration-500 text-sm leading-relaxed max-w-[34ch]">
           {summary}
         </span>
 

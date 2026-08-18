@@ -37,7 +37,7 @@ export default function SiteFooter() {
             <Link
               key={link.href}
               href={link.href}
-              className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
+              className="font-mono text-[#8A8E92] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
             >
               {link.label}
             </Link>
@@ -53,7 +53,7 @@ export default function SiteFooter() {
             className="h-8 w-auto"
           />
 
-          <p className="font-mono text-[#6B6F73] text-[10px] tracking-[0.2em] uppercase text-center">
+          <p className="font-mono text-[#8A8E92] text-[10px] tracking-[0.2em] uppercase text-center">
             © 2026 VBO Advertising. Miami, FL. All rights reserved.
           </p>
 
@@ -61,7 +61,7 @@ export default function SiteFooter() {
             <SocialIcons size={15} />
             <a
               href="mailto:hello@vboadv.com"
-              className="font-mono text-[#6B6F73] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
+              className="font-mono text-[#8A8E92] hover:text-[#B8962E] text-xs tracking-wider transition-colors duration-200"
             >
               hello@vboadv.com
             </a>

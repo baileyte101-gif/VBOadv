@@ -66,12 +66,12 @@ export default function About() {
             transition={{ duration: 0.65, delay: 0.1 }}
             className="space-y-5"
           >
-            <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">
+            <p className="text-[#8A8E92] text-base md:text-lg font-body leading-relaxed">
               VBO is a founder-led marketing consultancy &amp; studio built on
               experience and efficiency. Our clients are our priority, we are
               not a high-volume agency. We are not a trend-driven shop.
             </p>
-            <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">
+            <p className="text-[#8A8E92] text-base md:text-lg font-body leading-relaxed">
               We operate with structure, using the best modern tools that drive
               efficient performance for your business.
             </p>
@@ -88,7 +88,7 @@ export default function About() {
             <div className="border-t border-white/[0.09] pt-8 mt-4">
               <p className="section-label mb-6">The Founder</p>
 
-              <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed mb-4">
+              <p className="text-[#8A8E92] text-base md:text-lg font-body leading-relaxed mb-4">
                 Tim Bailey, founder of VBO, is a passionate marketer with over
                 10+ years helping some of the largest brands in the world
                 achieve their goals. He specializes in simplifying complex
@@ -96,7 +96,7 @@ export default function About() {
                 systems.
               </p>
 
-              <p className="text-[#6B6F73] text-base md:text-lg font-body leading-relaxed">
+              <p className="text-[#8A8E92] text-base md:text-lg font-body leading-relaxed">
                 Tim has had the pleasure of working with large and small
                 businesses during his career. Clients range from large brands
                 like{' '}
@@ -160,13 +160,13 @@ export default function About() {
               <div className="mt-4 flex flex-col gap-1.5">
                 <a
                   href="mailto:tim@vboadv.com"
-                  className="font-mono text-[#6B6F73] text-[10px] tracking-[0.18em] hover:text-[#B8962E] transition-colors duration-200"
+                  className="font-mono text-[#8A8E92] text-[10px] tracking-[0.18em] hover:text-[#B8962E] transition-colors duration-200"
                 >
                   tim@vboadv.com
                 </a>
                 <a
                   href="tel:8646406558"
-                  className="font-mono text-[#6B6F73] text-[10px] tracking-[0.18em] hover:text-[#B8962E] transition-colors duration-200"
+                  className="font-mono text-[#8A8E92] text-[10px] tracking-[0.18em] hover:text-[#B8962E] transition-colors duration-200"
                 >
                   864-640-6558
                 </a>

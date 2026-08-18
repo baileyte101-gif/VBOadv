@@ -26,7 +26,7 @@ export default function RelatedPosts({ posts }: RelatedPostsProps) {
               <h4 className="font-headline font-black text-xl uppercase text-[#F2EDE4] leading-tight mb-3 group-hover:text-white transition-colors">
                 {post.title}
               </h4>
-              <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#6B6F73]">
+              <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#8A8E92]">
                 {formatDate(post.date)} &middot; {post.readTime} read
               </span>
             </Link>

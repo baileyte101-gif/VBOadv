@@ -224,15 +224,44 @@ body {
 }
 
 /* Quiet zone: darkens the ground where body copy sits on a patterned surface,
-   so the pattern never has to be thinned and the type never has to be. */
+   so the pattern never has to be thinned and the type never has to be.
+   Anchored at 0% 50% (left edge) with the darkening fully transparent by
+   225px in, this was tuned for the homepage's About section, where the copy
+   sits left in a wide container. On the new content pages the copy IS the
+   whole column (up to 896px on desktop), so the right half of every line sat
+   on unmitigated pattern at every viewport. Not a legibility failure (the
+   marble base alone is 8.4:1), but a 5.4 violation: "never louder than the
+   message." Centred and widened per Jules's 2026-08-17 QA return, section 2
+   item e, tested by her in-browser on /about. */
 .quiet-panel { position: relative; }
 .quiet-panel::before {
   content: "";
   position: absolute;
   inset: -40px -60px;
   pointer-events: none;
-  background: radial-gradient(ellipse 70% 80% at 0% 50%, rgba(13, 13, 13, 0.72) 0%, rgba(13, 13, 13, 0) 72%);
+  background: radial-gradient(ellipse 78% 88% at 50% 50%, rgba(13, 13, 13, 0.80) 0%, rgba(13, 13, 13, 0.50) 58%, rgba(13, 13, 13, 0) 100%);
   z-index: 0;
+}
+
+/* ── Homepage routing tile marks (SectionTile.tsx), replaced 2026-08-18 per
+      Jules's design QA return, section 3. The marks do a job on hover: the
+      Services list advances, and the Industries fill moves to another
+      category. ───────────────────────────────────────────────────────────── */
+.mark-services .r { transition: transform .45s cubic-bezier(.22,.61,.36,1); }
+.client-glass:hover .mark-services .r1,
+.client-glass:hover .mark-services .r5 { transform: translateX(3px); }
+.client-glass:hover .mark-services .r2,
+.client-glass:hover .mark-services .r4 { transform: translateX(6px); }
+.client-glass:hover .mark-services .r3 { transform: translateX(11px); }
+
+.mark-industries .fill { transition: transform .5s cubic-bezier(.22,.61,.36,1); }
+.client-glass:hover .mark-industries .fill { transform: translate(34px, 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mark-services .r,
+  .mark-industries .fill { transition: none; }
+  .client-glass:hover .mark-services .r,
+  .client-glass:hover .mark-industries .fill { transform: none; }
 }
 
 /* ── Retro band vocabulary: solid band + one thinner accent stripe, outlined

@@ -97,7 +97,7 @@ export default function Industries() {
           initial={{ y: 20 }}
           animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-[#6B6F73] text-base md:text-lg font-body mb-12"
+          className="text-[#8A8E92] text-base md:text-lg font-body mb-12"
         >
           Based in Miami. Partnering with ambitious operators across:
         </motion.p>
@@ -117,13 +117,13 @@ export default function Industries() {
             href="/services"
             label="Services"
             summary="Web development, consulting, fractional CMO, ecommerce, AI SEO, paid media."
-            mark="chevron"
+            mark="services"
           />
           <SectionTile
             href="/industries"
             label="Industries"
             summary="Twelve industries, with the named client behind each one."
-            mark="hoop"
+            mark="industries"
           />
         </motion.div>
 
@@ -134,7 +134,7 @@ export default function Industries() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-10 space-y-3"
         >
-          <p className="text-[#6B6F73] text-base md:text-lg font-body">
+          <p className="text-[#8A8E92] text-base md:text-lg font-body">
             We work best with founders and leaders who value clarity and are
             looking to simplify chaos. We have deep experience working with{' '}
             <a
@@ -145,7 +145,7 @@ export default function Industries() {
             </a>
             .
           </p>
-          <p className="text-[#6B6F73] text-sm font-body">
+          <p className="text-[#8A8E92] text-sm font-body">
             Read our take on strategy, creative, and performance in the{' '}
             <a
               href="/insights"

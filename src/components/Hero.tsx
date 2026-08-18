@@ -59,7 +59,7 @@ export default function Hero() {
         {/* Label */}
         <p
           style={enter(0.15, 0.6)}
-          className="hero-in hero-in-up font-mono text-[#6B6F73] text-[11px] tracking-[0.3em] uppercase mb-8 md:mb-10"
+          className="hero-in hero-in-up font-mono text-[#8A8E92] text-[11px] tracking-[0.3em] uppercase mb-8 md:mb-10"
         >
           Marketing Consultant &amp; Studio
         </p>
@@ -123,7 +123,7 @@ export default function Hero() {
         <a
           href="mailto:hello@vboadv.com"
           style={enter(0.88, 0.5)}
-          className="hero-in hero-in-lift font-mono text-[#6B6F73]/70 text-[10px] tracking-[0.2em] hover:text-[#B8962E] transition-colors duration-200 mb-5 block"
+          className="hero-in hero-in-lift font-mono text-[#8A8E92]/70 text-[10px] tracking-[0.2em] hover:text-[#B8962E] transition-colors duration-200 mb-5 block"
         >
           hello@vboadv.com
         </a>
@@ -147,7 +147,7 @@ export default function Hero() {
         {/* Mono tagline */}
         <p
           style={enter(1.0, 0.5)}
-          className="hero-in hero-in-lift font-mono text-[#6B6F73]/60 text-[10px] tracking-[0.25em] uppercase"
+          className="hero-in hero-in-lift font-mono text-[#8A8E92]/60 text-[10px] tracking-[0.25em] uppercase"
         >
           Miami, FL&nbsp;/&nbsp;Founder-Led&nbsp;/&nbsp;Studio&nbsp;/&nbsp;Consultant
         </p>

@@ -10,7 +10,7 @@ interface TickerProps {
 
 export default function Ticker({
   items,
-  textColorClass = 'text-[#6B6F73]',
+  textColorClass = 'text-[#8A8E92]',
   bgClass = 'bg-[#0D0D0D]',
   speed = 30,
   separator = '/',

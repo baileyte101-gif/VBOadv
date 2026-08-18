@@ -54,11 +54,11 @@ export default function PostCard({ post, index }: PostCardProps) {
       {/* Card Body */}
       <div className="p-7 flex-1 flex flex-col">
         <div className="flex items-center gap-3 mb-3.5">
-          <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#6B6F73]">
+          <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#8A8E92]">
             {formatDate(post.date)}
           </span>
           <span className="w-[3px] h-[3px] rounded-full bg-[#6B6F73] inline-block" />
-          <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#6B6F73]">
+          <span className="font-mono text-[9px] tracking-[1.5px] uppercase text-[#8A8E92]">
             {post.readTime} read
           </span>
         </div>
@@ -67,7 +67,7 @@ export default function PostCard({ post, index }: PostCardProps) {
           {post.title}
         </h3>
 
-        <p className="font-body text-sm leading-[22px] text-[#6B6F73] flex-1 mb-5">
+        <p className="font-body text-sm leading-[22px] text-[#8A8E92] flex-1 mb-5">
           {post.excerpt}
         </p>
 

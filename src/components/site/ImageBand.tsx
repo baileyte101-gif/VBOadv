@@ -9,13 +9,19 @@ import type { PageImage } from '@/content/page-images'
  * and position, printing the brief inside it. That way the layout can be judged
  * before the photography exists, and the brief travels with the slot instead of
  * living only in a document. Swapping in the real file is a one-line change in
- * src/content/page-images.ts.
+ * src/content/page-images.ts. All fifteen images are now delivered and wired,
+ * so this branch is dead on every current page, but it stays: Jules asked for
+ * it to be kept as the right pattern for the next build (2026-08-17 QA return).
+ *
+ * `ground` is passed in by ContentPage rather than hardcoded, so the band
+ * takes its own place in the page's ground rotation instead of always sitting
+ * on plain (Jules's 2026-08-17 QA, section 2 item d).
  */
-export default function ImageBand({ image }: { image: PageImage }) {
+export default function ImageBand({ image, ground }: { image: PageImage; ground: string }) {
   const aspect = image.aspect === 'wide' ? 'aspect-[21/9]' : 'aspect-[16/9]'
 
   return (
-    <section className="content-section ground-plain border-b border-[#1C1C1C]">
+    <section className={`content-section ${ground} border-b border-[#1C1C1C]`}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-10 md:py-14">
         <figure className="max-w-[1200px] mx-auto reveal">
           {image.src ? (
