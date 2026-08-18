@@ -133,6 +133,7 @@ function Breadcrumbs({ page }: { page: PageContent }) {
 export default function ContentPage({
   page,
   sectionSlots,
+  directory,
 }: {
   page: PageContent
   /**
@@ -142,6 +143,17 @@ export default function ContentPage({
    * which is where a generic children slot would have put it.
    */
   sectionSlots?: Record<string, ReactNode>
+  /**
+   * A full section rendered between the hero and the first body section.
+   * /services and /industries use it for HubDirectory (Tim's 2026-08-18
+   * round 2 review, R2-3). Not part of `page.sections`, so it does not enter
+   * the ground rotation below; it carries its own fixed ground instead. The
+   * header above it and `page.sections[0]` below it are both always plain
+   * (groundFor(0) is deterministic), so a fixed treated ground here can never
+   * land adjacent to a matching one without touching the rotation that the
+   * other thirteen pages depend on.
+   */
+  directory?: ReactNode
 }) {
   const schemas = pageSchemas(page)
   const image = PAGE_IMAGES[page.path]
@@ -181,6 +193,8 @@ export default function ContentPage({
             </div>
           </div>
         </header>
+
+        {directory}
 
         {/* Body sections, with the image band dropped in after its section.
             groundIndex is a single running counter across sections AND bands,

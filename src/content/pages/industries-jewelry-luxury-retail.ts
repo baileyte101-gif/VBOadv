@@ -128,7 +128,7 @@ export const jewelryPage: PageContent = {
       {
         "kind": "prose",
         "items": [
-          "If you're selling something people take weeks to decide on, the marketing has to be built for those weeks. [Tell us what you're selling and how people find you now](/contact), and we'll tell you where the gap is. [Who you'd be working with](/about) is one page over."
+          "If you're selling something people take weeks to decide on, the marketing has to be built for those weeks. [Tell us what you're selling and how people find you now](/contact), and we'll tell you where the gap is. Who you'd be working with is one page over."
         ]
       }
     ]

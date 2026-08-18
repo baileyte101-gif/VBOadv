@@ -135,7 +135,7 @@ export const webDevelopmentPage: PageContent = {
         {
           "kind": "prose",
           "items": [
-            "The person who scopes your build is the person who builds it. There's no account layer in between, which is [how VBO is set up](/about). Web development is one of [seven services](/services) and it's usually the first one people need."
+            "The person who scopes your build is the person who builds it. There's no account layer in between, which is how VBO is set up. Web development is one of [seven services](/services) and it's usually the first one people need."
           ]
         }
       ]

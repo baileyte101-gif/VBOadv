@@ -59,7 +59,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/industries/sports-travel", priority: 0.8 },
     { path: "/industries/local-service-businesses", priority: 0.8 },
     { path: "/industries/nonprofit-education", priority: 0.8 },
-    { path: "/about", priority: 0.7 },
+    // /about removed 2026-08-18 (Tim's round 2 review, R2-2): the route
+    // itself now 404s (src/app/about/page.tsx), so it must not be listed
+    // here either. Parked for a future rollout, not deleted.
     { path: "/contact", priority: 0.5 },
   ].map(({ path, priority }) => ({
     url: `${HOST}${path}`,

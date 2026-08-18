@@ -16,7 +16,7 @@ export const paidMediaPage: PageContent = {
   "eyebrow": "Service",
   "intro": [
     "At most firms, the person who sold you the account isn't the person running it. The work goes to somebody junior carrying a dozen other accounts, and you usually find out when the answers to your questions start getting vague.",
-    "That's the reason this page exists. We run a small number of accounts and senior people run them. It's arithmetic more than philosophy: nobody pays real attention to twelve accounts at once, and paid media is a job where attention is most of the value. The people you'd meet are [the people behind VBO](/about), and they're the ones in the account."
+    "That's the reason this page exists. We run a small number of accounts and senior people run them. It's arithmetic more than philosophy: nobody pays real attention to twelve accounts at once, and paid media is a job where attention is most of the value. The people you'd meet are the people behind VBO, and they're the ones in the account."
   ],
   "sections": [
     {

@@ -89,7 +89,7 @@ export const localServicePage: PageContent = {
           "kind": "prose",
           "items": [
             "[Sir Galloway](https://sirgalloway.com). Dry cleaning and garment care in Miami. Their website had been running on WordPress for years and had aged past the point where patching it made sense, so we're rebuilding it from scratch. It launches shortly.",
-            "Alongside the build we've worked with them on what a local business with a genuine reputation should be doing to stay visible and keep people coming back. The advisory side is on [marketing consulting](/marketing-consultant), the build side is on [web development](/web-development), and [who does the work](/about) is one page over."
+            "Alongside the build we've worked with them on what a local business with a genuine reputation should be doing to stay visible and keep people coming back. The advisory side is on [marketing consulting](/marketing-consultant), the build side is on [web development](/web-development), and who does the work is one page over."
           ]
         }
       ]

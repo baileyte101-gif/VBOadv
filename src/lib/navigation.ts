@@ -18,28 +18,85 @@ export type NavItem = {
   label: string
   /** Shown in the hub lists, not in the header dropdown. */
   blurb?: string
-  /** Named client proof, for the hub lists. */
+  /**
+   * Named client proof, for the hub lists. Inline markdown, the same small
+   * dialect RichText's `Inline` renders elsewhere (`[Name](https://url)` for
+   * a verified site, plain text for a named client with no verified URL).
+   * Populated 2026-08-18 (Tim's round 2 review, R2-3) from the client mapping
+   * table in clients/vbo/2026-08-18-TIM-review-round-big-build.md. Omitted
+   * entirely where there is no named client: an honest gap, never a filler
+   * line. Caricap, Collective XI and Coerver are named clients with no
+   * verified URL, so they render as plain text inside the string rather than
+   * a link. Never invent a domain for them.
+   */
   proof?: string
 }
 
 export const SERVICES: NavItem[] = [
-  { href: '/web-development', label: 'Web Development' },
-  { href: '/marketing-consultant', label: 'Marketing Consultant' },
+  {
+    href: '/web-development',
+    label: 'Web Development',
+    proof:
+      '[IPPE Soccer Tours](https://ippesoccertours.com), [The Fudge Pie Co.](https://www.thefudgepie.com), [Sir Galloway](https://sirgalloway.com)',
+  },
+  {
+    href: '/marketing-consultant',
+    label: 'Marketing Consultant',
+    proof: '[Sir Galloway](https://sirgalloway.com), Caricap',
+  },
   { href: '/fractional-cmo', label: 'Fractional CMO' },
-  { href: '/ecommerce-marketing', label: 'E-commerce & Shopify' },
-  { href: '/ai-seo-agency', label: 'AI SEO & Visibility' },
+  {
+    href: '/ecommerce-marketing',
+    label: 'E-commerce & Shopify',
+    proof:
+      '[Peixoto](https://peixotowear.com), [The Fudge Pie Co.](https://www.thefudgepie.com), [Hayley Style](https://hayleystyle.com)',
+  },
+  {
+    href: '/ai-seo-agency',
+    label: 'AI SEO & Visibility',
+    proof: '[Peixoto](https://peixotowear.com)',
+  },
   { href: '/ai-enabled-marketing', label: 'AI-Enabled Marketing' },
-  { href: '/paid-media', label: 'Paid Media' },
+  {
+    href: '/paid-media',
+    label: 'Paid Media',
+    proof:
+      '[Peixoto](https://peixotowear.com), [Hayley Style](https://hayleystyle.com), [IPPE Soccer Tours](https://ippesoccertours.com)',
+  },
 ]
 
 /** The six new industry pages, built in this release. */
 export const INDUSTRIES_NEW: NavItem[] = [
-  { href: '/industries/fashion-apparel', label: 'Fashion & Apparel' },
-  { href: '/industries/jewelry-luxury-retail', label: 'Jewelry & Luxury' },
-  { href: '/industries/food-beverage', label: 'Food & Beverage' },
-  { href: '/industries/sports-travel', label: 'Sports & Travel' },
-  { href: '/industries/local-service-businesses', label: 'Local Service Businesses' },
-  { href: '/industries/nonprofit-education', label: 'Nonprofit & Education' },
+  {
+    href: '/industries/fashion-apparel',
+    label: 'Fashion & Apparel',
+    proof: '[Peixoto](https://peixotowear.com), Collective XI',
+  },
+  {
+    href: '/industries/jewelry-luxury-retail',
+    label: 'Jewelry & Luxury',
+    proof: '[Hayley Style](https://hayleystyle.com)',
+  },
+  {
+    href: '/industries/food-beverage',
+    label: 'Food & Beverage',
+    proof: '[The Fudge Pie Co.](https://www.thefudgepie.com)',
+  },
+  {
+    href: '/industries/sports-travel',
+    label: 'Sports & Travel',
+    proof: '[IPPE Soccer Tours](https://ippesoccertours.com), Coerver',
+  },
+  {
+    href: '/industries/local-service-businesses',
+    label: 'Local Service Businesses',
+    proof: '[Sir Galloway](https://sirgalloway.com)',
+  },
+  {
+    href: '/industries/nonprofit-education',
+    label: 'Nonprofit & Education',
+    proof: '[CARE Elementary](https://careelementary.org)',
+  },
 ]
 
 /** The four existing pages. Addresses unchanged, deliberately. */

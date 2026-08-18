@@ -63,7 +63,7 @@ export const contactPage: PageContent = {
         {
           "kind": "prose",
           "items": [
-            "Plenty of people aren't, and that's a normal place to be. [Everything VBO does](/services) is set out on one page in plain terms. If what you actually want is somebody senior to look at what's running and tell you the truth about it, that's [marketing consulting](/marketing-consultant), and it's a defined piece of work rather than a retainer. If you'd rather know who you'd be dealing with first, that's [who we are](/about)."
+            "Plenty of people aren't, and that's a normal place to be. [Everything VBO does](/services) is set out on one page in plain terms. If what you actually want is somebody senior to look at what's running and tell you the truth about it, that's [marketing consulting](/marketing-consultant), and it's a defined piece of work rather than a retainer. If you'd rather know who you'd be dealing with first, that's who we are."
           ]
         }
       ]

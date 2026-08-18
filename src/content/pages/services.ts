@@ -43,7 +43,7 @@ export const servicesPage: PageContent = {
           "kind": "prose",
           "items": [
             "Direction first, then the work that proves it. That order matters more than any single channel. A lot of what arrives looking like an advertising problem or a website problem turns out to be a direction problem, and spending harder on the symptom gets expensive fast.",
-            "Then we run it. Same people, same standard, no handover to a team you've never met. If you want the longer version of who's behind the work, read [about VBO and Tim Bailey](/about)."
+            "Then we run it. Same people, same standard, no handover to a team you've never met. If you want the longer version of who's behind the work, read about VBO and Tim Bailey."
           ]
         }
       ]

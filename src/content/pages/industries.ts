@@ -16,7 +16,7 @@ export const industriesPage: PageContent = {
   "eyebrow": "Industries",
   "intro": [
     "A marketing problem in swimwear doesn't look like a marketing problem in dry cleaning. The season is different, the buyer is different, the thing that finally closes a sale is different. Pretending otherwise is how generic advice gets sold at a premium.",
-    "What doesn't change is the way we work. Direction first, then execution, then measurement, with the same senior people on it from start to finish. That part travels. The industry knowledge sits on top of it and it comes from doing the work, not from reading a case study about it. The person who sets your direction is the person running the work, which is [how VBO is built](/about).",
+    "What doesn't change is the way we work. Direction first, then execution, then measurement, with the same senior people on it from start to finish. That part travels. The industry knowledge sits on top of it and it comes from doing the work, not from reading a case study about it. The person who sets your direction is the person running the work, which is how VBO is built.",
     "VBO is based in Coconut Grove, Miami. Most of our clients are in South Florida, and we work nationally where it makes sense to."
   ],
   "sections": [

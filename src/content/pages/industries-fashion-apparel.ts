@@ -114,7 +114,7 @@ export const fashionApparelPage: PageContent = {
       {
         "kind": "prose",
         "items": [
-          "If your season is coming and the plan is still last year's plan, now is the useful moment to look at it, not six weeks in. [Tell us when your season starts](/contact) and we'll tell you what we'd do between now and then. [Who you'd be working with](/about) is worth a read too."
+          "If your season is coming and the plan is still last year's plan, now is the useful moment to look at it, not six weeks in. [Tell us when your season starts](/contact) and we'll tell you what we'd do between now and then. Who you'd be working with is worth a read too."
         ]
       }
     ]

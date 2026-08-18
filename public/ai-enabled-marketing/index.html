@@ -1418,9 +1418,11 @@
        Rebuilt 2026-08-18 (Tim's review round) to carry the site's current
        navigation. This page is a static file in public/, not a Next route, so
        it cannot import src/components/Nav.tsx directly; these are the same
-       five destinations and the same "Let's Connect" CTA, hand-built to match.
+       destinations and the same "Let's Connect" CTA, hand-built to match.
        See clients/vbo/2026-08-18-TIM-review-round-big-build.md, C3, for why
-       this was patched rather than ported this round. -->
+       this was patched rather than ported this round.
+       About removed same day, round 2 (R2-2): the real Nav lost it too, so
+       this hand-built copy follows to stay in sync. -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="/" class="nav-logo" aria-label="VBO Home">
@@ -1431,7 +1433,6 @@
         <a href="/services">Services</a>
         <a href="/industries">Industries</a>
         <a href="/insights">Insights</a>
-        <a href="/about">About</a>
         <a href="/contact">Contact</a>
       </div>
 
@@ -1449,7 +1450,6 @@
       <a href="/services" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''">Services</a>
       <a href="/industries" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''">Industries</a>
       <a href="/insights" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''">Insights</a>
-      <a href="/about" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''">About</a>
       <a href="/contact" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''">Contact</a>
     </div>
   </nav>

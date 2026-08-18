@@ -72,7 +72,7 @@ export const aiSeoPage: PageContent = {
             "Most firms selling AI visibility can't show you the work running on their own site. We can, and you can check it yourself.",
             "vboadv.com carries an `llms.txt` file listing what's here and what it's for. Every page carries structured data describing the business, the services, the person behind it and the questions it answers. Our crawler policy lets the AI engines in deliberately, rather than blocking them by accident the way most sites do. And the pages are written so a single paragraph can be lifted out and still stand up, which is exactly what an assistant does when it quotes a source.",
             "What we're not going to do is show you a citation screenshot and let it imply a track record. AI answers shift week to week, the engines keep changing how they pick sources, and one screenshot from last month proves close to nothing. What we'll tell you instead is what we're doing, why we think it works, and what we've watched change since. If you want to see it, ask on the call and we'll go through our own site with you, including the parts that haven't moved yet.",
-            "That's a slower pitch than a guarantee. It's the one we can stand behind, and it's the same reason [VBO is built the way it is](/about)."
+            "That's a slower pitch than a guarantee. It's the one we can stand behind, and it's the same reason VBO is built the way it is."
           ]
         }
       ]

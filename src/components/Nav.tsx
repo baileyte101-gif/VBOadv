@@ -236,10 +236,10 @@ export default function Nav() {
               Insights
               <Underline />
             </Link>
-            <Link href="/about" className={linkClass}>
-              About
-              <Underline />
-            </Link>
+            {/* /about removed from the header 2026-08-18 (Tim's round 2
+                review, R2-2): "let's not roll out the about page on this
+                rollout... save this about page for the future." The page,
+                its content and its image stay in the repo, parked. */}
             <Link href="/contact" className={linkClass}>
               Contact
               <Underline />
@@ -350,7 +350,6 @@ export default function Nav() {
                   (Jules's 2026-08-17 QA, section 4 item B). */}
               {[
                 { href: '/insights', label: 'Insights' },
-                { href: '/about', label: 'About' },
                 { href: '/contact', label: 'Contact' },
               ].map((link) => (
                 <Link

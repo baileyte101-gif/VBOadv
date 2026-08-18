@@ -19,8 +19,9 @@ const footerLinks = [
   { href: '/fractional-cmo', label: 'Fractional CMO' },
   { href: '/ai-enabled-marketing', label: 'AI-Enabled Marketing' },
   { href: '/insights', label: 'VBO Insights' },
-  { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
+  // /about removed 2026-08-18 (Tim's round 2 review, R2-2): parked for a
+  // future rollout, not deleted. See src/app/about/page.tsx.
 ]
 
 export default function SiteFooter() {

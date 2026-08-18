@@ -167,7 +167,7 @@ export const marketingConsultantPage: PageContent = {
       {
         "kind": "prose",
         "items": [
-          "If you already know something's wrong but not what, that's the exact problem this is for. [Tell us what's running](/contact) and we'll tell you whether an engagement is worth your money. If you'd rather see the whole picture first, [everything VBO does](/services) is one page away, and [who's behind it](/about) is another."
+          "If you already know something's wrong but not what, that's the exact problem this is for. [Tell us what's running](/contact) and we'll tell you whether an engagement is worth your money. If you'd rather see the whole picture first, [everything VBO does](/services) is one page away, and who's behind it is another."
         ]
       }
     ]
