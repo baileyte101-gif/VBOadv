@@ -1,13 +1,13 @@
-import Link from 'next/link'
-
 /**
- * The two big routing tiles in the homepage's Services and Industries section.
+ * The two big tiles in the homepage's Industries and Services section.
  *
- * Visual spec is ClientGlassTile's, deliberately: Tim asked for these to look
- * like the client tiles. Same frosted glass, same border, same hover lift, gold
- * glow and shimmer sweep. Only the contents differ, since these carry a mark
- * and a label rather than a logo, and they are internal links rather than
- * outbound ones.
+ * Light version, 2026-08-21: these were routing tiles linking to the /services
+ * and /industries hubs. Tim reversed the fifteen-page build and specified the
+ * replacement himself: click a tile and its list pops up in place, no links
+ * out, no child pages. So the tile is now a disclosure button owning a panel
+ * that Industries.tsx renders below the tile row. Visual spec is unchanged and
+ * is ClientGlassTile's, on Tim's direction: same frosted glass, same border,
+ * same hover lift, gold glow and shimmer sweep.
  *
  * ★ On the marks, replaced 2026-08-18 per Jules's design QA return (section 3).
  * Bob's first-pass chevron dissolved into the ground (same nested-hexagon
@@ -23,6 +23,11 @@ import Link from 'next/link'
  * filled; hover travels the fill one panel width along the middle row). Both
  * still carry their meaning with motion off, since the meaning is in the form.
  * Working reference: Jules/designs/vbo/website/tile-marks-2026-08-17/tile-marks.html
+ *
+ * The link-era "→" affordance became a "+" that stays visible (the old
+ * reveal-on-hover treatment never shows on touch, and phones are where the
+ * tap-to-open pattern matters most) and rotates to a "×" while the panel is
+ * open.
  */
 
 function ServicesMark() {
@@ -57,19 +62,38 @@ function IndustriesMark() {
 }
 
 export type SectionTileProps = {
-  href: string
+  /** id for the button, referenced by the panel's aria-labelledby. */
+  id: string
+  /** id of the list panel this tile owns. */
+  panelId: string
   /** Short label, e.g. "Services". */
   label: string
   /** One line naming what is behind the tile. */
   summary: string
   mark: 'services' | 'industries'
+  open: boolean
+  onToggle: () => void
 }
 
-export default function SectionTile({ href, label, summary, mark }: SectionTileProps) {
+export default function SectionTile({
+  id,
+  panelId,
+  label,
+  summary,
+  mark,
+  open,
+  onToggle,
+}: SectionTileProps) {
   return (
-    <Link
-      href={href}
-      className="client-glass group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 transition-all duration-500 ease-out hover:border-[#B8962E]/50 hover:-translate-y-1 h-[220px] md:h-[300px] px-8 text-center"
+    <button
+      type="button"
+      id={id}
+      aria-expanded={open}
+      aria-controls={panelId}
+      onClick={onToggle}
+      className={`client-glass group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border transition-all duration-500 ease-out hover:border-[#B8962E]/50 hover:-translate-y-1 h-[220px] md:h-[300px] px-8 text-center cursor-pointer ${
+        open ? 'border-[#B8962E]/50' : 'border-white/10'
+      }`}
       style={{
         background:
           'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
@@ -79,7 +103,9 @@ export default function SectionTile({ href, label, summary, mark }: SectionTileP
     >
       <span
         aria-hidden
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        className={`absolute inset-0 transition-opacity duration-500 pointer-events-none ${
+          open ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+        }`}
         style={{
           background:
             'radial-gradient(circle at 50% 50%, rgba(184,150,46,0.22) 0%, rgba(184,150,46,0) 65%)',
@@ -109,11 +135,15 @@ export default function SectionTile({ href, label, summary, mark }: SectionTileP
 
         <span
           aria-hidden
-          className="font-mono text-[#B8962E]/0 group-hover:text-[#B8962E]/70 text-xs tracking-[0.2em] transition-colors duration-500"
+          className={`font-mono text-base leading-none transition-all duration-500 ${
+            open
+              ? 'text-[#B8962E] rotate-45'
+              : 'text-[#B8962E]/40 group-hover:text-[#B8962E]/70'
+          }`}
         >
-          →
+          +
         </span>
       </div>
-    </Link>
+    </button>
   )
 }
