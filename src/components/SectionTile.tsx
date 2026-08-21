@@ -91,7 +91,12 @@ export default function SectionTile({
       aria-expanded={open}
       aria-controls={panelId}
       onClick={onToggle}
-      className={`client-glass group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border transition-all duration-500 ease-out hover:border-[#B8962E]/50 hover:-translate-y-1 h-[220px] md:h-[300px] px-8 text-center cursor-pointer ${
+      /* min-h, not fixed h: with the fixed 220px the Services tile's taller
+         stack (mark + three-line summary + affordance) overflowed on a 375px
+         viewport, clipping the mark's top and the "+" entirely. min-h keeps
+         the 220/300 rhythm and lets content size the tile past it; the md
+         grid row stretches both tiles to match heights. */
+      className={`client-glass group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border transition-all duration-500 ease-out hover:border-[#B8962E]/50 hover:-translate-y-1 min-h-[220px] md:min-h-[300px] px-8 py-8 text-center cursor-pointer ${
         open ? 'border-[#B8962E]/50' : 'border-white/10'
       }`}
       style={{
