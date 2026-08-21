@@ -4,24 +4,25 @@ import SocialIcons from '@/components/SocialIcons'
 
 /**
  * Sitewide footer. Extracted from src/app/page.tsx unchanged in appearance when
- * the 2026-08 build added fifteen pages that all need the same one.
+ * the 2026-08 build added fifteen pages that all needed the same one.
  *
  * The link row is server-rendered internal linking, not decoration: it is how
- * the money pages stay reachable from every page on the site, which is half the
- * point of the build. It lists the two hubs and the two company pages rather
- * than all twenty-seven URLs, because a footer that lists everything ranks
- * nothing. The hubs carry the full lists.
+ * the money pages stay reachable from every page on the site.
+ *
+ * Light version, 2026-08-21: the hub and contact pages are gone, so the row is
+ * back to the link set that is live on main today. Every entry is a page that
+ * exists on this branch. Note for Vega's visibility pass: dental-practices and
+ * financial-advisors are live and indexable but carry no sitewide internal
+ * link once the hubs are gone; adding them here is a one-line change if her
+ * answer wants it.
  */
 
 const footerLinks = [
-  { href: '/services', label: 'Services' },
-  { href: '/industries', label: 'Industries' },
-  { href: '/fractional-cmo', label: 'Fractional CMO' },
   { href: '/ai-enabled-marketing', label: 'AI-Enabled Marketing' },
+  { href: '/fractional-cmo', label: 'Fractional CMO' },
+  { href: '/professional-services/law-firms', label: 'Marketing for Law Firms' },
+  { href: '/professional-services/med-spas', label: 'Marketing for Med Spas' },
   { href: '/insights', label: 'VBO Insights' },
-  { href: '/contact', label: 'Contact' },
-  // /about removed 2026-08-18 (Tim's round 2 review, R2-2): parked for a
-  // future rollout, not deleted. See src/app/about/page.tsx.
 ]
 
 export default function SiteFooter() {
