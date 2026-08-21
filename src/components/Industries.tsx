@@ -173,19 +173,27 @@ export default function Industries() {
     setOpenPanel((current) => (current === key ? null : key))
 
   /* On phones the tiles stack, so the Services panel opens a full tile below
-     the tile that was tapped and can start offscreen. Bring the opening
-     panel's top edge into view; on desktop both tiles sit directly above the
-     panels and 'nearest' makes this a no-op. */
+     the tile that was tapped and can start offscreen; without help the tap
+     appears to do nothing. Scroll the window directly rather than calling
+     scrollIntoView on the panel: the section is overflow-hidden, and QA on the
+     deployed preview showed scrollIntoView spending the scroll on that clipped
+     ancestor instead of the page, moving nothing the user can see. Only fires
+     when the panel's top edge is at or below the last 160px of the viewport,
+     so desktop (panel already in view) and tab-switches (panel replaces one in
+     the same spot) do not jump. 96px landing offset clears the 64px fixed nav. */
   useEffect(() => {
     if (!openPanel) return
     const el = document.getElementById(`tile-panel-${openPanel}`)
     if (!el) return
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const id = window.setTimeout(() => {
-      el.scrollIntoView({
-        block: 'nearest',
-        behavior: reduced ? 'auto' : 'smooth',
-      })
+      const top = el.getBoundingClientRect().top
+      if (top > window.innerHeight - 160) {
+        window.scrollBy({
+          top: top - 96,
+          behavior: reduced ? 'auto' : 'smooth',
+        })
+      }
     }, 120)
     return () => window.clearTimeout(id)
   }, [openPanel])
