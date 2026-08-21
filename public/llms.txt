@@ -1,36 +1,39 @@
 # VBO Advertising
 
-> Founder-led marketing consultancy and studio in Miami, serving small to mid-size businesses across South Florida.
+> Founder-led marketing consultant and studio in Miami, serving small to mid-size businesses across South Florida.
 
-VBO Advertising is a Miami-based marketing consultancy and studio founded by Tim Bailey. We sit between strategic consulting and full-service agency, delivering senior-level thinking and hands-on execution without the layers or overhead. Services include marketing strategy, paid media, SEO, social media, brand strategy, website design, performance analytics, creative production, and helping clients get found in both traditional search and AI answer engines like ChatGPT, Perplexity, and Google AI Overviews.
+VBO Advertising is a Miami-based marketing consultant and studio founded by Tim Bailey. The person who sets your direction is the person who runs your work: one senior operator runs strategy, paid media, search, web, brand and reporting as one connected system, with modern tools carrying the busywork and a trusted bench where specialist hands are genuinely needed. Seven services, built to run together; most clients use two or three. VBO also helps clients get found in both traditional search and AI answer engines like ChatGPT, Perplexity, and Google AI Overviews, and runs all of that on this site first.
 
 ## Core pages
 
-- [Homepage](https://www.vboadv.com/): Brand positioning, philosophy, services overview
-- [Services](https://www.vboadv.com/services): All seven services in one place, with the named client behind each
-- [Industries](https://www.vboadv.com/industries): The twelve industries VBO works in, and which have a client today
-- [About](https://www.vboadv.com/about): Why VBO exists, who Tim Bailey is, and what founder-led means for a client
-- [Contact](https://www.vboadv.com/contact): How to reach VBO, and what happens after you do
+- [Homepage](https://www.vboadv.com/): Brand positioning, who shows up when you hire VBO, and the full list of services and industries
+- [Fractional CMO Services](https://www.vboadv.com/fractional-cmo): What a fractional CMO does, what it costs, and when a business needs one
+- [AI-Enabled Marketing Agency](https://www.vboadv.com/ai-enabled-marketing): VBO's modern operational approach, comparing traditional vs AI-enabled vs AI-first agency models
 - [Insights](https://www.vboadv.com/insights): VBO's blog on marketing strategy, creative, and performance
 
 ## Services
 
-- [Web Development](https://www.vboadv.com/web-development): Custom builds, redesigns and Shopify stores, structured for search and measured from launch
-- [Marketing Consultant](https://www.vboadv.com/marketing-consultant): Scoped consulting for owners who want a straight answer rather than a retainer
-- [Fractional CMO Services](https://www.vboadv.com/fractional-cmo): What a fractional CMO does, what it costs, and when a business needs one
-- [Ecommerce and Shopify Marketing](https://www.vboadv.com/ecommerce-marketing): Paid media and search run together for Shopify brands
-- [AI SEO and Visibility](https://www.vboadv.com/ai-seo-agency): Getting a site read and quoted by AI assistants, not just ranked by search engines
-- [AI-Enabled Marketing Agency](https://www.vboadv.com/ai-enabled-marketing): VBO's modern operational approach, comparing traditional vs AI-enabled vs AI-first agency models
-- [Paid Media](https://www.vboadv.com/paid-media): Meta, Google Search, Google Shopping and Performance Max, run by the people doing the work
+All seven services live on the [homepage](https://www.vboadv.com/), under Industries and Services.
+
+- Web development: Custom sites, redesigns and Shopify stores, built to be found and fast on a phone. We built and launched the IPPE Soccer Tours site. Builds for The Fudge Pie Co. and Sir Galloway are finished and launching shortly.
+- Marketing consulting: For when you want an answer, not a retainer. Someone senior looks at what's running, tells you what to keep and what to stop, and hands you a plan you can act on, with us or without us. Scoped, with an end date.
+- Fractional CMO: A senior marketing head, part of the time. Same seat, same responsibility for the direction and the results, on a share of the hours.
+- Ecommerce and Shopify: Paid media and search run together on the same store, by the same people. For Peixoto Wear in swimwear, we run both. For Hayley Style in fine jewelry, the paid side.
+- AI SEO and visibility: Making your business readable and quotable for ChatGPT, Perplexity and Google's AI answers. Schema, crawler access, an llms.txt file, and pages written so a machine can lift a clean answer. We run all of it on this site first. You're welcome to check.
+- Paid media: Meta, Google Search, Google Shopping and Performance Max. A small number of accounts, senior hands on every one of them.
+- AI-enabled marketing: How the work gets done rather than something we sell you. Modern tools handle the repetitive parts so the senior thinking gets your attention. A person still decides.
 
 ## Industries
 
-- [Fashion and Apparel](https://www.vboadv.com/industries/fashion-apparel): Marketing across an apparel season, from the run-up to a drop through the long tail
-- [Jewelry and Luxury Retail](https://www.vboadv.com/industries/jewelry-luxury-retail): Marketing a considered, high-value purchase with a long buying cycle
-- [Food and Beverage](https://www.vboadv.com/industries/food-beverage): Marketing food and CPG brands, including what shipping and shelf life change
-- [Sports and Travel](https://www.vboadv.com/industries/sports-travel): Marketing youth sports programs and travel operators, where trust comes before price
-- [Local Service Businesses](https://www.vboadv.com/industries/local-service-businesses): Marketing for businesses that sell within a few miles
-- [Nonprofit and Education](https://www.vboadv.com/industries/nonprofit-education): Marketing to families and funders at once, on a real budget
+The industry list lives on the [homepage](https://www.vboadv.com/), under Industries and Services. Four professional-services verticals have their own pages.
+
+- Fashion and apparel: Apparel runs on a calendar. We run paid media and search for Peixoto Wear, a swimwear brand, where the season decides almost everything.
+- Jewelry and luxury retail: Nobody buys fine jewelry on impulse. We run paid media for Hayley Style, Miami fine jewelry, signed in August 2026.
+- Food and beverage: For a small food brand, the maker is the one thing a bigger company can't copy. We designed, wrote and built The Fudge Pie Co.'s ten-page site around Chef Stacey and what she makes.
+- Sports and travel: The buyer is a parent, not the player, and trust comes before price. We built and launched the IPPE Soccer Tours site: every program on its own page, inquiries measured instead of guessed at.
+- Local service businesses: When your market lives within a few miles, the map listing is your storefront and the repeat customer is the business. For Sir Galloway, dry cleaning and garment care in Miami, we rebuilt the website and advised on staying visible locally.
+- Non-profit and education: A non-profit markets to families and to funders at once, two messages that can't contradict each other. We've done research and advisory work with CARE Elementary, a non-profit school in Overtown, Miami.
+- Professional services: Law firms, med spas, dental practices and financial advisors. We have deep experience with professional services firms in South Florida.
 - [Marketing for Law Firms in Miami](https://www.vboadv.com/professional-services/law-firms): Vertical landing page for law firm marketing
 - [Dental Practice Marketing in Miami](https://www.vboadv.com/professional-services/dental-practices): Vertical landing page for dental practice marketing
 - [Medical Spa Marketing in Miami](https://www.vboadv.com/professional-services/med-spas): Vertical landing page for med spa and aesthetic clinic marketing
@@ -38,6 +41,7 @@ VBO Advertising is a Miami-based marketing consultancy and studio founded by Tim
 
 ## Recent articles
 
+- [How a Small, Founder-Led Team Outruns a Big Agency](https://www.vboadv.com/insights/small-founder-led-team-outruns-big-agency): Why founder-led marketing beats layers, and what a small senior team actually changes
 - [How to Use AI in Your Marketing](https://www.vboadv.com/insights/how-to-use-ai-in-your-marketing): Where AI helps in marketing, and where a person still has to decide
 - [What a Marketing Agency Actually Does](https://www.vboadv.com/insights/what-a-marketing-agency-actually-does): Paid media, social, SEO, brand, and creative, and how the pieces work together
 - [Your Marketing Feels Busy](https://www.vboadv.com/insights/your-marketing-feels-busy): What integrated marketing actually means, and how to fix a disconnected setup
