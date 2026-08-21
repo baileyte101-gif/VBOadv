@@ -4,45 +4,44 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 /*
- * Section 03. Copy replaced 2026-08-21 with Mary's rewrite to Atlas's
- * three-beat thesis (clients/vbo/2026-08-21-what-we-do-rewrite-and-tile-lists.md,
- * section 1; Tim approved). The section stopped listing services and started
- * saying who shows up; the tile lists in the Industries and Services section
- * own the service inventory now.
+ * Section 03. Card bodies and titles are Tim's own replacement lines,
+ * 2026-08-21 preview review round, applied verbatim on his direct
+ * instruction ("Rest u can update bc it's from me"). They replace Mary's
+ * 2026-08-21 bodies; the white closing sublines are Mary's and stay, per the
+ * same instruction ("Keep the subline for all of them"). Do not polish Tim's
+ * wording without him; flag, don't fix.
  *
- * Copy is verbatim Mary and is not edited here. Two constraints from her
- * claims ledger that the code cannot show:
- * - "there are no juniors" is an absolute. It needs Mary's rewrite the day a
+ * Constraints from Mary's claims ledger that the code cannot show:
+ * - "there are no juniors" is an absolute. It needs a rewrite the day a
  *   junior is hired.
  * - The section deliberately contains no service list and no three-beat
  *   negation (the page's one is in The Approach above). Do not add either.
  *
  * SECTION_LABEL is pending Tim's call between "What We Do" and "How We Work"
- * (Mary's open item 1; Atlas recommends the rename). Copy is identical either
- * way. If he picks the rename, change the constant here and the nav label in
- * Nav.tsx; the #how-we-work anchor stays either way.
+ * (Atlas recommends the rename). If he picks the rename, change the constant
+ * here and the nav label in Nav.tsx; the #how-we-work anchor stays either way.
  */
 const SECTION_LABEL = 'What We Do'
 
 const cards = [
   {
     number: '01',
-    title: 'The Senior Person',
-    body: 'The person who sets your direction is the person who runs your work.',
+    title: 'Senior Level Marketer',
+    body: 'Collaborates on strategy, sets your direction, and runs your program.',
     emphasis:
       'Nothing gets handed to a junior after the kickoff call, because there are no juniors.',
   },
   {
     number: '02',
     title: 'One System',
-    body: 'The range is real because the work is run, not staffed. One senior person runs the whole system, connected end to end. Modern tools carry the busywork. The senior hours go to your business.',
+    body: 'A cutting edge system connected end to end. Modern tools carry the busywork of a traditional junior team, allowing senior hours to go into your business. You keep the savings.',
     emphasis:
       "And where a job needs specialist hands, we bring in people we trust rather than pretending we don't need them.",
   },
   {
     number: '03',
-    title: 'A Few Clients',
-    body: "We take on a few clients at a time. On purpose. Each one chosen because the work fits what we're actually good at, and the calendar has room to do it properly. That's the number that keeps the work senior.",
+    title: 'A Few Clients and a Personal Touch',
+    body: 'We take on a few clients at a time on purpose. Small and mid size businesses able to access marketing support that typically is priced out by traditional agencies.',
     emphasis: "If the fit isn't there, we'll tell you on the first call.",
   },
 ]
@@ -106,8 +105,12 @@ export default function HowWeWork() {
               animate={isInView ? { y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 + i * 0.12 }}
               /* Hairline reads as a hairline on the navy ground, where the old
-                 #1C1C1C rule would have disappeared into it. */
-              className="border-t border-white/[0.08] py-12 md:py-14 grid grid-cols-1 md:grid-cols-[160px_1fr] gap-6 md:gap-12 lg:gap-16"
+                 #1C1C1C rule would have disappeared into it.
+                 Title column 160px -> 240px, 2026-08-21: Tim's replacement
+                 titles run to five words ("A Few Clients and a Personal
+                 Touch") where the originals were one or two, and 160px set
+                 them as a tall stack of single words. */
+              className="border-t border-white/[0.08] py-12 md:py-14 grid grid-cols-1 md:grid-cols-[240px_1fr] gap-6 md:gap-12 lg:gap-16"
             >
               {/* Number + Title */}
               <div>
