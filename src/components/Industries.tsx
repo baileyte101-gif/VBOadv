@@ -24,10 +24,13 @@ import Ticker from './Ticker'
  * ecommerce line choices). Do not edit copy here; changes route through Mary.
  *
  * ★ Every name and every description line renders into the page source on
- * every load: the items are server-rendered buttons, and the full set of
- * lines sits in a visually-hidden list (.field-seo-lines). The inactive set
- * stays in the DOM, toggled with styling only. This is the standing
- * Atlas/SEO rule; never replace it with content that mounts on click.
+ * every load, EXACTLY ONCE: the items are server-rendered buttons, and each
+ * item's description is server-rendered inside its own disclosure box,
+ * hidden with the `hidden` attribute until its item is clicked. This is
+ * Vega's P1-1 architecture (vega-bob-handoff-2026-08-22): content a user
+ * can reveal is indexed; a permanently-hidden crawler-only mirror is the
+ * hidden-text spam pattern and was removed. Never reintroduce a duplicate
+ * hidden copy, and never replace this with content that mounts on click.
  *
  * Performance stance, per the ParticleField precedent: one rAF loop,
  * transform-only writes, paused when the section is offscreen and while a
@@ -208,9 +211,8 @@ export default function Industries() {
   const [openKey, setOpenKey] = useState<string | null>(null)
 
   const fieldRef = useRef<HTMLDivElement>(null)
-  const boxRef = useRef<HTMLDivElement>(null)
-  const closeRef = useRef<HTMLButtonElement>(null)
   const itemEls = useRef<Map<string, HTMLButtonElement>>(new Map())
+  const boxEls = useRef<Map<string, HTMLDivElement>>(new Map())
   const lastOpened = useRef<HTMLButtonElement | null>(null)
 
   // Mutable motion state, outside React renders.
@@ -234,10 +236,6 @@ export default function Industries() {
       ),
     []
   )
-
-  const openItem = openKey
-    ? allItems().find((e) => e.key === openKey) ?? null
-    : null
 
   /* Layout: measure and clamp each item's base position into the field in px,
      with margin for its own drift amplitude, so no word ever leaves the box.
@@ -379,13 +377,17 @@ export default function Industries() {
     lastOpened.current?.focus({ preventScroll: true })
   }, [])
 
-  /* Place the box at the frozen item's position once it renders. */
+  /* Place the open item's own box at the item's frozen position once the
+     render has removed its `hidden` attribute, then apply the show class a
+     frame later so the entrance transition runs (class-with-hidden in one
+     paint would skip it). */
   useEffect(() => {
     if (!openKey) return
     const field = fieldRef.current
-    const box = boxRef.current
+    const box = boxEls.current.get(openKey)
     const it = motionState.current.items.get(openKey)
     if (!field || !box || !it) return
+    box.classList.remove('field-box-show')
     const w = field.clientWidth
     const h = field.clientHeight
     const bw = box.offsetWidth
@@ -394,7 +396,9 @@ export default function Industries() {
     const y = Math.min(Math.max(it.y0 + it.fy - 14, 12), Math.max(12, h - bh - 12))
     box.style.left = `${x}px`
     box.style.top = `${y}px`
-    closeRef.current?.focus({ preventScroll: true })
+    const raf = requestAnimationFrame(() => box.classList.add('field-box-show'))
+    box.querySelector<HTMLButtonElement>('.field-box-x')?.focus({ preventScroll: true })
+    return () => cancelAnimationFrame(raf)
   }, [openKey])
 
   const switchSet = (next: SetKey) => {
@@ -489,72 +493,70 @@ export default function Industries() {
               const cols3 = itemParams(key, i, list.length, 3)
               const itemKey = `${key}-${i}`
               return (
-                <button
-                  key={itemKey}
-                  ref={(el) => {
-                    if (el) itemEls.current.set(itemKey, el)
-                    else itemEls.current.delete(itemKey)
-                  }}
-                  type="button"
-                  role="listitem"
-                  aria-expanded={openKey === itemKey}
-                  onClick={() => (openKey === itemKey ? close() : open(itemKey))}
-                  className={`field-item ${tierClass[item.tier]} ${
-                    openKey === itemKey ? 'field-item-hidden' : ''
-                  }`}
-                  /* SSR base: percent position, centered. layout() replaces
-                     this with a clamped px transform after mount. */
-                  style={{
-                    left: `${cols3.bx * 100}%`,
-                    top: `${cols3.by * 100}%`,
-                    transform: 'translate(-50%, -50%)',
-                  }}
-                >
-                  {item.name}
-                </button>
+                <div key={itemKey} style={{ display: 'contents' }}>
+                  <button
+                    ref={(el) => {
+                      if (el) itemEls.current.set(itemKey, el)
+                      else itemEls.current.delete(itemKey)
+                    }}
+                    type="button"
+                    role="listitem"
+                    aria-expanded={openKey === itemKey}
+                    aria-controls={`field-box-${itemKey}`}
+                    onClick={() => (openKey === itemKey ? close() : open(itemKey))}
+                    className={`field-item ${tierClass[item.tier]} ${
+                      openKey === itemKey ? 'field-item-hidden' : ''
+                    }`}
+                    /* SSR base: percent position, centered. layout() replaces
+                       this with a clamped px transform after mount. */
+                    style={{
+                      left: `${cols3.bx * 100}%`,
+                      top: `${cols3.by * 100}%`,
+                      transform: 'translate(-50%, -50%)',
+                    }}
+                  >
+                    {item.name}
+                  </button>
+
+                  {/* The item's own disclosure box: the ONE server-rendered
+                      copy of its description, hidden until the item is
+                      clicked (Vega P1-1). `hidden` keeps it out of paint and
+                      out of the accessibility tree while the copy stays in
+                      the page source, the same hidden-until-interaction
+                      pattern as the site's FAQ accordions. The show class is
+                      applied a frame after the render unhides it, so the
+                      entrance transition still runs. */}
+                  <div
+                    ref={(el) => {
+                      if (el) boxEls.current.set(itemKey, el)
+                      else boxEls.current.delete(itemKey)
+                    }}
+                    id={`field-box-${itemKey}`}
+                    role="dialog"
+                    aria-modal="false"
+                    aria-labelledby={`field-box-name-${itemKey}`}
+                    hidden={openKey !== itemKey}
+                    className="field-box"
+                  >
+                    <button
+                      type="button"
+                      className="field-box-x"
+                      aria-label="Close description"
+                      onClick={close}
+                    >
+                      ×
+                    </button>
+                    <span id={`field-box-name-${itemKey}`} className="field-box-name">
+                      {item.name}
+                    </span>
+                    <p className="field-box-text">{item.text}</p>
+                  </div>
+                </div>
               )
             })}
           </div>
         ))}
-
-        {/* The description box, opened in the clicked item's place. One box;
-            its text swaps. The full copy for every item is server-rendered in
-            the hidden list below, so nothing here is the only copy of a line. */}
-        {/* Closed state hides via CSS visibility, not the hidden attribute:
-            display:none would skip the open transition, since the element
-            must exist painted before the .field-box-show class lands. */}
-        <div
-          ref={boxRef}
-          role="dialog"
-          aria-modal="false"
-          aria-labelledby="field-box-name"
-          className={`field-box ${openItem ? 'field-box-show' : ''}`}
-        >
-          <button
-            ref={closeRef}
-            type="button"
-            className="field-box-x"
-            aria-label="Close description"
-            onClick={close}
-          >
-            ×
-          </button>
-          <span id="field-box-name" className="field-box-name">
-            {openItem?.item.name}
-          </span>
-          <p className="field-box-text">{openItem?.item.text}</p>
-        </div>
       </div>
-
-      {/* ★ The search surface: every name and line, in the page on every
-          load, visually hidden. Do not remove; see the header comment. */}
-      <ul className="field-seo-lines" aria-hidden="true">
-        {[...services, ...industriesList].map((item) => (
-          <li key={item.name}>
-            {item.name}: {item.text}
-          </li>
-        ))}
-      </ul>
 
       {/* Closing line. Tim's 2026-08-18 review round: the Insights paragraph
           is the only survivor of the old closing block, kept as is on his

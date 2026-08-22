@@ -353,9 +353,11 @@ body {
 .field-item:focus-visible { outline: 1px solid rgba(231, 206, 134, 0.6); outline-offset: 4px; }
 .field-item-hidden { opacity: 0; pointer-events: none; }
 
-/* The description box, opened in the clicked item's place. Closed state uses
-   visibility (with a transition delay on close), not display, so the open
-   transition can run and the closed box leaves the accessibility tree. */
+/* Each item's own disclosure box (Vega P1-1: one server-rendered copy of the
+   description per item, closed state uses the `hidden` attribute, which also
+   keeps it out of the accessibility tree). The component removes `hidden` on
+   open and applies .field-box-show a frame later, so the entrance transition
+   runs; no `display` property here, or the hidden attribute stops working. */
 .field-box {
   position: absolute;
   z-index: 5;
@@ -370,15 +372,12 @@ body {
   -webkit-backdrop-filter: blur(6px);
   opacity: 0;
   transform: scale(0.92);
-  visibility: hidden;
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: none;
 }
 .field-box-show {
   opacity: 1;
   transform: scale(1);
-  visibility: visible;
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0s;
   pointer-events: auto;
 }
 .field-box-name {
@@ -415,19 +414,6 @@ body {
 }
 .field-box-x:hover,
 .field-box-x:focus-visible { color: var(--gold-hot); border-color: var(--color-vbo-gold); }
-
-/* The search surface: every line in the page on every load, visually hidden.
-   Not display:none, deliberately: clipped text stays in the layout tree. */
-.field-seo-lines {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
 
 @media (prefers-reduced-motion: reduce) {
   .field-set,
