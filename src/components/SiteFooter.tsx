@@ -9,12 +9,12 @@ import SocialIcons from '@/components/SocialIcons'
  * The link row is server-rendered internal linking, not decoration: it is how
  * the money pages stay reachable from every page on the site.
  *
- * Light version, 2026-08-21: the hub and contact pages are gone, so the row
- * carries the money pages directly. All four professional-services verticals
- * are linked as of Vega's P2-6 (vega-bob-handoff-2026-08-22): dental and
- * financial-advisors were indexable with zero sitewide links and zero GSC
- * impressions in 90 days, while the two footer-linked verticals had 189 and
- * 17. Every entry resolves on this branch.
+ * Light version, 2026-08-21: the hub and contact pages are gone, so the row is
+ * back to the link set that is live on main today. Every entry is a page that
+ * exists on this branch. Note for Vega's visibility pass: dental-practices and
+ * financial-advisors are live and indexable but carry no sitewide internal
+ * link once the hubs are gone; adding them here is a one-line change if her
+ * answer wants it.
  */
 
 const footerLinks = [
@@ -22,8 +22,6 @@ const footerLinks = [
   { href: '/fractional-cmo', label: 'Fractional CMO' },
   { href: '/professional-services/law-firms', label: 'Marketing for Law Firms' },
   { href: '/professional-services/med-spas', label: 'Marketing for Med Spas' },
-  { href: '/professional-services/dental-practices', label: 'Marketing for Dental Practices' },
-  { href: '/professional-services/financial-advisors', label: 'Marketing for Financial Advisors' },
   { href: '/insights', label: 'VBO Insights' },
 ]
 

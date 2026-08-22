@@ -22,8 +22,14 @@ const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Integrated Marketing Services',
+  // Description and serviceType track the ten services the homepage actually
+  // sells (Mary's floating-field v3). Vega P1-3, 2026-08-22: the previous
+  // pair described nine older service names and omitted half the live
+  // inventory. Machine-readable only, which is why it shipped under Tim's
+  // "everything invisible to a visitor is GO" approval. If the field's list
+  // changes, this changes with it.
   description:
-    'VBO Advertising provides integrated marketing services for small and mid-size businesses in Miami and South Florida, including marketing strategy, paid media, social media, SEO, brand strategy, and creative production.',
+    'VBO Advertising provides integrated marketing services for small and mid-size businesses in Miami and South Florida, including web development, marketing consulting, fractional CMO leadership, ecommerce and Shopify marketing, AI SEO and visibility, paid media, AI-enabled marketing, analytics and reporting, creative, and social media.',
   // Reference the root Organization by @id rather than inlining a duplicate.
   // Inlining published a second, unlinked company record; Google's Rich Results
   // Test reported "Organization: 2 valid items". Matches the WebSite block below
@@ -37,16 +43,25 @@ const serviceSchema = {
     'Broward County',
     'Palm Beach County',
   ],
+  // Vega's P1-3 list: Mary's ten live service names plus the search-visible
+  // synonyms buyers actually type, rather than display names alone.
   serviceType: [
-    'Marketing Strategy',
-    'Paid Media',
-    'Social Media Marketing',
+    'Web Development',
+    'Marketing Consulting',
+    'Fractional CMO',
+    'Ecommerce Marketing',
+    'Shopify SEO',
     'Search Engine Optimization',
     'AI Search Optimization',
     'LLM Search Optimization',
+    'Generative Engine Optimization',
+    'Paid Media',
+    'Social Media Marketing',
+    'Analytics and Reporting',
     'Brand Strategy',
     'Creative Production',
-    'Marketing Consulting',
+    'Marketing Strategy',
+    'App Marketing',
   ],
   url: 'https://www.vboadv.com/',
 }
