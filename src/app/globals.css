@@ -353,7 +353,9 @@ body {
 .field-item:focus-visible { outline: 1px solid rgba(231, 206, 134, 0.6); outline-offset: 4px; }
 .field-item-hidden { opacity: 0; pointer-events: none; }
 
-/* The description box, opened in the clicked item's place. */
+/* The description box, opened in the clicked item's place. Closed state uses
+   visibility (with a transition delay on close), not display, so the open
+   transition can run and the closed box leaves the accessibility tree. */
 .field-box {
   position: absolute;
   z-index: 5;
@@ -368,12 +370,15 @@ body {
   -webkit-backdrop-filter: blur(6px);
   opacity: 0;
   transform: scale(0.92);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
   pointer-events: none;
 }
 .field-box-show {
   opacity: 1;
   transform: scale(1);
+  visibility: visible;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0s;
   pointer-events: auto;
 }
 .field-box-name {

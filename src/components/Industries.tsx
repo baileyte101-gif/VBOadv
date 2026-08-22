@@ -358,16 +358,22 @@ export default function Industries() {
     }
   }, [])
 
-  /* Open a description box in the clicked item's place; freeze the field. */
+  /* Open a description box in the clicked item's place; freeze the field.
+     openKeyRef mirrors openKey so close() can no-op when nothing is open
+     (repeat Escape presses must not yank focus back to the last word). */
+  const openKeyRef = useRef<string | null>(null)
   const open = (key: string) => {
     const el = itemEls.current.get(key)
     if (!el || !fieldRef.current) return
     lastOpened.current = el
     motionState.current.paused = true
+    openKeyRef.current = key
     setOpenKey(key)
   }
 
   const close = useCallback(() => {
+    if (!openKeyRef.current) return
+    openKeyRef.current = null
     setOpenKey(null)
     motionState.current.paused = false
     lastOpened.current?.focus({ preventScroll: true })
@@ -514,12 +520,14 @@ export default function Industries() {
         {/* The description box, opened in the clicked item's place. One box;
             its text swaps. The full copy for every item is server-rendered in
             the hidden list below, so nothing here is the only copy of a line. */}
+        {/* Closed state hides via CSS visibility, not the hidden attribute:
+            display:none would skip the open transition, since the element
+            must exist painted before the .field-box-show class lands. */}
         <div
           ref={boxRef}
           role="dialog"
           aria-modal="false"
           aria-labelledby="field-box-name"
-          hidden={!openItem}
           className={`field-box ${openItem ? 'field-box-show' : ''}`}
         >
           <button
