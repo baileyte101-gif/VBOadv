@@ -264,47 +264,171 @@ body {
   .client-glass:hover .mark-industries .fill { transform: none; }
 }
 
-/* ── Tile list panels (SectionTile.tsx + Industries.tsx), light version
-      2026-08-21. Clicking a routing tile opens its list in place instead of
-      navigating; the fifteen-page build's hubs are gone.
+/* ── The floating field (Industries.tsx), Tim's direction 2026-08-21 evening,
+      replacing the tile tabbers. A Services/Industries toggle over a field of
+      slowly drifting item names; clicking one freezes the field and opens a
+      description box in its place.
 
-      The panels are server-rendered into the page and shown or hidden with
-      styling only. That is a standing Atlas/SEO rule, not a preference: copy
-      that is fetched or injected on click does not reliably exist for
-      crawlers, and these two lists are now the only place on the site that
-      carries the full service and industry inventory. Do not convert these to
-      AnimatePresence mount/unmount, lazy content, or anything else that takes
-      the closed panel's text out of the initial HTML.
+      Both sets and every description line are server-rendered and shown or
+      hidden with styling only. Standing Atlas/SEO rule: copy that mounts on
+      click does not reliably exist for crawlers, and this section is the only
+      place on the site carrying the full service and industry inventory.
 
-      Mechanics: grid-template-rows 0fr -> 1fr animates height without any JS
-      measurement; the inner .tile-panel-clip (overflow hidden, min-height 0)
-      does the clipping. visibility swaps at the end of the close so the
-      collapsed list leaves the accessibility tree but never the DOM. ───── */
-.tile-panel {
-  display: grid;
-  grid-template-rows: 0fr;
+      The toggle is the hero's ground-toggle device (see .hero-bg-toggle),
+      restated here with aria-pressed driving the pill instead of the hero's
+      .marble-on class, so the two stay independent. ─────────────────────── */
+.field-toggle {
+  position: relative;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid rgba(184, 150, 46, 0.55);
+  border-radius: 16px;
+  background: rgba(13, 13, 13, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  cursor: pointer;
+  padding: 3px;
+}
+.field-toggle:hover { border-color: var(--color-vbo-gold); }
+.field-toggle:focus-visible { outline: 2px solid var(--gold-hot); outline-offset: 3px; }
+.field-toggle .opt {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  color: #9fa3a7;
+  transition: color 0.25s ease;
+}
+.field-toggle .pill {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  bottom: 3px;
+  width: calc(50% - 3px);
+  border-radius: 13px;
+  background: var(--color-vbo-gold);
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+.field-toggle[aria-pressed='true'] .pill { transform: translateX(100%); }
+.field-toggle[aria-pressed='false'] .opt-services { color: #0d0d0d; font-weight: 700; }
+.field-toggle[aria-pressed='true'] .opt-industries { color: #0d0d0d; font-weight: 700; }
+
+.field-set { transition: opacity 0.45s ease; }
+.field-set-off {
+  opacity: 0;
   visibility: hidden;
-  transition:
-    grid-template-rows 0.55s cubic-bezier(0.25, 0.1, 0.25, 1),
-    visibility 0s 0.55s;
+  pointer-events: none;
+  transition: opacity 0.45s ease, visibility 0s 0.45s;
 }
 
-.tile-panel-open {
-  grid-template-rows: 1fr;
-  visibility: visible;
-  transition:
-    grid-template-rows 0.55s cubic-bezier(0.25, 0.1, 0.25, 1),
-    visibility 0s 0s;
+/* Floating words: the softer body font at readable sizes, three depth tiers
+   (visual only; all tiers crawl identically). Tim's round-3 note: smaller,
+   softer than the condensed headline face. */
+.field-item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  will-change: transform;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
+.field-item-t1 { font-size: clamp(1rem, 1.7vw, 1.2rem); color: #f2ede4; font-weight: 600; }
+.field-item-t2 { font-size: clamp(0.92rem, 1.45vw, 1.05rem); color: #cfc9bd; }
+.field-item-t3 { font-size: clamp(0.85rem, 1.25vw, 0.95rem); color: #9fa3a7; }
+.field-item:hover,
+.field-item:focus-visible { color: var(--gold-hot); }
+.field-item:focus-visible { outline: 1px solid rgba(231, 206, 134, 0.6); outline-offset: 4px; }
+.field-item-hidden { opacity: 0; pointer-events: none; }
 
-.tile-panel-clip {
+/* The description box, opened in the clicked item's place. */
+.field-box {
+  position: absolute;
+  z-index: 5;
+  width: min(340px, calc(100vw - 48px));
+  background: rgba(13, 13, 13, 0.92);
+  border: 1px solid rgba(184, 150, 46, 0.55);
+  border-radius: 12px;
+  padding: 16px 40px 16px 18px;
+  text-align: left;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+.field-box-show {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+.field-box-name {
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-vbo-gold);
+  display: block;
+  margin-bottom: 6px;
+}
+.field-box-text {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.88rem;
+  color: #cfc9bd;
+  line-height: 1.5;
+}
+.field-box-x {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  appearance: none;
+  background: none;
+  border: 1px solid rgba(184, 150, 46, 0.35);
+  border-radius: 8px;
+  width: 26px;
+  height: 26px;
+  color: #8a8e92;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.field-box-x:hover,
+.field-box-x:focus-visible { color: var(--gold-hot); border-color: var(--color-vbo-gold); }
+
+/* The search surface: every line in the page on every load, visually hidden.
+   Not display:none, deliberately: clipped text stays in the layout tree. */
+.field-seo-lines {
+  position: absolute;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
-  min-height: 0;
+  clip-path: inset(50%);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tile-panel,
-  .tile-panel-open { transition: none; }
+  .field-set,
+  .field-set-off,
+  .field-toggle .pill,
+  .field-box { transition: none; }
 }
 
 /* ── Retro band vocabulary: solid band + one thinner accent stripe, outlined

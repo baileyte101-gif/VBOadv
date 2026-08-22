@@ -2,7 +2,7 @@
 
 > Founder-led marketing consultant and studio in Miami, serving small to mid-size businesses across South Florida.
 
-VBO Advertising is a Miami-based marketing consultant and studio founded by Tim Bailey. The person who sets your direction is the person who runs your work: one senior operator runs strategy, paid media, search, web, brand and reporting as one connected system, with modern tools carrying the busywork and a trusted bench where specialist hands are genuinely needed. Seven services, built to run together; most clients use two or three. VBO also helps clients get found in both traditional search and AI answer engines like ChatGPT, Perplexity, and Google AI Overviews, and runs all of that on this site first.
+VBO Advertising is a Miami-based marketing consultant and studio founded by Tim Bailey. A senior level marketer collaborates on strategy, sets your direction, and runs your program: a cutting edge system connected end to end, where modern tools carry the busywork of a traditional junior team and senior hours go into your business. VBO also helps clients get found in both traditional search and AI answer engines like ChatGPT, Perplexity, and Google AI Overviews, and runs all of that on this site first.
 
 ## Core pages
 
@@ -13,27 +13,32 @@ VBO Advertising is a Miami-based marketing consultant and studio founded by Tim 
 
 ## Services
 
-All seven services live on the [homepage](https://www.vboadv.com/), under Industries and Services.
+All ten services live on the [homepage](https://www.vboadv.com/), under Industries and Services.
 
-- Web development: Custom sites, redesigns and Shopify stores, built to be found and fast on a phone. We built and launched the IPPE Soccer Tours site. Builds for The Fudge Pie Co. and Sir Galloway are finished and launching shortly.
-- Marketing consulting: For when you want an answer, not a retainer. Someone senior looks at what's running, tells you what to keep and what to stop, and hands you a plan you can act on, with us or without us. Scoped, with an end date.
-- Fractional CMO: A senior marketing head, part of the time. Same seat, same responsibility for the direction and the results, on a share of the hours.
-- Ecommerce and Shopify: Paid media and search run together on the same store, by the same people. For Peixoto Wear in swimwear, we run both. For Hayley Style in fine jewelry, the paid side.
-- AI SEO and visibility: Making your business readable and quotable for ChatGPT, Perplexity and Google's AI answers. Schema, crawler access, an llms.txt file, and pages written so a machine can lift a clean answer. We run all of it on this site first. You're welcome to check.
-- Paid media: Meta, Google Search, Google Shopping and Performance Max. A small number of accounts, senior hands on every one of them.
-- AI-enabled marketing: How the work gets done rather than something we sell you. Modern tools handle the repetitive parts so the senior thinking gets your attention. A person still decides.
+- Web development: Custom sites, redesigns and Shopify stores, built to be found and fast on a phone. We built and launched the site for IPPE Soccer Tours.
+- Marketing consulting: For when you want an answer, not a retainer. Someone senior reviews what's running and hands you a plan you can act on. Scoped, with an end date.
+- Fractional CMO: A senior marketing head, part of the time. Same seat and the same responsibility for where the money goes, on a share of the hours.
+- Ecommerce and Shopify: Paid media and search run together on the same store. Collection pages, product feeds and catalog structure, where Shopify money quietly leaks.
+- AI SEO and visibility: Making your business readable and quotable for ChatGPT, Perplexity and Google's AI answers. We run all of it on this site first. You're welcome to check.
+- Paid media: Meta, Google Search, Google Shopping and Performance Max. A small number of accounts with senior hands on all of them, which is most of the difference.
+- AI-enabled marketing: How the work gets done, not something we sell you. Modern tools handle the repetitive parts so the senior thinking gets your attention. A person still decides.
+- Analytics and reporting: Tracking installed before the first dollar goes out, so results get counted instead of guessed at. Then a short written update you can read in two minutes.
+- Creative: Brand and campaign work: identity, design, ad creative, photography for social. We rebuilt the IPPE Soccer Tours brand alongside their site.
+- Social media: The calendar, the copy, the design and the shooting, planned as one feed. Run with everything else, so the posts match what the ads and the site are saying.
 
 ## Industries
 
 The industry list lives on the [homepage](https://www.vboadv.com/), under Industries and Services. Four professional-services verticals have their own pages.
 
-- Fashion and apparel: Apparel runs on a calendar. We run paid media and search for Peixoto Wear, a swimwear brand, where the season decides almost everything.
-- Jewelry and luxury retail: Nobody buys fine jewelry on impulse. We run paid media for Hayley Style, Miami fine jewelry, signed in August 2026.
-- Food and beverage: For a small food brand, the maker is the one thing a bigger company can't copy. We designed, wrote and built The Fudge Pie Co.'s ten-page site around Chef Stacey and what she makes.
-- Sports and travel: The buyer is a parent, not the player, and trust comes before price. We built and launched the IPPE Soccer Tours site: every program on its own page, inquiries measured instead of guessed at.
-- Local service businesses: When your market lives within a few miles, the map listing is your storefront and the repeat customer is the business. For Sir Galloway, dry cleaning and garment care in Miami, we rebuilt the website and advised on staying visible locally.
-- Non-profit and education: A non-profit markets to families and to funders at once, two messages that can't contradict each other. We've done research and advisory work with CARE Elementary, a non-profit school in Overtown, Miami.
-- Professional services: Law firms, med spas, dental practices and financial advisors. We have deep experience with professional services firms in South Florida.
+- Fashion and apparel: Apparel sells in seasons and the marketing has to move on the same calendar. Spend hard in the weeks that matter, then collect the demand that never stops.
+- Jewelry and luxury retail: A considered purchase is a different job. For a buyer who takes weeks to decide: a site that holds up to scrutiny and advertising paced for the wait.
+- Food and beverage: For a small food brand, the maker is the brand. The site and the story get built around the person, and the advertising is sized to what the kitchen can serve.
+- Sports and travel: When a parent is the buyer, trust comes before price. Real detail on every program you run, and tracking that shows which trips turn into inquiries.
+- Local service businesses: Your whole market lives within a few miles, so the job changes. Getting picked on the map, looking as established as you are, and earning the fortieth visit.
+- Law firms: Nobody hires a law firm off an ad alone. The site answers what people are nervous to ask, and search keeps you visible on the narrow terms that matter.
+- Professional services: Med spas, dental practices, financial advisors. Selling judgment the buyer can't inspect first, so the work is making the expertise visible and easy to trust.
+- Non-profit and education: Non-profits market to families and to funders at once, in two messages that can't contradict each other. Spend gets weighed against the mission it came from.
+- Apps and digital products: The development, the landing site, the store listing, and the marketing that gets it downloaded. We shipped our own app, Sidefoot, to the App Store.
 - [Marketing for Law Firms in Miami](https://www.vboadv.com/professional-services/law-firms): Vertical landing page for law firm marketing
 - [Dental Practice Marketing in Miami](https://www.vboadv.com/professional-services/dental-practices): Vertical landing page for dental practice marketing
 - [Medical Spa Marketing in Miami](https://www.vboadv.com/professional-services/med-spas): Vertical landing page for med spa and aesthetic clinic marketing
