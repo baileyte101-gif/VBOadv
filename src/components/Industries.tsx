@@ -390,15 +390,19 @@ export default function Industries() {
     box.classList.remove('field-box-show')
     const w = field.clientWidth
     const h = field.clientHeight
+    /* Reading offsetWidth here does double duty: it measures the box for
+       clamping AND forces a reflow that commits the closed state, so adding
+       the show class next paints as a transition rather than a jump. Done
+       synchronously rather than in a rAF callback, so the box can never be
+       left unhidden-but-transparent if that callback does not run. */
     const bw = box.offsetWidth
     const bh = box.offsetHeight
     const x = Math.min(Math.max(it.x0 + it.fx - 20, 12), Math.max(12, w - bw - 12))
     const y = Math.min(Math.max(it.y0 + it.fy - 14, 12), Math.max(12, h - bh - 12))
     box.style.left = `${x}px`
     box.style.top = `${y}px`
-    const raf = requestAnimationFrame(() => box.classList.add('field-box-show'))
+    box.classList.add('field-box-show')
     box.querySelector<HTMLButtonElement>('.field-box-x')?.focus({ preventScroll: true })
-    return () => cancelAnimationFrame(raf)
   }, [openKey])
 
   const switchSet = (next: SetKey) => {
