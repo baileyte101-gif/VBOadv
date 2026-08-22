@@ -485,7 +485,12 @@ export default function Industries() {
         ] as [SetKey, FieldItem[], string][]).map(([key, list, label]) => (
           <div
             key={key}
-            role="list"
+            /* role=group, not list: each item's dialog now lives beside its
+               button inside this container, and role=list permits only
+               listitem children (axe aria-required-children fired with a box
+               open). A labeled group communicates the collection without
+               constraining children. */
+            role="group"
             aria-label={label}
             className={`absolute inset-0 field-set ${activeSet === key ? '' : 'field-set-off'}`}
           >
@@ -500,7 +505,6 @@ export default function Industries() {
                       else itemEls.current.delete(itemKey)
                     }}
                     type="button"
-                    role="listitem"
                     aria-expanded={openKey === itemKey}
                     aria-controls={`field-box-${itemKey}`}
                     onClick={() => (openKey === itemKey ? close() : open(itemKey))}
