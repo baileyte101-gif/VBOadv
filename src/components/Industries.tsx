@@ -531,9 +531,9 @@ export default function Industries() {
                       clicked (Vega P1-1). `hidden` keeps it out of paint and
                       out of the accessibility tree while the copy stays in
                       the page source, the same hidden-until-interaction
-                      pattern as the site's FAQ accordions. The show class is
-                      applied a frame after the render unhides it, so the
-                      entrance transition still runs. */}
+                      pattern as the site's FAQ accordions. `.field-box[hidden]`
+                      in globals.css guards the attribute against any future
+                      display utility landing on this div. */}
                   <div
                     ref={(el) => {
                       if (el) boxEls.current.set(itemKey, el)

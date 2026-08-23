@@ -356,8 +356,16 @@ body {
 /* Each item's own disclosure box (Vega P1-1: one server-rendered copy of the
    description per item, closed state uses the `hidden` attribute, which also
    keeps it out of the accessibility tree). The component removes `hidden` on
-   open and applies .field-box-show a frame later, so the entrance transition
-   runs; no `display` property here, or the hidden attribute stops working. */
+   open and applies .field-box-show in the same pass, after the reflow the
+   clamping already forces, so the entrance transition still runs. */
+
+/* The guard, Vega V-2: Tailwind preflight hides [hidden] through a
+   zero-specificity :where(), so ANY class-level display wins over it. A
+   future display utility on this div would un-hide all 19 boxes and put
+   invisible-but-present text back in the page, the exact pattern P1-1
+   removed, and it would ship silently. This rule (0,2,0) closes that. */
+.field-box[hidden] { display: none; }
+
 .field-box {
   position: absolute;
   z-index: 5;
