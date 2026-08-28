@@ -6,6 +6,7 @@ import TheApproach from '@/components/TheApproach'
 import HowWeWork from '@/components/HowWeWork'
 import Industries from '@/components/Industries'
 import About from '@/components/About'
+import HomeFAQ from '@/components/HomeFAQ'
 import CTASection from '@/components/CTASection'
 import SiteFooter from '@/components/SiteFooter'
 import ClosingBlock from '@/components/ClosingBlock'
@@ -67,6 +68,13 @@ const serviceSchema = {
 }
 
 // Phase 1.1. FAQPage schema: Q&As tied to common searches for AI Overview and citation lift.
+// Vega P1-4, Tim approved 2026-08-28: questions 1, 2 and 4 below now have a
+// matching visible answer on the page (see HomeFAQ.tsx). Question 3 is left
+// unchanged here deliberately and does NOT get a visible counterpart: its
+// answer claims "professional services firms" client experience, the exact
+// line Mary flagged as unsupportable and already pulled from the rest of the
+// visible site. Do not surface this question without a Mary rewrite or a
+// decision to delete it. Flagged to Mary/Tim, not resolved by this change.
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -191,6 +199,11 @@ export default function Home() {
       <Life />
       <Industries />
       <About />
+      {/* Vega P1-4 option A, Tim approved 2026-08-28: three of the FAQPage
+          schema's four questions now have a matching visible answer on the
+          page. Question 3 (professional-services claim) is deliberately
+          held out; see HomeFAQ.tsx for why. */}
+      <HomeFAQ />
 
       {/* CTA and footer share one continuous skyline ground */}
       <ClosingBlock>

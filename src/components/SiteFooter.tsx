@@ -11,10 +11,12 @@ import SocialIcons from '@/components/SocialIcons'
  *
  * Light version, 2026-08-21: the hub and contact pages are gone, so the row is
  * back to the link set that is live on main today. Every entry is a page that
- * exists on this branch. Note for Vega's visibility pass: dental-practices and
- * financial-advisors are live and indexable but carry no sitewide internal
- * link once the hubs are gone; adding them here is a one-line change if her
- * answer wants it.
+ * exists on this branch.
+ *
+ * P2-6, Vega ticket 2026-08-22, Tim approved 2026-08-28: dental-practices and
+ * financial-advisors were live and indexable but carried no sitewide internal
+ * link, and both earned zero Search Console impressions in 90 days while the
+ * two linked verticals (law-firms, med-spas) earned 189 and 17. Added below.
  */
 
 const footerLinks = [
@@ -22,6 +24,8 @@ const footerLinks = [
   { href: '/fractional-cmo', label: 'Fractional CMO' },
   { href: '/professional-services/law-firms', label: 'Marketing for Law Firms' },
   { href: '/professional-services/med-spas', label: 'Marketing for Med Spas' },
+  { href: '/professional-services/dental-practices', label: 'Marketing for Dental Practices' },
+  { href: '/professional-services/financial-advisors', label: 'Marketing for Financial Advisors' },
   { href: '/insights', label: 'VBO Insights' },
 ]
 
