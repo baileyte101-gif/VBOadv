@@ -295,7 +295,7 @@ function FaqAnswer({ item }: { item: { question: string; answer: string } }) {
   return (
     <p className="font-body text-[18px] text-[var(--color-vbo-egg)] opacity-80 leading-[28px]">
       {before}
-      <InlineLink href="/insights/what-a-marketing-agency-actually-does">
+      <InlineLink href="/insights/what-a-marketing-consultancy-actually-does">
         {O5_ANCHOR}
       </InlineLink>
       {after}
