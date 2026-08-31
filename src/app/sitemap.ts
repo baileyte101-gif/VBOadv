@@ -51,12 +51,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
 
   // Published (non-draft) blog posts. Empty until the first post goes live.
-  const postPages: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
-    url: `${HOST}/insights/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+  // lastmod is the LATER of the publish date and an explicit `updated` field,
+  // never just the publish date. A post whose slug, canonical, title or body
+  // changed after publication was otherwise telling crawlers nothing had moved
+  // since it went live, which is the opposite of what it needs to say and
+  // suppresses the recrawl. Taking the max (rather than preferring `updated`)
+  // means a mistakenly backdated `updated` cannot pull lastmod backwards.
+  // Posts without `updated` keep their true publish date: this must not
+  // blanket-stamp the whole blog to today, which would destroy the signal.
+  const postPages: MetadataRoute.Sitemap = getAllPosts().map((post) => {
+    const published = new Date(post.date);
+    const updated = post.updated ? new Date(post.updated) : null;
+    const lastModified =
+      updated && updated.getTime() > published.getTime() ? updated : published;
+
+    return {
+      url: `${HOST}/insights/${post.slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    };
+  });
 
   return [...staticPages, ...verticalPages, ...postPages];
 }

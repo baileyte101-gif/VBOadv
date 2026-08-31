@@ -12,6 +12,10 @@ export interface PostFrontmatter {
   // duplicates the H1 sitting directly above it. Set this on new posts.
   imageAlt?: string
   draft?: boolean
+  // Last meaningful change, YYYY-MM-DD. Drives sitemap lastmod so a post that
+  // was edited after publication tells crawlers to recrawl. Absent on posts
+  // that have not changed since they went live; `date` is used then.
+  updated?: string
 }
 
 export interface Post extends PostFrontmatter {
