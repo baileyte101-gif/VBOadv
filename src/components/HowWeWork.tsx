@@ -41,7 +41,7 @@ const cards = [
   {
     number: '03',
     title: 'A Few Clients and a Personal Touch',
-    body: 'We take on a few clients at a time on purpose. Small and mid size businesses able to access marketing support that typically is priced out by traditional agencies.',
+    body: 'We take on a few clients at a time on purpose. Small and mid size businesses able to access marketing support that typically is priced out by traditional marketing firms.',
     emphasis: "If the fit isn't there, we'll tell you on the first call.",
   },
 ]

@@ -69,7 +69,7 @@ export default function About() {
             <p className="text-[#8A8E92] text-base md:text-lg font-body leading-relaxed">
               VBO is a founder-led marketing consultancy &amp; studio built on
               experience and efficiency. Our clients are our priority, we are
-              not a high-volume agency. We are not a trend-driven shop.
+              not a high-volume practice. We are not a trend-driven shop.
             </p>
             <p className="text-[#8A8E92] text-base md:text-lg font-body leading-relaxed">
               We operate with structure, using the best modern tools that drive

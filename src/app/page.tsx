@@ -92,7 +92,7 @@ const faqSchema = {
       name: 'What kinds of businesses does VBO Advertising work with?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'VBO works with founder-led and owner-operator businesses, small to mid-size companies that want senior-level marketing strategy and disciplined execution without the overhead of a large agency. We have experience with professional services firms, hospitality brands, and consumer businesses across South Florida.',
+        text: 'VBO works with founder-led and owner-operator businesses, small to mid-size companies that want senior-level marketing strategy and disciplined execution without the overhead of a large firm. We have experience with professional services firms, hospitality brands, and consumer businesses across South Florida.',
       },
     },
     {

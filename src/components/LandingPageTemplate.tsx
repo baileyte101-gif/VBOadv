@@ -675,7 +675,7 @@ export default function LandingPageTemplate({ vertical }: Props) {
                 <p className="font-body text-[18px] text-[var(--color-vbo-egg)] opacity-90 leading-[28px] max-w-2xl">
                   Tim Bailey is the founder of VBO Advertising, a marketing
                   consultancy in Miami. VBO sits between a strategy firm and a
-                  full-service agency: we define the direction, then help you
+                  full-service team: we define the direction, then help you
                   execute it. Our clients are not the biggest companies. They are
                   the most serious ones.
                 </p>

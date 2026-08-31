@@ -57,7 +57,7 @@ const SERVICE_SCHEMAS: Record<string, Record<string, unknown>> = {
     serviceType: [
       "Legal Marketing",
       "Law Firm Marketing",
-      "Legal Marketing Agency Services",
+      "Legal Marketing Consultancy",
     ],
     areaServed: [
       { "@type": "City", name: "Coconut Grove" },
@@ -75,8 +75,8 @@ const SERVICE_SCHEMAS: Record<string, Record<string, unknown>> = {
       "VBO helps med spas and aesthetic clinics in Miami build brands that attract high-value clients through marketing strategy, paid media, SEO, brand, and creative.",
     serviceType: [
       "Medical Spa Marketing",
-      "Med Spa Marketing Agency",
-      "Medical Spa Digital Marketing Agency",
+      "Med Spa Marketing Consultancy",
+      "Medical Spa Digital Marketing Consultancy",
       "Aesthetic Clinic Marketing",
     ],
     areaServed: [

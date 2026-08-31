@@ -70,7 +70,7 @@ const FAQ: { question: string; answer: string }[] = [
     question:
       "When should a business hire a fractional CMO instead of a full-time one?",
     answer:
-      "When there's enough marketing happening that somebody senior should be deciding where the money goes, and not enough to fill a full-time leader's week. That's the window. If the work would genuinely fill the week and you can carry the hire, hire full-time, because full-time is better when it's justified. And if the question underneath is whether you need an outside team at all, we wrote about what a marketing agency actually does.",
+      "When there's enough marketing happening that somebody senior should be deciding where the money goes, and not enough to fill a full-time leader's week. That's the window. If the work would genuinely fill the week and you can carry the hire, hire full-time, because full-time is better when it's justified. And if the question underneath is whether you need an outside team at all, we wrote about what a marketing consultancy actually does.",
   },
   {
     question:
@@ -82,7 +82,7 @@ const FAQ: { question: string; answer: string }[] = [
     question:
       "Who would actually be our fractional CMO?",
     answer:
-      "Tim Bailey, VBO's founder. He holds the seat himself, so the person who sets your direction is the person running it week to week, and the work comes out of the same operation rather than getting placed with somebody else. There's no bench behind him and that's a choice, not a gap. Our clients are our priority, we are not a high-volume agency. If capacity is the reason we can't take you on, we'll say so rather than take the retainer and thin out.",
+      "Tim Bailey, VBO's founder. He holds the seat himself, so the person who sets your direction is the person running it week to week, and the work comes out of the same operation rather than getting placed with somebody else. There's no bench behind him and that's a choice, not a gap. Our clients are our priority, we are not a high-volume practice. If capacity is the reason we can't take you on, we'll say so rather than take the retainer and thin out.",
   },
   {
     question:
@@ -283,7 +283,7 @@ function ImageBand({
 // schema string stay character-identical: the anchor wraps a substring of the
 // same constant, so it adds and removes nothing.
 function FaqAnswer({ item }: { item: { question: string; answer: string } }) {
-  const O5_ANCHOR = "what a marketing agency actually does";
+  const O5_ANCHOR = "what a marketing consultancy actually does";
   if (!item.answer.includes(O5_ANCHOR)) {
     return (
       <p className="font-body text-[18px] text-[var(--color-vbo-egg)] opacity-80 leading-[28px]">
@@ -357,7 +357,7 @@ export default function FractionalCmoPage() {
           <Body>
             The role began as a seat at the top with nothing underneath it. Someone
             senior came in a day or two a week, set the direction, and handed the work
-            down to the marketing department and the agencies. That assumed there was
+            down to the marketing department and the outside vendors. That assumed there was
             a department to hand it to. For a lot of businesses this size there
             isn&apos;t one, so what showed up was a plan, a bill, and nothing
             different on Monday.
@@ -505,7 +505,7 @@ export default function FractionalCmoPage() {
             It&apos;s ongoing.
           </Body>
           <Body>
-            A fractional CMO agency usually means a firm supplying both the seat and
+            A fractional CMO practice usually means a firm supplying both the seat and
             the hands behind it. Both sit in the same place here, without the layers.
             We keep the operation small on purpose and run the production side with
             modern tools, so the senior hours go to your business instead of to people
@@ -527,7 +527,7 @@ export default function FractionalCmoPage() {
             delivery stay with the same person.
           </Body>
           <Body>
-            Our clients are our priority, we are not a high-volume agency. The person
+            Our clients are our priority, we are not a high-volume practice. The person
             who sets the direction is the person who runs it, and you won&apos;t be
             handed to somebody junior once the contract is signed.
           </Body>
@@ -573,7 +573,7 @@ export default function FractionalCmoPage() {
         {/* ===== 11 ===== FAQ. Visible strings and FAQPage strings are the same
             objects, so parity cannot drift. Accordion (Tim, 2026-08-18): native
             <details>/<summary>, answer stays in the DOM whether collapsed or
-            open. FaqAnswer keeps the O5 in-answer link to the marketing-agency
+            open. FaqAnswer keeps the O5 in-answer link to the marketing-consultancy
             post intact; only the wrapper changed. */}
         <Section id="faq" heading="Common Questions" label="Frequently Asked Questions">
           <div className="faq-accordion-list max-w-3xl">

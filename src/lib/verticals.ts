@@ -79,7 +79,7 @@ export const verticals: Record<string, VerticalData> = {
     painPoints: [
       "Your website looks credible but is not generating leads on its own",
       "You have built your practice on referrals, but the pipeline is unpredictable month to month",
-      "You have tried a marketing agency before and the results did not match the pitch",
+      "You have tried a marketing firm before and the results did not match the pitch",
       "Competing firms in your market are showing up on Google and you are not",
       "You know you need to invest in digital marketing but do not know where the money should go first",
     ],
@@ -255,7 +255,7 @@ export const verticals: Record<string, VerticalData> = {
           "Paid campaigns can start bringing in booked appointments within the first few weeks. Search visibility and reputation-driven growth take longer, usually 3 to 6 months to compound. We tell you which one is doing the work at any given point so the timeline never surprises you.",
       },
       {
-        question: "How is this different from a dental-only marketing agency?",
+        question: "How is this different from a dental-only marketing firm?",
         answer:
           "Dental-only shops run the same playbook across hundreds of practices, which is efficient for them and generic for you. We work across professional services, so what we bring is a marketing system built around your positioning, not a template with your logo dropped in. If your goal is to look like every other practice in the area, we are the wrong call. If it is to be the practice people ask for by name, that is where we start.",
       },
@@ -439,7 +439,7 @@ export const verticals: Record<string, VerticalData> = {
       "Your website exists but you would not send a prospect there to learn about your firm",
       "Younger clients are researching advisors online before they ever pick up the phone, and you are not showing up",
       "You know your firm is different, but your marketing looks exactly like every other advisor in town",
-      "You have considered hiring a marketing agency but the ones you have talked to do not understand compliance or your business model",
+      "You have considered hiring a marketing firm but the ones you have talked to do not understand compliance or your business model",
     ],
     whatWeDo: {
       header: "Marketing That Actually Works for Financial Advisors",
@@ -495,7 +495,7 @@ export const verticals: Record<string, VerticalData> = {
       },
       {
         question:
-          "How is this different from a financial advisor marketing agency that only works with advisors?",
+          "How is this different from a financial advisor marketing firm that only works with advisors?",
         answer:
           "Specialist shops run the same playbook across hundreds of advisors, which is efficient for them and generic for you. We work across professional services, so what we bring is a marketing system built around your positioning, not a template with your logo dropped in. If your goal is to look like every other advisor in your market, we are the wrong call. If it's to be the one people name when a friend asks who they should talk to, that's where we start.",
       },
