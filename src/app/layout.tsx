@@ -26,9 +26,9 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.vboadv.com'),
-  title: 'Marketing Consultancy Miami | VBO Advertising',
+  title: 'Marketing Consultant Who Does the Work | VBO Advertising',
   description:
-    'Founder-led marketing consultancy and studio in Miami. Strategy first, disciplined execution across paid, social, SEO, brand, and creative.',
+    'Marketing consultant and studio in Miami. Strategy first, disciplined execution across paid, social, SEO, brand, and creative. You work with me.',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: 'Marketing Consultancy Miami | VBO Advertising',
+    title: 'Marketing Consultant Who Does the Work | VBO Advertising',
     description:
       'Founder-led marketing consultancy and studio in Miami. Strategy first, disciplined execution across paid, social, SEO, brand, and creative.',
     type: 'website',
