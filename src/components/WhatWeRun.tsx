@@ -189,7 +189,7 @@ export default function WhatWeRun() {
           (see the divider between this section and The Approach below). */}
       <div className="retro-divider-strip" aria-hidden />
 
-      {/* Band 2: marble strip, title, subhead, four client tiles */}
+      {/* Band 2: marble strip, title, subhead, client tiles */}
       <div
         className="relative py-10 md:py-12 lg:py-[52px] px-8 md:px-12 lg:px-20 xl:px-24"
         style={{
@@ -236,13 +236,27 @@ export default function WhatWeRun() {
             </p>
           </motion.div>
 
+          {/* Flex rather than grid since the roster went to five (Sidefoot
+              added 2026-09-03). The widths below reproduce the old grid
+              columns exactly (2-up mobile at gap-3.5, 5-up desktop at
+              gap-5), so a FULL row lands pixel-identical to the grid this
+              replaced and `justify-center` changes nothing for it. What it
+              buys is the odd tile: five into two columns leaves an orphan
+              on mobile, which a grid parks hard left. Centering that tile
+              is the only thing that visibly differs, and it keeps working
+              at six, seven, eight without another layout change. */}
           <motion.div
             {...fadeProps(24, 0.6, 0.15)}
             animate={marbleInView ? { opacity: 1, y: 0 } : {}}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 lg:gap-5"
+            className="flex flex-wrap justify-center gap-3.5 lg:gap-5"
           >
             {clients.map((client) => (
-              <ClientGlassTile key={client.name} client={client} size="compact" />
+              <div
+                key={client.name}
+                className="w-[calc(50%_-_0.4375rem)] lg:w-[calc(20%_-_1rem)]"
+              >
+                <ClientGlassTile client={client} size="compact" />
+              </div>
             ))}
           </motion.div>
         </div>

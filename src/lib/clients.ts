@@ -37,4 +37,10 @@ export const clients: Client[] = [
     logo: '/images/clients/fudge-pie-white.png',
     variant: 'image',
   },
+  {
+    name: 'Sidefoot',
+    href: 'https://sidefoot.app',
+    logo: '/images/clients/sidefoot-white.svg',
+    variant: 'image',
+  },
 ]

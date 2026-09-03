@@ -30,7 +30,7 @@ export default function ClientGlassTile({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Visit ${client.name}`}
-      className={`client-glass group relative flex items-center justify-center overflow-hidden rounded-2xl border border-white/10 transition-all duration-500 ease-out hover:border-[#B8962E]/50 hover:-translate-y-1 ${
+      className={`client-glass group relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-white/10 transition-all duration-500 ease-out hover:border-[#B8962E]/50 hover:-translate-y-1 ${
         compact ? 'h-[116px] lg:h-[150px]' : 'h-[180px] md:h-[220px]'
       }`}
       style={{
