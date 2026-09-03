@@ -70,7 +70,11 @@ export default function ClientGlassTile({
             alt={`${client.name} logo`}
             className="opacity-70 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-500 ease-out"
             style={{
-              maxWidth: '70%',
+              // 70% for normal marks; `wide` clients get 88% because a very
+              // wide lockup hits the width cap long before the height cap
+              // and otherwise renders about half the height of its
+              // neighbours. See the `wide` note on the Client type.
+              maxWidth: client.wide ? '88%' : '70%',
               maxHeight: '70%',
               width: 'auto',
               height: 'auto',
