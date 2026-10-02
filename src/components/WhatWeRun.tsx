@@ -253,7 +253,7 @@ export default function WhatWeRun() {
             {clients.map((client) => (
               <div
                 key={client.name}
-                className="w-[calc(50%_-_0.4375rem)] lg:w-[calc(20%_-_1rem)]"
+                className="w-[calc(50%_-_0.4375rem)] lg:w-[calc(16.6667%_-_1.0417rem)]"
               >
                 <ClientGlassTile client={client} size="compact" />
               </div>

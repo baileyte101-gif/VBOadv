@@ -58,4 +58,12 @@ export const clients: Client[] = [
     // 88 sits level with Sir Galloway and Fudge Pie.
     wide: true,
   },
+  {
+    // Added 2026-10-02 (Tim): every current client shows on the wall.
+    // Jules's reverse lockup from the brand kit, copied in unchanged.
+    name: 'Hayley Style',
+    href: 'https://www.hayleystyle.com',
+    logo: '/images/clients/hayley-style-white.png',
+    variant: 'image',
+  },
 ]
