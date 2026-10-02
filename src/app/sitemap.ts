@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { verticalSlugs } from "@/lib/verticals";
 import { INDEXABLE_VERTICALS, INDEXABLE_PAGES } from "@/lib/indexable";
 import { getAllPosts } from "@/lib/blog";
+import { WORK_INDEX_SLUG, IPPE_SLUG, WORK_UPDATED } from "@/lib/work";
 
 const HOST = "https://www.vboadv.com";
 
@@ -41,6 +42,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       : []),
   ];
 
+  // 2026-10-02: the Work section (Vega's brief of 2026-09-25). Each entry
+  // joins the sitemap only when its slug is in INDEXABLE_PAGES, the same
+  // switch that flips the page's own robots meta, so a noindexed page is
+  // never listed. Real lastmod dates, not the build time.
+  const workPages: MetadataRoute.Sitemap = [
+    { slug: WORK_INDEX_SLUG, updated: WORK_UPDATED, priority: 0.7 },
+    { slug: IPPE_SLUG, updated: WORK_UPDATED, priority: 0.8 },
+  ]
+    .filter((p) => INDEXABLE_PAGES.has(p.slug))
+    .map((p) => ({
+      url: `${HOST}/${p.slug}`,
+      lastModified: new Date(p.updated),
+      changeFrequency: "monthly" as const,
+      priority: p.priority,
+    }));
+
   const verticalPages: MetadataRoute.Sitemap = verticalSlugs
     .filter((slug) => INDEXABLE_VERTICALS.has(slug))
     .map((slug) => ({
@@ -73,5 +90,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  return [...staticPages, ...verticalPages, ...postPages];
+  return [...staticPages, ...workPages, ...verticalPages, ...postPages];
 }

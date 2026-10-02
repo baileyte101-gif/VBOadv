@@ -23,6 +23,9 @@ const footerLinks = [
   { href: '/professional-services/law-firms', label: 'Marketing for Law Firms' },
   { href: '/professional-services/med-spas', label: 'Marketing for Med Spas' },
   { href: '/insights', label: 'VBO Insights' },
+  // 2026-10-02 (Vega): the new Work section. The VBO Studio link waits for
+  // the Studio page's own launch.
+  { href: '/work', label: 'Work' },
 ]
 
 export default function SiteFooter() {
