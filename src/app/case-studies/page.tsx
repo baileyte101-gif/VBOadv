@@ -6,6 +6,7 @@ import CTASection from '@/components/CTASection'
 import SiteFooter from '@/components/SiteFooter'
 import { INDEXABLE_PAGES } from '@/lib/indexable'
 import {
+  WORK_INDEX_NAME,
   WORK_INDEX_SLUG,
   WORK_INDEX_URL,
   WORK_INDEX_TITLE,
@@ -20,8 +21,7 @@ import {
 } from '@/lib/work'
 import './work.css'
 
-// Noindex and out of the sitemap until 'work' is added to src/lib/indexable.ts
-// in the go-live commit.
+// Noindex and out of the sitemap unless 'case-studies' is in src/lib/indexable.ts.
 const IS_INDEXABLE = INDEXABLE_PAGES.has(WORK_INDEX_SLUG)
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function WorkIndexPage() {
+export default function CaseStudiesIndexPage() {
   return (
     <>
       <script
@@ -53,13 +53,13 @@ export default function WorkIndexPage() {
       <Nav />
 
       <main className="vw pt-16">
-        {/* Intro: plain ground, 60 to 120 words above the card so the index
-            is never an empty shell (Vega). */}
+        {/* Intro: plain ground, Tim's two sentences above the card (2026-10-05).
+            The small "Case Studies" label that sat over the old "Work" heading
+            is gone: it would now repeat the heading word for word. */}
         <section className="vw-sec vw-hero ground-plain">
           <div className="vw-wrap">
-            <p className="vw-label">Case Studies</p>
             <div className="vw-accent" aria-hidden />
-            <h1>Work</h1>
+            <h1>{WORK_INDEX_NAME}</h1>
             <div className="vw-body">
               {WORK_INDEX_INTRO.map((p) => (
                 <p key={p}>{p}</p>

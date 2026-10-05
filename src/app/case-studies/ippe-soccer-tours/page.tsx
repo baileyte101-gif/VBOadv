@@ -23,6 +23,8 @@ import {
   IPPE_NEXT,
   ippeArticleSchema,
   ippeBreadcrumbSchema,
+  WORK_INDEX_NAME,
+  WORK_INDEX_PATH,
 } from '@/lib/work'
 import '../work.css'
 
@@ -67,7 +69,7 @@ export default function IppeCaseStudyPage() {
           <div className="vw-wrap vw-hero-grid">
             <div>
               <p className="vw-label">
-                <a href="/work">Work</a> / {IPPE_CLIENT}
+                <a href={WORK_INDEX_PATH}>{WORK_INDEX_NAME}</a> / {IPPE_CLIENT}
               </p>
               <div className="vw-accent" aria-hidden />
               <h1>{IPPE_H1}</h1>

@@ -14,12 +14,13 @@ export const INDEXABLE_VERTICALS = new Set<string>([
 
 // Top-level static pages.
 // Held out until each one's go-live (add the slug here, in the go-live commit,
-// and nowhere else). "work" and "work/ippe-soccer-tours" went in on 2026-10-02,
-// after Chris approved the case study, its figures and its photos on 9/29.
+// and nowhere else). The case study section went in on 2026-10-02, after
+// Chris approved the case study, its figures and its photos on 9/29, as "work"
+// and "work/ippe-soccer-tours"; renamed to "case-studies" on 2026-10-05.
 // Still held: "studio" (VBO Studio, after Tim approves the page and the
 // "Locked." film exists).
 export const INDEXABLE_PAGES = new Set<string>([
   "fractional-cmo",
-  "work",
-  "work/ippe-soccer-tours",
+  "case-studies",
+  "case-studies/ippe-soccer-tours",
 ]);

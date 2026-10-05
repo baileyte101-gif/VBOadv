@@ -23,9 +23,9 @@ const footerLinks = [
   { href: '/professional-services/law-firms', label: 'Marketing for Law Firms' },
   { href: '/professional-services/med-spas', label: 'Marketing for Med Spas' },
   { href: '/insights', label: 'VBO Insights' },
-  // 2026-10-02 (Vega): the new Work section. The VBO Studio link waits for
-  // the Studio page's own launch.
-  { href: '/work', label: 'Work' },
+  // 2026-10-02 (Vega): the case study section, renamed from Work on
+  // 2026-10-05. The VBO Studio link waits for the Studio page's own launch.
+  { href: '/case-studies', label: 'Case Studies' },
 ]
 
 export default function SiteFooter() {
