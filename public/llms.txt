@@ -10,8 +10,8 @@ VBO Advertising is a Miami-based marketing consultant and studio founded by Tim 
 - [Fractional CMO Services](https://www.vboadv.com/fractional-cmo): What a fractional CMO does, what it costs, and when a business needs one
 - [AI-Enabled Marketing Consultancy](https://www.vboadv.com/ai-enabled-marketing): VBO's modern operational approach, comparing traditional vs AI-enabled vs AI-first operating models
 - [Insights](https://www.vboadv.com/insights): VBO's blog on marketing strategy, creative, and performance
-- [Work](https://www.vboadv.com/work): Client work from VBO: the brief, what we built, and what changed afterward, told with each client's OK
-- [IPPE Soccer Tours case study](https://www.vboadv.com/work/ippe-soccer-tours): How VBO rebuilt IPPE Soccer Tours' brand and website and runs the ads that bring families in, driving more responses and opportunities
+- [Case Studies](https://www.vboadv.com/case-studies): Real client case studies told in partnership with our clients: what the business needed, what we built, and what changed
+- [IPPE Soccer Tours case study](https://www.vboadv.com/case-studies/ippe-soccer-tours): How VBO rebuilt IPPE Soccer Tours' brand and website and runs the ads that bring families in, driving more responses and opportunities
 
 ## Services
 

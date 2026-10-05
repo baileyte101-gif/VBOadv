@@ -1,7 +1,9 @@
 import type { InlineLinkSpec } from '@/lib/linkify'
 
 /*
- * The "Work" section: the /work index and the IPPE Soccer Tours case study.
+ * The "Case Studies" section: the /case-studies index and the IPPE Soccer
+ * Tours case study. Renamed from "Work" (/work) on 2026-10-05 at Tim's
+ * request; next.config.js sends every /work URL here permanently.
  *
  * Copy is Mary's case study (2026-09-25 PM, section 3), with her recommended
  * number-free headline (option 1), verbatim. URL, titles, descriptions,
@@ -23,30 +25,36 @@ import type { InlineLinkSpec } from '@/lib/linkify'
 
 export const WORK_HOST = 'https://www.vboadv.com'
 
-/** Real lastmod for the sitemap. Set to the go-live day, 2026-10-02. */
-export const WORK_UPDATED = '2026-10-02'
+/**
+ * Real lastmod for the sitemap. Went live 2026-10-02; both pages changed on
+ * 2026-10-05 when the section moved to /case-studies.
+ */
+export const WORK_UPDATED = '2026-10-05'
 
 // ---------------------------------------------------------------------------
-// /work index
+// /case-studies index
 // ---------------------------------------------------------------------------
 
-export const WORK_INDEX_SLUG = 'work'
-export const WORK_INDEX_URL = `${WORK_HOST}/work`
-export const WORK_INDEX_TITLE = 'Work: Case Studies | VBO Advertising'
+export const WORK_INDEX_NAME = 'Case Studies'
+export const WORK_INDEX_SLUG = 'case-studies'
+export const WORK_INDEX_PATH = `/${WORK_INDEX_SLUG}`
+export const WORK_INDEX_URL = `${WORK_HOST}${WORK_INDEX_PATH}`
+export const WORK_INDEX_TITLE = 'Case Studies | VBO Advertising'
 export const WORK_INDEX_DESCRIPTION =
-  "Client work from VBO: the brief, what we built, and what changed afterward, told with each client's OK."
+  'Real client case studies told in partnership with our clients: what the business needed, what we built, and what changed.'
 
+// Tim's copy, 2026-10-05, verbatim. The second paragraph is removed at his
+// request.
 export const WORK_INDEX_INTRO = [
-  "These are client stories, told with each client's OK: what the business needed, what we built, and what changed afterward. Every result comes with the period it covers.",
-  'Each one ends with what the client said about working with us. The first is IPPE Soccer Tours, which takes American players inside English football and has worked with us since May 2026.',
+  'These are real client case studies told in partnership with our clients. Each case study highlights what the business needed, what we built, and what changed and what resulted.',
 ]
 
 // ---------------------------------------------------------------------------
-// /work/ippe-soccer-tours
+// /case-studies/ippe-soccer-tours
 // ---------------------------------------------------------------------------
 
-export const IPPE_SLUG = 'work/ippe-soccer-tours'
-export const IPPE_PATH = '/work/ippe-soccer-tours'
+export const IPPE_SLUG = `${WORK_INDEX_SLUG}/ippe-soccer-tours`
+export const IPPE_PATH = `/${IPPE_SLUG}`
 export const IPPE_URL = `${WORK_HOST}${IPPE_PATH}`
 
 /** The day the page actually went public. The carousel still posts 10/8. */
@@ -268,7 +276,7 @@ export const ippeBreadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: WORK_HOST },
-    { '@type': 'ListItem', position: 2, name: 'Work', item: WORK_INDEX_URL },
+    { '@type': 'ListItem', position: 2, name: WORK_INDEX_NAME, item: WORK_INDEX_URL },
     { '@type': 'ListItem', position: 3, name: IPPE_CLIENT, item: IPPE_URL },
   ],
 }
@@ -276,7 +284,7 @@ export const ippeBreadcrumbSchema = {
 export const workIndexSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'Work',
+  name: WORK_INDEX_NAME,
   url: WORK_INDEX_URL,
   description: WORK_INDEX_DESCRIPTION,
   isPartOf: { '@id': `${WORK_HOST}/#website` },
@@ -288,6 +296,6 @@ export const workIndexBreadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: WORK_HOST },
-    { '@type': 'ListItem', position: 2, name: 'Work', item: WORK_INDEX_URL },
+    { '@type': 'ListItem', position: 2, name: WORK_INDEX_NAME, item: WORK_INDEX_URL },
   ],
 }

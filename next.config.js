@@ -29,6 +29,20 @@ const nextConfig = {
         destination: '/insights/small-founder-led-team-outruns-big-firm',
         permanent: true,
       },
+      // 2026-10-05: Work renamed to Case Studies at Tim's request, index and
+      // every case study under it. /work went live and indexable on
+      // 2026-10-02 and is linked from social, so both the index and its
+      // children redirect permanently (308) rather than 404ing. Do not remove.
+      {
+        source: '/work',
+        destination: '/case-studies',
+        permanent: true,
+      },
+      {
+        source: '/work/:slug*',
+        destination: '/case-studies/:slug*',
+        permanent: true,
+      },
     ]
   },
 }

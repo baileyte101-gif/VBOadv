@@ -1,5 +1,5 @@
 /* ==========================================================================
-   The "Work" section: /work and the case study pages.
+   The "Case Studies" section: /case-studies and the case study pages.
 
    Jules's "Layout 1: Section System" (Tim's pick, 2026-09-25), ported from
    Jules/designs/vbo/website/2026-09-28-work-case-study-ippe/src/ (cs-base.css
@@ -283,7 +283,7 @@
   .vw-cta .vw-lead { font-size: 18px; margin-bottom: 52px; }
 }
 
-/* /work index card */
+/* /case-studies index card */
 .vw .vw-cards { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 8px; }
 @media (min-width: 900px) { .vw .vw-cards { grid-template-columns: 1fr 1fr; } }
 .vw .vw-card {

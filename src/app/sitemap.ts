@@ -42,7 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       : []),
   ];
 
-  // 2026-10-02: the Work section (Vega's brief of 2026-09-25). Each entry
+  // 2026-10-02: the Case Studies section (Vega's brief of 2026-09-25). Each entry
   // joins the sitemap only when its slug is in INDEXABLE_PAGES, the same
   // switch that flips the page's own robots meta, so a noindexed page is
   // never listed. Real lastmod dates, not the build time.
