@@ -29,7 +29,11 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.vboadv.com'),
-  title: 'Marketing Consultant Who Does the Work | VBO Advertising',
+  // 2026-10-08, Tim: "Marketing Consultant & Studio" replaces "Marketing
+  // Consultant Who Does the Work" in the browser tab and on Google (bee brand
+  // evolution, step 07). Title only; the descriptions are unchanged and any
+  // copy change to them goes through Mary.
+  title: 'Marketing Consultant & Studio | VBO Advertising',
   description:
     'Marketing consultant and studio in Miami. Strategy first, disciplined execution across paid, social, SEO, brand, and creative. You work with me.',
   // The bee replaces the V (2026-10-08 logo pack, web-icons/). 16 to 48 px
@@ -46,7 +50,7 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
   },
   openGraph: {
-    title: 'Marketing Consultant Who Does the Work | VBO Advertising',
+    title: 'Marketing Consultant & Studio | VBO Advertising',
     description:
       'Founder-led marketing consultancy and studio in Miami. Strategy first, disciplined execution across paid, social, SEO, brand, and creative.',
     type: 'website',
