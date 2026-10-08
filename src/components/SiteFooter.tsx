@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import SocialIcons from '@/components/SocialIcons'
+import BeeLockup from '@/components/bee/BeeLockup'
 
 /**
  * Sitewide footer. Extracted from src/app/page.tsx unchanged in appearance when
@@ -50,13 +50,9 @@ export default function SiteFooter() {
         </nav>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <Image
-            src="/images/logo-transparent.png"
-            alt="VBO"
-            width={834}
-            height={222}
-            className="h-8 w-auto"
-          />
+          {/* The bee and VBO lockup (2026-10-08 logo pack), so every page
+              ends on the pair. */}
+          <BeeLockup className="vbo-lk-foot" />
 
           <p className="font-mono text-[#8A8E92] text-[10px] tracking-[0.2em] uppercase text-center">
             © 2026 VBO Advertising. Miami, FL. All rights reserved.

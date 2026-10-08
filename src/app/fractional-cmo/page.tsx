@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import { INDEXABLE_PAGES } from "@/lib/indexable";
+import { SHARE_IMAGE } from "@/lib/share";
 
 const PRODUCTION_HOST = "https://www.vboadv.com";
 const SLUG = "fractional-cmo";
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "VBO Advertising",
     url: CANONICAL,
+    images: [SHARE_IMAGE],
   },
 };
 

@@ -1,0 +1,53 @@
+/* ==========================================================================
+   The bee lockup, sitewide (header and footer on every page).
+   Bee brand evolution, step 07, 2026-10-08. Spec: Jules's notes, section 2
+   (Jules/designs/vbo/website/2026-10-bee-on-site/notes-bee-on-site-2026-10-08.md).
+
+   Plain CSS on purpose: the sizes are calc() products, and Tailwind silently
+   drops an arbitrary value that contains * or / (see the deploy protocol).
+   ========================================================================== */
+
+/* The sprite the lockups draw from. Clipped, never display:none. */
+.vbo-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* Sized by the height of the V (--v). The lockup file is 725.708 x 120 units
+   with a V of 100, so: height = 1.2 V, width = 7.25708 V. */
+.vbo-lk {
+  --v: 30.3px;
+  display: block;
+  flex: none;
+  overflow: visible;
+  height: calc(var(--v) * 1.2);
+  width: calc(var(--v) * 7.25708);
+}
+.vbo-lk--dark .vbo-lk-b { color: #B8962E; }
+.vbo-lk--dark .vbo-lk-w { color: #FFFFFF; }
+.vbo-lk--light .vbo-lk-b,
+.vbo-lk--light .vbo-lk-w { color: #0D0D0D; }
+
+/* Header: V 22 px on phones (159.7 x 26.4, inside today's 171 px logo slot,
+   so the menu and Let's Connect stay put), V 30.3 px from 768 (219.9 x 36.4,
+   today's letter size). Footer: V 20.2 px (146.6 x 24.2, above the pack's
+   145 px minimum). */
+.vbo-lk-nav { --v: 22px; }
+@media (min-width: 768px) {
+  .vbo-lk-nav { --v: 30.3px; }
+}
+.vbo-lk-foot { --v: 20.2px; }
+
+/* While the homepage opening plays, the header's own bee waits (keeping its
+   box) and the flying bee lands exactly on it. Failsafe: it shows at 4.2 s
+   even if the opening's script never runs. The class is only ever set by the
+   homepage's opening gate. */
+html.bee-op-wait .vbo-lk[data-bee-target] .vbo-lk-b {
+  visibility: hidden;
+  animation: vbo-lk-failsafe 0s linear 4.2s forwards;
+}
+@keyframes vbo-lk-failsafe {
+  to { visibility: visible; }
+}

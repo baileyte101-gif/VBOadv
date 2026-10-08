@@ -5,6 +5,7 @@ import ClosingBlock from '@/components/ClosingBlock'
 import CTASection from '@/components/CTASection'
 import SiteFooter from '@/components/SiteFooter'
 import { INDEXABLE_PAGES } from '@/lib/indexable'
+import { SHARE_IMAGE } from '@/lib/share'
 import {
   WORK_INDEX_NAME,
   WORK_INDEX_SLUG,
@@ -35,6 +36,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'VBO Advertising',
     url: WORK_INDEX_URL,
+    images: [SHARE_IMAGE],
   },
 }
 

@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
 import Link from 'next/link'
+import BeeLockup from '@/components/bee/BeeLockup'
 import { usePathname } from 'next/navigation'
 
 /* Light version, 2026-08-21: the site is the one-page homepage again, so this
@@ -58,20 +58,16 @@ export default function Nav() {
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo: the bee and VBO lockup from the 2026-10-08 logo pack
+              (bee brand evolution). Inline SVG drawn from the page's sprite,
+              so it paints with the HTML and needs no request. The homepage
+              opening screen's bee lands on this lockup's bee (target). */}
           <a
             href="/"
-            className="flex items-center"
+            className="flex flex-none items-center"
             aria-label="VBO Home"
           >
-            <Image
-              src="/images/logo-transparent.png"
-              alt="VBO"
-              width={834}
-              height={222}
-              className="h-12 w-auto"
-              priority
-            />
+            <BeeLockup className="vbo-lk-nav" decorative target />
           </a>
 
           {/* Desktop Nav Links */}

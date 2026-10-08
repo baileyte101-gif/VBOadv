@@ -2,7 +2,10 @@ import type { Metadata } from 'next'
 import { Barlow_Condensed, Inter, Space_Mono } from 'next/font/google'
 import Script from 'next/script'
 import MotionProvider from '@/components/MotionProvider'
+import BeeSprite from '@/components/bee/BeeSprite'
+import { SHARE_IMAGE } from '@/lib/share'
 import './globals.css'
+import '@/components/bee/bee-brand.css'
 
 const barlow = Barlow_Condensed({
   subsets: ['latin'],
@@ -29,24 +32,32 @@ export const metadata: Metadata = {
   title: 'Marketing Consultant Who Does the Work | VBO Advertising',
   description:
     'Marketing consultant and studio in Miami. Strategy first, disciplined execution across paid, social, SEO, brand, and creative. You work with me.',
+  // The bee replaces the V (2026-10-08 logo pack, web-icons/). 16 to 48 px
+  // use the pack's small cut on a black tile; the home-screen icon is the full
+  // bee on black. /favicon-dark.png and /favicon-light.png are no longer
+  // referenced here but now hold the bee too, for the static pages in public/
+  // that still link them.
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon-dark.png', type: 'image/png', sizes: '256x256', media: '(prefers-color-scheme: dark)' },
-      { url: '/favicon-light.png', type: 'image/png', sizes: '256x256', media: '(prefers-color-scheme: light)' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
     shortcut: '/favicon.ico',
-    apple: [
-      { url: '/favicon-dark.png', sizes: '256x256', media: '(prefers-color-scheme: dark)' },
-      { url: '/favicon-light.png', sizes: '256x256', media: '(prefers-color-scheme: light)' },
-    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
   },
   openGraph: {
     title: 'Marketing Consultant Who Does the Work | VBO Advertising',
     description:
       'Founder-led marketing consultancy and studio in Miami. Strategy first, disciplined execution across paid, social, SEO, brand, and creative.',
     type: 'website',
+    images: [SHARE_IMAGE],
   },
+  // Title, description and image fill in from each page's openGraph.
+  twitter: { card: 'summary_large_image' },
+  // The name under the icon when someone saves the site to a phone's home
+  // screen. Set directly: Next's appleWebApp option would also switch on
+  // full-screen "web app" mode, which this site does not want.
+  other: { 'apple-mobile-web-app-title': 'VBO' },
 }
 
 // Phase 0 SEO foundation schema. Renders on every page via the root layout.
@@ -135,6 +146,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${barlow.variable} ${inter.variable} ${spaceMono.variable}`}
+      // The homepage's opening-screen gate adds a class to <html> before
+      // hydration (see src/components/bee/BeeOpening.tsx). Same pattern as a
+      // theme script; this only silences React's dev-mode warning about it.
+      suppressHydrationWarning
     >
       {/* Meta Pixel */}
       <Script id="meta-pixel" strategy="afterInteractive">
@@ -190,6 +205,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
+        {/* The bee and the wordmark, once per page, for every logo to draw from. */}
+        <BeeSprite />
         <MotionProvider>{children}</MotionProvider>
       </body>
     </html>

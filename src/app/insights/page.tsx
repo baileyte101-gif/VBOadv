@@ -5,6 +5,7 @@ import Nav from '@/components/Nav'
 import CTASection from '@/components/CTASection'
 import { getAllPosts, getFeaturedPost } from '@/lib/blog'
 import InsightsIndex from '@/components/blog/InsightsIndex'
+import { SHARE_IMAGE } from '@/lib/share'
 
 export const metadata: Metadata = {
   title: 'Insights | VBO | Marketing Strategy & Perspective',
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
       'Straight talk on marketing strategy and execution from VBO, a founder-led consultancy based in Miami.',
     type: 'website',
     url: 'https://www.vboadv.com/insights',
+    images: [SHARE_IMAGE],
   },
   alternates: {
     canonical: 'https://www.vboadv.com/insights',

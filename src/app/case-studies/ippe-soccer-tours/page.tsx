@@ -4,6 +4,7 @@ import Nav from '@/components/Nav'
 import ClosingBlock from '@/components/ClosingBlock'
 import SiteFooter from '@/components/SiteFooter'
 import { INDEXABLE_PAGES } from '@/lib/indexable'
+import { SHARE_IMAGE } from '@/lib/share'
 import { linkify } from '@/lib/linkify'
 import {
   IPPE_SLUG,
@@ -44,6 +45,7 @@ export const metadata: Metadata = {
     type: 'article',
     siteName: 'VBO Advertising',
     url: IPPE_URL,
+    images: [SHARE_IMAGE],
   },
 }
 

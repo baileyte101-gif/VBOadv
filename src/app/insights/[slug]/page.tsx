@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SHARE_IMAGE } from '@/lib/share'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -26,6 +27,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Absolute URL. Relative paths make the large-image card render blank on the
   // platforms that do not resolve against the page URL.
   const ogImage = post.image ? `https://www.vboadv.com${post.image}` : undefined
+  // A post without its own picture shares the site's (the bee lockup).
+  const ogImages = ogImage
+    ? [{ url: ogImage, alt: post.imageAlt ?? post.title }]
+    : [SHARE_IMAGE]
 
   return {
     title: `${post.title} | VBO Insights`,
@@ -37,15 +42,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.date,
       authors: [post.author],
       url: `https://www.vboadv.com/insights/${post.slug}`,
-      ...(ogImage && {
-        images: [{ url: ogImage, alt: post.imageAlt ?? post.title }],
-      }),
+      images: ogImages,
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      ...(ogImage && { images: [ogImage] }),
+      images: [ogImage ?? SHARE_IMAGE.url],
     },
     alternates: {
       canonical: `https://www.vboadv.com/insights/${post.slug}`,

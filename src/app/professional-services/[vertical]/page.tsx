@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { verticals, verticalSlugs } from "@/lib/verticals";
 import { INDEXABLE_VERTICALS } from "@/lib/indexable";
+import { SHARE_IMAGE } from "@/lib/share";
 import LandingPageTemplate from "@/components/LandingPageTemplate";
 import { GA4PageTracker } from "@/components/GA4Tracker";
 
@@ -40,6 +41,7 @@ export function generateMetadata({ params }: Props): Metadata {
       type: "website",
       siteName: "VBO Advertising",
       url: canonicalUrl,
+      images: [SHARE_IMAGE],
     },
   };
 }
