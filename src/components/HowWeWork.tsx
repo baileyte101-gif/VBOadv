@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import BeeLane from '@/components/bee/BeeLane'
 
 /*
  * Section 03. Card bodies and titles are Tim's own replacement lines,
@@ -57,8 +58,16 @@ export default function HowWeWork() {
          divider above and Life's band below are both black-family), and a real
          colour shift breaks it without inventing a sixth ground. Moved down from
          position 5, so it now carries full bottom padding. */
-      className="ground-harbour py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
+      className="ground-harbour py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative isolate overflow-hidden"
+      /* 2026-10-08, bee brand evolution: the bee flies here, in a lane
+         between the ground and the words; `isolate` keeps that layering
+         inside the section. */
+      data-bee="fly"
+      data-bee-fly="wwd"
+      data-bee-sec="wwd"
     >
+      <BeeLane />
+
       {/* Ghost section number. Was 04; renumbered to 03, 2026-08-11, when
           WhoWeWorkWith (03) came out of the page. */}
       <div
@@ -81,7 +90,7 @@ export default function HowWeWork() {
         aria-hidden
       />
 
-      <div className="relative z-10" ref={ref}>
+      <div className="relative z-10" ref={ref} data-bee-content>
         {/* Section header */}
         <motion.div
           initial={{ y: 16 }}

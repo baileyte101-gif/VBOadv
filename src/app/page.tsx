@@ -11,7 +11,11 @@ import SiteFooter from '@/components/SiteFooter'
 import ClosingBlock from '@/components/ClosingBlock'
 import Life from '@/components/Life'
 import RetroDivider from '@/components/RetroDivider'
+import WhyTheBee from '@/components/bee/WhyTheBee'
+import BeeFlight from '@/components/bee/BeeFlight'
+import { BeeOpeningGate, BeeOpeningLayer, BeeOpeningScript } from '@/components/bee/BeeOpening'
 import type { Metadata } from 'next'
+import '@/components/bee/bee-home.css'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -161,14 +165,27 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      {/* The bee brand evolution, 2026-10-08. The opening screen: the gate
+          decides before anything paints, the black layer sits over the page
+          from the first frame, and the animation (after the header, whose
+          bee it lands on) runs without waiting for hydration. See
+          src/components/bee/BeeOpening.tsx. */}
+      <BeeOpeningGate />
+      <BeeOpeningLayer />
       <Nav />
+      <BeeOpeningScript />
       <Hero />
-      <Ticker
-        items={heroTickerItems}
-        textColorClass="text-[#8A8E92]"
-        bgClass="bg-[#0D0D0D]"
-        speed={30}
-      />
+      {/* The data-bee-sec wrappers mark where the flying bee's route is
+          anchored (src/components/bee/beeFlightEngine.ts). Plain blocks: no
+          styling, no effect on layout. */}
+      <div data-bee-sec="ticker">
+        <Ticker
+          items={heroTickerItems}
+          textColorClass="text-[#8A8E92]"
+          bgClass="bg-[#0D0D0D]"
+          speed={30}
+        />
+      </div>
       {/* Section order, redesign 2026-08-11: section 01 rebuilt as "What We
           Run" (was the problem statement). WhoWeWorkWith came out entirely
           on Tim's call, 2026-08-11. Its two jobs (client logos, "the brands
@@ -185,12 +202,23 @@ export default function Home() {
       {/* Gold bar marking the step out of the plain ground and into the gold
           linework. Same device as the divider further down the page. */}
       <div className="retro-divider-strip" aria-hidden />
-      <TheApproach />
-      <RetroDivider />
+      <div data-bee-sec="approach">
+        <TheApproach />
+      </div>
+      <div data-bee-sec="band">
+        <RetroDivider />
+      </div>
       <HowWeWork />
-      <Life />
-      <Industries />
+      <div data-bee-sec="life">
+        <Life />
+      </div>
+      <div data-bee-sec="ind">
+        <Industries />
+      </div>
       <About />
+      {/* Section 06, new 2026-10-08: Why the bee, on Egg, linking to the
+          story page. The flying bee lands here. */}
+      <WhyTheBee />
 
       {/* CTA and footer share one continuous skyline ground */}
       <ClosingBlock>
@@ -198,6 +226,9 @@ export default function Home() {
 
         <SiteFooter />
       </ClosingBlock>
+
+      {/* Starts the flying bee once the page is idle (its own small chunk). */}
+      <BeeFlight />
     </main>
   )
 }

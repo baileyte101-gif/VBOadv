@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import SocialIcons from '@/components/SocialIcons'
+import BeeLane from '@/components/bee/BeeLane'
 
 const largeBrands = ['McDonalds', 'Formula E', 'Royal Caribbean Cruise Lines', 'Park West Gallery', 'Bilzin Sumberg']
 const smallBrands = ['Caricap', 'Plant Athletic', 'Purple Patch Fitness', 'Beckham Financial']
@@ -18,8 +19,16 @@ export default function About() {
       /* Ground 06: smoke / marble. Receives the gold fade from Industries above
          (the stat band that used to buffer that edge is gone) and fades out to
          the skyline below. Job: the human close before the ask. */
-      className="ground-smoke seam-in-out quiet-panel py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative overflow-hidden"
+      className="ground-smoke seam-in-out quiet-panel py-24 md:py-32 lg:py-40 px-8 md:px-12 lg:px-20 xl:px-24 relative isolate overflow-hidden"
+      /* 2026-10-08, bee brand evolution: the bee flies here, in a lane
+         between the ground and the words; `isolate` keeps that layering
+         inside the section. */
+      data-bee="fly"
+      data-bee-fly="about"
+      data-bee-sec="about"
     >
+      <BeeLane />
+
       {/* Ghost section number. Was 06; renumbered to 05, 2026-08-11, when
           WhoWeWorkWith (03) came out of the page. */}
       <div
@@ -42,7 +51,7 @@ export default function About() {
         aria-hidden
       />
 
-      <div className="relative z-10" ref={ref}>
+      <div className="relative z-10" ref={ref} data-bee-content>
         {/* Label + Headline */}
         <motion.div
           initial={{ y: 16 }}

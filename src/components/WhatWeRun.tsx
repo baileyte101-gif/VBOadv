@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { motion, useInView, useReducedMotion } from 'framer-motion'
 import ClientGlassTile from '@/components/ClientGlassTile'
 import { clients } from '@/lib/clients'
+import BeeLane from '@/components/bee/BeeLane'
 
 /* Icon set: one shared viewBox (0 0 32 32), one stroke weight (1.6), square
    caps, no fills, lifted as-is from Jules's approved build
@@ -104,7 +105,13 @@ export default function WhatWeRun() {
     // the client logos, blue again. Structure and copy per Tim's own
     // direction, 2026-08-11 (Jules/designs/vbo/website/section-01-2026-08/
     // treatment-04-tim/index.html + rationale.md addenda).
-    <section id="what-we-run" className="relative overflow-hidden">
+    // 2026-10-08, bee brand evolution: the bee flies here (data-bee="fly"),
+    // in a lane between the bands' grounds and their words. `isolate` keeps
+    // the layering inside this section; the client wall and its two gold
+    // strips are front panels (bee-front) the bee passes behind.
+    <section id="what-we-run" data-bee="fly" data-bee-fly="run" className="relative isolate overflow-hidden">
+      <BeeLane />
+
       {/* Ghost section number. Section 01 stays 01. */}
       <div
         className="absolute right-4 top-0 font-headline font-black leading-none select-none pointer-events-none text-[160px] md:text-[220px] lg:text-[280px]"
@@ -129,8 +136,8 @@ export default function WhatWeRun() {
       />
 
       {/* Band 1: blue top, label, headline, four-line grid */}
-      <div className="ground-plain step-up pt-24 md:pt-32 lg:pt-40 px-8 md:px-12 lg:px-20 xl:px-24 pb-16 md:pb-[72px] lg:pb-20">
-        <div className="max-w-[1120px] relative z-10" ref={topRef}>
+      <div data-bee-sec="run" className="ground-plain step-up pt-24 md:pt-32 lg:pt-40 px-8 md:px-12 lg:px-20 xl:px-24 pb-16 md:pb-[72px] lg:pb-20">
+        <div className="max-w-[1120px] relative z-10" ref={topRef} data-bee-content>
           <motion.div {...fadeProps(16, 0.55)} animate={topInView ? { opacity: 1, y: 0 } : {}}>
             <p className="section-label">What we run</p>
             <div className="section-accent" />
@@ -187,11 +194,12 @@ export default function WhatWeRun() {
       {/* Gold bar marking the step from the blue ground into the marble
           strip. Same element the site already uses at every ground change
           (see the divider between this section and The Approach below). */}
-      <div className="retro-divider-strip" aria-hidden />
+      <div className="retro-divider-strip bee-front" aria-hidden />
 
       {/* Band 2: marble strip, title, subhead, client tiles */}
       <div
-        className="relative py-10 md:py-12 lg:py-[52px] px-8 md:px-12 lg:px-20 xl:px-24"
+        data-bee-sec="wall"
+        className="relative bee-front py-10 md:py-12 lg:py-[52px] px-8 md:px-12 lg:px-20 xl:px-24"
         style={{
           // Deliberately not the shared `.ground-smoke` class, which
           // defaults to `background-size: cover`, the exact setting that
@@ -265,10 +273,10 @@ export default function WhatWeRun() {
       {/* Gold bar, marble's exit edge. Two transitions inside this section,
           two bars. See rationale.md for why one bar on only one edge would
           have read as unfinished rather than restrained. */}
-      <div className="retro-divider-strip" aria-hidden />
+      <div className="retro-divider-strip bee-front" aria-hidden />
 
       {/* Band 3: blue bottom, the closing claim */}
-      <div className="ground-plain step-up pt-16 md:pt-[72px] lg:pt-20 px-8 md:px-12 lg:px-20 xl:px-24 pb-24 md:pb-28 lg:pb-32">
+      <div data-bee-sec="runEnd" className="ground-plain step-up pt-16 md:pt-[72px] lg:pt-20 px-8 md:px-12 lg:px-20 xl:px-24 pb-24 md:pb-28 lg:pb-32">
         <div className="max-w-[1120px] relative z-10" ref={bottomRef}>
           <motion.p
             {...fadeProps(20, 0.65)}

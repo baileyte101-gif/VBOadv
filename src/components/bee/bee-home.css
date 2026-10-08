@@ -1,0 +1,267 @@
+/* ==========================================================================
+   The bee on the homepage: the opening screen, the flying bee, and section
+   06 (Why the bee). Bee brand evolution, step 07, 2026-10-08.
+   Spec: Jules's notes, sections 2 to 4
+   (Jules/designs/vbo/website/2026-10-bee-on-site/notes-bee-on-site-2026-10-08.md).
+   Reference build: Mack/artifacts/2026-10-bee-website/the-bee-on-vboadv.html.
+
+   Motion uses transform and opacity only. Plain CSS, not Tailwind arbitrary
+   values, because several values are calc() products.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. The opening screen (homepage, first load of a visit). Hidden unless the
+      gate script set html.bee-op before the page painted; with JavaScript
+      off it never shows. Failsafe: the layer clears at 4.2 s even if the
+      animation script never runs. The page underneath renders and loads
+      normally the whole time: nothing on it is hidden or delayed.
+   -------------------------------------------------------------------------- */
+.vbo-op {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #0D0D0D;
+  display: none;
+  contain: strict;
+}
+html.bee-op .vbo-op {
+  display: block;
+  animation: vbo-op-failsafe 0.35s ease 4.2s forwards;
+}
+@keyframes vbo-op-failsafe {
+  to { opacity: 0; visibility: hidden; }
+}
+.vbo-op-wm {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  overflow: visible;
+  opacity: 0;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+}
+.vbo-op-wml { color: #FFFFFF; }
+.vbo-op-bee {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1001;
+  visibility: hidden;
+  color: #B8962E;
+  pointer-events: none;
+  will-change: transform;
+}
+html:not(.bee-op) .vbo-op-bee { display: none; }
+.vbo-op-bob { position: absolute; inset: 0; }
+.vbo-op-bee svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+/* Wing hinges at (286, 196) and (226, 196) on the 512 artwork. */
+.vbo-op-bee .vbo-w-r,
+.vbo-bee .vbo-w-r { transform-origin: 55.859% 38.281%; }
+.vbo-op-bee .vbo-w-l,
+.vbo-bee .vbo-w-l { transform-origin: 44.141% 38.281%; }
+.vbo-op-bee.is-flying .vbo-w-r { animation: vbo-flap-r 0.16s ease-in-out infinite; }
+.vbo-op-bee.is-flying .vbo-w-l { animation: vbo-flap-l 0.16s ease-in-out infinite; }
+.vbo-op-bee.is-flying .vbo-op-bob { animation: vbo-op-bob 1.2s ease-in-out infinite; }
+@keyframes vbo-op-bob {
+  0%, 100% { transform: translateY(-2.5%); }
+  50% { transform: translateY(2.5%); }
+}
+@media print {
+  .vbo-op,
+  .vbo-op-bee { display: none !important; }
+}
+
+/* --------------------------------------------------------------------------
+   2. The flying bee. Every section it flies in has its own copy in a lane
+      between the section's ground (and ghost number) and its words, and the
+      section clips its own lane, so the bee can never draw over text or
+      outside its section. Sections without a lane are in front: the bee
+      slips under their edges. Layers inside a flying section: ground and
+      ghost number (auto), lane (1), content (10), front panels (3, the
+      client wall and its two gold strips).
+   -------------------------------------------------------------------------- */
+.vbo-lane {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.vbo-bee,
+.vbo-bee-rest { --bee: 30px; }
+@media (min-width: 768px) {
+  .vbo-bee,
+  .vbo-bee-rest { --bee: 36px; }
+}
+@media (min-width: 1024px) {
+  .vbo-bee,
+  .vbo-bee-rest { --bee: 40px; }
+}
+.vbo-bee {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--bee);
+  height: var(--bee);
+  visibility: hidden;
+  color: #B8962E;
+  will-change: transform;
+}
+/* Its colour follows the ground: gold on the dark grounds, black on Egg. */
+.bee-why .vbo-bee { color: #0D0D0D; }
+.vbo-bee-bob { position: absolute; inset: 0; }
+.vbo-bee svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+html.bee-flying .vbo-bee .vbo-w-r { animation: vbo-flap-r 0.16s ease-in-out infinite; }
+html.bee-flying .vbo-bee .vbo-w-l { animation: vbo-flap-l 0.16s ease-in-out infinite; }
+html.bee-flying .vbo-bee-bob { animation: vbo-bob 1.6s ease-in-out infinite; }
+html.bee-paused .vbo-bee * { animation-play-state: paused !important; }
+.vbo-bee-bob.is-landing { animation: vbo-land 0.34s ease-out 1; }
+@keyframes vbo-flap-r {
+  0%, 100% { transform: rotate(-16deg); }
+  50% { transform: rotate(6deg); }
+}
+@keyframes vbo-flap-l {
+  0%, 100% { transform: rotate(16deg); }
+  50% { transform: rotate(-6deg); }
+}
+@keyframes vbo-bob {
+  0%, 100% { transform: translateY(-1.5px); }
+  50% { transform: translateY(1.5px); }
+}
+@keyframes vbo-land {
+  0% { transform: scale(1); }
+  45% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+/* Front panels inside a flying section (What we run's client wall and the
+   two gold strips around it): the bee passes behind them. */
+.bee-front {
+  position: relative;
+  z-index: 3;
+}
+
+/* The bee at rest beside the Why the bee link: the landing spot, and the
+   still bee shown with reduced motion or no JavaScript. Hidden (keeping its
+   box) only while the flight runs. */
+.vbo-bee-rest {
+  display: block;
+  flex: none;
+  width: var(--bee);
+  height: var(--bee);
+  color: #0D0D0D;
+}
+html.bee-fly-on .vbo-bee-rest { visibility: hidden; }
+
+/* --------------------------------------------------------------------------
+   3. Section 06, Why the bee. Egg ground (Tim kept the section light).
+   -------------------------------------------------------------------------- */
+.bee-why {
+  background: #F2EDE4;
+  color: #0D0D0D;
+}
+.bee-why-ghost {
+  position: absolute;
+  right: 1rem;
+  top: 0;
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 900;
+  line-height: 1;
+  font-size: 160px;
+  color: rgb(13 13 13 / 0.06);
+  pointer-events: none;
+  user-select: none;
+}
+@media (min-width: 768px) {
+  .bee-why-ghost { font-size: 220px; }
+}
+@media (min-width: 1024px) {
+  .bee-why-ghost {
+    font-size: 280px;
+    right: auto;
+    left: 1.5rem;
+    top: 5.5rem;
+  }
+}
+.bee-why-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .bee-why-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: center;
+  }
+  .bee-why-grid .bee-why-text { grid-column: 2; grid-row: 1; }
+  .bee-why-grid .bee-why-photo { grid-column: 1; grid-row: 1; }
+}
+/* Label: the site's section label, in black because gold on Egg is too
+   faint for small type. */
+.bee-why-label {
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #0D0D0D;
+  margin: 0 0 1rem;
+}
+.bee-why-body {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  max-width: 46ch;
+  color: #0D0D0D;
+  margin: 0;
+}
+@media (min-width: 768px) {
+  .bee-why-body { font-size: 1.1875rem; }
+}
+.bee-why-linkrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 1.875rem;
+  min-height: 48px;
+}
+.bee-why-link {
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #0D0D0D;
+  text-decoration: none;
+  border-bottom: 2px solid #B8962E;
+  padding: 6px 0 4px;
+  transition: border-color 0.2s ease;
+}
+.bee-why-link:hover { border-bottom-color: #0D0D0D; }
+/* The sitewide focus ring is pale gold, which disappears on Egg. */
+.bee-why a:focus-visible { outline-color: #0D0D0D; }
+.bee-why-photo {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #E7E1D6;
+}
+.bee-why-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
