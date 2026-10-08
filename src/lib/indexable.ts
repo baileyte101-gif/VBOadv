@@ -17,10 +17,13 @@ export const INDEXABLE_VERTICALS = new Set<string>([
 // and nowhere else). The case study section went in on 2026-10-02, after
 // Chris approved the case study, its figures and its photos on 9/29, as "work"
 // and "work/ippe-soccer-tours"; renamed to "case-studies" on 2026-10-05.
+// "why-the-bee" went in on 2026-10-08 with the bee's soft web launch (Tim:
+// "All approved to take it live on the site").
 // Still held: "studio" (VBO Studio, after Tim approves the page and the
 // "Locked." film exists).
 export const INDEXABLE_PAGES = new Set<string>([
   "fractional-cmo",
   "case-studies",
   "case-studies/ippe-soccer-tours",
+  "why-the-bee",
 ]);

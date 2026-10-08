@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { SHARE_IMAGE } from '@/lib/share'
+import { BRAND_LOGO, SHARE_IMAGE } from '@/lib/share'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -78,7 +78,7 @@ function ArticleSchema({ post }: { post: NonNullable<ReturnType<typeof getPostBy
       url: 'https://www.vboadv.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.vboadv.com/images/logo-transparent.png',
+        url: BRAND_LOGO,
       },
     },
     mainEntityOfPage: {

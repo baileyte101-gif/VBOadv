@@ -16,3 +16,8 @@ export const SHARE_IMAGE = {
   height: 630,
   alt: 'VBO',
 }
+
+// The logo search engines show for VBO (Organization, LocalBusiness and the
+// blog's publisher schema): the bee on its black tile, logo pack
+// bee/vbo-bee-tile-512-2026-10-08.png, deployed byte for byte.
+export const BRAND_LOGO = 'https://www.vboadv.com/images/brand/vbo-bee-tile-512.png'

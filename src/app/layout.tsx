@@ -3,7 +3,7 @@ import { Barlow_Condensed, Inter, Space_Mono } from 'next/font/google'
 import Script from 'next/script'
 import MotionProvider from '@/components/MotionProvider'
 import BeeSprite from '@/components/bee/BeeSprite'
-import { SHARE_IMAGE } from '@/lib/share'
+import { BRAND_LOGO, SHARE_IMAGE } from '@/lib/share'
 import './globals.css'
 import '@/components/bee/bee-brand.css'
 
@@ -39,12 +39,15 @@ export const metadata: Metadata = {
   // The bee replaces the V (2026-10-08 logo pack, web-icons/). 16 to 48 px
   // use the pack's small cut on a black tile; the home-screen icon is the full
   // bee on black. /favicon-dark.png and /favicon-light.png are no longer
-  // referenced here but now hold the bee too, for the static pages in public/
-  // that still link them.
+  // referenced anywhere but hold the bee too, for any old cached link.
+  // The 192 PNG is for Google's search results, which want a square icon in a
+  // multiple of 48 px (the ICO tops out at 48); Android's icons are in
+  // manifest.ts.
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
     ],
     shortcut: '/favicon.ico',
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
@@ -71,7 +74,10 @@ const organizationSchema = {
   '@id': 'https://www.vboadv.com/#organization',
   name: 'VBO Advertising',
   url: 'https://www.vboadv.com',
-  logo: 'https://www.vboadv.com/images/logo-transparent.png',
+  // The bee on its black tile (logo pack bee/vbo-bee-tile-512), switched from
+  // the old raster wordmark at the soft web launch, 2026-10-08. Square and
+  // opaque, so it holds in Google's square and round crops and on white.
+  logo: BRAND_LOGO,
   description:
     'Founder-led marketing consultancy and studio in Miami, serving small to mid-size businesses across South Florida.',
   founder: { '@id': 'https://www.vboadv.com/#tim-bailey' },
@@ -106,7 +112,7 @@ const localBusinessSchema = {
   '@type': 'LocalBusiness',
   '@id': 'https://www.vboadv.com/#localbusiness',
   name: 'VBO Advertising',
-  image: 'https://www.vboadv.com/images/logo-transparent.png',
+  image: BRAND_LOGO,
   url: 'https://www.vboadv.com',
   telephone: '+1-864-640-6558',
   address: {

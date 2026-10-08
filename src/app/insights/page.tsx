@@ -5,7 +5,7 @@ import Nav from '@/components/Nav'
 import CTASection from '@/components/CTASection'
 import { getAllPosts, getFeaturedPost } from '@/lib/blog'
 import InsightsIndex from '@/components/blog/InsightsIndex'
-import { SHARE_IMAGE } from '@/lib/share'
+import { BRAND_LOGO, SHARE_IMAGE } from '@/lib/share'
 
 export const metadata: Metadata = {
   title: 'Insights | VBO | Marketing Strategy & Perspective',
@@ -39,7 +39,7 @@ function BlogSchema() {
       url: 'https://www.vboadv.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.vboadv.com/images/logo-transparent.png',
+        url: BRAND_LOGO,
       },
     },
   }

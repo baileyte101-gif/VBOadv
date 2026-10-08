@@ -41,8 +41,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ]
       : []),
     // 2026-10-08: the bee story page (bee brand evolution). Same switch as
-    // its own robots meta, so it is listed only once "why-the-bee" is in
-    // INDEXABLE_PAGES (the go-live commit). Real lastmod, not build time.
+    // its own robots meta; "why-the-bee" joined INDEXABLE_PAGES at the soft
+    // web launch the same day. Real lastmod, not build time.
     ...(INDEXABLE_PAGES.has("why-the-bee")
       ? [
           {

@@ -37,11 +37,11 @@ import './why-the-bee.css'
  * Guardrail kept by layout: the bee mark never sits with the word Manchester
  * (the title carries it; the big bee lives in its own section further down).
  *
- * Indexing: noindex and out of the sitemap until 'why-the-bee' is added to
- * src/lib/indexable.ts in the go-live commit, after Vega has checked the
- * title and description below. Both reuse approved words (Mary's title plus
- * the site's suffix; her homepage line as the description); neither is new
- * copy, and either can change on Mary's or Vega's word.
+ * Indexing: indexable and in the sitemap from the soft web launch
+ * (2026-10-08), via 'why-the-bee' in src/lib/indexable.ts. The title and
+ * description reuse approved words (Mary's title plus the site's suffix; her
+ * homepage line as the description); neither is new copy, and either can
+ * change on Mary's or Vega's word.
  */
 
 const SLUG = 'why-the-bee'
@@ -65,18 +65,19 @@ export const metadata: Metadata = {
   },
 }
 
+// Alt text: Mary's v2.2 (section 1h), two rewritten and two kept as built.
 const PHOTOS = {
   piccadilly: {
     src: '/images/why-the-bee/manchester-piccadilly-1927.jpg',
     width: 960,
     height: 1200,
-    alt: 'Piccadilly, Manchester, 1927: trams, motor vans and crowds crossing the square.',
+    alt: 'Piccadilly, Manchester, in 1927: double-decker trams, motor vans, and people crossing a busy cobbled street.',
   },
   docks: {
     src: '/images/why-the-bee/manchester-ship-canal-docks-1928.jpg',
     width: 960,
     height: 1200,
-    alt: 'The Manchester Ship Canal at Manchester, 1928: a dockside warehouse, moored boats and a swing bridge reflected in still water.',
+    alt: 'The Manchester Ship Canal in 1928: two steamboats moored at a dockside warehouse, with a long metal bridge beyond.',
   },
   traffic: {
     src: '/images/why-the-bee/manchester-ship-canal-traffic-1927.jpg',
@@ -141,12 +142,12 @@ export default function WhyTheBeePage() {
           </div>
         </section>
 
-        {/* The mark: the bee on its own, then the lockup. Kept well away from
+        {/* Our icon: the bee on its own, then the lockup. Kept well away from
             the page title, so the word Manchester is never set with it. */}
         <section className="vb-sec ground-plain" aria-labelledby="vb-mark">
           <div className="vb-wrap">
             <h2 id="vb-mark" className="vb-label">
-              The mark
+              Our icon
             </h2>
             <div className="vb-mark-grid">
               <svg
