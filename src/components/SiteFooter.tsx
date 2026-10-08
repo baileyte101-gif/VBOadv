@@ -26,6 +26,8 @@ const footerLinks = [
   // 2026-10-02 (Vega): the case study section, renamed from Work on
   // 2026-10-05. The VBO Studio link waits for the Studio page's own launch.
   { href: '/case-studies', label: 'Case Studies' },
+  // 2026-10-08: the bee brand evolution's story page (Mary's page label).
+  { href: '/why-the-bee', label: 'Why the bee' },
 ]
 
 export default function SiteFooter() {

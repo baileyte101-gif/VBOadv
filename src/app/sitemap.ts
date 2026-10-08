@@ -40,6 +40,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
           },
         ]
       : []),
+    // 2026-10-08: the bee story page (bee brand evolution). Same switch as
+    // its own robots meta, so it is listed only once "why-the-bee" is in
+    // INDEXABLE_PAGES (the go-live commit). Real lastmod, not build time.
+    ...(INDEXABLE_PAGES.has("why-the-bee")
+      ? [
+          {
+            url: `${HOST}/why-the-bee`,
+            lastModified: new Date("2026-10-08"),
+            changeFrequency: "yearly" as const,
+            priority: 0.5,
+          },
+        ]
+      : []),
   ];
 
   // 2026-10-02: the Case Studies section (Vega's brief of 2026-09-25). Each entry
