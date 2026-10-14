@@ -1,4 +1,5 @@
 import type { InlineLinkSpec } from '@/lib/linkify'
+import { INDEXABLE_PAGES } from '@/lib/indexable'
 
 /*
  * The "Case Studies" section: the /case-studies index and the IPPE Soccer
@@ -300,5 +301,317 @@ export const workIndexBreadcrumbSchema = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: WORK_HOST },
     { '@type': 'ListItem', position: 2, name: WORK_INDEX_NAME, item: WORK_INDEX_URL },
+  ],
+}
+
+// ---------------------------------------------------------------------------
+// /case-studies/peixoto-wear
+//
+// PREVIEW ONLY until Mauricio Esquenazi and Brunela approve the page (its
+// figures, the testimonial and credit, the hacker story naming Peixoto, and
+// their imagery) and Tim gives the publish go. Nothing is sent or live, and
+// the clients have not seen any version of this page.
+//
+// Copy is Mary's (clients/vbo/case-studies/peixoto/copy.md, 2026-10-14,
+// section 1), field for field and word for word; every figure traces to
+// Mercury's verified file (2026-10-14-mercury-numbers.md) via the copy's
+// claims ledger. Image words (captions, display titles, meta lines, alts) are
+// Mary's display-words.md of the same day, written from Jules's final picks
+// (Jules/designs/vbo/website/2026-10-14-case-study-peixoto/final/manifest.md).
+// Same template as IPPE above, with the Sir Galloway rework's machinery
+// (hero photograph, contact prompts, phased results) and three deliberate
+// differences: no Social section (VBO never ran Peixoto's organic social),
+// a four-step What We Did, and a one-string quote.
+//
+// The engagement is complete: the page tells a six-month story in neutral
+// past tense, never says the engagement ended, never implies it continues.
+// No coda after the phases.
+//
+// The publish switch is src/lib/indexable.ts. Until "case-studies/peixoto-wear"
+// is in INDEXABLE_PAGES, this page is noindex and out of the sitemap, and a
+// PRODUCTION build serves its URL as a 404 and keeps its card off
+// /case-studies (the card is added to /case-studies/page.tsx in the publish
+// commit; this branch leaves the index untouched). At the publish go: set
+// PEIXOTO_PUBLISHED, add the slug to INDEXABLE_PAGES, add the card and the
+// llms.txt line.
+// ---------------------------------------------------------------------------
+
+export const PEIXOTO_SLUG = `${WORK_INDEX_SLUG}/peixoto-wear`
+export const PEIXOTO_PATH = `/${PEIXOTO_SLUG}`
+export const PEIXOTO_URL = `${WORK_HOST}${PEIXOTO_PATH}`
+
+/** True once Tim's publish go has flipped the page in src/lib/indexable.ts. */
+export const PEIXOTO_APPROVED = INDEXABLE_PAGES.has(PEIXOTO_SLUG)
+
+/** Previews and local builds always show it; production only once approved. */
+export const PEIXOTO_SHOWN = PEIXOTO_APPROVED || process.env.VERCEL_ENV !== 'production'
+
+/**
+ * The day the page goes public. Null until the publish go, so the preview's
+ * Article schema states no date. The page refuses to build as indexable
+ * without it.
+ */
+export const PEIXOTO_PUBLISHED: string | null = null
+
+export const PEIXOTO_TITLE = 'Peixoto Wear Case Study: Paid Ads & Partnership | VBO'
+export const PEIXOTO_DESCRIPTION =
+  "How VBO set up Peixoto Wear's tracking, ran one ad program across Facebook, Instagram and Google, and helped the month that fell hardest last year hold its summer pace."
+
+export const PEIXOTO_CLIENT = 'Peixoto Wear'
+
+export const PEIXOTO_H1 = 'How we helped Peixoto Wear hold September at summer pace'
+
+export const PEIXOTO_SUBHEAD =
+  'The first thirty days went to the foundation: the accounts audited, the tracking cleaned up, every ad tagged before it ran. Then we ran one paid program: ads on Facebook and Instagram, plus listings on Google when people searched or shopped there, including for Peixoto by name. We handled the search work early on.'
+
+export const PEIXOTO_CARD_LINE =
+  'The tracking set up first, then one ad program across Facebook, Instagram and Google, and a September that held its summer pace.'
+
+/*
+ * Five cells (IPPE and Sir Galloway carry seven). Desktop rows fill the
+ * four-column grid 1+2+1 then 2+2; on phones every cell takes the full row
+ * (wide spans two at every width, wideSm on phones only), so nothing sits
+ * beside an empty cell. Layout flags only; the words are Mary's.
+ */
+export const PEIXOTO_SNAPSHOT: (typeof IPPE_SNAPSHOT)[number][] = [
+  { k: 'Client', v: 'Peixoto Wear', wideSm: true },
+  {
+    k: 'What they do',
+    v: 'Swim and resort wear with deep Colombian roots, sold nationwide from their own online store',
+    wide: true,
+  },
+  { k: 'With VBO since', v: 'April 2026', wideSm: true },
+  {
+    k: 'What we did',
+    v: 'Tracking and setup, paid ads on Facebook, Instagram and Google, early search work',
+    wide: true,
+  },
+  {
+    k: 'The store',
+    v: 'peixotowear.com',
+    wide: true,
+    // Tim: "When we name our clients, we should link to their websites as well."
+    links: [{ anchor: 'peixotowear.com', href: 'https://peixotowear.com', external: true }],
+  },
+]
+
+export const PEIXOTO_CHALLENGE = {
+  label: 'The Challenge',
+  heading: 'Ads nobody could trace, and a September that fell hard.',
+  body: [
+    "Peixoto was already running ads when we met them. In the September before we started, not one of the month's orders could be traced to an ad, and the spend kept going out anyway. The month fell by more than half from August's pace, and the months after it fell further.",
+  ],
+}
+
+/*
+ * The two contact prompts share the Sir Galloway treatment: one plain line in
+ * body type inside the page column, the link in VBO gold, no button, no box,
+ * no icon. Next keeps the page's only button. Each sits directly under what
+ * it follows: the Challenge body, the last work image.
+ */
+export const PEIXOTO_CONTACT_CHALLENGE = {
+  text: 'If you run an established online store and this is you, reach out at hello@vboadv.com.',
+  link: { anchor: 'hello@vboadv.com', href: 'mailto:hello@vboadv.com' } as InlineLinkSpec,
+}
+
+export const PEIXOTO_DID = {
+  label: 'What We Did',
+  heading: 'We set up before we spent.',
+  steps: [
+    {
+      n: '01',
+      title: 'The setup',
+      text: 'Thirty days from signing to live ads, with the audit and the build in between.',
+      links: [] as InlineLinkSpec[],
+    },
+    {
+      n: '02',
+      title: 'The tracking',
+      text: "Every ad tagged before it ran, so the store's own records could show which orders arrived on an ad click.",
+      links: [] as InlineLinkSpec[],
+    },
+    {
+      n: '03',
+      title: 'The ads',
+      text: 'Paid ads on Facebook, Instagram and Google, to reach new customers or remind others to purchase again.',
+      // As IPPE's and Sir Galloway's ads step: links to the homepage's services.
+      links: [{ anchor: 'Paid ads', href: '/#industries' }] as InlineLinkSpec[],
+    },
+    {
+      n: '04',
+      title: 'The partnership',
+      text: "One evening a hacker got into the ad account and set a rogue ad running, with its budget raised to thousands a day. We caught it 46 minutes after the ad began running and shut it down the same evening, the rogue ad's budget cut to a dollar a day and the evidence preserved. We disputed the fraudulent charges with Facebook, and none of them reached what Peixoto paid us.",
+      links: [] as InlineLinkSpec[],
+    },
+  ],
+}
+
+/*
+ * The hero is Peixoto's own brand photography (the seaside lifestyle frame),
+ * 3:4 in the Sir Galloway hero slot (.vw-hero-photo), no caption. The two
+ * work slots are a pair (lifestyle beside studio), like Sir Galloway's
+ * .vw-work-pair. Work slot 2's only local source is a 734px preview (the
+ * full-resolution master is with the client until pulled): it renders capped
+ * at 367 css px (.vw-work-sm) so it never drops under 2x density. Every
+ * caption and alt is Mary's, written from the chosen frames
+ * (display-words.md). No line says where any image came from.
+ */
+export const PEIXOTO_WORK_IMAGES = {
+  hero: {
+    src: '/images/work/peixoto-wear/peixoto-wear-hero-seaside.jpg',
+    width: 810,
+    height: 1080,
+    alt: "A model in Peixoto's pink striped knit set seated on a weathered wooden table by the sea, coconuts beside her and a low stone wall behind",
+  },
+  cabana: {
+    src: '/images/work/peixoto-wear/work/peixoto-wear-work-cabana-seated.jpg',
+    width: 1080,
+    height: 1350,
+    alt: "A model in a navy and white knit polo set seated on a cabana's cushioned bench, woven screens behind her",
+    caption: "The store's own photography carried the ads.",
+  },
+  studio: {
+    src: '/images/work/peixoto-wear/work/peixoto-wear-work-studio-comporta.jpg',
+    width: 734,
+    height: 918,
+    alt: 'A model in a pink striped knit two-piece against a plain white studio background',
+    caption: 'The listings on Google ran on photography like this.',
+  },
+}
+
+export const PEIXOTO_CONTACT_WORK = {
+  text: "Looking for support with your paid ads? Let's talk.",
+  link: { anchor: "Let's talk", href: 'mailto:hello@vboadv.com' } as InlineLinkSpec,
+}
+
+/*
+ * "The Ads": three of the ads that ran, in Jules's manifest order. Labels
+ * only, no figures anywhere in the strip. Artwork is the real ad units as
+ * exported to Meta, resized whole from 1080x1350 to 864x1080 and re-encoded,
+ * nothing recomposed or recoloured. Titles, meta lines and alts are Mary's
+ * (display-words.md): audience in searcher terms, never campaign names, and
+ * the build names never reach the page. Nothing from the 8/28 intrusion.
+ */
+export const PEIXOTO_ADS = {
+  label: 'The Ads',
+  heading: 'Then the ads.',
+  note: 'They ran on Facebook and Instagram, and as listings on Google when people searched or shopped there, including when they searched for Peixoto by name. Peixoto sells nationwide, so the ads ran nationwide.',
+  items: [
+    {
+      src: '/images/work/peixoto-wear/ads/peixoto-wear-ad-audrey.jpg',
+      title: 'The Mint Dress',
+      meta: 'New customers · still · clothing',
+      alt: 'Ad still: a model in a long mint green dress with fabric flowers at the shoulders, on a plain studio background',
+    },
+    {
+      src: '/images/work/peixoto-wear/ads/peixoto-wear-ad-chateau-bleu-cabana.jpg',
+      title: 'The Cabana',
+      meta: 'New customers · still · swim',
+      alt: 'Ad still: a model in sunglasses and a navy and white knit polo set standing in a cabana, the sea behind her',
+    },
+    {
+      src: '/images/work/peixoto-wear/ads/peixoto-wear-ad-chateau-bleu-bikini.jpg',
+      title: 'The Bikini',
+      meta: 'New customers · product card · swim',
+      alt: 'Ad still: a model in a white knit bikini with navy trim on a plain white background',
+    },
+  ],
+}
+
+/*
+ * The Results, as three phases (Mary's order; every figure's source and
+ * period in copy.md's claims ledger, from Mercury's verified file).
+ * September is the lead figure and carries the layout weight: full row from
+ * 768px, the largest outlined figure, the gold bar (Jules's B7, as Sir
+ * Galloway's lead phase). The phase 2 note is required copy (the net guard),
+ * not small print. No coda: the engagement is complete and the quote follows
+ * the phases directly.
+ */
+export type PeixotoPhase = {
+  label: string
+  num: string
+  lbl: string
+  note: string | null
+  kind: 'figure' | 'lead'
+}
+
+export const PEIXOTO_RESULTS = {
+  label: 'The Results',
+  heading: 'The year turned once the ads began.',
+  phases: [
+    {
+      label: 'Before the ads',
+      num: '15.7% behind',
+      lbl: 'the same months last year, on what customers ordered.',
+      note: null,
+      kind: 'figure',
+    },
+    {
+      label: 'With the ads',
+      num: '49.6% ahead',
+      lbl: 'of the same months last year, on what customers ordered.',
+      note: 'After discounts and returns as the store books them, the same months ran 34% ahead.',
+      kind: 'figure',
+    },
+    {
+      label: 'September',
+      num: '3.4x',
+      lbl: "last September's sales.",
+      note: "It held August's pace to within 1%, where the September before fell 61%. More than half of its orders arrived on an ad click, against none a year earlier.",
+      kind: 'lead',
+    },
+  ] as PeixotoPhase[],
+}
+
+/*
+ * Verbatim from Mauricio's email of October 6, 2026 (read by Mercury 10/14).
+ * Three sentences, no edits, no punctuation changes. His sign-off is replaced
+ * by the credit, as on IPPE and Sir Galloway; the company word in the credit
+ * is ours and needs his OK. "Before any damage was done" is his sentence and
+ * stays inside his quote marks; nothing in VBO's prose repeats or restates
+ * it. Plain HTML: no Review, Rating or AggregateRating.
+ */
+export const PEIXOTO_QUOTE = {
+  text: 'Tim at VBO is professional, responsible, and extremely knowledgeable. He got us set up quickly and even caught a hacker trying to access our account before any damage was done. We trust him completely.',
+  name: 'Mauricio Esquenazi',
+  role: 'Peixoto Wear',
+}
+
+export const PEIXOTO_NEXT = {
+  label: 'Next',
+  heading: "If you're spending on ads and can't see what they bring back, let's talk.",
+  // The lead is Tim's own lines (8/21 and 8/17), as on the Sir Galloway page.
+  lead: "We take on a few clients at a time, on purpose. Tell us what isn't working for you right now. VBO can be your solution.",
+  cta: "Let's Connect",
+  href: 'mailto:hello@vboadv.com',
+}
+
+// Peixoto Wear: the same two blocks as IPPE. Mauricio's quote stays plain
+// HTML (no Review, Rating or AggregateRating). No dates until
+// PEIXOTO_PUBLISHED is set.
+export const peixotoArticleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: PEIXOTO_H1,
+  description: PEIXOTO_DESCRIPTION,
+  about: { '@type': 'Organization', name: PEIXOTO_CLIENT, url: 'https://peixotowear.com' },
+  author: { '@id': `${WORK_HOST}/#organization` },
+  publisher: { '@id': `${WORK_HOST}/#organization` },
+  ...(PEIXOTO_PUBLISHED ? { datePublished: PEIXOTO_PUBLISHED, dateModified: PEIXOTO_PUBLISHED } : {}),
+  image: [
+    `${WORK_HOST}${PEIXOTO_WORK_IMAGES.hero.src}`,
+    `${WORK_HOST}${PEIXOTO_WORK_IMAGES.cabana.src}`,
+    `${WORK_HOST}${PEIXOTO_WORK_IMAGES.studio.src}`,
+  ],
+  mainEntityOfPage: PEIXOTO_URL,
+}
+
+export const peixotoBreadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: WORK_HOST },
+    { '@type': 'ListItem', position: 2, name: WORK_INDEX_NAME, item: WORK_INDEX_URL },
+    { '@type': 'ListItem', position: 3, name: PEIXOTO_CLIENT, item: PEIXOTO_URL },
   ],
 }

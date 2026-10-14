@@ -312,3 +312,131 @@
 /* Section labels that are also real headings (for screen-reader navigation)
    keep the label look, not the display-headline look. */
 .vw h2.vw-label { font-weight: 400; line-height: 1.5; max-width: none; }
+
+/* ==========================================================================
+   Peixoto Wear deltas (2026-10-14). The four blocks below (B1, B2, B5, B7)
+   are Jules's rules from the Sir Galloway rework (sg-additions.css, carried
+   on branch content/case-study-sir-galloway-2026-10-13), byte for byte,
+   because this page shares that template: the hero photograph, the work
+   pair, the contact prompts and the phased results. If the Sir Galloway
+   branch has merged first, these blocks already exist above: at rebase, keep
+   ONE copy of each. The two rules at the bottom are this page's own (Bob).
+   Every selector is a new class, so the IPPE page renders exactly as before.
+   ========================================================================== */
+
+/* (B1) HERO IMAGE. The Pinecrest storefront image (Tim, 10/6) where IPPE
+   carries the client homepage in a phone frame (the phone moves down into The
+   Work, as slot 02), framed like the brand book (.vw-shadowed). These rules
+   set no ratio: the image's own width and height do (810 x 1080, 3:4). At
+   1440 it shows at 444 x 592 beside the copy block; on a 390 phone at
+   342 x 456. Phones and tablets: centred under the copy, capped at 440px. */
+.vw .vw-hero-photo { margin: 0; width: 100%; max-width: 440px; justify-self: center; }
+.vw .vw-hero-photo img { width: 100%; height: auto; display: block; }
+@media (min-width: 1024px) {
+  .vw .vw-hero-photo { max-width: none; justify-self: stretch; }
+}
+
+/* (B2) THE WORK, ROW 2. IPPE: phone (02) + carousel strip (04). Sir Galloway:
+   phone (02) + a pair, the Google listing (04) and a storefront photograph
+   (05), both 4:5. Stacked on phones so the listing stays readable, two-up
+   from 640px. At 1440 each tile is about 455 x 570, level with the phone. */
+.vw .vw-work-pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; align-items: start; }
+.vw .vw-work-pair > * { min-width: 0; margin: 0; }
+.vw .vw-work-pair img { width: 100%; height: auto; display: block; }
+@media (min-width: 640px) {
+  .vw .vw-work-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+}
+@media (min-width: 1024px) {
+  .vw .vw-work-pair { gap: 40px; }
+}
+
+/* (B5) THE CONTACT PROMPTS (new 10/13; Mary's CONTACT_CHALLENGE, CONTACT_WEBSITE,
+   CONTACT_SOCIAL). One plain line in body type inside the page column, the link
+   in VBO gold, no button, no box, no icon: an aside, not a banner. Next keeps the
+   page's only button. Each sits directly under what it follows: the Challenge
+   body, the last work image, the last before-and-after pair.
+   Contrast: on the dark grounds the line takes the body grey (#8a8e92, 5.9:1 on
+   black) and the link brand gold (#B8962E, 6.9:1). On the smoke ground (The Work)
+   it follows the template's own rule for that ground (.vw-cap, .ground-smoke
+   .vw-label): text steps up to #b9b4a8 and the link to the hot gold, because brand
+   gold measures 3.5:1 on marble, under the 4.5:1 body text needs (the hot
+   gold is 6.3:1 there, #b9b4a8 is 4.7:1). */
+.vw .vw-ask {
+  margin-top: 40px; max-width: 640px;
+  font-family: var(--vw-body); font-size: 16px; line-height: 1.7; color: var(--vw-grey);
+}
+.vw .vw-ask a {
+  color: var(--color-vbo-gold);
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+}
+.vw .vw-ask a:hover { color: var(--gold-hot); }
+.vw .vw-ask a:focus-visible { outline: 2px solid var(--gold-hot); outline-offset: 3px; }
+.vw .ground-smoke .vw-ask { color: #b9b4a8; }
+.vw .ground-smoke .vw-ask a { color: var(--gold-hot); }
+@media (min-width: 768px) {
+  .vw .vw-ask { margin-top: 56px; font-size: 18px; }
+}
+
+/* (B7) THE RESULTS, THREE PHASES (reworked 10/13; replaces the two-figure .vw-stats
+   band, same stone band, retro strips, label, heading and coda).
+   An ordered list, in Mary's order. Weight goes to phase 3, the lead figure: it
+   takes a full row from 768px, the largest outlined figure (up to 144px, one line
+   at 1440) and the VBO gold bar as its rule. Phase 2 is the template's outlined
+   figure at a middle size under a black rule.
+   Phase 1 has words, not a figure, on purpose. "Not counted" is set solid in a
+   muted ink, smaller, under a hairline, so it reads as a fact about the old site
+   and not as a figure that failed to load: the outline is kept for measured
+   figures only. Its label sits on the same line as phase 2's, so the eye takes
+   the two side by side before dropping to the lead.
+   The notes under phases 2 and 3 are required copy, not small print: body type
+   at 15 to 16px in 78% ink (8.5:1 on stone). "Not counted" in 62% ink is
+   5.0:1, and the phase labels in #6f5728 are 5.3:1. */
+.vw .vw-phases {
+  list-style: none; margin: 40px 0 0; padding: 0;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px;
+}
+.vw .vw-phase { min-width: 0; border-top: 2px solid var(--color-vbo-black); padding-top: 22px; }
+.vw .vw-phase.vw-phase-quiet { border-top: 1px solid rgb(13 13 13 / 0.28); }
+.vw .vw-phase.vw-phase-lead { border-top: 6px solid var(--color-vbo-gold); padding-top: 26px; }
+.vw .vw-phase-label {
+  font-family: var(--vw-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #6f5728; margin: 0 0 18px;
+}
+.vw .vw-phases .vw-num { font-size: clamp(3.4rem, 9vw, 6.4rem); }
+.vw .vw-phases .vw-phase-lead .vw-num { font-size: clamp(4.2rem, 13vw, 9rem); }
+.vw .vw-phases .vw-num.vw-num-words {
+  font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 800; line-height: 1;
+  color: rgb(13 13 13 / 0.62); -webkit-text-stroke: 0;
+}
+.vw .vw-phases .vw-phase-lead .vw-lbl { max-width: 520px; }
+.vw .vw-phase-note {
+  font-family: var(--vw-body); font-size: 15px; line-height: 1.6;
+  color: rgb(13 13 13 / 0.78); margin: 12px 0 0; max-width: 460px;
+}
+@media (min-width: 768px) {
+  .vw .vw-phases { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px; row-gap: 64px; margin-top: 56px; }
+  .vw .vw-phase.vw-phase-lead { grid-column: 1 / -1; }
+  .vw .vw-phase-label { font-size: 12px; }
+  .vw .vw-phase-note { font-size: 16px; }
+}
+
+/* (Bob, 10/14) The Peixoto work section is the pair alone (no phone frame,
+   no work grid): capped at 950px so each frame sits at the Sir Galloway
+   pair's ~455px scale instead of stretching across the full 1248px column. */
+.vw .vw-work-pair-only { max-width: 950px; margin-top: 48px; }
+@media (min-width: 1024px) { .vw .vw-work-pair-only { margin-top: 64px; } }
+
+/* (Bob, 10/14) Work slot 2 ships from a 734px preview until the client's
+   full-resolution master is pulled (Jules's manifest, resolution note):
+   capped at 367 css px so it never renders under 2x density. */
+.vw .vw-work-pair .vw-work-sm { max-width: 367px; }
+
+/* (Bob, 10/14) This page's ads strip carries three units (Jules's manifest:
+   the launch apparel push, the swim lifestyle push, the swim product card),
+   where IPPE's and Sir Galloway's carry four. In the shared four-up grid the
+   third row position would leave a dead column on every desktop view, so the
+   strip goes three-up from 1024px for this page only. Phones keep the shared
+   two-up (two, then one). */
+@media (min-width: 1024px) {
+  .vw .vw-ads-row.vw-ads-row-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
