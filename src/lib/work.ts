@@ -215,20 +215,23 @@ export const IPPE_ADS = {
   ],
 }
 
+// Percentages, not counts, since 2026-10-13 (Tim's go that day): the count
+// overstated, one of the six inquiries was a youth club. Mary's option 2,
+// verbatim; figures from Dash's lift sheet, IPPE ids I-H and I-2.
 export const IPPE_RESULTS = {
   label: 'The Results',
   heading: 'More families asking, for less.',
   stats: [
     {
-      num: '0 to 6',
-      lbl: 'families asking to talk, from the report before to the report for August 11 to September 15, 2026.',
+      num: '4% to 44%',
+      lbl: 'of visitors from the ads stayed and read, from the report before to the report for August 11 to September 15, 2026.',
     },
     {
-      num: 'Half',
-      lbl: 'what each one was costing to bring in by the end of that period, compared with the start.',
+      num: '67%',
+      lbl: 'less spent on ads for each inquiry in September 2026 than in August.',
     },
   ],
-  coda: 'Each of the six is a family asking for a call about a trip. Chris takes it from there.',
+  coda: 'Once each ad landed on a page built to match it, far more people stayed to read. Families started asking to talk through the new site, and Chris takes it from there.',
 }
 
 // Verbatim, including "work ethic in drive", until Chris approves the fix.
