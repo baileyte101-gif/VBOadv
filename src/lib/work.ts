@@ -1101,3 +1101,253 @@ export const workIndexBreadcrumbSchema = {
     { '@type': 'ListItem', position: 2, name: WORK_INDEX_NAME, item: WORK_INDEX_URL },
   ],
 }
+
+// ---------------------------------------------------------------------------
+// /case-studies/fudge-pie-co
+//
+// PREVIEW ONLY until Stacey Donayre approves the page (her testimonial and
+// the VRO fix, the security reference question, the one figure in words, her
+// imagery, the scope line) and Tim gives the publish go. Nothing is sent or
+// live, and Stacey has not seen any version of this page.
+//
+// Copy is Mary's (clients/vbo/case-studies/fudge-pie/copy.md, 2026-10-14,
+// section 1), field for field and word for word; every fact traces to Dash's
+// verified file (2026-10-14-dash-numbers.md) via the copy's claims ledger.
+// Image words (the hero alt and three caption-and-alt pairs) are Mary's
+// display-words.md of the same day, written from Jules's final picks
+// (Jules/designs/vbo/website/2026-10-14-case-study-fudge-pie/final/manifest.md).
+// This file section was GENERATED from those two files
+// (Bob, gen_fudge_section.py), so every string is byte-identical to Mary's.
+//
+// Same template as IPPE above, with the Sir Galloway rework's machinery
+// (hero photograph, contact prompts) and three deliberate differences from
+// the other case studies: NO Ads strip and NO Social section (VBO never ran
+// paid media or managed social for Fudge Pie; the page claims neither), and
+// a QUALITATIVE results band: label, heading, a two-sentence note and a
+// coda, no phases and no figures (the season's first pie has not shipped;
+// Dash A). The one measured line is carried in words: "Every customer record
+// carried over."
+//
+// Her testimonial runs verbatim, "VRO" included: it becomes "VBO" only with
+// her explicit OK (Tim's standing instruction, 10/13). NOBODY corrects it in
+// this file, in the build, or anywhere downstream.
+//
+// The publish switch is src/lib/indexable.ts. Until "case-studies/fudge-pie-co"
+// is in INDEXABLE_PAGES, this page is noindex and out of the sitemap, and a
+// PRODUCTION build serves its URL as a 404 and keeps its card off
+// /case-studies (the card is added to /case-studies/page.tsx in the publish
+// commit; this branch leaves the index untouched). At the publish go: set
+// FUDGE_PIE_PUBLISHED, add the slug to INDEXABLE_PAGES, add the card and the
+// llms.txt line.
+// ---------------------------------------------------------------------------
+
+export const FUDGE_PIE_SLUG = `${WORK_INDEX_SLUG}/fudge-pie-co`
+export const FUDGE_PIE_PATH = `/${FUDGE_PIE_SLUG}`
+export const FUDGE_PIE_URL = `${WORK_HOST}${FUDGE_PIE_PATH}`
+
+/** True once Tim's publish go has flipped the page in src/lib/indexable.ts. */
+export const FUDGE_PIE_APPROVED = INDEXABLE_PAGES.has(FUDGE_PIE_SLUG)
+
+/** Previews and local builds always show it; production only once approved. */
+export const FUDGE_PIE_SHOWN = FUDGE_PIE_APPROVED || process.env.VERCEL_ENV !== 'production'
+
+/**
+ * The day the page goes public. Null until the publish go, so the preview's
+ * Article schema states no date. The page refuses to build as indexable
+ * without it.
+ */
+export const FUDGE_PIE_PUBLISHED: string | null = null
+
+export const FUDGE_PIE_TITLE = "The Fudge Pie Co Case Study: Website Rebuild | VBO"
+export const FUDGE_PIE_DESCRIPTION =
+  "How VBO turned The Fudge Pie Co's Squarespace site into a Shopify store built for ordering pies online, ready in time for the fall ordering season."
+
+export const FUDGE_PIE_CLIENT = 'The Fudge Pie Co'
+
+export const FUDGE_PIE_H1 = "How we built The Fudge Pie Co a new store in time for pie season"
+
+export const FUDGE_PIE_SUBHEAD =
+  "A Squarespace site became a Shopify store built for ordering pies online, live August 27, 2026, with the customer list carried over and old links redirected. We put everything the store needs in one place, built in security and peace of mind from day one, and had it ready ahead of the fall ordering season."
+
+export const FUDGE_PIE_CARD_LINE =
+  "A Squarespace site rebuilt as a Shopify store for ordering pies online, every customer record carried over, and one place to run it."
+
+/*
+ * Five cells, as the Peixoto page: desktop rows fill the four-column grid
+ * 1+2+1 then 2+2; on phones every cell takes the full row (wide spans two at
+ * every width, wideSm on phones only), so nothing sits beside an empty cell.
+ * Layout flags only; the words are Mary's.
+ */
+export const FUDGE_PIE_SNAPSHOT: (typeof IPPE_SNAPSHOT)[number][] = [
+  { k: "Client", v: "The Fudge Pie Co", wideSm: true },
+  { k: "What they do", v: "Pies baked by Chef Stacey, ordered online and shipped for the fall season", wide: true },
+  { k: "With VBO since", v: "June 2026", wideSm: true },
+  { k: "What we did", v: "A full website rebuild and consolidation, the store now in one place", wide: true },
+  { k: "The store", v: "thefudgepie.com", wide: true,
+    // Tim: "When we name our clients, we should link to their websites as well."
+    links: [{ anchor: 'thefudgepie.com', href: 'https://thefudgepie.com', external: true }] },
+]
+
+export const FUDGE_PIE_CHALLENGE = {
+  label: "The Challenge",
+  heading: "One store, five logins, and a season on the way.",
+  body: [
+    "The Fudge Pie Co ran across roughly five logins and the connections between them: the website and checkout in one place, the payments in another, the books in a third, the domain and the email in a fourth, and a connector in between. The old checkout also carried a live error: carts with one of her pies couldn't check out at all. And the fall ordering season was on its way.",
+  ],
+}
+
+/*
+ * The two contact prompts share the Sir Galloway treatment: one plain line in
+ * body type inside the page column, the link in VBO gold, no button, no box,
+ * no icon. Next keeps the page's only button. Each sits directly under what
+ * it follows: the Challenge body, the last work image.
+ */
+export const FUDGE_PIE_CONTACT_CHALLENGE = {
+  text: "If you run an established business and this is you, reach out at hello@vboadv.com.",
+  link: { anchor: "hello@vboadv.com", href: "mailto:hello@vboadv.com" } as InlineLinkSpec,
+}
+
+export const FUDGE_PIE_DID = {
+  label: "What We Did",
+  heading: "We built the store around her.",
+  steps: [
+    {
+      n: "01",
+      title: "The website",
+      text: "We rebuilt the website as a modern, high performing Shopify store built for ordering pies online, with a real cart and checkout. Chef Stacey picked the design, and her favorite line stayed on the homepage word for word: \"we bake something worth the wait.\"",
+      links: [{ anchor: "the website", href: "/#industries" }] as InlineLinkSpec[],
+    },
+    {
+      n: "02",
+      title: "The move",
+      text: "Her pies, her photographs and her customer list moved with the store, and the old links were redirected. A national list of the best Thanksgiving pies you can have delivered still lands on her store.",
+      links: [] as InlineLinkSpec[],
+    },
+    {
+      n: "03",
+      title: "One place to run it",
+      text: "One login now runs the site, the pies, the checkout, the payments, the shipping and the customer list. Each pie flips on and off with one switch for the season, and every new order reaches her email and her phone. Her books stay in QuickBooks, and her email never moved.",
+      links: [] as InlineLinkSpec[],
+    },
+    {
+      n: "04",
+      title: "Security and peace of mind",
+      text: "Built in from the start. The store is owned by Chef Stacey outright, from day one.",
+      links: [] as InlineLinkSpec[],
+    },
+  ],
+}
+
+/*
+ * The hero is Stacey's own product photography (the whole pecan pie on her
+ * wood board), 3:4 in the Sir Galloway hero slot (.vw-hero-photo), no
+ * caption. The three work slots run in copy.md order: the live homepage in
+ * the phone frame (IPPE's slot geometry), the pie page in the browser frame,
+ * and her radial pecan photograph at the Sir Galloway pair scale. Every
+ * caption and alt is Mary's, written from the chosen frames
+ * (display-words.md). No line says where any image came from.
+ */
+export const FUDGE_PIE_WORK_IMAGES = {
+  hero: {
+    src: '/images/work/fudge-pie-co/fudge-pie-co-hero-vegan-pecan.jpg',
+    width: 810,
+    height: 1080,
+    alt: "One of Chef Stacey's pecan pies, whole on a wood board, pecan halves around the rim, loose pecans beside it and greenery behind",
+  },
+  homePhone: {
+    src: '/images/work/fudge-pie-co/work/fudge-pie-co-work-home-phone.jpg',
+    width: 645,
+    height: 1398,
+    alt: "The Fudge Pie Co homepage on a phone: the Open for Fall banner, the headline and intro, and the Order Pies button",
+    caption: "The homepage: \"we bake something worth the wait.\"",
+  },
+  piePage: {
+    src: '/images/work/fudge-pie-co/work/fudge-pie-co-work-pie-page-desktop.jpg',
+    width: 1440,
+    height: 900,
+    alt: "The Classic Chocolate pie page on desktop: the photo gallery, the In Season badge, and the Add to cart button",
+    caption: "A pie page, where the season flips on.",
+  },
+  radial: {
+    src: '/images/work/fudge-pie-co/work/fudge-pie-co-work-pecan-radial.jpg',
+    width: 1080,
+    height: 1350,
+    alt: "A pecan pie from directly above, a ring of pecan halves around the rim and a flower of them at the center, loose pecans covering the wood board around it",
+    caption: "One of her pies, from her own photography.",
+  },
+}
+
+export const FUDGE_PIE_CONTACT_WORK = {
+  text: "Looking for support with your website? Let's talk.",
+  link: { anchor: "Let's talk", href: "mailto:hello@vboadv.com" } as InlineLinkSpec,
+}
+
+/*
+ * The Results, QUALITATIVE (Dash A; copy.md): no phases, no figures, nothing
+ * numeric. The band renders label, heading, the two-sentence note and the
+ * coda. The one measured line is said in words ("Every customer record
+ * carried over"), and the coda is Tim's own 10/13 line to Stacey in page
+ * form. A numbers refresh after the season, with her own figures and her OK,
+ * is Tim's call later.
+ */
+export const FUDGE_PIE_RESULTS = {
+  label: "The Results",
+  heading: "Ready when the season opened.",
+  note: "The store went live with weeks to spare, and pre-orders opened right on schedule. Every customer record carried over, and everything from the pies to the checkout now runs in one place.",
+  coda: "We're here to keep helping with the website.",
+}
+
+/*
+ * Verbatim from Stacey's email of October 12, 2026 (read by Dash 10/14).
+ * Six sentences, her two exclamation marks kept. "VRO" in her last sentence
+ * stays EXACTLY as she wrote it until she OKs the fix to "VBO" (Tim's
+ * standing instruction, 10/13): nobody corrects it at any step. "Marketing
+ * services" is her phrase and lives only inside her quote. Her sign-off is
+ * replaced by the credit, as on the other pages; the credit form is hers to
+ * pick (Dash G1). Plain HTML: no Review, Rating or AggregateRating.
+ */
+export const FUDGE_PIE_QUOTE = {
+  text: "I had a wonderful experience working with VBO! From start to finish, their team was professional, punctual, friendly, and incredibly easy to work with. They took the time to listen to my ideas, answer my questions, and make sure I felt comfortable throughout the entire process. I never once felt rushed or unheard, which I truly appreciated. Their professionalism, patience, and attention to detail made the whole experience enjoyable and stress-free. I would highly recommend VRO to anyone looking for website development and marketing services!",
+  name: "Chef Stacey Donayre",
+  role: "The Fudge Pie Co",
+}
+
+export const FUDGE_PIE_NEXT = {
+  label: "Next",
+  heading: "If your business runs on more logins than it should, let's talk.",
+  // The lead is three of Tim's own lines (8/21, 8/18, 8/17), per copy.md.
+  lead: "We take on a few clients at a time, on purpose. The same people are answering your emails, calls and text messages one year from now. VBO can be your solution.",
+  cta: "Let's Connect",
+  href: "mailto:hello@vboadv.com",
+}
+
+// The Fudge Pie Co: the same two blocks as IPPE. Stacey's quote stays plain
+// HTML (no Review, Rating or AggregateRating). No dates until
+// FUDGE_PIE_PUBLISHED is set.
+export const fudgePieArticleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: FUDGE_PIE_H1,
+  description: FUDGE_PIE_DESCRIPTION,
+  about: { '@type': 'Organization', name: FUDGE_PIE_CLIENT, url: 'https://thefudgepie.com' },
+  author: { '@id': `${WORK_HOST}/#organization` },
+  publisher: { '@id': `${WORK_HOST}/#organization` },
+  ...(FUDGE_PIE_PUBLISHED ? { datePublished: FUDGE_PIE_PUBLISHED, dateModified: FUDGE_PIE_PUBLISHED } : {}),
+  image: [
+    `${WORK_HOST}${FUDGE_PIE_WORK_IMAGES.hero.src}`,
+    `${WORK_HOST}${FUDGE_PIE_WORK_IMAGES.homePhone.src}`,
+    `${WORK_HOST}${FUDGE_PIE_WORK_IMAGES.piePage.src}`,
+    `${WORK_HOST}${FUDGE_PIE_WORK_IMAGES.radial.src}`,
+  ],
+  mainEntityOfPage: FUDGE_PIE_URL,
+}
+
+export const fudgePieBreadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: WORK_HOST },
+    { '@type': 'ListItem', position: 2, name: WORK_INDEX_NAME, item: WORK_INDEX_URL },
+    { '@type': 'ListItem', position: 3, name: FUDGE_PIE_CLIENT, item: FUDGE_PIE_URL },
+  ],
+}

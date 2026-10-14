@@ -332,6 +332,9 @@
    Every rule is a new class or a selector the IPPE markup cannot match, so
    the IPPE page renders exactly as before. The mock-only shim in her
    section A is not ported: globals.css already provides it.
+   The Fudge Pie Co (2026-10-14, published 2026-11-10) uses B1 and B5 as
+   they stand here (its branch carried the same blocks; this rebase keeps
+   the one copy) and adds its own three rules at the very bottom.
    ========================================================================== */
 
 /* (B1) HERO IMAGE. The Pinecrest storefront image (Tim, 10/6) where IPPE
@@ -556,3 +559,26 @@
    ("See it in practice") titles the client with an h3, since the post's own
    section label is the h2 there. Same size as the index card's h2. */
 .vw .vw-card-body h3 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); margin-bottom: 12px; }
+
+/* (Bob, 10/14) The Fudge Pie work section stacks a phone-beside-browser row
+   (the existing .vw-work-row2 geometry: the live homepage in the phone frame,
+   the pie page in the browser frame) over one 4:5 photograph. Margins match
+   .vw-work-grid so the section opens like IPPE's and Sir Galloway's. */
+.vw .vw-work-stack { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; margin-top: 48px; }
+.vw .vw-work-stack > * { min-width: 0; margin: 0; }
+@media (min-width: 1024px) { .vw .vw-work-stack { margin-top: 64px; gap: 64px; } }
+
+/* (Bob, 10/14) The radial pecan photograph stands alone in its row (copy.md
+   allows two or three work slots; this page runs three). Capped at the Sir
+   Galloway pair scale (~460px at 1440) so a lone 1080 x 1350 frame does not
+   stretch across the full 1248px column. */
+.vw .vw-work-one { max-width: 460px; }
+
+/* (Bob, 10/14) The Fudge Pie results band is qualitative (copy.md; no
+   phases, no figures): label, heading, a two-sentence note, then the coda.
+   The note is the band's content, not small print, so it sets one step up
+   from the coda (.vw-coda, 17/18px) in the band's own 0.82 ink. */
+.vw .vw-stats-band .vw-results-note { margin-top: 40px; font-size: 18px; color: rgb(13 13 13 / 0.82); max-width: 640px; line-height: 1.65; }
+@media (min-width: 768px) {
+  .vw .vw-stats-band .vw-results-note { margin-top: 56px; font-size: 21px; }
+}
