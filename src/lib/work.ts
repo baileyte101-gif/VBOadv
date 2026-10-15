@@ -1105,19 +1105,21 @@ export const workIndexBreadcrumbSchema = {
 // ---------------------------------------------------------------------------
 // /case-studies/fudge-pie-co
 //
-// PREVIEW ONLY until Stacey Donayre approves the page (her testimonial and
-// the VRO fix, the security reference question, the one figure in words, her
-// imagery, the scope line) and Tim gives the publish go. Nothing is sent or
-// live, and Stacey has not seen any version of this page.
+// PREVIEW ONLY until Stacey Donayre approves the page (her testimonial with
+// the VRO-to-VBO fix, the security reference question, the one figure in
+// words, her imagery, the scope line) and Tim gives the publish go. Nothing
+// is sent or live, and Stacey has not seen any version of this page.
 //
-// Copy is Mary's (clients/vbo/case-studies/fudge-pie/copy.md, 2026-10-14,
-// section 1), field for field and word for word; every fact traces to Dash's
-// verified file (2026-10-14-dash-numbers.md) via the copy's claims ledger.
-// Image words (the hero alt and three caption-and-alt pairs) are Mary's
-// display-words.md of the same day, written from Jules's final picks
-// (Jules/designs/vbo/website/2026-10-14-case-study-fudge-pie/final/manifest.md).
-// This file section was GENERATED from those two files
-// (Bob, gen_fudge_section.py), so every string is byte-identical to Mary's.
+// Copy is Mary's (clients/vbo/case-studies/fudge-pie/copy.md, revised
+// 2026-10-14 night for Tim's picks and 2026-10-15 for the word fold),
+// field for field and word for word; every fact traces to Dash's verified
+// file (2026-10-14-dash-numbers.md, re-verified 2026-10-15: all checks pass)
+// via the copy's claims ledger. The image words (the hero alt and three
+// caption-and-alt pairs, written by Mary from Jules's final picks) were
+// FOLDED into copy.md's WORK_IMAGES on 2026-10-15, so copy.md is the single
+// source of record; display-words.md is the staging record only. This file
+// section was GENERATED from copy.md (Bob, gen_fudge_pie_work_section.py),
+// so every string is byte-identical to Mary's.
 //
 // Same template as IPPE above, with the Sir Galloway rework's machinery
 // (hero photograph, contact prompts) and three deliberate differences from
@@ -1126,11 +1128,15 @@ export const workIndexBreadcrumbSchema = {
 // a QUALITATIVE results band: label, heading, a two-sentence note and a
 // coda, no phases and no figures (the season's first pie has not shipped;
 // Dash A). The one measured line is carried in words: "Every customer record
-// carried over."
+// carried over." The coda is Tim's standing close (audit A8), his 10/14
+// pick; the earlier "We're here to keep helping with the website." is
+// RETIRED and must not reappear.
 //
-// Her testimonial runs verbatim, "VRO" included: it becomes "VBO" only with
-// her explicit OK (Tim's standing instruction, 10/13). NOBODY corrects it in
-// this file, in the build, or anywhere downstream.
+// Her testimonial runs verbatim with ONE marked exception: her typed "VRO"
+// reads "VBO" on the page (Tim's call, 10/14), and her confirmation email
+// asks her OK on the one-letter fix explicitly. Her verbatim original is
+// preserved in Dash F; if she prefers it as she typed it, it reverts
+// everywhere, in copy.md FIRST, never silently here.
 //
 // The publish switch is src/lib/indexable.ts. Until "case-studies/fudge-pie-co"
 // is in INDEXABLE_PAGES, this page is noindex and out of the sitemap, and a
@@ -1167,7 +1173,7 @@ export const FUDGE_PIE_CLIENT = 'The Fudge Pie Co'
 export const FUDGE_PIE_H1 = "How we built The Fudge Pie Co a new store in time for pie season"
 
 export const FUDGE_PIE_SUBHEAD =
-  "A Squarespace site became a Shopify store built for ordering pies online, live August 27, 2026, with the customer list carried over and old links redirected. We put everything the store needs in one place, built in security and peace of mind from day one, and had it ready ahead of the fall ordering season."
+  "A Squarespace site became a Shopify store built for ordering pies online, live August 27, 2026, with the customer list carried over and old links redirected. It was a full build and a white-glove move, hands-on from the first call: we put everything the store needs in one place, built in security and peace of mind from day one, and had it ready ahead of the fall ordering season."
 
 export const FUDGE_PIE_CARD_LINE =
   "A Squarespace site rebuilt as a Shopify store for ordering pies online, every customer record carried over, and one place to run it."
@@ -1214,7 +1220,7 @@ export const FUDGE_PIE_DID = {
     {
       n: "01",
       title: "The website",
-      text: "We rebuilt the website as a modern, high performing Shopify store built for ordering pies online, with a real cart and checkout. Chef Stacey picked the design, and her favorite line stayed on the homepage word for word: \"we bake something worth the wait.\"",
+      text: "We rebuilt the website as a modern, high performing Shopify store built for ordering pies online: a full build, every page new, with a real cart and checkout. Chef Stacey picked the design from directions built around her answers, and her favorite line stayed on the homepage word for word: \"we bake something worth the wait.\"",
       links: [{ anchor: "the website", href: "/#industries" }] as InlineLinkSpec[],
     },
     {
@@ -1240,12 +1246,17 @@ export const FUDGE_PIE_DID = {
 
 /*
  * The hero is Stacey's own product photography (the whole pecan pie on her
- * wood board), 3:4 in the Sir Galloway hero slot (.vw-hero-photo), no
- * caption. The three work slots run in copy.md order: the live homepage in
- * the phone frame (IPPE's slot geometry), the pie page in the browser frame,
- * and her radial pecan photograph at the Sir Galloway pair scale. Every
- * caption and alt is Mary's, written from the chosen frames
- * (display-words.md). No line says where any image came from.
+ * wood board), 3:4 in the Sir Galloway hero slot (.vw-hero-photo), NO
+ * caption (copy.md: the other heroes have none). The three work slots run in
+ * copy.md order: the live homepage in the phone frame (IPPE's slot
+ * geometry), the pie page in the browser frame, and her radial pecan
+ * photograph at the Sir Galloway pair scale. Every caption and alt is
+ * Mary's, written from the chosen frames and folded as final into copy.md's
+ * WORK_IMAGES (2026-10-15). No line says where any image came from; the
+ * work 1 caption's lowercase "we bake something worth the wait." is the
+ * locked pattern and Dash F's record of her line, DELIBERATE (the live
+ * homepage renders a capital W as a sentence start; flipping the caption to
+ * match is Tim's one-stroke call, never a build-side correction).
  */
 export const FUDGE_PIE_WORK_IMAGES = {
   hero: {
@@ -1286,28 +1297,32 @@ export const FUDGE_PIE_CONTACT_WORK = {
  * The Results, QUALITATIVE (Dash A; copy.md): no phases, no figures, nothing
  * numeric. The band renders label, heading, the two-sentence note and the
  * coda. The one measured line is said in words ("Every customer record
- * carried over"), and the coda is Tim's own 10/13 line to Stacey in page
- * form. A numbers refresh after the season, with her own figures and her OK,
- * is Tim's call later.
+ * carried over"), and the coda is Tim's standing close (audit A8, word for
+ * word; his 10/14 pick, swapping out his 10/13 line to Stacey, which is
+ * retired). A numbers refresh after the season, with her own figures and her
+ * OK, is Tim's call later.
  */
 export const FUDGE_PIE_RESULTS = {
   label: "The Results",
   heading: "Ready when the season opened.",
   note: "The store went live with weeks to spare, and pre-orders opened right on schedule. Every customer record carried over, and everything from the pies to the checkout now runs in one place.",
-  coda: "We're here to keep helping with the website.",
+  coda: "More to come as we grow our partnership further.",
 }
 
 /*
- * Verbatim from Stacey's email of October 12, 2026 (read by Dash 10/14).
- * Six sentences, her two exclamation marks kept. "VRO" in her last sentence
- * stays EXACTLY as she wrote it until she OKs the fix to "VBO" (Tim's
- * standing instruction, 10/13): nobody corrects it at any step. "Marketing
- * services" is her phrase and lives only inside her quote. Her sign-off is
- * replaced by the credit, as on the other pages; the credit form is hers to
- * pick (Dash G1). Plain HTML: no Review, Rating or AggregateRating.
+ * Verbatim from Stacey's email of October 12, 2026 (read by Dash 10/14;
+ * thread re-read 10/15, unchanged), with ONE marked exception: her last
+ * sentence typed "VRO" and the page reads "VBO" on Tim's 10/14 call. Her
+ * confirmation email asks her OK on the one-letter fix explicitly; her
+ * verbatim original is preserved in Dash F, and if she prefers it as she
+ * typed it, it reverts everywhere, in copy.md first (Mary's edit), never
+ * here. Six sentences, her two exclamation marks kept. "Marketing services"
+ * is her phrase and lives only inside her quote. Her sign-off is replaced by
+ * the credit, as on the other pages; the credit form is hers to pick
+ * (Dash G1). Plain HTML: no Review, Rating or AggregateRating.
  */
 export const FUDGE_PIE_QUOTE = {
-  text: "I had a wonderful experience working with VBO! From start to finish, their team was professional, punctual, friendly, and incredibly easy to work with. They took the time to listen to my ideas, answer my questions, and make sure I felt comfortable throughout the entire process. I never once felt rushed or unheard, which I truly appreciated. Their professionalism, patience, and attention to detail made the whole experience enjoyable and stress-free. I would highly recommend VRO to anyone looking for website development and marketing services!",
+  text: "I had a wonderful experience working with VBO! From start to finish, their team was professional, punctual, friendly, and incredibly easy to work with. They took the time to listen to my ideas, answer my questions, and make sure I felt comfortable throughout the entire process. I never once felt rushed or unheard, which I truly appreciated. Their professionalism, patience, and attention to detail made the whole experience enjoyable and stress-free. I would highly recommend VBO to anyone looking for website development and marketing services!",
   name: "Chef Stacey Donayre",
   role: "The Fudge Pie Co",
 }
