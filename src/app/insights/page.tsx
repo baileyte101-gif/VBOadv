@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Nav from '@/components/Nav'
 import CTASection from '@/components/CTASection'
-import { getAllPosts, getFeaturedPost } from '@/lib/blog'
+import { getVisiblePosts, getFeaturedPost } from '@/lib/blog'
 import InsightsIndex from '@/components/blog/InsightsIndex'
 import { BRAND_LOGO, SHARE_IMAGE } from '@/lib/share'
 
@@ -52,7 +52,10 @@ function BlogSchema() {
 }
 
 export default function InsightsPage() {
-  const posts = getAllPosts()
+  // Published posts, plus drafts on previews and local builds only (the
+  // DRAFTS_SHOWN gate in lib/blog.ts). A production build lists exactly the
+  // published set, as before. The featured pick stays published-only.
+  const posts = getVisiblePosts()
   const featured = getFeaturedPost()
 
   return (

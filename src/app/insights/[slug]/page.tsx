@@ -8,7 +8,7 @@ import CTASection from '@/components/CTASection'
 import ReadingProgress from '@/components/blog/ReadingProgress'
 import AuthorBio from '@/components/blog/AuthorBio'
 import RelatedPosts from '@/components/blog/RelatedPosts'
-import { getAllPosts, getPostBySlug, getRelatedPosts, formatDate } from '@/lib/blog'
+import { getVisiblePosts, getPostBySlug, getRelatedPosts, formatDate } from '@/lib/blog'
 import { AUTHORS } from '@/types/blog'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
@@ -16,8 +16,11 @@ interface Props {
   params: { slug: string }
 }
 
+// Visible posts: published ones, plus drafts on previews and local builds
+// only (the DRAFTS_SHOWN gate in lib/blog.ts). A production build statically
+// generates exactly the published set, as before.
 export async function generateStaticParams() {
-  return getAllPosts().map((post) => ({ slug: post.slug }))
+  return getVisiblePosts().map((post) => ({ slug: post.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -34,7 +37,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${post.title} | VBO Insights`,
-    description: post.excerpt,
+    // The search snippet. A post may carry its own metaDescription (shorter
+    // than the on-page excerpt, written for the result page); the excerpt
+    // remains the fallback and the social-card description either way.
+    description: post.metaDescription ?? post.excerpt,
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -67,11 +73,21 @@ function ArticleSchema({ post }: { post: NonNullable<ReturnType<typeof getPostBy
     image: post.image ? [`https://www.vboadv.com${post.image}`] : undefined,
     // @id ties this back to the Person node the root layout already emits, so
     // the author resolves to one entity instead of a fresh anonymous Person.
-    author: {
-      '@type': 'Person',
-      name: post.author,
-      '@id': 'https://www.vboadv.com/#tim-bailey',
-    },
+    // A brand byline ("VBO") is not a person: it resolves to the Organization
+    // instead, matching the publisher node, never to Tim's Person @id.
+    // (Added 2026-10-15 with the first brand-voiced posts; posts by a known
+    // person keep the exact output they always had.)
+    author: AUTHORS[post.author]
+      ? {
+          '@type': 'Person',
+          name: post.author,
+          '@id': 'https://www.vboadv.com/#tim-bailey',
+        }
+      : {
+          '@type': 'Organization',
+          name: 'VBO Advertising',
+          url: 'https://www.vboadv.com',
+        },
     publisher: {
       '@type': 'Organization',
       name: 'VBO Advertising',
@@ -155,6 +171,16 @@ const mdxComponents = {
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
     <ul {...props} className="mb-6 space-y-2 pl-0 list-none" />
+  ),
+  // A real numbered list (a post's checklist). Tailwind's preflight strips
+  // list numbering and the `li` override below adds the gold slash, so an
+  // <ol> restores gold decimal markers and suppresses the slash on its own
+  // items. First used by the listings post, 2026-10-15.
+  ol: (props: React.OlHTMLAttributes<HTMLOListElement>) => (
+    <ol
+      {...props}
+      className="mb-6 space-y-3 pl-7 list-decimal marker:text-[#B8962E] marker:font-mono marker:text-[14px] [&>li]:pl-2 [&>li::before]:content-none"
+    />
   ),
   // The bullet marker is the gold slash already used as the breadcrumb divider
   // on this page. It replaces an em dash, which no VBO surface may render.

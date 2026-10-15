@@ -12,6 +12,10 @@ export interface PostFrontmatter {
   // duplicates the H1 sitting directly above it. Set this on new posts.
   imageAlt?: string
   draft?: boolean
+  // The search-snippet description (the page's meta description) when it
+  // differs from the on-page excerpt. Falls back to `excerpt` when absent,
+  // which is how every post before 2026-10-15 behaves.
+  metaDescription?: string
   // Last meaningful change, YYYY-MM-DD. Drives sitemap lastmod so a post that
   // was edited after publication tells crawlers to recrawl. Absent on posts
   // that have not changed since they went live; `date` is used then.
