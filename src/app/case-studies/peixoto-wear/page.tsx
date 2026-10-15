@@ -20,9 +20,8 @@ import {
   PEIXOTO_CHALLENGE,
   PEIXOTO_CONTACT_CHALLENGE,
   PEIXOTO_DID,
-  PEIXOTO_WORK_IMAGES,
+  PEIXOTO_HERO,
   PEIXOTO_CONTACT_WORK,
-  PEIXOTO_ADS,
   PEIXOTO_RESULTS,
   PEIXOTO_QUOTE,
   PEIXOTO_NEXT,
@@ -35,8 +34,11 @@ import '../work.css'
 
 // The Peixoto Wear case study, on the IPPE template (../ippe-soccer-tours)
 // with the Sir Galloway rework's machinery (hero photograph, contact prompts,
-// phased results) and no Social section: VBO never ran Peixoto's organic
-// social, so the page does not pretend otherwise.
+// phased results), rebuilt 10/14 evening to Mary's revised copy.md (Tim's
+// edit round 1): no Social section (VBO never ran Peixoto's organic social),
+// no Work images section and no Ads strip (Tim, 10/14; the hero stays), the
+// second contact ask directly after What We Did, and five result phases with
+// September as the lead.
 //
 // PREVIEW ONLY until Mauricio and Brunela approve the page and Tim gives the
 // publish go. The switch is src/lib/indexable.ts: until
@@ -70,8 +72,6 @@ export const metadata: Metadata = {
     images: [SHARE_IMAGE],
   },
 }
-
-const img = PEIXOTO_WORK_IMAGES
 
 // A contact prompt (Jules's B5): one plain line in body type, its only link
 // the address or "Let's talk". No button: Next keeps the page's only one.
@@ -117,10 +117,10 @@ export default function PeixotoCaseStudyPage() {
             <figure className="vw-hero-photo">
               <div className="vw-shadowed">
                 <Image
-                  src={img.hero.src}
-                  alt={img.hero.alt}
-                  width={img.hero.width}
-                  height={img.hero.height}
+                  src={PEIXOTO_HERO.src}
+                  alt={PEIXOTO_HERO.alt}
+                  width={PEIXOTO_HERO.width}
+                  height={PEIXOTO_HERO.height}
                   sizes="(min-width: 1024px) 460px, (min-width: 488px) 440px, 100vw"
                   priority
                 />
@@ -174,8 +174,10 @@ export default function PeixotoCaseStudyPage() {
         </div>
 
         {/* 02 WHAT WE DID: harbour. Four steps (IPPE has three, Sir Galloway
-            five): the setup, the tracking, the ads, the partnership. No CSS
-            change. */}
+            five): the setup, the tracking, the ads, the partnership. The
+            second ask closes the section (copy.md: CONTACT_WORK sits after
+            What We Did, before The Results; the Work images section it used
+            to follow is off the page, Tim 10/14). No CSS change. */}
         <section className="vw-sec ground-harbour">
           <div className="vw-ghost" aria-hidden>
             02
@@ -195,91 +197,18 @@ export default function PeixotoCaseStudyPage() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* 03 THE WORK: smoke / granite. Two frames in a pair (Jules's B2),
-            lifestyle beside studio: Peixoto's own photography, nothing else.
-            The studio frame renders one step smaller (.vw-work-sm) until the
-            client's full-resolution master is pulled (Jules's manifest,
-            resolution note). The second ask closes the section. */}
-        <section className="vw-sec ground-smoke seam-in-out">
-          <div className="vw-ghost" aria-hidden>
-            03
-          </div>
-          <div className="vw-wrap">
-            <h2 className="vw-label">The Work</h2>
-            <div className="vw-accent" aria-hidden />
-            <div className="vw-work-pair vw-work-pair-only">
-              <figure>
-                <div className="vw-shadowed">
-                  <Image
-                    src={img.cabana.src}
-                    alt={img.cabana.alt}
-                    width={img.cabana.width}
-                    height={img.cabana.height}
-                    sizes="(min-width: 1024px) 460px, (min-width: 640px) 50vw, 100vw"
-                  />
-                </div>
-                <figcaption className="vw-cap">
-                  <b>01</b>
-                  {img.cabana.caption}
-                </figcaption>
-              </figure>
-              <figure className="vw-work-sm">
-                <div className="vw-shadowed">
-                  <Image
-                    src={img.studio.src}
-                    alt={img.studio.alt}
-                    width={img.studio.width}
-                    height={img.studio.height}
-                    sizes="367px"
-                  />
-                </div>
-                <figcaption className="vw-cap">
-                  <b>02</b>
-                  {img.studio.caption}
-                </figcaption>
-              </figure>
-            </div>
             <Ask id="CONTACT_WORK" ask={PEIXOTO_CONTACT_WORK} />
           </div>
         </section>
 
-        {/* THE ADS: three of the ads that ran, on the same granite ground as
-            The Work. Labels only, no figures. */}
-        <section className="vw-sec ground-smoke seam-in-out quiet-panel" aria-labelledby="vw-ads-title">
-          <div className="vw-wrap">
-            <p className="vw-label">{PEIXOTO_ADS.label}</p>
-            <div className="vw-accent" aria-hidden />
-            <h2 id="vw-ads-title">{PEIXOTO_ADS.heading}</h2>
-            <p className="vw-ads-note">{PEIXOTO_ADS.note}</p>
-            <div className="vw-ads-row vw-ads-row-3">
-              {PEIXOTO_ADS.items.map((ad) => (
-                <figure key={ad.src}>
-                  <div className="vw-ad">
-                    <Image
-                      src={ad.src}
-                      alt={ad.alt}
-                      width={864}
-                      height={1080}
-                      sizes="(min-width: 1024px) 390px, (min-width: 480px) 45vw, 90vw"
-                    />
-                  </div>
-                  <figcaption className="vw-ad-cap">
-                    <b>{ad.title}</b>
-                    {ad.meta}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* THE RESULTS: the retro stat band as three phases (Jules's B7).
-            September is the lead: a full row from 768px, the largest outlined
-            figure and the gold bar. No coda: the engagement is complete and
-            the quote follows the phases directly. */}
+        {/* THE RESULTS: the retro stat band as five phases (Jules's B7).
+            September, phase 3, is the lead: a full row from 768px, the
+            largest outlined figure and the gold bar; phases 1 and 2 sit
+            above it, and phases 4 and 5 (Tim's 10/14 additions) sit lighter
+            below it on the B7 quiet hairline with a smaller figure. Notes
+            render as their own paragraphs, in copy.md order. No coda: the
+            engagement is complete and the quote follows the phases
+            directly. */}
         <section className="vw-stats-band" aria-labelledby="vw-results-title">
           <div className="retro-strip" aria-hidden />
           <div className="vw-inner">
@@ -289,11 +218,20 @@ export default function PeixotoCaseStudyPage() {
               <h2 id="vw-results-title">{PEIXOTO_RESULTS.heading}</h2>
               <ol className="vw-phases">
                 {PEIXOTO_RESULTS.phases.map((ph) => (
-                  <li key={ph.label} className={`vw-phase${ph.kind === 'lead' ? ' vw-phase-lead' : ''}`}>
+                  <li
+                    key={ph.label}
+                    className={`vw-phase${ph.kind === 'lead' ? ' vw-phase-lead' : ''}${
+                      ph.kind === 'quiet' ? ' vw-phase-quiet' : ''
+                    }`}
+                  >
                     <p className="vw-phase-label">{ph.label}</p>
                     <span className="vw-num">{ph.num}</span>
                     <p className="vw-lbl">{ph.lbl}</p>
-                    {ph.note && <p className="vw-phase-note">{ph.note}</p>}
+                    {ph.notes.map((n) => (
+                      <p key={n} className="vw-phase-note">
+                        {n}
+                      </p>
+                    ))}
                   </li>
                 ))}
               </ol>

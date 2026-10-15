@@ -312,16 +312,21 @@ export const workIndexBreadcrumbSchema = {
 // their imagery) and Tim gives the publish go. Nothing is sent or live, and
 // the clients have not seen any version of this page.
 //
-// Copy is Mary's (clients/vbo/case-studies/peixoto/copy.md, 2026-10-14,
-// section 1), field for field and word for word; every figure traces to
-// Mercury's verified file (2026-10-14-mercury-numbers.md) via the copy's
-// claims ledger. Image words (captions, display titles, meta lines, alts) are
-// Mary's display-words.md of the same day, written from Jules's final picks
-// (Jules/designs/vbo/website/2026-10-14-case-study-peixoto/final/manifest.md).
+// Copy is Mary's (clients/vbo/case-studies/peixoto/copy.md, revised in place
+// 2026-10-14 evening for Tim's edit round 1), field for field and word for
+// word; every figure traces to Mercury's verified file
+// (2026-10-14-mercury-numbers.md plus its 10/14 Addendum) via the copy's
+// claims ledger. The hero alt is Mary's display-words.md; every other item
+// in that file is RETIRED with its section and never renders.
 // Same template as IPPE above, with the Sir Galloway rework's machinery
-// (hero photograph, contact prompts, phased results) and three deliberate
-// differences: no Social section (VBO never ran Peixoto's organic social),
-// a four-step What We Did, and a one-string quote.
+// (hero photograph, contact prompts, phased results) and the revision's
+// shape: no Social section (VBO never ran Peixoto's organic social), no Work
+// images section and no Ads strip (Tim, 10/14: "We didn't make them"; the
+// hero stays), a four-step What We Did, five result phases (4 and 5 are
+// Tim's 10/14 additions and sit lighter), and a one-string quote. The two
+// lines Tim is still deciding (the phase 2 dollar line, the phase 5 external
+// comparison) render as normal copy with their chat-level decision markers
+// stripped: the page never shows a bracket marker.
 //
 // The engagement is complete: the page tells a six-month story in neutral
 // past tense, never says the engagement ended, never implies it continues.
@@ -355,17 +360,17 @@ export const PEIXOTO_PUBLISHED: string | null = null
 
 export const PEIXOTO_TITLE = 'Peixoto Wear Case Study: Paid Ads & Partnership | VBO'
 export const PEIXOTO_DESCRIPTION =
-  "How VBO set up Peixoto Wear's tracking, ran one ad program across Facebook, Instagram and Google, and helped the month that fell hardest last year hold its summer pace."
+  "How VBO set up Peixoto Wear's tracking, ran one ad program across Facebook, Instagram and Google, and helped the store grow sales year over year."
 
 export const PEIXOTO_CLIENT = 'Peixoto Wear'
 
-export const PEIXOTO_H1 = 'How we helped Peixoto Wear hold September at summer pace'
+export const PEIXOTO_H1 = 'How we helped Peixoto Wear grow sales year over year'
 
 export const PEIXOTO_SUBHEAD =
-  'The first thirty days went to the foundation: the accounts audited, the tracking cleaned up, every ad tagged before it ran. Then we ran one paid program: ads on Facebook and Instagram, plus listings on Google when people searched or shopped there, including for Peixoto by name. We handled the search work early on.'
+  'The first thirty days went to the foundation: the accounts audited, the tracking cleaned up, every ad tagged before it ran. Then we ran one paid program: ads on Facebook and Instagram, plus listings on Google when people searched or shopped there.'
 
 export const PEIXOTO_CARD_LINE =
-  'The tracking set up first, then one ad program across Facebook, Instagram and Google, and a September that held its summer pace.'
+  'The tracking set up first, then one ad program across Facebook, Instagram and Google, and a store selling ahead of last year, year over year.'
 
 /*
  * Five cells (IPPE and Sir Galloway carry seven). Desktop rows fill the
@@ -383,7 +388,7 @@ export const PEIXOTO_SNAPSHOT: (typeof IPPE_SNAPSHOT)[number][] = [
   { k: 'With VBO since', v: 'April 2026', wideSm: true },
   {
     k: 'What we did',
-    v: 'Tracking and setup, paid ads on Facebook, Instagram and Google, early search work',
+    v: 'Tracking and setup, paid ads on Facebook, Instagram and Google',
     wide: true,
   },
   {
@@ -397,9 +402,9 @@ export const PEIXOTO_SNAPSHOT: (typeof IPPE_SNAPSHOT)[number][] = [
 
 export const PEIXOTO_CHALLENGE = {
   label: 'The Challenge',
-  heading: 'Ads nobody could trace, and a September that fell hard.',
+  heading: 'Ads nobody could trace, and a sharp drop-off when summer ends.',
   body: [
-    "Peixoto was already running ads when we met them. In the September before we started, not one of the month's orders could be traced to an ad, and the spend kept going out anyway. The month fell by more than half from August's pace, and the months after it fell further.",
+    "Peixoto was already running ads when we met them. In the September before we started, not one of the month's orders could be traced to an ad, and the spend kept going out anyway. The second problem comes around every year: swim and resort wear drops off hard when summer ends. That September, sales fell to less than half of what August did, and they kept falling into the winter.",
   ],
 }
 
@@ -407,7 +412,8 @@ export const PEIXOTO_CHALLENGE = {
  * The two contact prompts share the Sir Galloway treatment: one plain line in
  * body type inside the page column, the link in VBO gold, no button, no box,
  * no icon. Next keeps the page's only button. Each sits directly under what
- * it follows: the Challenge body, the last work image.
+ * it follows: the Challenge body, the What We Did steps (the Work images
+ * section CONTACT_WORK used to follow is off the page, Tim 10/14).
  */
 export const PEIXOTO_CONTACT_CHALLENGE = {
   text: 'If you run an established online store and this is you, reach out at hello@vboadv.com.',
@@ -448,35 +454,17 @@ export const PEIXOTO_DID = {
 
 /*
  * The hero is Peixoto's own brand photography (the seaside lifestyle frame),
- * 3:4 in the Sir Galloway hero slot (.vw-hero-photo), no caption. The two
- * work slots are a pair (lifestyle beside studio), like Sir Galloway's
- * .vw-work-pair. Work slot 2's only local source is a 734px preview (the
- * full-resolution master is with the client until pulled): it renders capped
- * at 367 css px (.vw-work-sm) so it never drops under 2x density. Every
- * caption and alt is Mary's, written from the chosen frames
- * (display-words.md). No line says where any image came from.
+ * 3:4 in the Sir Galloway hero slot (.vw-hero-photo), no caption, alt from
+ * display-words.md (the one line of that file still live). It is the page's
+ * only client image: the Work images section and the Ads strip are off the
+ * page (Tim, 10/14), their files dropped from this branch, their words
+ * retired in display-words.md. No line says where the image came from.
  */
-export const PEIXOTO_WORK_IMAGES = {
-  hero: {
-    src: '/images/work/peixoto-wear/peixoto-wear-hero-seaside.jpg',
-    width: 810,
-    height: 1080,
-    alt: "A model in Peixoto's pink striped knit set seated on a weathered wooden table by the sea, coconuts beside her and a low stone wall behind",
-  },
-  cabana: {
-    src: '/images/work/peixoto-wear/work/peixoto-wear-work-cabana-seated.jpg',
-    width: 1080,
-    height: 1350,
-    alt: "A model in a navy and white knit polo set seated on a cabana's cushioned bench, woven screens behind her",
-    caption: "The store's own photography carried the ads.",
-  },
-  studio: {
-    src: '/images/work/peixoto-wear/work/peixoto-wear-work-studio-comporta.jpg',
-    width: 734,
-    height: 918,
-    alt: 'A model in a pink striped knit two-piece against a plain white studio background',
-    caption: 'The listings on Google ran on photography like this.',
-  },
+export const PEIXOTO_HERO = {
+  src: '/images/work/peixoto-wear/peixoto-wear-hero-seaside.jpg',
+  width: 810,
+  height: 1080,
+  alt: "A model in Peixoto's pink striped knit set seated on a weathered wooden table by the sea, coconuts beside her and a low stone wall behind",
 }
 
 export const PEIXOTO_CONTACT_WORK = {
@@ -485,54 +473,24 @@ export const PEIXOTO_CONTACT_WORK = {
 }
 
 /*
- * "The Ads": three of the ads that ran, in Jules's manifest order. Labels
- * only, no figures anywhere in the strip. Artwork is the real ad units as
- * exported to Meta, resized whole from 1080x1350 to 864x1080 and re-encoded,
- * nothing recomposed or recoloured. Titles, meta lines and alts are Mary's
- * (display-words.md): audience in searcher terms, never campaign names, and
- * the build names never reach the page. Nothing from the 8/28 intrusion.
- */
-export const PEIXOTO_ADS = {
-  label: 'The Ads',
-  heading: 'Then the ads.',
-  note: 'They ran on Facebook and Instagram, and as listings on Google when people searched or shopped there, including when they searched for Peixoto by name. Peixoto sells nationwide, so the ads ran nationwide.',
-  items: [
-    {
-      src: '/images/work/peixoto-wear/ads/peixoto-wear-ad-audrey.jpg',
-      title: 'The Mint Dress',
-      meta: 'New customers · still · clothing',
-      alt: 'Ad still: a model in a long mint green dress with fabric flowers at the shoulders, on a plain studio background',
-    },
-    {
-      src: '/images/work/peixoto-wear/ads/peixoto-wear-ad-chateau-bleu-cabana.jpg',
-      title: 'The Cabana',
-      meta: 'New customers · still · swim',
-      alt: 'Ad still: a model in sunglasses and a navy and white knit polo set standing in a cabana, the sea behind her',
-    },
-    {
-      src: '/images/work/peixoto-wear/ads/peixoto-wear-ad-chateau-bleu-bikini.jpg',
-      title: 'The Bikini',
-      meta: 'New customers · product card · swim',
-      alt: 'Ad still: a model in a white knit bikini with navy trim on a plain white background',
-    },
-  ],
-}
-
-/*
- * The Results, as three phases (Mary's order; every figure's source and
- * period in copy.md's claims ledger, from Mercury's verified file).
- * September is the lead figure and carries the layout weight: full row from
- * 768px, the largest outlined figure, the gold bar (Jules's B7, as Sir
- * Galloway's lead phase). The phase 2 note is required copy (the net guard),
- * not small print. No coda: the engagement is complete and the quote follows
- * the phases directly.
+ * The Results, as five phases (Mary's order; every figure's source and
+ * period in copy.md's claims ledger, from Mercury's verified file and its
+ * 10/14 Addendum). September, phase 3, is the lead figure and carries the
+ * layout weight: full row from 768px, the largest outlined figure, the gold
+ * bar (Jules's B7, as Sir Galloway's lead phase). Phases 4 and 5 are Tim's
+ * 10/14 additions and sit lighter (the B7 quiet hairline, a smaller outlined
+ * figure). Phase 2's first note is the dollar line and phase 5's note
+ * carries the one external comparison: both are Tim's open calls, rendered
+ * as normal copy with their [TIM...] markers stripped (chat-level decisions,
+ * never on a page). Notes are required copy, not small print. No coda: the
+ * engagement is complete and the quote follows the phases directly.
  */
 export type PeixotoPhase = {
   label: string
   num: string
   lbl: string
-  note: string | null
-  kind: 'figure' | 'lead'
+  notes: string[]
+  kind: 'figure' | 'lead' | 'quiet'
 }
 
 export const PEIXOTO_RESULTS = {
@@ -542,23 +500,46 @@ export const PEIXOTO_RESULTS = {
     {
       label: 'Before the ads',
       num: '15.7% behind',
-      lbl: 'the same months last year, on what customers ordered.',
-      note: null,
+      lbl: 'the same months last year, year over year, on what customers ordered.',
+      notes: [],
       kind: 'figure',
     },
     {
       label: 'With the ads',
       num: '49.6% ahead',
-      lbl: 'of the same months last year, on what customers ordered.',
-      note: 'After discounts and returns as the store books them, the same months ran 34% ahead.',
+      lbl: 'of the same months last year on what customers ordered.',
+      notes: [
+        'That is almost $28,000 more than the same months last year, year over year.',
+        'After discounts and returns as the store books them, the same months ran 34% ahead.',
+      ],
       kind: 'figure',
     },
     {
       label: 'September',
       num: '3.4x',
       lbl: "last September's sales.",
-      note: "It held August's pace to within 1%, where the September before fell 61%. More than half of its orders arrived on an ad click, against none a year earlier.",
+      notes: [
+        "It held August's pace to within 1%, where the September the year before fell 61%. More than half of its orders arrived on an ad click, against none a year earlier.",
+      ],
       kind: 'lead',
+    },
+    {
+      label: 'The traffic',
+      num: '28% more',
+      lbl: 'visits in June through September than the same months the year before, year over year.',
+      notes: [
+        'About 55,000 visits against about 43,000. The growth came from the ads: visits arriving from an ad ran at more than three and a half times the year before, while every other source combined was flat to slightly down. September alone had 85% more visits than the September before.',
+      ],
+      kind: 'quiet',
+    },
+    {
+      label: 'The efficiency',
+      num: 'Less than half',
+      lbl: 'what it cost the year before to get a shopper to the cart, on the same Facebook and Instagram account.',
+      notes: [
+        'Same account, same season: less spent than the year before, and almost twice the work from the same dollars. In the closing two months, every advertising dollar on Google traced back just over three dollars in sales, above the published medians of about $2.60 to $2.90 for this kind of shopping campaign (Rule1, 2025 data; Focus Digital, 2025).',
+      ],
+      kind: 'quiet',
     },
   ] as PeixotoPhase[],
 }
@@ -598,11 +579,7 @@ export const peixotoArticleSchema = {
   author: { '@id': `${WORK_HOST}/#organization` },
   publisher: { '@id': `${WORK_HOST}/#organization` },
   ...(PEIXOTO_PUBLISHED ? { datePublished: PEIXOTO_PUBLISHED, dateModified: PEIXOTO_PUBLISHED } : {}),
-  image: [
-    `${WORK_HOST}${PEIXOTO_WORK_IMAGES.hero.src}`,
-    `${WORK_HOST}${PEIXOTO_WORK_IMAGES.cabana.src}`,
-    `${WORK_HOST}${PEIXOTO_WORK_IMAGES.studio.src}`,
-  ],
+  image: [`${WORK_HOST}${PEIXOTO_HERO.src}`],
   mainEntityOfPage: PEIXOTO_URL,
 }
 

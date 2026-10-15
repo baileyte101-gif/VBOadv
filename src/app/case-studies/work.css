@@ -314,14 +314,18 @@
 .vw h2.vw-label { font-weight: 400; line-height: 1.5; max-width: none; }
 
 /* ==========================================================================
-   Peixoto Wear deltas (2026-10-14). The four blocks below (B1, B2, B5, B7)
-   are Jules's rules from the Sir Galloway rework (sg-additions.css, carried
-   on branch content/case-study-sir-galloway-2026-10-13), byte for byte,
-   because this page shares that template: the hero photograph, the work
-   pair, the contact prompts and the phased results. If the Sir Galloway
-   branch has merged first, these blocks already exist above: at rebase, keep
-   ONE copy of each. The two rules at the bottom are this page's own (Bob).
-   Every selector is a new class, so the IPPE page renders exactly as before.
+   Peixoto Wear deltas (2026-10-14; revised the same evening for Tim's edit
+   round 1). The three blocks below (B1, B5, B7) are Jules's rules from the
+   Sir Galloway rework (sg-additions.css, carried on branch
+   content/case-study-sir-galloway-2026-10-13), byte for byte, because this
+   page shares that template: the hero photograph, the contact prompts and
+   the phased results. B2 (the work pair) was carried in the first preview
+   and is dropped with its section: the Work images and the Ads strip are off
+   the page (Tim, 10/14), so this branch adds no rules for them. If the Sir
+   Galloway branch has merged first, these blocks already exist above: at
+   rebase, keep ONE copy of each. The one rule at the bottom is this page's
+   own (Bob). Every selector is a new class, so the IPPE page renders exactly
+   as before.
    ========================================================================== */
 
 /* (B1) HERO IMAGE. The Pinecrest storefront image (Tim, 10/6) where IPPE
@@ -334,20 +338,6 @@
 .vw .vw-hero-photo img { width: 100%; height: auto; display: block; }
 @media (min-width: 1024px) {
   .vw .vw-hero-photo { max-width: none; justify-self: stretch; }
-}
-
-/* (B2) THE WORK, ROW 2. IPPE: phone (02) + carousel strip (04). Sir Galloway:
-   phone (02) + a pair, the Google listing (04) and a storefront photograph
-   (05), both 4:5. Stacked on phones so the listing stays readable, two-up
-   from 640px. At 1440 each tile is about 455 x 570, level with the phone. */
-.vw .vw-work-pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; align-items: start; }
-.vw .vw-work-pair > * { min-width: 0; margin: 0; }
-.vw .vw-work-pair img { width: 100%; height: auto; display: block; }
-@media (min-width: 640px) {
-  .vw .vw-work-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
-}
-@media (min-width: 1024px) {
-  .vw .vw-work-pair { gap: 40px; }
 }
 
 /* (B5) THE CONTACT PROMPTS (new 10/13; Mary's CONTACT_CHALLENGE, CONTACT_WEBSITE,
@@ -420,23 +410,11 @@
   .vw .vw-phase-note { font-size: 16px; }
 }
 
-/* (Bob, 10/14) The Peixoto work section is the pair alone (no phone frame,
-   no work grid): capped at 950px so each frame sits at the Sir Galloway
-   pair's ~455px scale instead of stretching across the full 1248px column. */
-.vw .vw-work-pair-only { max-width: 950px; margin-top: 48px; }
-@media (min-width: 1024px) { .vw .vw-work-pair-only { margin-top: 64px; } }
-
-/* (Bob, 10/14) Work slot 2 ships from a 734px preview until the client's
-   full-resolution master is pulled (Jules's manifest, resolution note):
-   capped at 367 css px so it never renders under 2x density. */
-.vw .vw-work-pair .vw-work-sm { max-width: 367px; }
-
-/* (Bob, 10/14) This page's ads strip carries three units (Jules's manifest:
-   the launch apparel push, the swim lifestyle push, the swim product card),
-   where IPPE's and Sir Galloway's carry four. In the shared four-up grid the
-   third row position would leave a dead column on every desktop view, so the
-   strip goes three-up from 1024px for this page only. Phones keep the shared
-   two-up (two, then one). */
-@media (min-width: 1024px) {
-  .vw .vw-ads-row.vw-ads-row-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
+/* (Bob, 10/14 evening) Peixoto's phases 4 and 5 are Tim's additions and sit
+   lighter than phases 1 and 2, as the copy asks (September keeps the layout
+   weight): B7's quiet hairline top instead of the solid rule, and the
+   outlined figure one step smaller. The outline stays because both are
+   measured figures (B7 keeps the outline for measured figures only); the
+   smaller clamp also keeps phase 5's worded figure, "Less than half", on one
+   line in its half-row column. */
+.vw .vw-phases .vw-phase-quiet .vw-num { font-size: clamp(2.4rem, 6vw, 4rem); }
