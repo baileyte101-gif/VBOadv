@@ -541,7 +541,10 @@ body {
   z-index: 1;
 }
 .marble-on .hero-bg-toggle .pill { transform: translateX(100%); }
-.hero-bg-toggle[aria-pressed="false"] .opt-black { color: #f2ede4; font-weight: 600; }
+/* The selected option reads dark on the gold pill, both ways round. Black's
+   label was cream on gold, 2.4:1 at 9.5px, under WCAG AA's 4.5:1 (found
+   2026-10-15 adding the toggle to /why-the-bee); now it matches Marble's. */
+.hero-bg-toggle[aria-pressed="false"] .opt-black { color: #241a06; font-weight: 600; }
 .hero-bg-toggle[aria-pressed="true"] .opt-marble { color: #241a06; font-weight: 600; }
 
 @media (prefers-reduced-motion: reduce) {

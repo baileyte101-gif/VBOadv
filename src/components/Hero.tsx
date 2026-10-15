@@ -3,6 +3,7 @@
 import { useRef, useState, type CSSProperties } from 'react'
 import Image from 'next/image'
 import ParticleField from '@/components/ParticleField'
+import HeroGroundToggle from '@/components/HeroGroundToggle'
 
 const words = ['Strategy.', 'Creative.', 'Performance.']
 
@@ -128,20 +129,10 @@ export default function Hero() {
           hello@vboadv.com
         </a>
 
-        {/* Ground toggle. black on the left, marble on the right. Real button,
-            so keyboard reach, focus ring and aria-pressed come for free. */}
+        {/* Ground toggle. black on the left, marble on the right (shared with
+            the /why-the-bee title section). */}
         <div style={enter(0.94, 0.5)} className="hero-in hero-in-lift mb-5">
-          <button
-            type="button"
-            onClick={() => setMarble((v) => !v)}
-            aria-pressed={marble}
-            aria-label="Switch the hero background between black and marble"
-            className="hero-bg-toggle"
-          >
-            <span className="pill" aria-hidden />
-            <span className="opt opt-black">Black</span>
-            <span className="opt opt-marble">Marble</span>
-          </button>
+          <HeroGroundToggle marble={marble} onToggle={() => setMarble((v) => !v)} />
         </div>
 
         {/* Mono tagline */}

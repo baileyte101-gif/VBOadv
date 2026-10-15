@@ -55,6 +55,23 @@ const WORDMARK_Y_BIAS = 0.07
 /** Multiplier on the wordmark's fit budget. See WORDMARK_Y_BIAS. */
 const WORDMARK_SIZE_SCALE = 1.12
 
+/**
+ * The bee on /why-the-bee (Tim, 2026-10-15: the homepage's pixel VBO, "exact
+ * same feature", with the bee instead), as large as the title section allows.
+ * From HERO_PHOTO_BREAKPOINT up there is no photo on that page, so the bee's
+ * centre moves right into the open black space beside the title, and the
+ * mark still runs behind the title's right half. Below it the words fill the
+ * width, so the bee spans it and sits high, its body behind the big title
+ * letters rather than under the intro, where the legibility scrim mutes it.
+ */
+const BEE_FIT_H = 0.86
+const BEE_FIT_W = 0.9
+const BEE_X_WIDE = 0.64
+const BEE_FIT_W_NARROW = 0.98
+const BEE_Y_NARROW = 0.42
+/** The artwork's own bounds in the logo pack's 512 grid (the bee's viewBox). */
+const BEE_BOX = { x: 49.697, y: 32, w: 412.605, h: 448 }
+
 type Particle = {
   bx: number
   by: number
@@ -73,12 +90,20 @@ type BuildOpts = {
   yBias: number
   /** Multiplier on the wordmark's fit budget. 1 = the default size. */
   sizeScale: number
+  /** Viewport at or above HERO_PHOTO_BREAKPOINT. */
+  wide: boolean
 }
 
 type Preset = {
   build: (ctx: CanvasRenderingContext2D, W: number, H: number, opts: BuildOpts) => void
   color: string
   density: number
+  /**
+   * Density from HERO_PHOTO_BREAKPOINT up, where it differs. The hero
+   * wordmark's canvas is the copy column there (60% of the width); a field
+   * that spans the full width uses density / 0.6 to keep the same dot spacing.
+   */
+  densityWide?: number
   dimChance: number
   baseORange: [number, number]
   baseORangeDim: [number, number]
@@ -128,6 +153,29 @@ function buildWordmark(
   ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'
   ctx.fillText(text, W / 2, H / 2 + size * 0.03 + H * yBias)
+}
+
+/**
+ * The VBO bee, drawn from the logo pack's own paths. They are read from the
+ * page's bee sprite (BeeSprite, in the root layout), so the field always
+ * matches the header's bee and ships no second copy of the artwork. Wings and
+ * body are filled solid; the stencil cuts between them stay open, so the dots
+ * show the cut bee. If the sprite is missing nothing is drawn and the
+ * fallback shows.
+ */
+function buildBee(ctx: CanvasRenderingContext2D, W: number, H: number, { wide }: BuildOpts) {
+  const paths = document.querySelectorAll('#vbo-bee-wr path, #vbo-bee-wl path, #vbo-bee-body path')
+  if (!paths.length) return
+  const s = Math.min((W * (wide ? BEE_FIT_W : BEE_FIT_W_NARROW)) / BEE_BOX.w, (H * BEE_FIT_H) / BEE_BOX.h)
+  const cx = W * (wide ? BEE_X_WIDE : 0.5)
+  const cy = H * (wide ? 0.5 : BEE_Y_NARROW)
+  ctx.fillStyle = '#fff'
+  ctx.setTransform(s, 0, 0, s, cx - (BEE_BOX.x + BEE_BOX.w / 2) * s, cy - (BEE_BOX.y + BEE_BOX.h / 2) * s)
+  paths.forEach((el) => {
+    const d = el.getAttribute('d')
+    if (d) ctx.fill(new Path2D(d))
+  })
+  ctx.setTransform(1, 0, 0, 1, 0, 0)
 }
 
 function mulberry32(seed: number) {
@@ -268,7 +316,7 @@ function buildSkyline(ctx: CanvasRenderingContext2D, W: number, H: number) {
   }
 }
 
-const PRESETS: Record<'wordmark' | 'skyline', Preset> = {
+const PRESETS: Record<'wordmark' | 'skyline' | 'bee', Preset> = {
   wordmark: {
     build: buildWordmark,
     color: GOLD_HOT,
@@ -293,10 +341,25 @@ const PRESETS: Record<'wordmark' | 'skyline', Preset> = {
     periodRange: [2200, 5000],
     periodRangeDim: [3600, 7500],
   },
+  /* The hero wordmark's dots, flicker and colour exactly; only the shape and
+     the full-width canvas differ (see densityWide). */
+  bee: {
+    build: buildBee,
+    color: GOLD_HOT,
+    density: 190,
+    densityWide: 190 / 0.6,
+    dimChance: 0.22,
+    baseORange: [0.46, 0.8],
+    baseORangeDim: [0.22, 0.38],
+    amplRange: [0.1, 0.18],
+    amplRangeDim: [0.05, 0.1],
+    periodRange: [1500, 4000],
+    periodRangeDim: [2600, 6000],
+  },
 }
 
 type Props = {
-  variant: 'wordmark' | 'skyline'
+  variant: 'wordmark' | 'skyline' | 'bee'
   /**
    * The element pointer events are read from. Listening on the whole section
    * rather than the canvas wrap, since content sits above the wrap in the
@@ -381,11 +444,11 @@ export default function ParticleField({
       // Both wordmark adjustments are desktop-only: below the breakpoint there is
       // no photo and no crowding, so the mark keeps the size and centring that
       // was already signed off, and the mobile particle count does not move.
-      const isDesktopWordmark =
-        variant === 'wordmark' && window.innerWidth >= HERO_PHOTO_BREAKPOINT
+      const wide = window.innerWidth >= HERO_PHOTO_BREAKPOINT
+      const isDesktopWordmark = variant === 'wordmark' && wide
       const yBias = isDesktopWordmark ? WORDMARK_Y_BIAS : 0
       const sizeScale = isDesktopWordmark ? WORDMARK_SIZE_SCALE : 1
-      cfg.build(octx, W, H, { fontFamily, yBias, sizeScale })
+      cfg.build(octx, W, H, { fontFamily, yBias, sizeScale, wide })
       let img: Uint8ClampedArray
       try {
         img = octx.getImageData(0, 0, W, H).data
@@ -395,7 +458,7 @@ export default function ParticleField({
       particles = []
       // Below ~480px viewport width, cut density further rather than trusting
       // the density formula's natural falloff on a smaller canvas alone.
-      let effectiveDensity = cfg.density
+      let effectiveDensity = wide && cfg.densityWide ? cfg.densityWide : cfg.density
       if (W < MOBILE_WIDTH_BREAKPOINT) effectiveDensity = effectiveDensity / MOBILE_DENSITY_DIVISOR
       const step = Math.max(4, Math.floor(W / effectiveDensity))
       for (let y = 0; y < H; y += step) {

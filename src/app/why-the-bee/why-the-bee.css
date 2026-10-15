@@ -78,6 +78,34 @@
   .vb .vb-hero { padding-top: 104px; }
 }
 
+/* The homepage hero's pixel field, as the bee, behind the title; and its
+   black / marble toggle (2026-10-15). Layers: ground (section), marble layer
+   (0), field (1), words (2). The field spans the whole section: this page
+   has no photo beside its title. */
+.vb .vb-hero-field {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.vb .vb-hero-field canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+}
+/* Only shown if the dots cannot be built: the still bee, faint. */
+.vb .vb-hero-field-still {
+  width: min(56%, 380px);
+  height: auto;
+  aspect-ratio: 412.605 / 448;
+  color: #B8962E;
+  opacity: 0.1;
+}
+.vb .vb-hero-toggle { margin-top: 32px; }
+
 /* From Tim, on Egg */
 .vb .vb-egg {
   background: #F2EDE4;

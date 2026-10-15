@@ -6,12 +6,11 @@ import SiteFooter from '@/components/SiteFooter'
 import BeeLockup from '@/components/bee/BeeLockup'
 import BeeLane from '@/components/bee/BeeLane'
 import BeeFlight from '@/components/bee/BeeFlight'
+import WhyHero from '@/components/bee/WhyHero'
 import { INDEXABLE_PAGES } from '@/lib/indexable'
 import { SHARE_IMAGE } from '@/lib/share'
 import {
-  WHY_PAGE_LABEL,
   WHY_H1,
-  WHY_INTRO,
   WHY_S1_HEADING,
   WHY_NOTE,
   WHY_NOTE_SIGN,
@@ -103,15 +102,9 @@ export default function WhyTheBeePage() {
       <Nav />
 
       <main className="vb pt-16">
-        {/* Title and intro */}
-        <section className="vb-sec vb-hero ground-plain" aria-labelledby="vb-title" data-bee-sec="hero">
-          <div className="vb-wrap">
-            <p className="vb-label">{WHY_PAGE_LABEL}</p>
-            <div className="vb-accent" aria-hidden />
-            <h1 id="vb-title">{WHY_H1}</h1>
-            <p className="vb-intro">{WHY_INTRO}</p>
-          </div>
-        </section>
+        {/* Title and intro, with the homepage hero's pixel field (the bee)
+            and black / marble toggle (2026-10-15) */}
+        <WhyHero />
 
         {/* From Tim: his note, two photographs, the pull quote */}
         <section
