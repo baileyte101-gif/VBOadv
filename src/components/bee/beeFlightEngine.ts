@@ -31,6 +31,11 @@
       box: the centre of the space either side of the words.
    2. Paddings. The mock had one top and bottom padding for every section.
       PT and PB here read each anchor element's own computed padding.
+
+   /why-the-bee (2026-10-15, Tim 10/14: the bee must float on the bee page
+   "exactly like it does on the homepage"): the same engine, the same bee and
+   the same motion, given a second route (STORY_ROUTE). Only the waypoints
+   differ, because the page's sections differ.
    ========================================================================= */
 
 type Box = { x: number; y: number; w: number; h: number; pt: number; pb: number }
@@ -54,6 +59,12 @@ type Way = {
   r?: number
 }
 type Pt = { x: number; y: number }
+type Route = {
+  ways: Way[]
+  required: string[] // data-bee-sec anchors the route needs; without them the still bee stays
+  gutters: Record<string, string> // which flying section's content box sets the gutters for a waypoint
+  land: string // the flying section it lands in (that copy pulses on landing)
+}
 
 const PT = (f: number): Dy => (s) => s.pt * f
 const PB = (f: number): Dy => (s) => -s.pb * f
@@ -61,18 +72,8 @@ const NOSE: Dy = (_s, L) => -L.B / 2 // centre one radius above the edge: just h
 
 const VT = 0.53 // with the 3% trail limit, the bee shows at about 50% of the screen at any scroll speed
 
-/* Which flying section's content box sets the gutters for a waypoint. */
-const GUTTER_OF: Record<string, string> = {
-  run: 'run',
-  wall: 'run',
-  runEnd: 'run',
-  wwd: 'wwd',
-  about: 'about',
-  why: 'why',
-  rest: 'why',
-}
-
-const ROUTE: Way[] = [
+/* The homepage. */
+const HOME_WAYS: Way[] = [
   { s: 'ticker', y: 'top', dy: -70, x: 0.66 }, // waiting behind the hero and the word band
   { s: 'run', y: 'top', dy: NOSE, x: 0.68, vt: VT }, // nose at the band's lower edge as What we run reaches mid-screen
   { s: 'run', y: 'top', dy: 12, x: 0.68 }, // drops out from under the word band
@@ -112,7 +113,50 @@ const ROUTE: Way[] = [
   { s: 'rest', y: 'mid', dy: 0, x: 'rest', vy: 0.4 }, // lands beside the link
 ]
 
-const REQUIRED = ['ticker', 'run', 'wall', 'runEnd', 'approach', 'band', 'wwd', 'life', 'ind', 'about', 'why', 'rest']
+const HOME_ROUTE: Route = {
+  ways: HOME_WAYS,
+  required: ['ticker', 'run', 'wall', 'runEnd', 'approach', 'band', 'wwd', 'life', 'ind', 'about', 'why', 'rest'],
+  gutters: { run: 'run', wall: 'run', runEnd: 'run', wwd: 'wwd', about: 'about', why: 'why', rest: 'why' },
+  land: 'why',
+}
+
+/* /why-the-bee. Jules's homepage rules applied to the page's own sections:
+   the title and Our icon are the page's front bands (the bee waits behind
+   the title, which keeps it off the word Manchester there, and never flies
+   over the big bee); it comes out of each flying section's top edge as that
+   edge reaches mid-screen, flies the right-hand gutter (the open side: the
+   page's words are set left), and lands upright beside Let's Connect, coming
+   in from the right as it lands beside Read the story on the homepage. Black
+   on From Tim's Egg, gold on the dark grounds. */
+const STORY_WAYS: Way[] = [
+  { s: 'hero', y: 'bottom', dy: -70, x: 0.72 }, // waiting behind the title
+  { s: 'note', y: 'top', dy: NOSE, x: 0.72, vt: VT }, // nose at the title's lower edge as From Tim reaches mid-screen
+  { s: 'note', y: 'top', dy: 12, x: 0.72 }, // out into From Tim (black on Egg)
+  { s: 'note', y: 'top', dy: PT(0.55), x: 0.84 },
+  { s: 'note', y: 'top', dy: PT(1), x: 'gR', r: 24 }, // into the right gutter (tight corner: in the gutter before the first line)
+  { s: 'note', y: 'bottom', dy: PB(0.45), x: 'gR', r: 24, vy: 0.62 }, // down past the note, the photos and the quote
+  { s: 'note', y: 'bottom', dy: PB(0.35), x: 0.62 }, // sweeps left, under the quote
+  { s: 'icon', y: 'top', dy: 40, x: 0.58, vy: 0.58 }, // under Our icon
+  { s: 'icon', y: 'bottom', dy: -26, x: 0.78 }, // behind the big bee and the lockup
+  { s: 'how', y: 'top', dy: NOSE, x: 0.78, vt: VT }, // nose at Our icon's edge as How we work reaches mid-screen
+  { s: 'how', y: 'top', dy: 12, x: 0.78 }, // out into How we work
+  { s: 'how', y: 'top', dy: PT(1), x: 'gR', r: 24 }, // into the right gutter (tight corner, as above)
+  { s: 'how', y: 'bottom', dy: -30, x: 'gR' }, // down past the motto, the photo and the Friday-night story
+  { s: 'close', y: 'top', dy: 0, x: 'gR', vt: VT }, // crosses into the close
+  { s: 'close', y: 'top', dy: PT(0.7), x: 'gR' },
+  { s: 'rest', y: 'mid', dy: 0, x: 'gR' }, // level with the button, coming in from the right so it never crosses it
+  { s: 'rest', y: 'mid', dy: 0, x: 'rest', vy: 0.4 }, // lands beside Let's Connect
+]
+
+const STORY_ROUTE: Route = {
+  ways: STORY_WAYS,
+  required: ['hero', 'note', 'icon', 'how', 'close', 'rest'],
+  gutters: { note: 'note', how: 'how', close: 'close', rest: 'close' },
+  land: 'close',
+}
+
+const ROUTES = { home: HOME_ROUTE, story: STORY_ROUTE }
+export type BeeRouteName = keyof typeof ROUTES
 
 const TAU = 0.3 // seconds for the bee to catch up with the scroll
 const MAX_LAG = 0.03 // but it never trails the scroll by more than 3% of the screen
@@ -120,14 +164,16 @@ const TURN = 0.22 // seconds to turn toward where it flies
 const IDLE_MS = 1400 // wings stop this long after the bee slows to a drift
 const MAX_RATIO = 3.2 // the bee never moves more than 3.2 px per px scrolled
 
-export function startBeeFlight(): () => void {
+export function startBeeFlight(name: BeeRouteName = 'home'): () => void {
+  const route = ROUTES[name]
+  const ROUTE = route.ways
   const root = document.documentElement
   const flySecs = Array.prototype.slice.call(document.querySelectorAll('[data-bee="fly"]')) as HTMLElement[]
   const copies = flySecs.map((s) => s.querySelector('.vbo-bee') as HTMLElement | null)
   if (!flySecs.length || copies.some((c) => !c)) return () => {}
   const bees = copies as HTMLElement[]
   const bobs = bees.map((c) => c.querySelector('.vbo-bee-bob') as HTMLElement | null)
-  const whyIdx = flySecs.map((s) => s.getAttribute('data-bee-fly')).indexOf('why')
+  const landIdx = flySecs.map((s) => s.getAttribute('data-bee-fly')).indexOf(route.land)
   const mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null
   let motionOn = !(mq && mq.matches)
 
@@ -168,7 +214,7 @@ export function startBeeFlight(): () => void {
       const key = el.getAttribute('data-bee-sec')
       if (key) secs[key] = box(el)
     })
-    if (REQUIRED.some((k) => !secs[k])) return false
+    if (route.required.some((k) => !secs[k])) return false
     const gut: Record<string, Gutter> = {}
     flySecs.forEach((s) => {
       const key = s.getAttribute('data-bee-fly') || ''
@@ -181,7 +227,7 @@ export function startBeeFlight(): () => void {
       vh: window.innerHeight,
       B: bees[0].offsetWidth || 30,
       secs,
-      fly: flySecs.map((s) => box(s)),
+      fly: flySecs.map((s) => box(s.querySelector('.vbo-lane') || s)), // the lane: inside any border the section has
       gut,
     }
     build()
@@ -195,7 +241,7 @@ export function startBeeFlight(): () => void {
       const r = lay.secs.rest
       return r.x + r.w / 2
     }
-    const g = lay.gut[GUTTER_OF[w.s]]
+    const g = lay.gut[route.gutters[w.s]]
     if (!g) return lay.W / 2
     return w.x === 'gL' ? g.gL : g.gR
   }
@@ -291,6 +337,22 @@ export function startBeeFlight(): () => void {
       const gap = Math.max(60, (len[b] - len[a]) / MAX_RATIO)
       if (A[b] < A[a] + gap) A[b] = A[a] + gap
     }
+    /* A page can end before its landing spot climbs to its vy point: on
+       /why-the-bee at desktop sizes, Let's Connect sits just above a short
+       footer. Then the bee lands as the page reaches its end, and the sync
+       points before it come earlier as needed so no stretch flies faster
+       than MAX_RATIO. The homepage has a full screen of page below its
+       landing spot, so this never applies there. */
+    const maxS = Math.max(0, root.scrollHeight - lay.vh)
+    if (A[sync[sync.length - 1]] > maxS) {
+      A[sync[sync.length - 1]] = maxS
+      for (let j = sync.length - 1; j > 0; j--) {
+        const a = sync[j - 1]
+        const b = sync[j]
+        const gap = Math.max(60, (len[b] - len[a]) / MAX_RATIO)
+        if (A[a] > A[b] - gap) A[a] = A[b] - gap
+      }
+    }
     for (let j = 1; j < sync.length; j++) {
       const a = sync[j - 1]
       const b = sync[j]
@@ -372,7 +434,7 @@ export function startBeeFlight(): () => void {
     }
   }
   function pulse() {
-    const b = whyIdx >= 0 ? bobs[whyIdx] : null
+    const b = landIdx >= 0 ? bobs[landIdx] : null
     if (!b) return
     b.classList.remove('is-landing')
     void b.offsetWidth

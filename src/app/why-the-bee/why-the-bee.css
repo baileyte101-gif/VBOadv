@@ -48,6 +48,12 @@
   margin-bottom: 28px;
 }
 
+/* The flying bee (bee-home.css, shared with the homepage). Each section it
+   flies in keeps its lane to itself; on From Tim's Egg it turns black, as it
+   does on the homepage's Egg. */
+.vb .vb-sec[data-bee="fly"] { isolation: isolate; }
+.vb .vb-egg .vbo-bee { color: #0D0D0D; }
+
 /* Title and intro */
 .vb .vb-hero { padding-top: 72px; }
 .vb h1 {
@@ -216,7 +222,16 @@
   margin: 0;
   color: #F2EDE4;
 }
-.vb-close .vb-close-btn { margin-top: 28px; }
+/* Let's Connect and, beside it, the bee at rest (the flight lands here; the
+   still bee with reduced motion or no JavaScript). The row takes the
+   button's old 28px top margin. */
+.vb-close .vb-close-cta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+.vb-close .vbo-bee-rest { color: #B8962E; }
 .vb-close .vb-close-email {
   margin: 22px 0 0;
   font-family: var(--font-space-mono), monospace;

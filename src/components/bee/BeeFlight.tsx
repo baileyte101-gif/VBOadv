@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import type { BeeRouteName } from './beeFlightEngine'
 
 /**
  * Starts the homepage's flying bee once the page is idle. The flight code
@@ -9,13 +10,16 @@ import { useEffect } from 'react'
  * first load. The bee waits behind the hero until the visitor scrolls, so
  * starting late costs nothing; until then (and with reduced motion, or no
  * JavaScript) the still bee by the Why the bee link is what shows.
+ *
+ * /why-the-bee runs the same bee on its own route (route="story"), landing
+ * beside Let's Connect.
  */
 type IdleWindow = Window & {
   requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number
   cancelIdleCallback?: (id: number) => void
 }
 
-export default function BeeFlight() {
+export default function BeeFlight({ route = 'home' }: { route?: BeeRouteName }) {
   useEffect(() => {
     let stop: (() => void) | undefined
     let cancelled = false
@@ -24,7 +28,7 @@ export default function BeeFlight() {
     const begin = () => {
       import('./beeFlightEngine')
         .then((m) => {
-          if (!cancelled) stop = m.startBeeFlight()
+          if (!cancelled) stop = m.startBeeFlight(route)
         })
         .catch(() => {
           /* The still bee stays; nothing else depends on the flight. */
@@ -42,7 +46,7 @@ export default function BeeFlight() {
       if (timer) window.clearTimeout(timer)
       if (stop) stop()
     }
-  }, [])
+  }, [route])
 
   return null
 }

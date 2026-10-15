@@ -4,6 +4,8 @@ import Nav from '@/components/Nav'
 import ClosingBlock from '@/components/ClosingBlock'
 import SiteFooter from '@/components/SiteFooter'
 import BeeLockup from '@/components/bee/BeeLockup'
+import BeeLane from '@/components/bee/BeeLane'
+import BeeFlight from '@/components/bee/BeeFlight'
 import { INDEXABLE_PAGES } from '@/lib/indexable'
 import { SHARE_IMAGE } from '@/lib/share'
 import {
@@ -25,6 +27,7 @@ import {
   WHY_CLOSE_EMAIL,
   HOME_WHY_BODY,
 } from '@/lib/bee-copy'
+import '@/components/bee/bee-home.css'
 import './why-the-bee.css'
 
 /*
@@ -42,6 +45,13 @@ import './why-the-bee.css'
  * description reuse approved words (Mary's title plus the site's suffix; her
  * homepage line as the description); neither is new copy, and either can
  * change on Mary's or Vega's word.
+ *
+ * The flying bee (2026-10-15, Tim 10/14: it must float here "exactly like it
+ * does on the homepage"): the homepage's own bee and engine on this page's
+ * route (beeFlightEngine.ts, STORY_ROUTE). It flies in From Tim, How we work
+ * and the close (data-bee="fly", one BeeLane each), waits behind the title,
+ * passes under Our icon, and lands beside Let's Connect. The data-bee-sec
+ * marks are the route's anchors; none of them styles anything.
  */
 
 const SLUG = 'why-the-bee'
@@ -94,7 +104,7 @@ export default function WhyTheBeePage() {
 
       <main className="vb pt-16">
         {/* Title and intro */}
-        <section className="vb-sec vb-hero ground-plain" aria-labelledby="vb-title">
+        <section className="vb-sec vb-hero ground-plain" aria-labelledby="vb-title" data-bee-sec="hero">
           <div className="vb-wrap">
             <p className="vb-label">{WHY_PAGE_LABEL}</p>
             <div className="vb-accent" aria-hidden />
@@ -104,8 +114,15 @@ export default function WhyTheBeePage() {
         </section>
 
         {/* From Tim: his note, two photographs, the pull quote */}
-        <section className="vb-sec vb-egg" aria-labelledby="vb-from-tim">
-          <div className="vb-wrap">
+        <section
+          className="vb-sec vb-egg"
+          aria-labelledby="vb-from-tim"
+          data-bee="fly"
+          data-bee-fly="note"
+          data-bee-sec="note"
+        >
+          <BeeLane />
+          <div className="vb-wrap" data-bee-content>
             <h2 id="vb-from-tim" className="vb-label">
               {WHY_S1_HEADING}
             </h2>
@@ -144,7 +161,7 @@ export default function WhyTheBeePage() {
 
         {/* Our icon: the bee on its own, then the lockup. Kept well away from
             the page title, so the word Manchester is never set with it. */}
-        <section className="vb-sec ground-plain" aria-labelledby="vb-mark">
+        <section className="vb-sec ground-plain" aria-labelledby="vb-mark" data-bee-sec="icon">
           <div className="vb-wrap">
             <h2 id="vb-mark" className="vb-label">
               Our icon
@@ -166,8 +183,15 @@ export default function WhyTheBeePage() {
 
         {/* How we work, the photograph between principle and proof, then the
             big headline and the Friday-night story */}
-        <section className="vb-sec ground-harbour" aria-labelledby="vb-how">
-          <div className="vb-wrap">
+        <section
+          className="vb-sec ground-harbour"
+          aria-labelledby="vb-how"
+          data-bee="fly"
+          data-bee-fly="how"
+          data-bee-sec="how"
+        >
+          <BeeLane />
+          <div className="vb-wrap" data-bee-content>
             <h2 id="vb-how" className="vb-label">
               {WHY_S2_HEADING}
             </h2>
@@ -199,15 +223,34 @@ export default function WhyTheBeePage() {
 
       {/* The close, on the site's skyline ground with the footer */}
       <ClosingBlock>
-        <section className="vb-close" aria-label="Get in touch">
-          <div className="vb-wrap">
+        <section
+          className="vb-close"
+          aria-label="Get in touch"
+          data-bee="fly"
+          data-bee-fly="close"
+          data-bee-sec="close"
+        >
+          <BeeLane />
+          <div className="vb-wrap" data-bee-content>
             <p className="vb-close-text">{WHY_CLOSE}</p>
-            <a href="mailto:hello@vboadv.com" className="btn-gold inline-flex items-center gap-3 vb-close-btn">
-              Let&apos;s Connect
-              <span className="text-base leading-none" aria-hidden="true">
-                &rarr;
-              </span>
-            </a>
+            <div className="vb-close-cta">
+              <a href="mailto:hello@vboadv.com" className="btn-gold inline-flex items-center gap-3">
+                Let&apos;s Connect
+                <span className="text-base leading-none" aria-hidden="true">
+                  &rarr;
+                </span>
+              </a>
+              {/* The bee at rest: the flight's landing spot and the still bee. */}
+              <svg
+                className="vbo-bee-rest"
+                data-bee-sec="rest"
+                viewBox="0 0 512 512"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <use href="#vbo-bee" />
+              </svg>
+            </div>
             <p className="vb-close-email">
               <a href="mailto:hello@vboadv.com">{WHY_CLOSE_EMAIL}</a>
             </p>
@@ -236,6 +279,9 @@ export default function WhyTheBeePage() {
         </section>
         <SiteFooter />
       </ClosingBlock>
+
+      {/* Starts the flying bee once the page is idle (its own small chunk). */}
+      <BeeFlight route="story" />
     </>
   )
 }
