@@ -30,9 +30,11 @@ export const WHY_S2_BEFORE = "Bees have been on Manchester's coat of arms since 
 export const WHY_S2_LATIN = "Concilio et Labore"
 export const WHY_S2_AFTER = ", often translated as \"by council and work.\" To us, council means a group: we collaborate, we think about what we're going to do, and then we do the work. This is how we are and how we're always going to be."
 export const WHY_S3_HEADLINE = "The Worker Bee in Action at VBO"
+/* [1] is Tim's own edit, 2026-10-16: the ethos line as his film edit carried
+   it to every surface. Tim's edits outrank the v2.1 copy file above. */
 export const WHY_S3_BODY: string[] = [
   "One Friday night around 9, we caught a hacker in a client's ad account, running ads for a product our client doesn't sell, with the budget turned up to thousands of dollars a day. We cut the budget and switched the ads off. They switched them back on. So we switched them off again, and we stayed on it that night to stop them spending any more of our client's money. By the end of the night, our client had locked them out of the account.",
-  "Our ethos is the worker bee. We work for our clients, and we put in the work.",
+  "Our ethos is the worker bee. For our clients, and everything we do.",
 ]
 export const WHY_CLOSE = "Let the attitude, the nature of the worker, work for you. Tell us what isn't working for you right now. VBO can be your solution."
 export const WHY_CLOSE_EMAIL = "hello@vboadv.com"
