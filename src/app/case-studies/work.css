@@ -291,10 +291,19 @@
   border: 1px solid rgb(255 255 255 / 0.09); background: rgb(20 20 24 / 0.55); box-shadow: var(--raise-hairline);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
+/* (Bob, 2026-10-21) Two cards share a row from 900px and stretch to the
+   taller one; without this the shorter card's extra height is split across
+   its rows and its title drops below its neighbour's. Rows stay at their
+   own height, the spare height sits at the card's foot, titles stay level. */
+.vw .vw-card { align-content: start; }
 .vw .vw-card:hover { border-color: rgb(184 150 46 / 0.6); box-shadow: 0 8px 40px rgb(184 150 46 / 0.14); }
 .vw .vw-card:focus-visible { outline: 2px solid var(--gold-hot); outline-offset: 3px; }
 .vw .vw-card-media { aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid rgb(255 255 255 / 0.09); }
 .vw .vw-card-media img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+/* (Bob, 2026-10-21) A portrait photograph as the card image (Peixoto's 3:4
+   hero): top center would fill half the frame with sky and cut at the chin;
+   30% down puts the face in the upper third with the set in frame. */
+.vw .vw-card-media-photo img { object-position: center 30%; }
 .vw .vw-card-body { padding: 24px 24px 28px; }
 .vw .vw-card-body h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); margin-bottom: 12px; }
 .vw .vw-card-body p { color: var(--vw-grey); font-size: 16px; line-height: 1.6; }

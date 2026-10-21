@@ -285,32 +285,12 @@ export const ippeBreadcrumbSchema = {
   ],
 }
 
-export const workIndexSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'CollectionPage',
-  name: WORK_INDEX_NAME,
-  url: WORK_INDEX_URL,
-  description: WORK_INDEX_DESCRIPTION,
-  isPartOf: { '@id': `${WORK_HOST}/#website` },
-  hasPart: [{ '@type': 'Article', headline: IPPE_H1, url: IPPE_URL }],
-}
-
-export const workIndexBreadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: WORK_HOST },
-    { '@type': 'ListItem', position: 2, name: WORK_INDEX_NAME, item: WORK_INDEX_URL },
-  ],
-}
-
 // ---------------------------------------------------------------------------
 // /case-studies/peixoto-wear
 //
-// PREVIEW ONLY until Mauricio Esquenazi and Brunela approve the page (its
-// figures, the testimonial and credit, the hacker story naming Peixoto, and
-// their imagery) and Tim gives the publish go. Nothing is sent or live, and
-// the clients have not seen any version of this page.
+// PUBLISHED 2026-10-21. Mauricio Esquenazi approved the page on 10/21 ("All
+// good! Thanks") with no edits, on the round-2 preview (dpl_AY9eULJKGnRcUdtsumaEGybUg3Pc),
+// and Tim gave the publish go the same day. Every string is as he reviewed it.
 //
 // Copy is Mary's (clients/vbo/case-studies/peixoto/copy.md, revised in place
 // 2026-10-14 evening for Tim's edit round 1), field for field and word for
@@ -332,13 +312,10 @@ export const workIndexBreadcrumbSchema = {
 // past tense, never says the engagement ended, never implies it continues.
 // No coda after the phases.
 //
-// The publish switch is src/lib/indexable.ts. Until "case-studies/peixoto-wear"
-// is in INDEXABLE_PAGES, this page is noindex and out of the sitemap, and a
-// PRODUCTION build serves its URL as a 404 and keeps its card off
-// /case-studies (the card is added to /case-studies/page.tsx in the publish
-// commit; this branch leaves the index untouched). At the publish go: set
-// PEIXOTO_PUBLISHED, add the slug to INDEXABLE_PAGES, add the card and the
-// llms.txt line.
+// The publish switch is src/lib/indexable.ts: "case-studies/peixoto-wear" is
+// in INDEXABLE_PAGES, so the page is indexable with a canonical, in the
+// sitemap and the index's CollectionPage, and its card shows on /case-studies.
+// Taking it down again is that one line out of indexable.ts.
 // ---------------------------------------------------------------------------
 
 export const PEIXOTO_SLUG = `${WORK_INDEX_SLUG}/peixoto-wear`
@@ -356,7 +333,7 @@ export const PEIXOTO_SHOWN = PEIXOTO_APPROVED || process.env.VERCEL_ENV !== 'pro
  * Article schema states no date. The page refuses to build as indexable
  * without it.
  */
-export const PEIXOTO_PUBLISHED: string | null = null
+export const PEIXOTO_PUBLISHED: string | null = '2026-10-21'
 
 export const PEIXOTO_TITLE = 'Peixoto Wear Case Study: Paid Ads & Partnership | VBO'
 export const PEIXOTO_DESCRIPTION =
@@ -590,5 +567,30 @@ export const peixotoBreadcrumbSchema = {
     { '@type': 'ListItem', position: 1, name: 'Home', item: WORK_HOST },
     { '@type': 'ListItem', position: 2, name: WORK_INDEX_NAME, item: WORK_INDEX_URL },
     { '@type': 'ListItem', position: 3, name: PEIXOTO_CLIENT, item: PEIXOTO_URL },
+  ],
+}
+
+// /case-studies (the index): its CollectionPage and breadcrumb.
+export const workIndexSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: WORK_INDEX_NAME,
+  url: WORK_INDEX_URL,
+  description: WORK_INDEX_DESCRIPTION,
+  isPartOf: { '@id': `${WORK_HOST}/#website` },
+  // Lists only published case studies: each joins at its publish go. Defined
+  // after the Peixoto section so it can read PEIXOTO_APPROVED.
+  hasPart: [
+    { '@type': 'Article', headline: IPPE_H1, url: IPPE_URL },
+    ...(PEIXOTO_APPROVED ? [{ '@type': 'Article', headline: PEIXOTO_H1, url: PEIXOTO_URL }] : []),
+  ],
+}
+
+export const workIndexBreadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: WORK_HOST },
+    { '@type': 'ListItem', position: 2, name: WORK_INDEX_NAME, item: WORK_INDEX_URL },
   ],
 }

@@ -40,11 +40,11 @@ import '../work.css'
 // second contact ask directly after What We Did, and five result phases with
 // September as the lead.
 //
-// PREVIEW ONLY until Mauricio and Brunela approve the page and Tim gives the
-// publish go. The switch is src/lib/indexable.ts: until
-// "case-studies/peixoto-wear" is in it, this page is noindex and out of the
-// sitemap, and a production build serves this URL as a 404 (PEIXOTO_SHOWN in
-// src/lib/work.ts). Previews and local builds render it, noindex, for review.
+// PUBLISHED 2026-10-21 (Mauricio approved 10/21; Tim's go the same day). The
+// switch is src/lib/indexable.ts: with "case-studies/peixoto-wear" in it the
+// page is indexable with a canonical; out of it, the page goes noindex, leaves
+// the sitemap, and a production build serves this URL as a 404 (PEIXOTO_SHOWN
+// in src/lib/work.ts).
 const IS_INDEXABLE = PEIXOTO_APPROVED
 
 // The publish commit must also set the go-live date. Refuse to build an

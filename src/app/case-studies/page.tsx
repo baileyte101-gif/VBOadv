@@ -17,6 +17,11 @@ import {
   IPPE_CLIENT,
   IPPE_CARD_LINE,
   IPPE_WORK_IMAGES,
+  PEIXOTO_PATH,
+  PEIXOTO_SHOWN,
+  PEIXOTO_CLIENT,
+  PEIXOTO_CARD_LINE,
+  PEIXOTO_HERO,
   workIndexSchema,
   workIndexBreadcrumbSchema,
 } from '@/lib/work'
@@ -70,7 +75,7 @@ export default function CaseStudiesIndexPage() {
           </div>
         </section>
 
-        {/* The cards: step-up ground. One card today; the grid takes more. */}
+        {/* The cards: step-up ground, one per case study, two-up from 900px. */}
         <section className="vw-snap ground-plain step-up" aria-label="Case studies">
           <div className="vw-wrap">
             <div className="vw-cards">
@@ -93,6 +98,31 @@ export default function CaseStudiesIndexPage() {
                   </span>
                 </div>
               </a>
+              {/* Peixoto Wear (published 2026-10-21). Shown wherever the page
+                  is (PEIXOTO_SHOWN). The card image is the page's hero, the
+                  only Peixoto image on the page; it is a 3:4 photograph in
+                  the 16:10 frame, so vw-card-media-photo frames it lower than
+                  the screenshot default (her face and the set, not the sky). */}
+              {PEIXOTO_SHOWN && (
+                <a className="vw-card" href={PEIXOTO_PATH}>
+                  <div className="vw-card-media vw-card-media-photo">
+                    <Image
+                      src={PEIXOTO_HERO.src}
+                      alt=""
+                      width={PEIXOTO_HERO.width}
+                      height={PEIXOTO_HERO.height}
+                      sizes="(min-width: 900px) 600px, 100vw"
+                    />
+                  </div>
+                  <div className="vw-card-body">
+                    <h2>{PEIXOTO_CLIENT}</h2>
+                    <p>{PEIXOTO_CARD_LINE}</p>
+                    <span className="vw-card-more" aria-hidden>
+                      &rarr;
+                    </span>
+                  </div>
+                </a>
+              )}
             </div>
           </div>
         </section>
