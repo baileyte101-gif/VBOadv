@@ -85,11 +85,15 @@ function ArticleSchema({ post }: { post: NonNullable<ReturnType<typeof getPostBy
         }
       : {
           '@type': 'Organization',
+          // The one company record the root layout emits (Vega, 2026-10-22):
+          // without the @id this described a second, unconnected VBO.
+          '@id': 'https://www.vboadv.com/#organization',
           name: 'VBO Advertising',
           url: 'https://www.vboadv.com',
         },
     publisher: {
       '@type': 'Organization',
+      '@id': 'https://www.vboadv.com/#organization',
       name: 'VBO Advertising',
       url: 'https://www.vboadv.com',
       logo: {
