@@ -25,11 +25,13 @@ import {
   PEIXOTO_RESULTS,
   PEIXOTO_QUOTE,
   PEIXOTO_NEXT,
+  PEIXOTO_RELATED_READING,
   peixotoArticleSchema,
   peixotoBreadcrumbSchema,
   WORK_INDEX_NAME,
   WORK_INDEX_PATH,
 } from '@/lib/work'
+import RelatedReading from '../RelatedReading'
 import '../work.css'
 
 // The Peixoto Wear case study, on the IPPE template (../ippe-soccer-tours)
@@ -257,6 +259,9 @@ export default function PeixotoCaseStudyPage() {
             </figure>
           </div>
         </section>
+
+        {/* RELATED READING (Vega, 2026-10-22): the posts this page proves. */}
+        <RelatedReading slugs={PEIXOTO_RELATED_READING} />
       </main>
 
       {/* NEXT: the live closing block, this page's own ask */}

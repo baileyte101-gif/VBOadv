@@ -1017,6 +1017,20 @@ export const sgBreadcrumbSchema = {
   ],
 }
 
+// "Related reading" at the end of a case study (Vega, 2026-10-22, item 1b):
+// the posts each case study is the proof for, by slug, rendered with their
+// published titles (src/app/case-studies/RelatedReading.tsx). The label is
+// Mary's to rename.
+export const RELATED_READING_LABEL = 'Related reading'
+export const SG_RELATED_READING = [
+  'google-business-profiles-multiple-locations',
+  'how-much-should-a-small-business-spend-on-marketing',
+]
+export const PEIXOTO_RELATED_READING = [
+  'how-much-should-a-small-business-spend-on-marketing',
+  'the-honor-in-being-the-worker-bee',
+]
+
 // /case-studies (the index): its CollectionPage and breadcrumb.
 export const workIndexSchema = {
   '@context': 'https://schema.org',

@@ -28,12 +28,14 @@ import {
   SG_RESULTS,
   SG_QUOTE,
   SG_NEXT,
+  SG_RELATED_READING,
   sgArticleSchema,
   sgBreadcrumbSchema,
   WORK_INDEX_NAME,
   WORK_INDEX_PATH,
 } from '@/lib/work'
 import PostVideo from './PostVideo'
+import RelatedReading from '../RelatedReading'
 import '../work.css'
 
 // The Sir Galloway case study, on the IPPE template (../ippe-soccer-tours).
@@ -453,6 +455,9 @@ export default function SirGallowayCaseStudyPage() {
             </figure>
           </div>
         </section>
+
+        {/* RELATED READING (Vega, 2026-10-22): the posts this page proves. */}
+        <RelatedReading slugs={SG_RELATED_READING} />
       </main>
 
       {/* NEXT: the live closing block, this page's own ask */}
