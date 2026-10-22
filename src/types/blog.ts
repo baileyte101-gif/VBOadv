@@ -20,6 +20,14 @@ export interface PostFrontmatter {
   // was edited after publication tells crawlers to recrawl. Absent on posts
   // that have not changed since they went live; `date` is used then.
   updated?: string
+  // The search title (the <title> tag only, before " | VBO Insights") when the
+  // headline is too long for Google's display. The H1, the social cards, the
+  // Article headline and the /insights card keep `title`. Vega, 2026-10-22.
+  seoTitle?: string
+  // A case study this post is the practice of: its short slug under
+  // /case-studies (e.g. "sir-galloway"). Renders that case study's card under
+  // the post, labelled "See it in practice". Vega, 2026-10-22.
+  caseStudy?: string
 }
 
 export interface Post extends PostFrontmatter {

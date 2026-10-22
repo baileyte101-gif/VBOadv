@@ -36,7 +36,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : [SHARE_IMAGE]
 
   return {
-    title: `${post.title} | VBO Insights`,
+    // The search title may differ from the headline (seoTitle); everything
+    // else below keeps post.title.
+    title: `${post.seoTitle ?? post.title} | VBO Insights`,
     // The search snippet. A post may carry its own metaDescription (shorter
     // than the on-page excerpt, written for the result page); the excerpt
     // remains the fallback and the social-card description either way.
