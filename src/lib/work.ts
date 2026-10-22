@@ -1017,6 +1017,23 @@ export const sgBreadcrumbSchema = {
   ],
 }
 
+// The picture a shared link to each new case study shows (Vega, 2026-10-22,
+// item 3), instead of the generic bee card: its /case-studies card picture at
+// 1200 x 630, framed as the card frames it (Sir Galloway's pickup page from
+// the top; Peixoto's hero 30% down), alt = that image's alt on the page.
+export const SG_SHARE_IMAGE = {
+  url: `${WORK_HOST}/images/work/sir-galloway/sir-galloway-share-1200x630.jpg`,
+  width: 1200,
+  height: 630,
+  alt: SG_WORK_IMAGES.pickupPage.alt,
+}
+export const PEIXOTO_SHARE_IMAGE = {
+  url: `${WORK_HOST}/images/work/peixoto-wear/peixoto-wear-share-1200x630.jpg`,
+  width: 1200,
+  height: 630,
+  alt: PEIXOTO_HERO.alt,
+}
+
 // "Related reading" at the end of a case study (Vega, 2026-10-22, item 1b):
 // the posts each case study is the proof for, by slug, rendered with their
 // published titles (src/app/case-studies/RelatedReading.tsx). The label is

@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation'
 import Nav from '@/components/Nav'
 import ClosingBlock from '@/components/ClosingBlock'
 import SiteFooter from '@/components/SiteFooter'
-import { SHARE_IMAGE } from '@/lib/share'
 import { linkify, type InlineLinkSpec } from '@/lib/linkify'
 import {
   PEIXOTO_URL,
@@ -25,6 +24,7 @@ import {
   PEIXOTO_RESULTS,
   PEIXOTO_QUOTE,
   PEIXOTO_NEXT,
+  PEIXOTO_SHARE_IMAGE,
   PEIXOTO_RELATED_READING,
   peixotoArticleSchema,
   peixotoBreadcrumbSchema,
@@ -62,16 +62,20 @@ export const metadata: Metadata = {
   description: PEIXOTO_DESCRIPTION,
   robots: IS_INDEXABLE ? { index: true, follow: true } : { index: false, follow: false },
   ...(IS_INDEXABLE && { alternates: { canonical: PEIXOTO_URL } }),
-  // The share image is the bee and VBO lockup (src/lib/share.ts), as on the
-  // IPPE page: a page that sets its own openGraph replaces the root layout's
-  // whole object, so without this line the page would share with no picture.
+  // The share picture is this case study's own (its card picture at
+  // 1200 x 630, Vega 2026-10-22), not the bee card. A page that sets its own
+  // openGraph replaces the root layout's whole object, so it is listed here.
   openGraph: {
     title: PEIXOTO_TITLE,
     description: PEIXOTO_DESCRIPTION,
     type: 'article',
     siteName: 'VBO Advertising',
     url: PEIXOTO_URL,
-    images: [SHARE_IMAGE],
+    images: [PEIXOTO_SHARE_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: [{ url: PEIXOTO_SHARE_IMAGE.url, alt: PEIXOTO_SHARE_IMAGE.alt }],
   },
 }
 
