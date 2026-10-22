@@ -8,6 +8,7 @@ import CTASection from '@/components/CTASection'
 import ReadingProgress from '@/components/blog/ReadingProgress'
 import AuthorBio from '@/components/blog/AuthorBio'
 import RelatedPosts from '@/components/blog/RelatedPosts'
+import SeeItInPractice from '@/components/blog/SeeItInPractice'
 import { getVisiblePosts, getPostBySlug, getRelatedPosts, formatDate } from '@/lib/blog'
 import { AUTHORS } from '@/types/blog'
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -368,6 +369,9 @@ export default function InsightPost({ params }: Props) {
           </div>
         </div>
       </article>
+
+      {/* See it in practice: the case study this post is the practice of */}
+      <SeeItInPractice slug={post.caseStudy} />
 
       {/* Related Posts */}
       <RelatedPosts posts={related} />

@@ -1031,6 +1031,49 @@ export const PEIXOTO_RELATED_READING = [
   'the-honor-in-being-the-worker-bee',
 ]
 
+// "See it in practice" under a blog post (Vega, 2026-10-22, item 1c): a post
+// whose front matter names a case study (`caseStudy: "<short slug>"`) shows
+// that case study's /case-studies card, the same name, card line and picture,
+// framed the same way. Only case studies that are shown (published, or any
+// preview) render. The label is Mary's to rename.
+export const SEE_IT_LABEL = 'See it in practice'
+export const CASE_STUDY_CARDS: Record<
+  string,
+  {
+    path: string
+    client: string
+    cardLine: string
+    image: { src: string; width: number; height: number }
+    photo: boolean
+    shown: boolean
+  }
+> = {
+  'ippe-soccer-tours': {
+    path: IPPE_PATH,
+    client: IPPE_CLIENT,
+    cardLine: IPPE_CARD_LINE,
+    image: IPPE_WORK_IMAGES.tripPage,
+    photo: false,
+    shown: true,
+  },
+  'peixoto-wear': {
+    path: PEIXOTO_PATH,
+    client: PEIXOTO_CLIENT,
+    cardLine: PEIXOTO_CARD_LINE,
+    image: PEIXOTO_HERO,
+    photo: true,
+    shown: PEIXOTO_SHOWN,
+  },
+  'sir-galloway': {
+    path: SG_PATH,
+    client: SG_CLIENT,
+    cardLine: SG_CARD_LINE,
+    image: SG_WORK_IMAGES.pickupPage,
+    photo: false,
+    shown: SG_SHOWN,
+  },
+}
+
 // /case-studies (the index): its CollectionPage and breadcrumb.
 export const workIndexSchema = {
   '@context': 'https://schema.org',

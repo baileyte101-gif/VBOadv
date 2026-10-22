@@ -547,3 +547,8 @@
 .vw .vw-reading-list a:focus-visible { outline: 2px solid var(--gold-hot); outline-offset: 3px; }
 .vw .vw-reading-more { flex: none; font-family: var(--vw-mono); font-size: 13px; color: var(--color-vbo-gold); }
 .vw .vw-reading-list a:hover .vw-reading-more { color: var(--gold-hot); }
+
+/* (Bob, 2026-10-22, Vega item 1c) The /case-studies card under a blog post
+   ("See it in practice") titles the client with an h3, since the post's own
+   section label is the h2 there. Same size as the index card's h2. */
+.vw .vw-card-body h3 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); margin-bottom: 12px; }
