@@ -1,14 +1,12 @@
 # VBO Advertising
 
-> Founder-led marketing consultant and studio in Miami, serving small to mid-size businesses across South Florida.
+> Marketing consultancy in Miami, serving small businesses across South Florida.
 
-VBO Advertising is a Miami-based marketing consultant and studio founded by Tim Bailey. A senior level marketer collaborates on strategy, sets your direction, and runs your program: a cutting edge system connected end to end, where modern tools carry the busywork of a traditional junior team and senior hours go into your business. VBO also helps clients get found in both traditional search and AI answer engines like ChatGPT, Perplexity, and Google AI Overviews, and runs all of that on this site first.
+VBO Advertising is a marketing consultancy in Coconut Grove, Miami, working with small businesses across South Florida. VBO starts with strategy and a plan the business can act on, then helps run the work: Google and Meta ads, SEO, websites, brand and design, social media, email and CRM, and reporting, all connected as one system. Modern tools carry the busywork, so the hours go into the client's business. VBO also helps clients get found in both traditional search and AI answer engines like ChatGPT, Perplexity, and Google AI Overviews, and runs all of that on this site first.
 
 ## Core pages
 
 - [Homepage](https://www.vboadv.com/): Brand positioning, who shows up when you hire VBO, and the full list of services and industries
-- [Fractional CMO Services](https://www.vboadv.com/fractional-cmo): What a fractional CMO does, what it costs, and when a business needs one
-- [AI-Enabled Marketing Consultancy](https://www.vboadv.com/ai-enabled-marketing): VBO's modern operational approach, comparing traditional vs AI-enabled vs AI-first operating models
 - [Insights](https://www.vboadv.com/insights): VBO's blog on marketing strategy, creative, and performance
 - [Case Studies](https://www.vboadv.com/case-studies): Real client case studies told in partnership with our clients: what the business needed, what we built, and what changed
 - [IPPE Soccer Tours case study](https://www.vboadv.com/case-studies/ippe-soccer-tours): How VBO rebuilt IPPE Soccer Tours' brand and website and runs the ads that bring families in, driving more responses and opportunities
@@ -18,11 +16,10 @@ VBO Advertising is a Miami-based marketing consultant and studio founded by Tim 
 
 ## Services
 
-All ten services live on the [homepage](https://www.vboadv.com/), under Industries and Services.
+All nine services live on the [homepage](https://www.vboadv.com/), under Industries and Services.
 
 - Web development: Custom sites, redesigns and Shopify stores, built to be found and fast on a phone. We built and launched the site for IPPE Soccer Tours.
 - Marketing consulting: For when you want an answer, not a retainer. Someone senior reviews what's running and hands you a plan you can act on. Scoped, with an end date.
-- Fractional CMO: A senior marketing head, part of the time. Same seat and the same responsibility for where the money goes, on a share of the hours.
 - Ecommerce and Shopify: Paid media and search run together on the same store. Collection pages, product feeds and catalog structure, where Shopify money quietly leaks.
 - AI SEO and visibility: Making your business readable and quotable for ChatGPT, Perplexity and Google's AI answers. We run all of it on this site first. You're welcome to check.
 - Paid media: Meta, Google Search, Google Shopping and Performance Max. A small number of accounts with senior hands on all of them, which is most of the difference.
@@ -55,7 +52,6 @@ The industry list lives on the [homepage](https://www.vboadv.com/), under Indust
 - [How Much Should a Small Business Spend on Marketing?](https://www.vboadv.com/insights/how-much-should-a-small-business-spend-on-marketing): Real published ranges with sources named, what they mean in monthly dollars, and why the order you spend in decides more than the percent you pick.
 - [The Honor in Being the Worker Bee](https://www.vboadv.com/insights/the-honor-in-being-the-worker-bee): The usual opinion of the worker bee isn't a kind one. We see honor and humility in it.
 - [Why Your Marketing Isn't Working, and What I'd Fix First](https://www.vboadv.com/insights/why-your-marketing-isnt-working): Marketing that isn't working is usually missing its foundation: a fixed goal, a plan to reach it, and every inquiry and sale counted. Fix that first.
-- [How a Small, Founder-Led Team Outruns a Big Firm](https://www.vboadv.com/insights/small-founder-led-team-outruns-big-firm): Why founder-led marketing beats layers, and what a small senior team actually changes
 - [How to Use AI in Your Marketing, and Where It Still Needs You](https://www.vboadv.com/insights/how-to-use-ai-in-your-marketing): Where AI helps in marketing, and where a person still has to decide
 - [What Does a Marketing Company Do? Every Service, and How They Work Together](https://www.vboadv.com/insights/what-a-marketing-consultancy-actually-does): Paid media, social, SEO, brand, and creative, and how the pieces work together
 - [What is integrated marketing (and why most small businesses don't have it)](https://www.vboadv.com/insights/your-marketing-feels-busy): What integrated marketing actually means, and how to fix a disconnected setup
@@ -64,15 +60,9 @@ The industry list lives on the [homepage](https://www.vboadv.com/), under Indust
 
 Miami, Miami Beach, Coral Gables, Doral, Aventura, Fort Lauderdale, Hollywood, Boca Raton, West Palm Beach, plus broader South Florida and US-wide for geography-independent services.
 
-## Founder
-
-Tim Bailey, founder of VBO Advertising. 10+ years of marketing experience across brands including McDonald's, Royal Caribbean, Formula E. Based in Miami.
-
 ## Contact
 
-- Email: tim@vboadv.com
-- Phone: (864) 640-6558
-- Booking: https://calendar.app.google/rzHzc2dM8saJFsfk7
+- Email: hello@vboadv.com
 
 ## Brand voice
 

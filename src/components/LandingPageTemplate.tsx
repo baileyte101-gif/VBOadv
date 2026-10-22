@@ -1,12 +1,11 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Nav from "@/components/Nav";
-import { type VerticalData, BOOKING_URL, TIM_EMAIL } from "@/lib/verticals";
-import { trackCTAClick, getBookingUrlWithUTM } from "./GA4Tracker";
+import { type VerticalData, BOOKING_URL } from "@/lib/verticals";
+import { trackCTAClick } from "./GA4Tracker";
 
 interface Props {
   vertical: VerticalData;
@@ -33,50 +32,8 @@ const ENTER_TRANSITION = {
 
 const VIEWPORT_ONCE = { once: true, margin: "-80px" };
 
-// Presentational booking link. Server-renderable: the href is supplied by the
-// caller (base URL during SSR/fallback, UTM-decorated href after hydration).
-function BookingAnchor({
-  href,
-  vertical,
-  label,
-}: {
-  href: string;
-  vertical: string;
-  label: string;
-}) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={() => trackCTAClick(label, vertical)}
-      className="inline-block font-mono text-xs uppercase tracking-[0.18em] border border-[var(--color-vbo-gold)] text-[var(--color-vbo-egg)] px-8 py-3 hover:bg-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-black)] transition-colors duration-200"
-    >
-      Book a 30-Minute Call
-    </a>
-  );
-}
-
-// useSearchParams is isolated to this leaf (wrapped in <Suspense> by CTAButton)
-// so the surrounding page content renders server-side instead of bailing to a
-// null Suspense fallback.
-function CTAButtonWithUTM({
-  vertical,
-  label,
-}: {
-  vertical: string;
-  label: string;
-}) {
-  const searchParams = useSearchParams();
-  return (
-    <BookingAnchor
-      href={getBookingUrlWithUTM(BOOKING_URL, searchParams)}
-      vertical={vertical}
-      label={label}
-    />
-  );
-}
-
+// The call button: an email to hello@ with the subject set (BOOKING_URL).
+// Server-rendered; the click event still fires.
 function CTAButton({
   vertical,
   label,
@@ -84,16 +41,14 @@ function CTAButton({
   vertical: string;
   label: string;
 }) {
-  // SSR/no-JS fallback is a working booking link without UTM; the
-  // UTM-decorated href swaps in on hydration.
   return (
-    <Suspense
-      fallback={
-        <BookingAnchor href={BOOKING_URL} vertical={vertical} label={label} />
-      }
+    <a
+      href={BOOKING_URL}
+      onClick={() => trackCTAClick(label, vertical)}
+      className="inline-block font-mono text-xs uppercase tracking-[0.18em] border border-[var(--color-vbo-gold)] text-[var(--color-vbo-egg)] px-8 py-3 hover:bg-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-black)] transition-colors duration-200"
     >
-      <CTAButtonWithUTM vertical={vertical} label={label} />
-    </Suspense>
+      Book a 30-Minute Call
+    </a>
   );
 }
 
@@ -166,9 +121,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function StickyScrollCTAInner({ vertical }: { vertical: string }) {
-  const searchParams = useSearchParams();
-  const bookingUrl = getBookingUrlWithUTM(BOOKING_URL, searchParams);
+function StickyScrollCTA({ vertical }: { vertical: string }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -200,9 +153,7 @@ function StickyScrollCTAInner({ vertical }: { vertical: string }) {
             Ready to talk?
           </span>
           <a
-            href={bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={BOOKING_URL}
             onClick={() => trackCTAClick("sticky-scroll-cta", vertical)}
             className="block sm:inline-block w-full sm:w-auto font-mono text-xs uppercase tracking-[0.18em] border border-[var(--color-vbo-gold)] text-[var(--color-vbo-egg)] px-8 py-3 text-center hover:bg-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-black)] transition-colors duration-200"
           >
@@ -211,16 +162,6 @@ function StickyScrollCTAInner({ vertical }: { vertical: string }) {
         </div>
       </div>
     </div>
-  );
-}
-
-// The sticky bar starts hidden until the user scrolls past the hero (JS-driven),
-// so a null SSR fallback for the searchParams boundary is invisible anyway.
-function StickyScrollCTA({ vertical }: { vertical: string }) {
-  return (
-    <Suspense fallback={null}>
-      <StickyScrollCTAInner vertical={vertical} />
-    </Suspense>
   );
 }
 
@@ -492,7 +433,6 @@ export default function LandingPageTemplate({ vertical }: Props) {
             <motion.div variants={STAGGER_PARENT} className="space-y-6 max-w-3xl">
               {[
                 "10+ years of marketing experience across industries",
-                "Former client portfolio includes McDonald's, Royal Caribbean, Formula E",
                 "Based in Miami. Built for South Florida businesses.",
                 ...vertical.socialProofAdditional,
               ].map((proof, i) => (
@@ -613,91 +553,6 @@ export default function LandingPageTemplate({ vertical }: Props) {
           </section>
         )}
 
-        {/* ===== CROSS-LINK: FRACTIONAL CMO HUB ===== */}
-        {vertical.crossLinks?.service && (
-          <section className="px-6 pb-16 md:pb-24">
-            <div className="max-w-[1200px] mx-auto">
-              <p className="font-body text-[18px] text-[var(--color-vbo-egg)] opacity-80 leading-[28px] max-w-3xl">
-                {vertical.crossLinks.service.before}
-                <a
-                  href="/fractional-cmo"
-                  className="text-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-gold-light)] underline underline-offset-4 decoration-[var(--color-vbo-gold)]/40 transition-colors"
-                >
-                  {vertical.crossLinks.service.linkText}
-                </a>
-                {vertical.crossLinks.service.after}
-              </p>
-            </div>
-          </section>
-        )}
-
-        {/* ===== ABOUT TIM ===== */}
-        <section className="px-6 py-16 md:py-24 lg:py-[120px] bg-[var(--color-vbo-graphite)]">
-          <motion.div
-            className="max-w-[1200px] mx-auto"
-            variants={STAGGER_PARENT}
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT_ONCE}
-          >
-            <motion.div variants={FADE_UP} transition={ENTER_TRANSITION}>
-              <SectionLabel>The Founder</SectionLabel>
-            </motion.div>
-            <motion.h2
-              variants={FADE_UP}
-              transition={ENTER_TRANSITION}
-              className="font-headline text-[36px] md:text-[56px] font-black uppercase text-[var(--color-vbo-white)] leading-[1] mb-10"
-            >
-              Who You Will Be Working With
-            </motion.h2>
-            <div className="flex flex-col md:flex-row gap-10 lg:gap-14 items-start">
-              <motion.div
-                variants={FADE_UP}
-                transition={ENTER_TRANSITION}
-                className="shrink-0 relative w-full max-w-[240px] md:max-w-[280px]"
-              >
-                <div className="relative w-full aspect-[3/4] overflow-hidden">
-                  <Image
-                    src="/images/headshot.jpg"
-                    alt={vertical.founderAlt ?? "Tim Bailey, Founder of VBO Advertising"}
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 768px) 80vw, 280px"
-                  />
-                </div>
-                <div className="absolute -bottom-3 -right-3 w-full h-full border border-[#B8962E]/25 pointer-events-none" />
-              </motion.div>
-              <motion.div
-                variants={FADE_UP}
-                transition={ENTER_TRANSITION}
-                className="space-y-4"
-              >
-                <p className="font-body text-[18px] text-[var(--color-vbo-egg)] opacity-90 leading-[28px] max-w-2xl">
-                  Tim Bailey is the founder of VBO Advertising, a marketing
-                  consultancy in Miami. VBO sits between a strategy firm and a
-                  full-service team: we define the direction, then help you
-                  execute it. Our clients are not the biggest companies. They are
-                  the most serious ones.
-                </p>
-                <div className="space-y-1">
-                  <p className="font-body font-semibold text-[var(--color-vbo-white)]">
-                    Tim Bailey
-                  </p>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--color-vbo-egg)] opacity-50">
-                    Founder, VBO Advertising
-                  </p>
-                  <a
-                    href={`mailto:${TIM_EMAIL}`}
-                    className="font-mono text-[10px] tracking-[0.2em] text-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-gold-light)] transition-colors"
-                  >
-                    {TIM_EMAIL}
-                  </a>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </section>
-
         {/* ===== BOTTOM CTA ===== */}
         <section className="px-6 py-20 md:py-28">
           <motion.div
@@ -730,12 +585,12 @@ export default function LandingPageTemplate({ vertical }: Props) {
             >
               <CTAButton vertical={vertical.slug} label="bottom-cta" />
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-vbo-egg)] opacity-40 mt-2">
-                Or email Tim directly at{" "}
+                Or email us directly at{" "}
                 <a
-                  href={`mailto:${TIM_EMAIL}`}
+                  href="mailto:hello@vboadv.com"
                   className="text-[var(--color-vbo-gold)] hover:text-[var(--color-vbo-gold-light)] transition-colors"
                 >
-                  {TIM_EMAIL}
+                  hello@vboadv.com
                 </a>
               </p>
               {vertical.crossLinks?.insights && (

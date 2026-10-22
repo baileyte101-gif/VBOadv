@@ -11,11 +11,6 @@ import { INDEXABLE_PAGES } from '@/lib/indexable'
 import { SHARE_IMAGE } from '@/lib/share'
 import {
   WHY_H1,
-  WHY_S1_HEADING,
-  WHY_NOTE,
-  WHY_NOTE_SIGN,
-  WHY_PULL_QUOTE,
-  WHY_PULL_CITE,
   WHY_S2_HEADING,
   WHY_S2_BEFORE,
   WHY_S2_LATIN,
@@ -47,10 +42,10 @@ import './why-the-bee.css'
  *
  * The flying bee (2026-10-15, Tim 10/14: it must float here "exactly like it
  * does on the homepage"): the homepage's own bee and engine on this page's
- * route (beeFlightEngine.ts, STORY_ROUTE). It flies in From Tim, How we work
- * and the close (data-bee="fly", one BeeLane each), waits behind the title,
- * passes under Our icon, and lands beside Let's Connect. The data-bee-sec
- * marks are the route's anchors; none of them styles anything.
+ * route (beeFlightEngine.ts, STORY_ROUTE). It flies in How we work and the
+ * close (data-bee="fly", one BeeLane each), waits behind the title, passes
+ * under Our icon, and lands beside Let's Connect. The data-bee-sec marks are
+ * the route's anchors; none of them styles anything.
  */
 
 const SLUG = 'why-the-bee'
@@ -76,18 +71,6 @@ export const metadata: Metadata = {
 
 // Alt text: Mary's v2.2 (section 1h), two rewritten and two kept as built.
 const PHOTOS = {
-  piccadilly: {
-    src: '/images/why-the-bee/manchester-piccadilly-1927.jpg',
-    width: 960,
-    height: 1200,
-    alt: 'Piccadilly, Manchester, in 1927: double-decker trams, motor vans, and people crossing a busy cobbled street.',
-  },
-  docks: {
-    src: '/images/why-the-bee/manchester-ship-canal-docks-1928.jpg',
-    width: 960,
-    height: 1200,
-    alt: 'The Manchester Ship Canal in 1928: two steamboats moored at a dockside warehouse, with a long metal bridge beyond.',
-  },
   traffic: {
     src: '/images/why-the-bee/manchester-ship-canal-traffic-1927.jpg',
     width: 1600,
@@ -106,55 +89,11 @@ export default function WhyTheBeePage() {
             and black / marble toggle (2026-10-15) */}
         <WhyHero />
 
-        {/* From Tim: his note, two photographs, the pull quote */}
-        <section
-          className="vb-sec vb-egg"
-          aria-labelledby="vb-from-tim"
-          data-bee="fly"
-          data-bee-fly="note"
-          data-bee-sec="note"
-        >
-          <BeeLane />
-          <div className="vb-wrap" data-bee-content>
-            <h2 id="vb-from-tim" className="vb-label">
-              {WHY_S1_HEADING}
-            </h2>
-            <div className="vb-story">
-              {WHY_NOTE.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
-              <p className="vb-sign">{WHY_NOTE_SIGN}</p>
-            </div>
-            <div className="vb-photos-2">
-              <figure className="vb-ph vb-ph--tall">
-                <Image
-                  src={PHOTOS.piccadilly.src}
-                  width={PHOTOS.piccadilly.width}
-                  height={PHOTOS.piccadilly.height}
-                  alt={PHOTOS.piccadilly.alt}
-                  sizes="(min-width: 800px) 373px, 50vw"
-                />
-              </figure>
-              <figure className="vb-ph vb-ph--tall">
-                <Image
-                  src={PHOTOS.docks.src}
-                  width={PHOTOS.docks.width}
-                  height={PHOTOS.docks.height}
-                  alt={PHOTOS.docks.alt}
-                  sizes="(min-width: 800px) 373px, 50vw"
-                />
-              </figure>
-            </div>
-            <blockquote className="vb-pull">
-              <p className="vb-pull-q">{WHY_PULL_QUOTE}</p>
-              <p className="vb-pull-cite">{WHY_PULL_CITE}</p>
-            </blockquote>
-          </div>
-        </section>
-
         {/* Our icon: the bee on its own, then the lockup. Kept well away from
             the page title, so the word Manchester is never set with it. */}
-        <section className="vb-sec ground-plain" aria-labelledby="vb-mark" data-bee-sec="icon">
+        {/* Our icon lands directly on the title's plain ground, so it takes the
+            stepped plain ground (globals.css: no two adjacent sections share one). */}
+        <section className="vb-sec ground-plain step-up" aria-labelledby="vb-mark" data-bee-sec="icon">
           <div className="vb-wrap">
             <h2 id="vb-mark" className="vb-label">
               Our icon
@@ -255,14 +194,6 @@ export default function WhyTheBeePage() {
                 Grammar School Mills, Manchester
               </a>
               , published 1908, photographer unknown, public domain (Wikimedia Commons).{' '}
-              <a href="https://www.loc.gov/item/2019639929/" rel="noopener" target="_blank">
-                Piccadilly, Manchester
-              </a>
-              , 1927;{' '}
-              <a href="https://www.loc.gov/item/2019639927/" rel="noopener" target="_blank">
-                Manchester Ship Canal
-              </a>
-              , 1928;{' '}
               <a href="https://www.loc.gov/item/2019639930/" rel="noopener" target="_blank">
                 Manchester Ship Canal traffic
               </a>

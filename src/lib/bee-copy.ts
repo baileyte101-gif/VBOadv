@@ -12,18 +12,6 @@
 export const WHY_PAGE_LABEL = "Why the bee"
 export const WHY_H1 = "Why the Manchester Worker Bee"
 export const WHY_INTRO = "There's a lot of thought behind our bee. It carries a family from Manchester, the B in our name, and the way we work. We go above and beyond for every client, and we'd like to do the same for you."
-export const WHY_S1_HEADING = "From Tim"
-export const WHY_NOTE: string[] = [
-  "My family is originally from Manchester, England. My mom, dad, brother, sister, and my entire extended family are from Manchester. I was born in the United States, but I grew up in a British household, going to England all the time, steeped in British culture.",
-  "Everything was British, just in an American world: the food, the television, the pop culture, the news, the sports, all of it. All the way down to our Earl Grey tea, it was normal for us, but different from everyone else in America.",
-  "I didn't really pay attention to the bee till I was much older. In the past few years, when I go home to my parents and look around the house, I see it all over the place: on napkins, on drawer handles, a paperweight, a painting, a little decoration on something, a pillowcase cover. Think of it as Easter eggs around the house.",
-  "I understand how much the bee means to my family, and how much it means to my mom. It's a reminder of my connection to that part of my heritage.",
-  "My parents thoughtfully kept this symbol in their house. It's like they unknowingly grounded us in everything about who we are.",
-  "And the B in VBO is Bailey. The B and the bee. I love that connection.",
-]
-export const WHY_NOTE_SIGN = "Tim Bailey, Founder"
-export const WHY_PULL_QUOTE = "\"It's like they unknowingly grounded us in everything about who we are.\""
-export const WHY_PULL_CITE = "Tim Bailey"
 export const WHY_S2_HEADING = "How we work"
 /* The motto paragraph, split around the Latin so it can be set in italics (Mary 1g). */
 export const WHY_S2_BEFORE = "Bees have been on Manchester's coat of arms since 1842, as a symbol of hard work, and the motto on the arms is "

@@ -17,37 +17,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${HOST}/ai-enabled-marketing`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
       url: `${HOST}/insights`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    // Gated on the same flag as the page's own robots meta, so the sitemap and
-    // the robots directive can never disagree.
-    ...(INDEXABLE_PAGES.has("fractional-cmo")
-      ? [
-          {
-            url: `${HOST}/fractional-cmo`,
-            lastModified: now,
-            changeFrequency: "monthly" as const,
-            priority: 0.9,
-          },
-        ]
-      : []),
     // 2026-10-08: the bee story page (bee brand evolution). Same switch as
     // its own robots meta; "why-the-bee" joined INDEXABLE_PAGES at the soft
-    // web launch the same day. Real lastmod, not build time.
+    // web launch the same day. Real lastmod, not build time: the page last
+    // changed 2026-10-22.
     ...(INDEXABLE_PAGES.has("why-the-bee")
       ? [
           {
             url: `${HOST}/why-the-bee`,
-            lastModified: new Date("2026-10-08"),
+            lastModified: new Date("2026-10-22"),
             changeFrequency: "yearly" as const,
             priority: 0.5,
           },

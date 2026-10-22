@@ -74,26 +74,16 @@ function ArticleSchema({ post }: { post: NonNullable<ReturnType<typeof getPostBy
     datePublished: post.date,
     dateModified: post.date,
     image: post.image ? [`https://www.vboadv.com${post.image}`] : undefined,
-    // @id ties this back to the Person node the root layout already emits, so
-    // the author resolves to one entity instead of a fresh anonymous Person.
-    // A brand byline ("VBO") is not a person: it resolves to the Organization
-    // instead, matching the publisher node, never to Tim's Person @id.
-    // (Added 2026-10-15 with the first brand-voiced posts; posts by a known
-    // person keep the exact output they always had.)
-    author: AUTHORS[post.author]
-      ? {
-          '@type': 'Person',
-          name: post.author,
-          '@id': 'https://www.vboadv.com/#tim-bailey',
-        }
-      : {
-          '@type': 'Organization',
-          // The one company record the root layout emits (Vega, 2026-10-22):
-          // without the @id this described a second, unconnected VBO.
-          '@id': 'https://www.vboadv.com/#organization',
-          name: 'VBO Advertising',
-          url: 'https://www.vboadv.com',
-        },
+    // Every byline is the company: the author is the root layout's
+    // Organization node (by @id), matching the publisher. Never a Person.
+    author: {
+      '@type': 'Organization',
+      // The one company record the root layout emits (Vega, 2026-10-22):
+      // without the @id this described a second, unconnected VBO.
+      '@id': 'https://www.vboadv.com/#organization',
+      name: 'VBO Advertising',
+      url: 'https://www.vboadv.com',
+    },
     publisher: {
       '@type': 'Organization',
       '@id': 'https://www.vboadv.com/#organization',
@@ -119,7 +109,7 @@ function ArticleSchema({ post }: { post: NonNullable<ReturnType<typeof getPostBy
 }
 
 // THREE levels: Home, Insights, then the post. This does not contradict the
-// two-level shape on /fractional-cmo and the verticals: those dropped a middle
+// two-level shape on the verticals: those dropped a middle
 // item because /professional-services now 308s to the homepage, so position 2
 // resolved to the same URL as position 1. /insights is a real, distinct,
 // indexable page, so the middle item here is legitimate.

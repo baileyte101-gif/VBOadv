@@ -1,7 +1,6 @@
 // Single source of truth for which routes are approved for organic indexing.
 // Imported by:
 //   src/app/professional-services/[vertical]/page.tsx  (robots + canonical)
-//   src/app/fractional-cmo/page.tsx                    (robots + canonical)
 //   src/app/sitemap.ts                                 (sitemap membership)
 // Flipping a page indexable is a one-line edit HERE and nowhere else.
 
@@ -28,7 +27,6 @@ export const INDEXABLE_VERTICALS = new Set<string>([
 // Still held: "studio" (VBO Studio, after Tim approves the page and the
 // "Locked." film exists).
 export const INDEXABLE_PAGES = new Set<string>([
-  "fractional-cmo",
   "case-studies",
   "case-studies/ippe-soccer-tours",
   "case-studies/peixoto-wear",

@@ -49,10 +49,10 @@ export interface Author {
 }
 
 export const AUTHORS: Record<string, Author> = {
-  'Tim Bailey': {
-    name: 'Tim Bailey',
-    title: 'Founder, VBO',
-    bio: 'Tim Bailey founded VBO after 10+ years helping brands from Fortune 500 companies to growing independents build marketing systems that actually work. He lives in Coconut Grove, Miami.',
+  VBO: {
+    name: 'VBO',
+    title: 'Marketing Consulting',
+    bio: 'We work with small businesses across South Florida and take on a few clients at a time, so each one gets the attention it deserves.',
   },
 }
 

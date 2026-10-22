@@ -159,14 +159,6 @@ export const IPPE_WORK_IMAGES = {
     alt: 'The top of an IPPE Soccer Tours trip page on desktop: "Manchester Soccer Tour, December 2026." with Request a Call and Register buttons',
     caption: 'A trip page: the dates, the price, and the week, day by day.',
   },
-  carousel: {
-    src: '/images/work/ippe-soccer-tours/ippe-soccer-tours-testimonial-carousel.jpg',
-    width: 2970,
-    height: 440,
-    alt: "Chris Castell's testimonial set across the nine slides of an Instagram carousel",
-    // Jules's working caption from Layout 1; Mary to confirm.
-    caption: 'Chris’s words, carried across one swipe.',
-  },
 }
 
 /*
@@ -233,13 +225,6 @@ export const IPPE_RESULTS = {
     },
   ],
   coda: 'Once each ad landed on a page built to match it, far more people stayed to read. Families started asking to talk through the new site, and Chris takes it from there.',
-}
-
-// Verbatim, including "work ethic in drive", until Chris approves the fix.
-export const IPPE_QUOTE = {
-  text: 'After knowing Tim Bailey for over a decade, it was great to work with him in a professional setting once more. His work ethic in drive has given us a platform to be truly successful in our industry. Over the past few months, we have seen major increases in responses and opportunities for our business as we continue to grow. I am looking forward to the next few months to see how VBO can elevate us further ahead of our competitors!',
-  name: 'Chris Castell',
-  role: 'Executive Director, Coerver Coaching Carolinas / EPL Soccer LLC',
 }
 
 export const IPPE_NEXT = {
@@ -936,20 +921,6 @@ export const PEIXOTO_RESULTS = {
       kind: 'quiet',
     },
   ] as PeixotoPhase[],
-}
-
-/*
- * Verbatim from Mauricio's email of October 6, 2026 (read by Mercury 10/14).
- * Three sentences, no edits, no punctuation changes. His sign-off is replaced
- * by the credit, as on IPPE and Sir Galloway; the company word in the credit
- * is ours and needs his OK. "Before any damage was done" is his sentence and
- * stays inside his quote marks; nothing in VBO's prose repeats or restates
- * it. Plain HTML: no Review, Rating or AggregateRating.
- */
-export const PEIXOTO_QUOTE = {
-  text: 'Tim at VBO is professional, responsible, and extremely knowledgeable. He got us set up quickly and even caught a hacker trying to access our account before any damage was done. We trust him completely.',
-  name: 'Mauricio Esquenazi',
-  role: 'Peixoto Wear',
 }
 
 export const PEIXOTO_NEXT = {

@@ -10,11 +10,10 @@ import BeeLane from '@/components/bee/BeeLane'
  * instruction ("Rest u can update bc it's from me"). They replace Mary's
  * 2026-08-21 bodies; the white closing sublines are Mary's and stay, per the
  * same instruction ("Keep the subline for all of them"). Do not polish Tim's
- * wording without him; flag, don't fix.
+ * wording without him; flag, don't fix. Card 01's title, body and white line
+ * are Mary's lines of 2026-10-22, the section headline too.
  *
  * Constraints from Mary's claims ledger that the code cannot show:
- * - "there are no juniors" is an absolute. It needs a rewrite the day a
- *   junior is hired.
  * - The section deliberately contains no service list and no three-beat
  *   negation (the page's one is in The Approach above). Do not add either.
  *
@@ -27,10 +26,10 @@ const SECTION_LABEL = 'What We Do'
 const cards = [
   {
     number: '01',
-    title: 'Senior Level Marketer',
-    body: 'Collaborates on strategy, sets your direction, and runs your program.',
+    title: 'Senior Level Thinking',
+    body: 'We collaborate on strategy, set your direction, and run your program.',
     emphasis:
-      'Nothing gets handed to a junior after the kickoff call, because there are no juniors.',
+      'The same people are answering your emails, calls and text messages one year from now.',
   },
   {
     number: '02',
@@ -101,7 +100,7 @@ export default function HowWeWork() {
           <p className="section-label">{SECTION_LABEL}</p>
           <div className="section-accent" />
           <h2 className="font-headline font-black text-[#F2EDE4] uppercase leading-none text-[clamp(2.5rem,6vw,5rem)] max-w-[600px]">
-            Who shows up when you hire VBO.
+            What working with VBO looks like.
           </h2>
         </motion.div>
 

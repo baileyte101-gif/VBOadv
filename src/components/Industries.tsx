@@ -58,11 +58,6 @@ const services: FieldItem[] = [
     tier: 2,
   },
   {
-    name: 'Fractional CMO',
-    text: 'A senior marketing head, part of the time. Same seat and the same responsibility for where the money goes, on a share of the hours.',
-    tier: 1,
-  },
-  {
     name: 'Ecommerce and Shopify',
     text: 'Paid media and search run together on the same store. Collection pages, product feeds and catalog structure, where Shopify money quietly leaks.',
     tier: 2,

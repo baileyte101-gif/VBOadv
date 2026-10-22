@@ -18,8 +18,6 @@ import BeeLockup from '@/components/bee/BeeLockup'
  */
 
 const footerLinks = [
-  { href: '/ai-enabled-marketing', label: 'AI-Enabled Marketing' },
-  { href: '/fractional-cmo', label: 'Fractional CMO' },
   { href: '/professional-services/law-firms', label: 'Marketing for Law Firms' },
   { href: '/professional-services/med-spas', label: 'Marketing for Med Spas' },
   { href: '/insights', label: 'VBO Insights' },

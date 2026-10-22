@@ -22,7 +22,6 @@ import {
   PEIXOTO_HERO,
   PEIXOTO_CONTACT_WORK,
   PEIXOTO_RESULTS,
-  PEIXOTO_QUOTE,
   PEIXOTO_NEXT,
   PEIXOTO_SHARE_IMAGE,
   PEIXOTO_RELATED_READING,
@@ -213,8 +212,7 @@ export default function PeixotoCaseStudyPage() {
             above it, and phases 4 and 5 (Tim's 10/14 additions) sit lighter
             below it on the B7 quiet hairline with a smaller figure. Notes
             render as their own paragraphs, in copy.md order. No coda: the
-            engagement is complete and the quote follows the phases
-            directly. */}
+            engagement is complete. */}
         <section className="vw-stats-band" aria-labelledby="vw-results-title">
           <div className="retro-strip" aria-hidden />
           <div className="vw-inner">
@@ -244,24 +242,6 @@ export default function PeixotoCaseStudyPage() {
             </div>
           </div>
           <div className="retro-strip" aria-hidden />
-        </section>
-
-        {/* THE QUOTE: plain HTML, no review markup. Mauricio's three
-            sentences, verbatim, one paragraph. */}
-        <section className="vw-sec ground-plain">
-          <div className="vw-wrap">
-            <figure className="vw-quote">
-              <blockquote>
-                <p>&ldquo;{PEIXOTO_QUOTE.text}&rdquo;</p>
-              </blockquote>
-              <div className="vw-rule" aria-hidden />
-              <figcaption className="vw-credit">
-                <cite>
-                  <b>{PEIXOTO_QUOTE.name},</b> {PEIXOTO_QUOTE.role}
-                </cite>
-              </figcaption>
-            </figure>
-          </div>
         </section>
 
         {/* RELATED READING (Vega, 2026-10-22): the posts this page proves. */}

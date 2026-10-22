@@ -29,13 +29,11 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.vboadv.com'),
-  // 2026-10-08, Tim: "Marketing Consultant & Studio" replaces "Marketing
-  // Consultant Who Does the Work" in the browser tab and on Google (bee brand
-  // evolution, step 07). Title only; the descriptions are unchanged and any
-  // copy change to them goes through Mary.
-  title: 'Marketing Consultant & Studio | VBO Advertising',
+  // Title and descriptions are Mary's lines (2026-10-22). Any copy change to
+  // them goes through Mary.
+  title: 'Small Business Marketing Consulting | VBO Advertising',
   description:
-    'Marketing consultant and studio in Miami. Strategy first, disciplined execution across paid, social, SEO, brand, and creative. You work with me.',
+    'Miami marketing consulting for small businesses across South Florida. Strategy first, then hands-on help with ads, search, websites, brand, and social.',
   // The bee replaces the V (2026-10-08 logo pack, web-icons/). 16 to 48 px
   // use the pack's small cut on a black tile; the home-screen icon is the full
   // bee on black. /favicon-dark.png and /favicon-light.png are no longer
@@ -53,9 +51,9 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
   },
   openGraph: {
-    title: 'Marketing Consultant & Studio | VBO Advertising',
+    title: 'Small Business Marketing Consulting | VBO Advertising',
     description:
-      'Founder-led marketing consultancy and studio in Miami. Strategy first, disciplined execution across paid, social, SEO, brand, and creative.',
+      'A Miami marketing consultancy for small businesses across South Florida. Strategy first, then hands-on help with ads, search, websites, brand, and social.',
     type: 'website',
     images: [SHARE_IMAGE],
   },
@@ -79,8 +77,7 @@ const organizationSchema = {
   // opaque, so it holds in Google's square and round crops and on white.
   logo: BRAND_LOGO,
   description:
-    'Founder-led marketing consultancy and studio in Miami, serving small to mid-size businesses across South Florida.',
-  founder: { '@id': 'https://www.vboadv.com/#tim-bailey' },
+    'Marketing consultancy in Miami, serving small businesses across South Florida.',
   sameAs: [
     'https://www.linkedin.com/company/vbo-advertising/',
     'https://www.instagram.com/vboadv/',
@@ -88,23 +85,10 @@ const organizationSchema = {
   ],
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+1-864-640-6558',
-    email: 'tim@vboadv.com',
+    email: 'hello@vboadv.com',
     contactType: 'Customer Service',
     areaServed: 'US-FL',
   },
-}
-
-const personSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  '@id': 'https://www.vboadv.com/#tim-bailey',
-  name: 'Tim Bailey',
-  jobTitle: 'Founder',
-  worksFor: { '@id': 'https://www.vboadv.com/#organization' },
-  url: 'https://www.vboadv.com/tim',
-  image: 'https://www.vboadv.com/images/headshot.jpg',
-  sameAs: ['https://www.linkedin.com/in/timothybailey1'],
 }
 
 const localBusinessSchema = {
@@ -114,7 +98,6 @@ const localBusinessSchema = {
   name: 'VBO Advertising',
   image: BRAND_LOGO,
   url: 'https://www.vboadv.com',
-  telephone: '+1-864-640-6558',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Coconut Grove',
@@ -202,14 +185,10 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
-        {/* JSON-LD: Organization, Person, LocalBusiness. Sitewide via root layout. */}
+        {/* JSON-LD: Organization, LocalBusiness. Sitewide via root layout. */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
         <script
           type="application/ld+json"

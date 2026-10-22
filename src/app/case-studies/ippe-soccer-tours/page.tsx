@@ -20,7 +20,6 @@ import {
   IPPE_WORK_IMAGES,
   IPPE_ADS,
   IPPE_RESULTS,
-  IPPE_QUOTE,
   IPPE_NEXT,
   ippeArticleSchema,
   ippeBreadcrumbSchema,
@@ -224,21 +223,6 @@ export default function IppeCaseStudyPage() {
                     {img.homepage.caption}
                   </figcaption>
                 </figure>
-                <figure>
-                  <div className="vw-strip" tabIndex={0} role="region" aria-label="Testimonial carousel, scrolls sideways on small screens">
-                    <Image
-                      src={img.carousel.src}
-                      alt={img.carousel.alt}
-                      width={img.carousel.width}
-                      height={img.carousel.height}
-                      sizes="(min-width: 1024px) 860px, 900px"
-                    />
-                  </div>
-                  <figcaption className="vw-cap">
-                    <b>04</b>
-                    {img.carousel.caption}
-                  </figcaption>
-                </figure>
               </div>
             </div>
           </div>
@@ -299,23 +283,6 @@ export default function IppeCaseStudyPage() {
             </div>
           </div>
           <div className="retro-strip" aria-hidden />
-        </section>
-
-        {/* THE QUOTE: plain HTML, no review markup (Vega) */}
-        <section className="vw-sec ground-plain">
-          <div className="vw-wrap">
-            <figure className="vw-quote">
-              <blockquote>
-                <p>&ldquo;{IPPE_QUOTE.text}&rdquo;</p>
-              </blockquote>
-              <div className="vw-rule" aria-hidden />
-              <figcaption className="vw-credit">
-                <cite>
-                  <b>{IPPE_QUOTE.name},</b> {IPPE_QUOTE.role}
-                </cite>
-              </figcaption>
-            </figure>
-          </div>
         </section>
       </main>
 

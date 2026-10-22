@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'VBO Insights | Strategy, Creative, Performance',
     description:
-      'Straight talk on marketing strategy and execution from VBO, a founder-led consultancy based in Miami.',
+      'Straight talk on marketing strategy and execution from VBO, a Miami consultancy for small businesses.',
     type: 'website',
     url: 'https://www.vboadv.com/insights',
     images: [SHARE_IMAGE],

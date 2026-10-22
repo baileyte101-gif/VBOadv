@@ -148,7 +148,7 @@ export default function WhatWeRun() {
             animate={topInView ? { opacity: 1, y: 0 } : {}}
             className="font-headline font-black text-[#F2EDE4] uppercase leading-[0.98] text-[40px] sm:text-[56px] lg:text-[72px] mb-14"
           >
-            Senior level taste and strategy, done at enterprise speed and accuracy.
+            Senior level taste and strategy, with the care to see it through.
           </motion.h2>
 
           <motion.div

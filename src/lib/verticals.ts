@@ -37,7 +37,7 @@ export interface VerticalData {
     answer: string;
   }[];
   // Body-level internal links (SEO). Rendered only when present: `home` as a
-  // short section between FAQ and the founder block, `insights` inside the
+  // short section between FAQ and the bottom CTA, `insights` inside the
   // bottom CTA. `home` href is fixed ("/"). `insights` supports either the
   // legacy single-link shape (href fixed to "/insights", used by law-firms
   // and med-spas) or a `segments` array for sentences that need more than
@@ -48,13 +48,7 @@ export interface VerticalData {
     insights?:
       | { before: string; linkText: string; after: string }
       | { segments: (string | { text: string; href: string })[] };
-    // Renders between the homepage cross-link and the founder block.
-    // href is hardcoded to "/fractional-cmo" in LandingPageTemplate.
-    service?: { before: string; linkText: string; after: string };
   };
-  // Founder headshot alt override (SEO). Template falls back to the generic
-  // "Tim Bailey, Founder of VBO Advertising" when absent.
-  founderAlt?: string;
 }
 
 export const verticals: Record<string, VerticalData> = {
@@ -171,15 +165,7 @@ export const verticals: Record<string, VerticalData> = {
         linkText: "VBO Insights blog",
         after: ".",
       },
-      service: {
-        before:
-          "If what your firm needs is one senior person owning marketing rather than another vendor to manage, that's the job ",
-        linkText: "a fractional CMO",
-        after: " does.",
-      },
     },
-    founderAlt:
-      "Tim Bailey, founder of VBO Advertising, a Coconut Grove, Miami marketing consultancy working with boutique law firms",
   },
 
   "dental-practices": {
@@ -407,12 +393,6 @@ export const verticals: Record<string, VerticalData> = {
         linkText: "VBO Insights blog",
         after: ".",
       },
-      service: {
-        before:
-          "When a practice grows past the point where the owner can run marketing on the side, the seat that fills the gap is ",
-        linkText: "a fractional CMO",
-        after: ".",
-      },
     },
   },
 
@@ -605,5 +585,6 @@ export const verticals: Record<string, VerticalData> = {
 
 export const verticalSlugs = Object.keys(verticals);
 
-export const BOOKING_URL = "https://calendar.app.google/rzHzc2dM8saJFsfk7";
-export const TIM_EMAIL = "tim@vboadv.com";
+// The "Book a 30-Minute Call" buttons open an email to hello@ with the
+// subject set.
+export const BOOKING_URL = "mailto:hello@vboadv.com?subject=30-minute%20call";

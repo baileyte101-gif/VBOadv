@@ -26,14 +26,14 @@ const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Integrated Marketing Services',
-  // Description and serviceType track the ten services the homepage actually
+  // Description and serviceType track the nine services the homepage actually
   // sells (Mary's floating-field v3). Vega P1-3, 2026-08-22: the previous
   // pair described nine older service names and omitted half the live
   // inventory. Machine-readable only, which is why it shipped under Tim's
   // "everything invisible to a visitor is GO" approval. If the field's list
   // changes, this changes with it.
   description:
-    'VBO Advertising provides integrated marketing services for small and mid-size businesses in Miami and South Florida, including web development, marketing consulting, fractional CMO leadership, ecommerce and Shopify marketing, AI SEO and visibility, paid media, AI-enabled marketing, analytics and reporting, creative, and social media.',
+    'VBO Advertising provides integrated marketing services for small and mid-size businesses in Miami and South Florida, including web development, marketing consulting, ecommerce and Shopify marketing, AI SEO and visibility, paid media, AI-enabled marketing, analytics and reporting, creative, and social media.',
   // Reference the root Organization by @id rather than inlining a duplicate.
   // Inlining published a second, unlinked company record; Google's Rich Results
   // Test reported "Organization: 2 valid items". Matches the WebSite block below
@@ -47,12 +47,11 @@ const serviceSchema = {
     'Broward County',
     'Palm Beach County',
   ],
-  // Vega's P1-3 list: Mary's ten live service names plus the search-visible
+  // Vega's P1-3 list: Mary's nine live service names plus the search-visible
   // synonyms buyers actually type, rather than display names alone.
   serviceType: [
     'Web Development',
     'Marketing Consulting',
-    'Fractional CMO',
     'Ecommerce Marketing',
     'Shopify SEO',
     'Search Engine Optimization',
@@ -80,7 +79,7 @@ const faqSchema = {
       name: 'What does VBO Advertising do?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'VBO Advertising is a founder-led marketing consultancy and studio based in Miami, Florida. We set the marketing strategy first, then run disciplined execution across paid media, social, SEO, brand, and creative, all in one connected system for small and mid-size businesses.',
+        text: 'VBO Advertising is a marketing consultancy based in Miami, Florida, working with small businesses across South Florida. We set the marketing strategy first, then help run the work across Google and Meta ads, SEO, websites, brand, social, email, and reporting, all in one connected system.',
       },
     },
     {
@@ -96,7 +95,7 @@ const faqSchema = {
       name: 'What kinds of businesses does VBO Advertising work with?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'VBO works with founder-led and owner-operator businesses, small to mid-size companies that want senior-level marketing strategy and disciplined execution without the overhead of a large firm. We have experience with professional services firms, hospitality brands, and consumer businesses across South Florida.',
+        text: 'VBO works with owner-run small businesses that want experienced marketing advice and hands-on help carrying it out, without the overhead of a large firm. We have experience with professional services firms, hospitality brands, and consumer businesses across South Florida.',
       },
     },
     {

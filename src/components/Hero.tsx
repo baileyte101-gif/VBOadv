@@ -62,7 +62,7 @@ export default function Hero() {
           style={enter(0.15, 0.6)}
           className="hero-in hero-in-up font-mono text-[#8A8E92] text-[11px] tracking-[0.3em] uppercase mb-8 md:mb-10"
         >
-          Marketing Consultant &amp; Studio
+          Marketing Consulting
         </p>
 
         {/* Headline. first word is the single H1 for SEO. The other two
@@ -101,12 +101,12 @@ export default function Hero() {
           Fully integrated marketing. Human, built on experience and modern efficiency.
         </p>
 
-        {/* Geo intro. SEO signal: Coconut Grove, Miami + consultancy/studio self-label */}
+        {/* Geo intro. SEO signal: Coconut Grove, Miami + consultancy self-label */}
         <p
           style={enter(0.72, 0.6)}
           className="hero-in hero-in-lift text-[#9fa3a7] text-sm font-body leading-relaxed max-w-sm mb-10"
         >
-          Based in Coconut Grove, Miami, we&apos;re a founder-led marketing consultancy and studio serving small and mid-size businesses across South Florida.
+          Based in Coconut Grove, Miami, we&apos;re a marketing consultancy working with small businesses across South Florida.
         </p>
 
         {/* CTA */}
@@ -140,7 +140,9 @@ export default function Hero() {
           style={enter(1.0, 0.5)}
           className="hero-in hero-in-lift font-mono text-[#8A8E92]/60 text-[10px] tracking-[0.25em] uppercase"
         >
-          Miami, FL&nbsp;/&nbsp;Founder-Led&nbsp;/&nbsp;Studio&nbsp;/&nbsp;Consultant
+          {/* One line from 768px up. On phones it wraps after a separator,
+              never inside "Small Business". */}
+          Miami, FL&nbsp;/ Small&nbsp;Business&nbsp;/ Consulting&nbsp;/ Hands-On
         </p>
       </div>
 
@@ -159,7 +161,7 @@ export default function Hero() {
       >
         <Image
           src="/images/miami-city-graded.jpg"
-          alt="Miami skyline. VBO Advertising is a marketing consultancy and studio based in Coconut Grove, Miami, Florida"
+          alt="Miami skyline. VBO Advertising is a marketing consultancy based in Coconut Grove, Miami, Florida"
           fill
           className="object-cover object-center"
           priority

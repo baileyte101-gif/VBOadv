@@ -1,6 +1,6 @@
 /* ==========================================================================
    /why-the-bee (bee brand evolution, 2026-10-08). Jules's approved concept,
-   on the site's own grounds (globals.css): plain black, Egg, plain black,
+   on the site's own grounds (globals.css): plain black, stepped plain,
    harbour, then the skyline close. Everything is scoped under .vb or .vb-close
    so none of it can leak into other pages.
    ========================================================================== */
@@ -29,8 +29,7 @@
   .vb .vb-sec { padding: 144px 80px; }
 }
 
-/* Labels: the site's section label (mono, gold); black on Egg, where gold
-   is too faint for small type. */
+/* Labels: the site's section label (mono, gold). */
 .vb .vb-label {
   font-family: var(--font-space-mono), monospace;
   font-size: 12px;
@@ -49,10 +48,8 @@
 }
 
 /* The flying bee (bee-home.css, shared with the homepage). Each section it
-   flies in keeps its lane to itself; on From Tim's Egg it turns black, as it
-   does on the homepage's Egg. */
+   flies in keeps its lane to itself. */
 .vb .vb-sec[data-bee="fly"] { isolation: isolate; }
-.vb .vb-egg .vbo-bee { color: #0D0D0D; }
 
 /* Title and intro */
 .vb .vb-hero { padding-top: 72px; }
@@ -106,12 +103,7 @@
 }
 .vb .vb-hero-toggle { margin-top: 32px; }
 
-/* From Tim, on Egg */
-.vb .vb-egg {
-  background: #F2EDE4;
-  color: #0D0D0D;
-}
-.vb .vb-egg .vb-label { color: #0D0D0D; }
+/* Story text */
 .vb .vb-story {
   font-size: clamp(18px, 2.2vw, 21px);
   line-height: 1.6;
@@ -122,13 +114,6 @@
 .vb .vb-story p { margin: 0 0 16px; }
 .vb .vb-story p:last-child { margin-bottom: 0; }
 .vb .vb-story--dark { color: #F2EDE4; }
-.vb .vb-sign {
-  font-family: var(--font-space-mono), monospace;
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-top: 22px !important;
-}
 
 /* Photographs: archival, black and white, cropped to each slot. */
 .vb .vb-ph {
@@ -139,48 +124,16 @@
   max-width: 100%;
   background: #24282C;
 }
-.vb .vb-egg .vb-ph { background: #E7E1D6; }
 .vb .vb-ph img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.vb .vb-photos-2 {
-  display: grid;
-  gap: 14px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 36px;
-  max-width: 760px;
-}
-.vb .vb-ph--tall { aspect-ratio: 4 / 5; }
 .vb .vb-ph--wide {
   aspect-ratio: 16 / 9;
   margin-top: 36px;
   max-width: 760px;
-}
-
-/* The pull quote: Tim's sentence, attributed to him. */
-.vb .vb-pull {
-  margin: 44px 0 0;
-  max-width: 640px;
-}
-.vb .vb-pull-q {
-  font-family: var(--font-barlow), sans-serif;
-  font-weight: 700;
-  font-size: clamp(30px, 4.6vw, 48px);
-  line-height: 1.02;
-  text-transform: uppercase;
-  color: #0D0D0D;
-  margin: 0;
-}
-.vb .vb-pull-cite {
-  font-family: var(--font-space-mono), monospace;
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #0D0D0D;
-  margin: 16px 0 0;
 }
 
 /* The mark */
