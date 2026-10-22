@@ -355,6 +355,11 @@ export default function InsightPost({ params }: Props) {
         <div className="max-w-[720px] mx-auto">
           <MDXRemote source={post.content} components={mdxComponents} />
 
+          {/* See it in practice: the case study this post is the practice of.
+              Directly after the body, before the back link that closes the
+              article (Jules, 2026-10-22). */}
+          <SeeItInPractice slug={post.caseStudy} />
+
           {/* Author bio */}
           {author.bio && <AuthorBio author={author} />}
 
@@ -369,9 +374,6 @@ export default function InsightPost({ params }: Props) {
           </div>
         </div>
       </article>
-
-      {/* See it in practice: the case study this post is the practice of */}
-      <SeeItInPractice slug={post.caseStudy} />
 
       {/* Related Posts */}
       <RelatedPosts posts={related} />
