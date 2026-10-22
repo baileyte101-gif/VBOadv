@@ -65,7 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Peixoto Wear (published 2026-10-21): listed because its slug is in
     // INDEXABLE_PAGES, which cannot build without PEIXOTO_PUBLISHED set.
     { slug: PEIXOTO_SLUG, updated: PEIXOTO_PUBLISHED ?? WORK_UPDATED, priority: 0.8 },
-    // Sir Galloway (2026-10-06): out until Tim's publish go adds its slug to
+    // Sir Galloway (published 2026-10-22): listed because its slug is in
     // INDEXABLE_PAGES, which cannot build without SG_PUBLISHED set.
     { slug: SG_SLUG, updated: SG_PUBLISHED ?? WORK_UPDATED, priority: 0.8 },
   ]

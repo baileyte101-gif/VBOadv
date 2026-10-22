@@ -128,10 +128,9 @@ export default function CaseStudiesIndexPage() {
                   </div>
                 </a>
               )}
-              {/* Sir Galloway: previews and local builds show this card for
-                  review; a production build shows it only once the page is
-                  flipped indexable at Tim's publish go (SG_SHOWN). The card
-                  uses the pickup page capture, 16:10 like IPPE's trip page. */}
+              {/* Sir Galloway (published 2026-10-22). Shown wherever the page
+                  is (SG_SHOWN). The card uses the pickup page capture, 16:10
+                  like IPPE's trip page. */}
               {SG_SHOWN && (
                 <a className="vw-card" href={SG_PATH}>
                   <div className="vw-card-media">

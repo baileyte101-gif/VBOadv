@@ -253,9 +253,12 @@ export const IPPE_NEXT = {
 // ---------------------------------------------------------------------------
 // /case-studies/sir-galloway
 //
-// PREVIEW ONLY until Morgan Mills approves the page (its figures, images,
-// quote and credit) and Tim gives the publish go. Tim told Morgan on 10/1:
-// "Nothing goes live until you're happy with it!"
+// PUBLISHED 2026-10-22. Morgan Mills approved the page on 10/14 ("LOVE the
+// case study"): the numbers, the social posts (April and new, two as video)
+// and her own quote and credit, on the third preview
+// (dpl_ArLzdp6nWuA5tZpKPjjQZfAjbNoD). Mrs. Mills's quote was still waiting on
+// her own OK; Tim gave the publish go on 10/22 with it in, as Morgan saw it.
+// Every string is as she reviewed it.
 //
 // Copy is Mary's (clients/vbo/case-studies/sir-galloway/copy.md, 2026-10-06,
 // section 1), field for field and word for word; Mack checked every figure
@@ -266,12 +269,10 @@ export const IPPE_NEXT = {
 // website/2026-10-06-case-study-sir-galloway/exports/manifest.md). Same
 // template as IPPE above.
 //
-// The publish switch is src/lib/indexable.ts. Until "case-studies/sir-galloway"
-// is in INDEXABLE_PAGES, this page is noindex and out of the sitemap, and a
-// PRODUCTION build serves its URL as a 404 and leaves its card off
-// /case-studies, so a merge cannot publish it early. Previews and local
-// builds show both, for review. At the publish go: set SG_PUBLISHED, add the
-// slug to INDEXABLE_PAGES, and add the llms.txt line.
+// The publish switch is src/lib/indexable.ts: "case-studies/sir-galloway" is
+// in INDEXABLE_PAGES, so the page is indexable with a canonical, in the
+// sitemap and the index's CollectionPage, and its card shows on /case-studies.
+// Taking it down again is that one line out of indexable.ts.
 //
 // Reworked 2026-10-13 (rework brief clients/vbo/case-studies/sir-galloway/
 // 2026-10-13-rework-brief.md; Mary's copy.md reworked the same day, Jules's
@@ -298,11 +299,10 @@ export const SG_APPROVED = INDEXABLE_PAGES.has(SG_SLUG)
 export const SG_SHOWN = SG_APPROVED || process.env.VERCEL_ENV !== 'production'
 
 /**
- * The day the page goes public. Null until the publish go, so the preview's
- * Article schema states no date. The page refuses to build as indexable
- * without it.
+ * The day the page went public (Tim's publish go). The Article schema's
+ * datePublished and dateModified, and the sitemap's lastmod.
  */
-export const SG_PUBLISHED: string | null = null
+export const SG_PUBLISHED: string | null = '2026-10-22'
 
 export const SG_TITLE = "Sir Galloway Case Study: Website, Listings, Social & Ads | VBO"
 export const SG_DESCRIPTION =
@@ -988,7 +988,7 @@ export const peixotoBreadcrumbSchema = {
 }
 
 // Sir Galloway: the same two blocks as IPPE. Morgan's quote stays plain HTML
-// (no Review, Rating or AggregateRating). No dates until SG_PUBLISHED is set.
+// (no Review, Rating or AggregateRating). Dated by SG_PUBLISHED.
 export const sgArticleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
