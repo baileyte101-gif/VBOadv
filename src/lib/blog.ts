@@ -82,9 +82,14 @@ export function getFeaturedPost(): Post | null {
   return posts.find((p) => p.featured) ?? posts[0] ?? null
 }
 
+// Same category first, newest first, exactly as before; then, if that leaves
+// room (a category with no siblings, like Culture or Performance today), the
+// newest other published posts fill up to `limit`. Vega, 2026-10-22: two of
+// the 10/22 posts rendered no related posts at all.
 export function getRelatedPosts(currentSlug: string, category: string, limit = 3): Post[] {
-  return getAllPosts()
-    .filter((p) => p.slug !== currentSlug && p.category === category)
-    .slice(0, limit)
+  const others = getAllPosts().filter((p) => p.slug !== currentSlug)
+  const same = others.filter((p) => p.category === category)
+  const rest = others.filter((p) => p.category !== category)
+  return [...same, ...rest].slice(0, limit)
 }
 
