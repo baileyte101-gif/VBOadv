@@ -323,18 +323,18 @@
 .vw h2.vw-label { font-weight: 400; line-height: 1.5; max-width: none; }
 
 /* ==========================================================================
-   Peixoto Wear deltas (2026-10-14; revised the same evening for Tim's edit
-   round 1). The three blocks below (B1, B5, B7) are Jules's rules from the
-   Sir Galloway rework (sg-additions.css, carried on branch
-   content/case-study-sir-galloway-2026-10-13), byte for byte, because this
-   page shares that template: the hero photograph, the contact prompts and
-   the phased results. B2 (the work pair) was carried in the first preview
-   and is dropped with its section: the Work images and the Ads strip are off
-   the page (Tim, 10/14), so this branch adds no rules for them. If the Sir
-   Galloway branch has merged first, these blocks already exist above: at
-   rebase, keep ONE copy of each. The one rule at the bottom is this page's
-   own (Bob). Every selector is a new class, so the IPPE page renders exactly
-   as before.
+   Case study deltas: Peixoto Wear (2026-10-14, published 2026-10-21) and
+   Sir Galloway (2026-10-06, reworked 2026-10-13, published 2026-10-22).
+   B1, B5 and B7 are Jules's rules from the Sir Galloway rework
+   (sg-additions.css, Jules/designs/vbo/website/2026-10-06-case-study-sir-galloway/
+   src/), byte for byte, shared by both pages (the hero photograph, the
+   contact prompts, the phased results); Peixoto merged first and carried
+   them, so the Sir Galloway release keeps that ONE copy. B2, B4 and B6 are
+   Sir Galloway's own (the work pair, multi-paragraph quotes, the Social
+   Media section); B3 is retired. Peixoto keeps its one rule at the bottom.
+   Every rule is a new class or a selector the IPPE markup cannot match, so
+   the IPPE page renders exactly as before. The mock-only shim in her
+   section A is not ported: globals.css already provides it.
    ========================================================================== */
 
 /* (B1) HERO IMAGE. The Pinecrest storefront image (Tim, 10/6) where IPPE
@@ -348,6 +348,27 @@
 @media (min-width: 1024px) {
   .vw .vw-hero-photo { max-width: none; justify-self: stretch; }
 }
+
+/* (B2) THE WORK, ROW 2. IPPE: phone (02) + carousel strip (04). Sir Galloway:
+   phone (02) + a pair, the Google listing (04) and a storefront photograph
+   (05), both 4:5. Stacked on phones so the listing stays readable, two-up
+   from 640px. At 1440 each tile is about 455 x 570, level with the phone. */
+.vw .vw-work-pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; align-items: start; }
+.vw .vw-work-pair > * { min-width: 0; margin: 0; }
+.vw .vw-work-pair img { width: 100%; height: auto; display: block; }
+@media (min-width: 640px) {
+  .vw .vw-work-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+}
+@media (min-width: 1024px) {
+  .vw .vw-work-pair { gap: 40px; }
+}
+
+/* (B3) RETIRED 10/13 with the two-figure band; the three-phase results (B7)
+   replace it and nothing uses .vw-stats-baseline. */
+
+/* (B4) QUOTE. A quote of several paragraphs (Morgan's is three) keeps IPPE's
+   type, size and measure; the only change is the gap between paragraphs. */
+.vw .vw-quote blockquote p + p { margin-top: 0.72em; }
 
 /* (B5) THE CONTACT PROMPTS (new 10/13; Mary's CONTACT_CHALLENGE, CONTACT_WEBSITE,
    CONTACT_SOCIAL). One plain line in body type inside the page column, the link
@@ -376,6 +397,85 @@
   .vw .vw-ask { margin-top: 56px; font-size: 18px; }
 }
 
+/* (B6) THE SOCIAL MEDIA SECTION (new 10/13). Sits between The Work and The Ads,
+   on the plain black ground so the posts keep their own colours and the two
+   smoke sections either side seam into it. Ghost 04 continues 01 to 03.
+   Phones: text, then the pairs. Each pair stacks with the before on top; the two
+   posts are 78% wide, the before held left and the after held right, so a pair
+   reads left to right as it does on desktop and costs about 600px a pair at 390
+   instead of 860px one-up (the IPPE ads strip lesson).
+   640px up: each pair is two-up, before on the left.
+   1024px up: the owner's words in a column on the left, top-aligned with pair A,
+   the three pairs on the right. At 1440 each post is 356px square. Not sticky:
+   .vw-sec clips its overflow (for the ghost numbers), which makes a sticky column
+   offset instead of follow the viewport, and on a 1024 x 768 laptop the column
+   would be taller than the screen. The space under the column is left open.
+   Every post is square (1080 x 1080): the April posts are square on Instagram,
+   so the after frames are cropped square to match. Same frame for before and
+   after, same gold label: nothing in the design favours one side. */
+.vw .vw-social-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 56px; }
+.vw .vw-social-grid > * { min-width: 0; }
+.vw .vw-social-text h2 { margin-bottom: 32px; }
+.vw .vw-social-text .vw-body + .vw-owner-quote { margin-top: 36px; }
+.vw .vw-owner-quote { margin: 0; padding-left: 22px; border-left: 2px solid var(--color-vbo-gold); }
+.vw .vw-owner-quote + .vw-body { margin-top: 36px; }
+.vw .vw-owner-quote blockquote { margin: 0; }
+/* Smaller than Morgan's quote (clamp(1.6rem, 3vw, 2.6rem)), same face. */
+.vw .vw-owner-quote blockquote p {
+  font-family: var(--vw-headline); font-weight: 700; color: var(--vw-egg);
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem); line-height: 1.16; letter-spacing: 0.005em;
+}
+.vw .vw-owner-quote .vw-credit { padding: 16px 0 0; text-align: left; }
+.vw .vw-pairs { display: grid; grid-template-columns: minmax(0, 1fr); gap: 56px; }
+.vw .vw-pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
+.vw .vw-pair > figure { margin: 0; min-width: 0; width: 78%; }
+.vw .vw-pair > .vw-after { justify-self: end; }
+.vw .vw-pair-label {
+  font-family: var(--vw-mono); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--color-vbo-gold); margin: 0 0 12px;
+}
+.vw .vw-post {
+  background: #16181c;
+  box-shadow: 0 0 0 1px rgb(242 237 228 / 0.12), 0 26px 50px rgb(0 0 0 / 0.5);
+  overflow: hidden;
+}
+.vw .vw-post img { width: 100%; height: auto; display: block; }
+/* (Bob, 10/13 step 17b) Pairs B and C "after" play the posts themselves as
+   video (PostVideo.tsx): same square frame, the poster is the first frame that
+   plays. The Pause / Play button (WCAG 2.2.2) sits inside the frame, bottom
+   right: 36px square, near-black at 72% with an egg icon (at least 6.7:1
+   against the blended ground even over a white frame), the gold focus ring
+   inside the frame so .vw-post's overflow cannot clip it. */
+.vw .vw-post-video { position: relative; }
+.vw .vw-post video { width: 100%; height: auto; display: block; aspect-ratio: 1 / 1; object-fit: cover; }
+.vw .vw-video-toggle {
+  position: absolute; right: 10px; bottom: 10px; width: 36px; height: 36px; padding: 0;
+  display: grid; place-items: center; cursor: pointer;
+  background: rgb(13 13 13 / 0.72); color: var(--vw-egg);
+  border: 1px solid rgb(242 237 228 / 0.4); border-radius: 0;
+}
+.vw .vw-video-toggle:hover { background: rgb(13 13 13 / 0.88); }
+.vw .vw-video-toggle:focus-visible { outline: 2px solid var(--color-vbo-gold); outline-offset: 2px; }
+.vw .vw-video-toggle svg { width: 14px; height: 14px; display: block; }
+.vw .vw-pairs .vw-ask { margin-top: 0; }
+@media (min-width: 640px) {
+  .vw .vw-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+  .vw .vw-pair > figure { width: auto; }
+}
+@media (min-width: 768px) {
+  .vw .vw-pair-label { font-size: 11px; }
+  .vw .vw-pairs { gap: 56px; }
+  .vw .vw-social-text h2 { margin-bottom: 40px; }
+}
+@media (min-width: 1024px) {
+  .vw .vw-social-grid { grid-template-columns: minmax(0, 0.74fr) minmax(0, 1.26fr); gap: 72px; align-items: start; }
+  .vw .vw-pairs { gap: 48px; }
+}
+
+/* (Bob, 10/13 step 17b) Two phases now: the "Not counted" phase is gone (Tim), so
+   .vw-phase-quiet and .vw-num-words are unused, kept for Jules's system. Phase 1
+   (64%) takes the first column of row one; phase 2 (about 50%) leads below it,
+   full row, gold bar, the largest figure, exactly as phase 3 did. */
 /* (B7) THE RESULTS, THREE PHASES (reworked 10/13; replaces the two-figure .vw-stats
    band, same stone band, retro strips, label, heading and coda).
    An ordered list, in Mary's order. Weight goes to phase 3, the lead figure: it

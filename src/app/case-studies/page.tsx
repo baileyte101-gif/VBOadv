@@ -22,6 +22,11 @@ import {
   PEIXOTO_CLIENT,
   PEIXOTO_CARD_LINE,
   PEIXOTO_HERO,
+  SG_PATH,
+  SG_SHOWN,
+  SG_CLIENT,
+  SG_CARD_LINE,
+  SG_WORK_IMAGES,
   workIndexSchema,
   workIndexBreadcrumbSchema,
 } from '@/lib/work'
@@ -117,6 +122,30 @@ export default function CaseStudiesIndexPage() {
                   <div className="vw-card-body">
                     <h2>{PEIXOTO_CLIENT}</h2>
                     <p>{PEIXOTO_CARD_LINE}</p>
+                    <span className="vw-card-more" aria-hidden>
+                      &rarr;
+                    </span>
+                  </div>
+                </a>
+              )}
+              {/* Sir Galloway: previews and local builds show this card for
+                  review; a production build shows it only once the page is
+                  flipped indexable at Tim's publish go (SG_SHOWN). The card
+                  uses the pickup page capture, 16:10 like IPPE's trip page. */}
+              {SG_SHOWN && (
+                <a className="vw-card" href={SG_PATH}>
+                  <div className="vw-card-media">
+                    <Image
+                      src={SG_WORK_IMAGES.pickupPage.src}
+                      alt=""
+                      width={SG_WORK_IMAGES.pickupPage.width}
+                      height={SG_WORK_IMAGES.pickupPage.height}
+                      sizes="(min-width: 900px) 600px, 100vw"
+                    />
+                  </div>
+                  <div className="vw-card-body">
+                    <h2>{SG_CLIENT}</h2>
+                    <p>{SG_CARD_LINE}</p>
                     <span className="vw-card-more" aria-hidden>
                       &rarr;
                     </span>
