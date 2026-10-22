@@ -1017,6 +1017,19 @@ export const sgBreadcrumbSchema = {
   ],
 }
 
+// The /case-studies index changes whenever a case study joins it, so its
+// sitemap lastmod is the latest of WORK_UPDATED and every published case
+// study's date (Vega, 2026-10-22, item 5): 2026-10-22 today, and it moves on
+// its own when the next one publishes. IPPE's own entry keeps WORK_UPDATED.
+export const WORK_INDEX_UPDATED = [
+  WORK_UPDATED,
+  PEIXOTO_APPROVED ? PEIXOTO_PUBLISHED : null,
+  SG_APPROVED ? SG_PUBLISHED : null,
+]
+  .filter((d): d is string => Boolean(d))
+  .sort()
+  .slice(-1)[0]
+
 // The picture a shared link to each new case study shows (Vega, 2026-10-22,
 // item 3), instead of the generic bee card: its /case-studies card picture at
 // 1200 x 630, framed as the card frames it (Sir Galloway's pickup page from

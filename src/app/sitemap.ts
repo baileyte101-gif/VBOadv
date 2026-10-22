@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { verticalSlugs } from "@/lib/verticals";
 import { INDEXABLE_VERTICALS, INDEXABLE_PAGES } from "@/lib/indexable";
 import { getAllPosts } from "@/lib/blog";
-import { WORK_INDEX_SLUG, IPPE_SLUG, WORK_UPDATED, PEIXOTO_SLUG, PEIXOTO_PUBLISHED, SG_SLUG, SG_PUBLISHED } from "@/lib/work";
+import { WORK_INDEX_SLUG, WORK_INDEX_UPDATED, IPPE_SLUG, WORK_UPDATED, PEIXOTO_SLUG, PEIXOTO_PUBLISHED, SG_SLUG, SG_PUBLISHED } from "@/lib/work";
 
 const HOST = "https://www.vboadv.com";
 
@@ -60,7 +60,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // switch that flips the page's own robots meta, so a noindexed page is
   // never listed. Real lastmod dates, not the build time.
   const workPages: MetadataRoute.Sitemap = [
-    { slug: WORK_INDEX_SLUG, updated: WORK_UPDATED, priority: 0.7 },
+    // The index moves with its newest case study (WORK_INDEX_UPDATED).
+    { slug: WORK_INDEX_SLUG, updated: WORK_INDEX_UPDATED, priority: 0.7 },
     { slug: IPPE_SLUG, updated: WORK_UPDATED, priority: 0.8 },
     // Peixoto Wear (published 2026-10-21): listed because its slug is in
     // INDEXABLE_PAGES, which cannot build without PEIXOTO_PUBLISHED set.
