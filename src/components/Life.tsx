@@ -27,14 +27,13 @@ export default function Life() {
       <div className="relative h-[400px] md:h-[560px]">
         <div className="absolute inset-0 overflow-hidden">
           <Image
-            src="/images/pages/contact-band.jpg"
-            alt="A quiet Coconut Grove street corner in the morning"
+            src="/images/life-miami-street.jpg"
+            alt="A man seen from behind, face not visible, walking mid-stride along a calm tree-lined downtown Miami street at midday, glancing at a phone held in one hand and carrying a small cafecito cup in the other, two pedestrians at a distance, shot in the desaturated house grade with warm colour and visible film grain"
             fill
             /* Crop biased toward the bottom of the frame: the source is wider
                than this band, so cover has to trim top and bottom regardless.
-               The bias keeps the street and the planting under the line and
-               trims the canopy instead. Alt text is Jules's, from the image's
-               delivery (2026-08-18). */
+               Protecting his feet reads as an intentional tight crop; trimming
+               them reads as a mistake. */
             className="object-cover"
             style={{ objectPosition: '50% 78%' }}
             sizes="100vw"
