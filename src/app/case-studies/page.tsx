@@ -27,6 +27,11 @@ import {
   SG_CLIENT,
   SG_CARD_LINE,
   SG_WORK_IMAGES,
+  FUDGE_PIE_PATH,
+  FUDGE_PIE_SHOWN,
+  FUDGE_PIE_CLIENT,
+  FUDGE_PIE_CARD_LINE,
+  FUDGE_PIE_WORK_IMAGES,
   workIndexSchema,
   workIndexBreadcrumbSchema,
 } from '@/lib/work'
@@ -145,6 +150,31 @@ export default function CaseStudiesIndexPage() {
                   <div className="vw-card-body">
                     <h2>{SG_CLIENT}</h2>
                     <p>{SG_CARD_LINE}</p>
+                    <span className="vw-card-more" aria-hidden>
+                      &rarr;
+                    </span>
+                  </div>
+                </a>
+              )}
+              {/* The Fudge Pie Co (published 2026-11-10). Shown wherever the
+                  page is (FUDGE_PIE_SHOWN). The card uses the pie page
+                  capture from The Work (slot 02), 16:10 like IPPE's trip
+                  page and Sir Galloway's pickup page, so it fills the frame
+                  uncropped. */}
+              {FUDGE_PIE_SHOWN && (
+                <a className="vw-card" href={FUDGE_PIE_PATH}>
+                  <div className="vw-card-media">
+                    <Image
+                      src={FUDGE_PIE_WORK_IMAGES.piePage.src}
+                      alt=""
+                      width={FUDGE_PIE_WORK_IMAGES.piePage.width}
+                      height={FUDGE_PIE_WORK_IMAGES.piePage.height}
+                      sizes="(min-width: 900px) 600px, 100vw"
+                    />
+                  </div>
+                  <div className="vw-card-body">
+                    <h2>{FUDGE_PIE_CLIENT}</h2>
+                    <p>{FUDGE_PIE_CARD_LINE}</p>
                     <span className="vw-card-more" aria-hidden>
                       &rarr;
                     </span>

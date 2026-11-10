@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation'
 import Nav from '@/components/Nav'
 import ClosingBlock from '@/components/ClosingBlock'
 import SiteFooter from '@/components/SiteFooter'
-import { SHARE_IMAGE } from '@/lib/share'
 import { linkify, type InlineLinkSpec } from '@/lib/linkify'
 import {
   FUDGE_PIE_URL,
@@ -25,6 +24,7 @@ import {
   FUDGE_PIE_RESULTS,
   FUDGE_PIE_QUOTE,
   FUDGE_PIE_NEXT,
+  FUDGE_PIE_SHARE_IMAGE,
   fudgePieArticleSchema,
   fudgePieBreadcrumbSchema,
   WORK_INDEX_NAME,
@@ -39,15 +39,15 @@ import '../work.css'
 // neither), and a QUALITATIVE results band: label, heading, a two-sentence
 // note and a coda, no phases and no figures (copy.md; Dash A).
 //
-// Stacey's testimonial renders VERBATIM, "VRO" included: it becomes "VBO"
-// only with her explicit OK (Tim's standing instruction, 10/13). Do not
-// correct it here or anywhere.
+// Stacey's testimonial renders verbatim with one marked exception: her typed
+// "VRO" reads "VBO" (Tim's 10/14 call, which she approved with the page).
+// Any change to her words goes through copy.md first, never here.
 //
-// PREVIEW ONLY until Stacey approves the page and Tim gives the publish go.
-// The switch is src/lib/indexable.ts: until "case-studies/fudge-pie-co" is in
-// it, this page is noindex and out of the sitemap, and a production build
-// serves this URL as a 404 (FUDGE_PIE_SHOWN in src/lib/work.ts). Previews and
-// local builds render it, noindex, for review.
+// PUBLISHED 2026-11-10 on Tim's go, after Stacey approved the page (11/4).
+// The switch is src/lib/indexable.ts: "case-studies/fudge-pie-co" is in it,
+// so this page is indexable with a canonical and in the sitemap. Take it out
+// and a production build serves this URL as a 404 again (FUDGE_PIE_SHOWN in
+// src/lib/work.ts).
 const IS_INDEXABLE = FUDGE_PIE_APPROVED
 
 // The publish commit must also set the go-live date. Refuse to build an
@@ -63,16 +63,21 @@ export const metadata: Metadata = {
   description: FUDGE_PIE_DESCRIPTION,
   robots: IS_INDEXABLE ? { index: true, follow: true } : { index: false, follow: false },
   ...(IS_INDEXABLE && { alternates: { canonical: FUDGE_PIE_URL } }),
-  // The share image is the bee and VBO lockup (src/lib/share.ts), as on the
-  // IPPE page: a page that sets its own openGraph replaces the root layout's
-  // whole object, so without this line the page would share with no picture.
+  // The share picture is this case study's own (its card picture at
+  // 1200 x 630, Vega 2026-10-22 item 3, as on Sir Galloway and Peixoto), not
+  // the bee card. A page that sets its own openGraph replaces the root
+  // layout's whole object, so it is listed here.
   openGraph: {
     title: FUDGE_PIE_TITLE,
     description: FUDGE_PIE_DESCRIPTION,
     type: 'article',
     siteName: 'VBO Advertising',
     url: FUDGE_PIE_URL,
-    images: [SHARE_IMAGE],
+    images: [FUDGE_PIE_SHARE_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: [{ url: FUDGE_PIE_SHARE_IMAGE.url, alt: FUDGE_PIE_SHARE_IMAGE.alt }],
   },
 }
 
@@ -296,8 +301,8 @@ export default function FudgePieCaseStudyPage() {
         </section>
 
         {/* THE QUOTE: plain HTML, no review markup. Stacey's six sentences,
-            verbatim, one paragraph. "VRO" stays as she wrote it until her OK
-            (Tim's standing instruction, 10/13): do not correct it. */}
+            one paragraph, verbatim but for the marked VBO reading she
+            approved with the page. */}
         <section className="vw-sec ground-plain">
           <div className="vw-wrap">
             <figure className="vw-quote">

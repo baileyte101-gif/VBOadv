@@ -988,127 +988,16 @@ export const sgBreadcrumbSchema = {
   ],
 }
 
-// The /case-studies index changes whenever a case study joins it, so its
-// sitemap lastmod is the latest of WORK_UPDATED and every published case
-// study's date (Vega, 2026-10-22, item 5): 2026-10-22 today, and it moves on
-// its own when the next one publishes. IPPE's own entry keeps WORK_UPDATED.
-export const WORK_INDEX_UPDATED = [
-  WORK_UPDATED,
-  PEIXOTO_APPROVED ? PEIXOTO_PUBLISHED : null,
-  SG_APPROVED ? SG_PUBLISHED : null,
-]
-  .filter((d): d is string => Boolean(d))
-  .sort()
-  .slice(-1)[0]
-
-// The picture a shared link to each new case study shows (Vega, 2026-10-22,
-// item 3), instead of the generic bee card: its /case-studies card picture at
-// 1200 x 630, framed as the card frames it (Sir Galloway's pickup page from
-// the top; Peixoto's hero 30% down), alt = that image's alt on the page.
-export const SG_SHARE_IMAGE = {
-  url: `${WORK_HOST}/images/work/sir-galloway/sir-galloway-share-1200x630.jpg`,
-  width: 1200,
-  height: 630,
-  alt: SG_WORK_IMAGES.pickupPage.alt,
-}
-export const PEIXOTO_SHARE_IMAGE = {
-  url: `${WORK_HOST}/images/work/peixoto-wear/peixoto-wear-share-1200x630.jpg`,
-  width: 1200,
-  height: 630,
-  alt: PEIXOTO_HERO.alt,
-}
-
-// "Related reading" at the end of a case study (Vega, 2026-10-22, item 1b):
-// the posts each case study is the proof for, by slug, rendered with their
-// published titles (src/app/case-studies/RelatedReading.tsx). The label is
-// Mary's to rename.
-export const RELATED_READING_LABEL = 'Related reading'
-export const SG_RELATED_READING = [
-  'google-business-profiles-multiple-locations',
-  'how-much-should-a-small-business-spend-on-marketing',
-]
-export const PEIXOTO_RELATED_READING = [
-  'how-much-should-a-small-business-spend-on-marketing',
-  'the-honor-in-being-the-worker-bee',
-]
-
-// "See it in practice" under a blog post (Vega, 2026-10-22, item 1c): a post
-// whose front matter names a case study (`caseStudy: "<short slug>"`) shows
-// that case study's /case-studies card, the same name, card line and picture,
-// framed the same way. Only case studies that are shown (published, or any
-// preview) render. The label is Mary's to rename.
-export const SEE_IT_LABEL = 'See it in practice'
-export const CASE_STUDY_CARDS: Record<
-  string,
-  {
-    path: string
-    client: string
-    cardLine: string
-    image: { src: string; width: number; height: number }
-    photo: boolean
-    shown: boolean
-  }
-> = {
-  'ippe-soccer-tours': {
-    path: IPPE_PATH,
-    client: IPPE_CLIENT,
-    cardLine: IPPE_CARD_LINE,
-    image: IPPE_WORK_IMAGES.tripPage,
-    photo: false,
-    shown: true,
-  },
-  'peixoto-wear': {
-    path: PEIXOTO_PATH,
-    client: PEIXOTO_CLIENT,
-    cardLine: PEIXOTO_CARD_LINE,
-    image: PEIXOTO_HERO,
-    photo: true,
-    shown: PEIXOTO_SHOWN,
-  },
-  'sir-galloway': {
-    path: SG_PATH,
-    client: SG_CLIENT,
-    cardLine: SG_CARD_LINE,
-    image: SG_WORK_IMAGES.pickupPage,
-    photo: false,
-    shown: SG_SHOWN,
-  },
-}
-
-// /case-studies (the index): its CollectionPage and breadcrumb.
-export const workIndexSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'CollectionPage',
-  name: WORK_INDEX_NAME,
-  url: WORK_INDEX_URL,
-  description: WORK_INDEX_DESCRIPTION,
-  isPartOf: { '@id': `${WORK_HOST}/#website` },
-  // Lists only published case studies: each joins at its publish go. Defined
-  // after the Peixoto and Sir Galloway sections so it can read
-  // PEIXOTO_APPROVED and SG_APPROVED.
-  hasPart: [
-    { '@type': 'Article', headline: IPPE_H1, url: IPPE_URL },
-    ...(PEIXOTO_APPROVED ? [{ '@type': 'Article', headline: PEIXOTO_H1, url: PEIXOTO_URL }] : []),
-    ...(SG_APPROVED ? [{ '@type': 'Article', headline: SG_H1, url: SG_URL }] : []),
-  ],
-}
-
-export const workIndexBreadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: WORK_HOST },
-    { '@type': 'ListItem', position: 2, name: WORK_INDEX_NAME, item: WORK_INDEX_URL },
-  ],
-}
-
 // ---------------------------------------------------------------------------
 // /case-studies/fudge-pie-co
 //
-// PREVIEW ONLY until Stacey Donayre approves the page (her testimonial with
-// the VRO-to-VBO fix, the security reference question, the one figure in
-// words, her imagery, the scope line) and Tim gives the publish go. Nothing
-// is sent or live, and Stacey has not seen any version of this page.
+// PUBLISHED 2026-11-10. Chef Stacey Donayre approved the case study (Tim,
+// 11/4: "she already confirmed the case study and social media post") on the
+// round-2 preview she was sent (dpl_3BAxS9o1oytgekgW3QsQE3XJiKfd, built from
+// 1904503); her 10/29 OK on the testimonial post was given on the VBO
+// reading of her quote. Tim gave the publish go on 11/10 ("we can take the
+// Fudge Pie case study live. She approved it."). Every string and image is
+// as she reviewed it; the publish commit only flips the switches.
 //
 // Copy is Mary's (clients/vbo/case-studies/fudge-pie/copy.md, revised
 // 2026-10-14 night for Tim's picks and 2026-10-15 for the word fold),
@@ -1138,13 +1027,10 @@ export const workIndexBreadcrumbSchema = {
 // preserved in Dash F; if she prefers it as she typed it, it reverts
 // everywhere, in copy.md FIRST, never silently here.
 //
-// The publish switch is src/lib/indexable.ts. Until "case-studies/fudge-pie-co"
-// is in INDEXABLE_PAGES, this page is noindex and out of the sitemap, and a
-// PRODUCTION build serves its URL as a 404 and keeps its card off
-// /case-studies (the card is added to /case-studies/page.tsx in the publish
-// commit; this branch leaves the index untouched). At the publish go: set
-// FUDGE_PIE_PUBLISHED, add the slug to INDEXABLE_PAGES, add the card and the
-// llms.txt line.
+// The publish switch is src/lib/indexable.ts: "case-studies/fudge-pie-co" is
+// in INDEXABLE_PAGES, so the page is indexable with a canonical, in the
+// sitemap, llms.txt and the index's CollectionPage, and its card shows on
+// /case-studies. Taking it down again is that one line out of indexable.ts.
 // ---------------------------------------------------------------------------
 
 export const FUDGE_PIE_SLUG = `${WORK_INDEX_SLUG}/fudge-pie-co`
@@ -1158,11 +1044,10 @@ export const FUDGE_PIE_APPROVED = INDEXABLE_PAGES.has(FUDGE_PIE_SLUG)
 export const FUDGE_PIE_SHOWN = FUDGE_PIE_APPROVED || process.env.VERCEL_ENV !== 'production'
 
 /**
- * The day the page goes public. Null until the publish go, so the preview's
- * Article schema states no date. The page refuses to build as indexable
- * without it.
+ * The day the page went public (Tim's publish go). The Article schema's
+ * datePublished and dateModified, and the sitemap's lastmod.
  */
-export const FUDGE_PIE_PUBLISHED: string | null = null
+export const FUDGE_PIE_PUBLISHED: string | null = '2026-11-10'
 
 export const FUDGE_PIE_TITLE = "The Fudge Pie Co Case Study: Website Rebuild | VBO"
 export const FUDGE_PIE_DESCRIPTION =
@@ -1312,10 +1197,10 @@ export const FUDGE_PIE_RESULTS = {
 /*
  * Verbatim from Stacey's email of October 12, 2026 (read by Dash 10/14;
  * thread re-read 10/15, unchanged), with ONE marked exception: her last
- * sentence typed "VRO" and the page reads "VBO" on Tim's 10/14 call. Her
- * confirmation email asks her OK on the one-letter fix explicitly; her
- * verbatim original is preserved in Dash F, and if she prefers it as she
- * typed it, it reverts everywhere, in copy.md first (Mary's edit), never
+ * sentence typed "VRO" and the page reads "VBO" on Tim's 10/14 call. She
+ * approved the page reading VBO (11/4) and OK'd the testimonial post with
+ * the same reading (10/29); her verbatim original stays in Dash F. Any
+ * change to her words goes through copy.md first (Mary's edit), never
  * here. Six sentences, her two exclamation marks kept. "Marketing services"
  * is her phrase and lives only inside her quote. Her sign-off is replaced by
  * the credit, as on the other pages; the credit form is hers to pick
@@ -1337,8 +1222,7 @@ export const FUDGE_PIE_NEXT = {
 }
 
 // The Fudge Pie Co: the same two blocks as IPPE. Stacey's quote stays plain
-// HTML (no Review, Rating or AggregateRating). No dates until
-// FUDGE_PIE_PUBLISHED is set.
+// HTML (no Review, Rating or AggregateRating). Dated by FUDGE_PIE_PUBLISHED.
 export const fudgePieArticleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -1364,5 +1248,137 @@ export const fudgePieBreadcrumbSchema = {
     { '@type': 'ListItem', position: 1, name: 'Home', item: WORK_HOST },
     { '@type': 'ListItem', position: 2, name: WORK_INDEX_NAME, item: WORK_INDEX_URL },
     { '@type': 'ListItem', position: 3, name: FUDGE_PIE_CLIENT, item: FUDGE_PIE_URL },
+  ],
+}
+
+// The /case-studies index changes whenever a case study joins it, so its
+// sitemap lastmod is the latest of WORK_UPDATED and every published case
+// study's date (Vega, 2026-10-22, item 5): 2026-11-10 since The Fudge Pie Co
+// joined, and it moves on its own when the next one publishes. IPPE's own
+// entry keeps WORK_UPDATED.
+export const WORK_INDEX_UPDATED = [
+  WORK_UPDATED,
+  PEIXOTO_APPROVED ? PEIXOTO_PUBLISHED : null,
+  SG_APPROVED ? SG_PUBLISHED : null,
+  FUDGE_PIE_APPROVED ? FUDGE_PIE_PUBLISHED : null,
+]
+  .filter((d): d is string => Boolean(d))
+  .sort()
+  .slice(-1)[0]
+
+// The picture a shared link to each new case study shows (Vega, 2026-10-22,
+// item 3), instead of the generic bee card: its /case-studies card picture at
+// 1200 x 630, framed as the card frames it (Sir Galloway's pickup page from
+// the top; Peixoto's hero 30% down; The Fudge Pie Co's pie page from the top,
+// the same recipe as Sir Galloway's), alt = that image's alt on the page.
+export const SG_SHARE_IMAGE = {
+  url: `${WORK_HOST}/images/work/sir-galloway/sir-galloway-share-1200x630.jpg`,
+  width: 1200,
+  height: 630,
+  alt: SG_WORK_IMAGES.pickupPage.alt,
+}
+export const PEIXOTO_SHARE_IMAGE = {
+  url: `${WORK_HOST}/images/work/peixoto-wear/peixoto-wear-share-1200x630.jpg`,
+  width: 1200,
+  height: 630,
+  alt: PEIXOTO_HERO.alt,
+}
+export const FUDGE_PIE_SHARE_IMAGE = {
+  url: `${WORK_HOST}/images/work/fudge-pie-co/fudge-pie-co-share-1200x630.jpg`,
+  width: 1200,
+  height: 630,
+  alt: FUDGE_PIE_WORK_IMAGES.piePage.alt,
+}
+
+// "Related reading" at the end of a case study (Vega, 2026-10-22, item 1b):
+// the posts each case study is the proof for, by slug, rendered with their
+// published titles (src/app/case-studies/RelatedReading.tsx). The label is
+// Mary's to rename.
+export const RELATED_READING_LABEL = 'Related reading'
+export const SG_RELATED_READING = [
+  'google-business-profiles-multiple-locations',
+  'how-much-should-a-small-business-spend-on-marketing',
+]
+export const PEIXOTO_RELATED_READING = [
+  'how-much-should-a-small-business-spend-on-marketing',
+  'the-honor-in-being-the-worker-bee',
+]
+
+// "See it in practice" under a blog post (Vega, 2026-10-22, item 1c): a post
+// whose front matter names a case study (`caseStudy: "<short slug>"`) shows
+// that case study's /case-studies card, the same name, card line and picture,
+// framed the same way. Only case studies that are shown (published, or any
+// preview) render. The label is Mary's to rename.
+export const SEE_IT_LABEL = 'See it in practice'
+export const CASE_STUDY_CARDS: Record<
+  string,
+  {
+    path: string
+    client: string
+    cardLine: string
+    image: { src: string; width: number; height: number }
+    photo: boolean
+    shown: boolean
+  }
+> = {
+  'ippe-soccer-tours': {
+    path: IPPE_PATH,
+    client: IPPE_CLIENT,
+    cardLine: IPPE_CARD_LINE,
+    image: IPPE_WORK_IMAGES.tripPage,
+    photo: false,
+    shown: true,
+  },
+  'peixoto-wear': {
+    path: PEIXOTO_PATH,
+    client: PEIXOTO_CLIENT,
+    cardLine: PEIXOTO_CARD_LINE,
+    image: PEIXOTO_HERO,
+    photo: true,
+    shown: PEIXOTO_SHOWN,
+  },
+  'sir-galloway': {
+    path: SG_PATH,
+    client: SG_CLIENT,
+    cardLine: SG_CARD_LINE,
+    image: SG_WORK_IMAGES.pickupPage,
+    photo: false,
+    shown: SG_SHOWN,
+  },
+  'fudge-pie-co': {
+    path: FUDGE_PIE_PATH,
+    client: FUDGE_PIE_CLIENT,
+    cardLine: FUDGE_PIE_CARD_LINE,
+    image: FUDGE_PIE_WORK_IMAGES.piePage,
+    photo: false,
+    shown: FUDGE_PIE_SHOWN,
+  },
+}
+
+// /case-studies (the index): its CollectionPage and breadcrumb.
+export const workIndexSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: WORK_INDEX_NAME,
+  url: WORK_INDEX_URL,
+  description: WORK_INDEX_DESCRIPTION,
+  isPartOf: { '@id': `${WORK_HOST}/#website` },
+  // Lists only published case studies: each joins at its publish go. Defined
+  // after the Peixoto, Sir Galloway and Fudge Pie sections so it can read
+  // PEIXOTO_APPROVED, SG_APPROVED and FUDGE_PIE_APPROVED.
+  hasPart: [
+    { '@type': 'Article', headline: IPPE_H1, url: IPPE_URL },
+    ...(PEIXOTO_APPROVED ? [{ '@type': 'Article', headline: PEIXOTO_H1, url: PEIXOTO_URL }] : []),
+    ...(SG_APPROVED ? [{ '@type': 'Article', headline: SG_H1, url: SG_URL }] : []),
+    ...(FUDGE_PIE_APPROVED ? [{ '@type': 'Article', headline: FUDGE_PIE_H1, url: FUDGE_PIE_URL }] : []),
+  ],
+}
+
+export const workIndexBreadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: WORK_HOST },
+    { '@type': 'ListItem', position: 2, name: WORK_INDEX_NAME, item: WORK_INDEX_URL },
   ],
 }

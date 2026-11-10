@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { verticalSlugs } from "@/lib/verticals";
 import { INDEXABLE_VERTICALS, INDEXABLE_PAGES } from "@/lib/indexable";
 import { getAllPosts } from "@/lib/blog";
-import { WORK_INDEX_SLUG, WORK_INDEX_UPDATED, IPPE_SLUG, WORK_UPDATED, PEIXOTO_SLUG, PEIXOTO_PUBLISHED, SG_SLUG, SG_PUBLISHED } from "@/lib/work";
+import { WORK_INDEX_SLUG, WORK_INDEX_UPDATED, IPPE_SLUG, WORK_UPDATED, PEIXOTO_SLUG, PEIXOTO_PUBLISHED, SG_SLUG, SG_PUBLISHED, FUDGE_PIE_SLUG, FUDGE_PIE_PUBLISHED } from "@/lib/work";
 
 const HOST = "https://www.vboadv.com";
 
@@ -52,6 +52,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Sir Galloway (published 2026-10-22): listed because its slug is in
     // INDEXABLE_PAGES, which cannot build without SG_PUBLISHED set.
     { slug: SG_SLUG, updated: SG_PUBLISHED ?? WORK_UPDATED, priority: 0.8 },
+    // The Fudge Pie Co (published 2026-11-10): listed because its slug is in
+    // INDEXABLE_PAGES, which cannot build without FUDGE_PIE_PUBLISHED set.
+    { slug: FUDGE_PIE_SLUG, updated: FUDGE_PIE_PUBLISHED ?? WORK_UPDATED, priority: 0.8 },
   ]
     .filter((p) => INDEXABLE_PAGES.has(p.slug))
     .map((p) => ({

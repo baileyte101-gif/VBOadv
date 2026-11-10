@@ -24,6 +24,10 @@ export const INDEXABLE_VERTICALS = new Set<string>([
 // case study on 10/14 ("LOVE the case study"), her numbers, posts and quote;
 // Tim gave the publish go 10/22 with her mother's quote still unconfirmed
 // ("it's a small risk but I think we'll be okay").
+// "case-studies/fudge-pie-co" went in on 2026-11-10: Chef Stacey Donayre
+// approved the case study (Tim, 11/4: "she already confirmed the case study
+// and social media post") and Tim gave the publish go 11/10 ("we can take the
+// Fudge Pie case study live. She approved it.").
 // Still held: "studio" (VBO Studio, after Tim approves the page and the
 // "Locked." film exists).
 export const INDEXABLE_PAGES = new Set<string>([
@@ -31,5 +35,6 @@ export const INDEXABLE_PAGES = new Set<string>([
   "case-studies/ippe-soccer-tours",
   "case-studies/peixoto-wear",
   "case-studies/sir-galloway",
+  "case-studies/fudge-pie-co",
   "why-the-bee",
 ]);
