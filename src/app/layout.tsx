@@ -7,17 +7,22 @@ import { BRAND_LOGO, SHARE_IMAGE } from '@/lib/share'
 import './globals.css'
 import '@/components/bee/bee-brand.css'
 
+/* `preload: true` is next/font's default, spelled out 2026-11-20 so the build
+   re-ran these three fonts instead of reusing a cached copy whose class names
+   no longer matched the pages (the live site showed system fonts). */
 const barlow = Barlow_Condensed({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800', '900'],
   variable: '--font-barlow',
   display: 'swap',
+  preload: true,
 })
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
+  preload: true,
 })
 
 const spaceMono = Space_Mono({
@@ -25,6 +30,7 @@ const spaceMono = Space_Mono({
   weight: ['400', '700'],
   variable: '--font-space-mono',
   display: 'swap',
+  preload: true,
 })
 
 export const metadata: Metadata = {
