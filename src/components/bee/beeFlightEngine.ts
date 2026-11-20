@@ -126,10 +126,16 @@ const HOME_ROUTE: Route = {
    over the big bee); it comes out of each flying section's top edge as that
    edge reaches mid-screen, flies the right-hand gutter (the open side: the
    page's words are set left), and lands upright beside Let's Connect, coming
-   in from the right as it lands beside Read the story on the homepage. Gold
-   on the page's dark grounds. */
+   in from the right as it lands beside Read the story on the homepage. Black
+   on Our roots' Egg, gold on the dark grounds. */
 const STORY_WAYS: Way[] = [
   { s: 'hero', y: 'bottom', dy: -70, x: 0.72 }, // waiting behind the title
+  { s: 'note', y: 'top', dy: NOSE, x: 0.72, vt: VT }, // nose at the title's lower edge as Our roots reaches mid-screen
+  { s: 'note', y: 'top', dy: 12, x: 0.72 }, // out into Our roots (black on Egg)
+  { s: 'note', y: 'top', dy: PT(0.55), x: 0.84 },
+  { s: 'note', y: 'top', dy: PT(1), x: 'gR', r: 24 }, // into the right gutter (tight corner: in the gutter before the first line)
+  { s: 'note', y: 'bottom', dy: PB(0.45), x: 'gR', r: 24, vy: 0.62 }, // down past the note, the photos and the quote
+  { s: 'note', y: 'bottom', dy: PB(0.35), x: 0.62 }, // sweeps left, under the quote
   { s: 'icon', y: 'top', dy: 40, x: 0.58, vy: 0.58 }, // under Our icon
   { s: 'icon', y: 'bottom', dy: -26, x: 0.78 }, // behind the big bee and the lockup
   { s: 'how', y: 'top', dy: NOSE, x: 0.78, vt: VT }, // nose at Our icon's edge as How we work reaches mid-screen
@@ -144,8 +150,8 @@ const STORY_WAYS: Way[] = [
 
 const STORY_ROUTE: Route = {
   ways: STORY_WAYS,
-  required: ['hero', 'icon', 'how', 'close', 'rest'],
-  gutters: { how: 'how', close: 'close', rest: 'close' },
+  required: ['hero', 'note', 'icon', 'how', 'close', 'rest'],
+  gutters: { note: 'note', how: 'how', close: 'close', rest: 'close' },
   land: 'close',
 }
 
