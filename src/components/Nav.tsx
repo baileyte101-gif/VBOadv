@@ -15,14 +15,17 @@ import { usePathname } from 'next/navigation'
    The "What We Do" label is pending Tim's call between "What We Do" and
    "How We Work" (Mary 2026-08-21, open item 1). If he picks the rename,
    change the label here and in HowWeWork.tsx; the #how-we-work anchor
-   stays either way. */
+   stays either way.
+   Tim's menu, 2026-11-20: What We Run and Insights come off the menu (the
+   section and the blog stay on the site), and Case Studies and Why the Bee
+   join it after About. */
 const navLinks = [
-  { label: 'What We Run', href: '#what-we-run', scroll: true },
   { label: 'The Approach', href: '#the-approach', scroll: true },
   { label: 'What We Do', href: '#how-we-work', scroll: true },
   { label: 'Industries and Services', href: '#industries', scroll: true },
   { label: 'About', href: '#about', scroll: true },
-  { label: 'Insights', href: '/insights', scroll: false },
+  { label: 'Case Studies', href: '/case-studies', scroll: false },
+  { label: 'Why the Bee', href: '/why-the-bee', scroll: false },
 ]
 
 export default function Nav() {
@@ -70,8 +73,11 @@ export default function Nav() {
             <BeeLockup className="vbo-lk-nav" decorative target />
           </a>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          {/* Desktop Nav Links. Shown from xl (1280px): at lg the six links,
+              the lockup and Let's Connect need about 1,110px and the bar has
+              896px, which pushed the button off screen. Below xl the chevron
+              dropdown carries the links. */}
+          <div className="hidden xl:flex items-center gap-6 2xl:gap-8">
             {navLinks.map((link) =>
               link.scroll && isHome ? (
                 <button
@@ -99,7 +105,7 @@ export default function Nav() {
           <div className="flex items-center gap-3">
             {/* Mobile dropdown chevron */}
             <button
-              className="lg:hidden flex items-center justify-center text-[#8A8E92] hover:text-[#F2EDE4] transition-colors duration-200 p-2 -mr-1"
+              className="xl:hidden flex items-center justify-center text-[#8A8E92] hover:text-[#F2EDE4] transition-colors duration-200 p-2 -mr-1"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             >
@@ -141,7 +147,7 @@ export default function Nav() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="lg:hidden bg-[#0D0D0D] border-t border-[#1C1C1C] overflow-hidden"
+            className="xl:hidden bg-[#0D0D0D] border-t border-[#1C1C1C] overflow-hidden"
           >
             <div className="px-6 py-5 flex flex-col gap-1">
               {navLinks.map((link, i) =>
@@ -162,11 +168,15 @@ export default function Nav() {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
+                    className="border-b border-[#1C1C1C] last:border-0"
                   >
+                    {/* The divider sits on this wrapper, not the link: each
+                        link is the last child of its own wrapper, so a
+                        last:border-0 on the link dropped every divider. */}
                     <Link
                       href={link.scroll ? `/${link.href}` : link.href}
                       onClick={() => setMobileOpen(false)}
-                      className="block text-left text-[#8A8E92] hover:text-[#F2EDE4] text-sm tracking-[0.12em] uppercase transition-colors duration-200 font-body py-3 border-b border-[#1C1C1C] last:border-0"
+                      className="block text-left text-[#8A8E92] hover:text-[#F2EDE4] text-sm tracking-[0.12em] uppercase transition-colors duration-200 font-body py-3"
                     >
                       {link.label}
                     </Link>
