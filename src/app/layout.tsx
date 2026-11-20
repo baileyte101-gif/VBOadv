@@ -1,36 +1,83 @@
 import type { Metadata } from 'next'
-import { Barlow_Condensed, Inter, Space_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import Script from 'next/script'
 import MotionProvider from '@/components/MotionProvider'
 import BeeSprite from '@/components/bee/BeeSprite'
 import { BRAND_LOGO, SHARE_IMAGE } from '@/lib/share'
+import './fonts/fallbacks.css'
 import './globals.css'
 import '@/components/bee/bee-brand.css'
 
-/* `preload: true` is next/font's default, spelled out 2026-11-20 so the build
-   re-ran these three fonts instead of reusing a cached copy whose class names
-   no longer matched the pages (the live site showed system fonts). */
-const barlow = Barlow_Condensed({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
+/* The three brand fonts come from the site's own files (src/app/fonts/), so a
+   build never fetches anything from Google. Switched 2026-11-20, the day a
+   production build paired a fresh Google font fetch with a cached stylesheet
+   and the whole site fell back to system fonts.
+   - The files are Google's latin files, byte for byte the ones the live site
+     served that day (fonts/SOURCES.txt), each with Google's latin
+     unicode-range, as before.
+   - The consts are named like the Google imports they replace: next/font/local
+     names a family after its variable, so the pages keep their
+     __Barlow_Condensed_*, __Inter_* and __Space_Mono_* family names.
+   - adjustFontFallback is off because fonts/fallbacks.css holds the exact
+     Arial fallback faces the Google setup made; next/font/local would work out
+     slightly different ones.
+   Next/font only accepts written-out values here, so the range repeats. */
+const Barlow_Condensed = localFont({
+  src: [
+    { path: './fonts/barlow-condensed/barlow-condensed-latin-400.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/barlow-condensed/barlow-condensed-latin-500.woff2', weight: '500', style: 'normal' },
+    { path: './fonts/barlow-condensed/barlow-condensed-latin-600.woff2', weight: '600', style: 'normal' },
+    { path: './fonts/barlow-condensed/barlow-condensed-latin-700.woff2', weight: '700', style: 'normal' },
+    { path: './fonts/barlow-condensed/barlow-condensed-latin-800.woff2', weight: '800', style: 'normal' },
+    { path: './fonts/barlow-condensed/barlow-condensed-latin-900.woff2', weight: '900', style: 'normal' },
+  ],
+  declarations: [
+    {
+      prop: 'unicode-range',
+      value:
+        'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD',
+    },
+  ],
   variable: '--font-barlow',
   display: 'swap',
   preload: true,
+  adjustFontFallback: false,
+  fallback: ["'Barlow Condensed Fallback'"],
 })
 
-const inter = Inter({
-  subsets: ['latin'],
+const Inter = localFont({
+  src: [{ path: './fonts/inter/inter-latin-100-900.woff2', weight: '100 900', style: 'normal' }],
+  declarations: [
+    {
+      prop: 'unicode-range',
+      value:
+        'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD',
+    },
+  ],
   variable: '--font-inter',
   display: 'swap',
   preload: true,
+  adjustFontFallback: false,
+  fallback: ["'Inter Fallback'"],
 })
 
-const spaceMono = Space_Mono({
-  subsets: ['latin'],
-  weight: ['400', '700'],
+const Space_Mono = localFont({
+  src: [
+    { path: './fonts/space-mono/space-mono-latin-400.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/space-mono/space-mono-latin-700.woff2', weight: '700', style: 'normal' },
+  ],
+  declarations: [
+    {
+      prop: 'unicode-range',
+      value:
+        'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD',
+    },
+  ],
   variable: '--font-space-mono',
   display: 'swap',
   preload: true,
+  adjustFontFallback: false,
+  fallback: ["'Space Mono Fallback'"],
 })
 
 export const metadata: Metadata = {
@@ -144,7 +191,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${barlow.variable} ${inter.variable} ${spaceMono.variable}`}
+      className={`${Barlow_Condensed.variable} ${Inter.variable} ${Space_Mono.variable}`}
       // The homepage's opening-screen gate adds a class to <html> before
       // hydration (see src/components/bee/BeeOpening.tsx). Same pattern as a
       // theme script; this only silences React's dev-mode warning about it.

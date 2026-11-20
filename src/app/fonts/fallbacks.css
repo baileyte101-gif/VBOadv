@@ -1,0 +1,35 @@
+/* The Arial fallback faces for the three brand fonts: the same metrics
+   next/font/google generated for this site (Next 14.2.35's Google font
+   metrics), identical to the live CSS on 2026-11-20. Text shows in these
+   until the brand font loads, and they draw the few characters the brand
+   fonts do not have, such as the arrow in the gold buttons. Kept here so the
+   move to local files changes nothing on screen: next/font/local would work
+   out slightly different numbers (Space Mono's size by 2.3%). layout.tsx
+   turns its own fallback off and names these instead. */
+
+@font-face {
+  font-family: 'Barlow Condensed Fallback';
+  src: local('Arial');
+  ascent-override: 130.73%;
+  descent-override: 26.15%;
+  line-gap-override: 0.00%;
+  size-adjust: 76.49%;
+}
+
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  ascent-override: 90.49%;
+  descent-override: 22.56%;
+  line-gap-override: 0.00%;
+  size-adjust: 107.06%;
+}
+
+@font-face {
+  font-family: 'Space Mono Fallback';
+  src: local('Arial');
+  ascent-override: 81.58%;
+  descent-override: 26.30%;
+  line-gap-override: 0.00%;
+  size-adjust: 137.28%;
+}
